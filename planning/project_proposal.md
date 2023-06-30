@@ -1,6 +1,6 @@
 # Project Proposal
 
-Pod Members: **Add Pod Members Names**
+Pod Members: **Sophia Rodriguez, Ayslin Walker, Jovan Ford**
 
 ## Problem Statement
 
