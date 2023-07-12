@@ -11,10 +11,30 @@ datasource db {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  firstName String
-  lastName  String
-  username  String @unique
-  email     String @unique
-  password  String
+  id           String        @id @default(uuid())
+  firstName    String
+  lastName     String
+  username     String        @unique
+  email        String        @unique
+  password     String
+  hourlyWage   Float
+  bankSum      Float
+  lastLoggedIn DateTime      @default(now())
+  created_at   DateTime      @default(now())
+  updated_at   DateTime      @updatedAt
+  subCategory  subCategory[]
+}
+
+model subCategory {
+  id            String @id @default(uuid())
+  name          String
+  category      String
+  currentAmount Int
+  totalAmount   Int
+  user          User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String
+}
+
+enum Role {
+  USER
 }
