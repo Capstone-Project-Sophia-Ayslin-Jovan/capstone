@@ -43,6 +43,27 @@ Review other ppls pull requests!
 
 # Updating
 
-1.  $ prisma migrate dev
-    This will keep your database schema in sync with your Prisma schema.
-    The commands will also regenerate Prisma Client.
+1. $ npx prisma db push
+   Do this at first if you need to update database, then before you commit move on to step 2
+2. $ npx prisma migrate dev
+   This will keep your database schema in sync with your Prisma schema.
+   The commands will also regenerate Prisma Client.
+   Give it a name that makes sense.
+
+# Running index.ts
+
+1. $ npx ts-node index.js
+
+# Dropping Database
+
+1. $ psql
+   drop database literate;
+2. $ npx prisma db push
+
+Alternatively:
+
+1. $ npx prisma migrate reset
+
+# View database
+
+1. $ npx prisma studio

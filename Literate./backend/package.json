@@ -4,19 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.4.1",
-    "prisma": "^4.16.2",
+    "prisma": "^5.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@prisma/client": "^4.16.2",
-    "colors": "^1.4.0"
+    "@prisma/client": "^5.0.0",
+    "colors": "^1.4.0",
+    "nodemon": "^3.0.1"
   }
 }
