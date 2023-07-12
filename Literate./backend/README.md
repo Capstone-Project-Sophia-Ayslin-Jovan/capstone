@@ -55,7 +55,8 @@ Review other ppls pull requests!
 
 # Running index.ts
 
-1. $ npm start
+1. $ npm run seed
+2. $ npm start
 
 # Dropping Database
 
