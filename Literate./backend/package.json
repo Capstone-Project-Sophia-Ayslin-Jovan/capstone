@@ -2,10 +2,13 @@
   "name": "literate.",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "seed": "node seed.js"
+    "start": "nodemon ./src/server.js",
+    "seed": "node ./src/prisma/seed.js"
+  },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
