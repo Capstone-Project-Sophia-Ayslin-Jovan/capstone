@@ -4,7 +4,6 @@ const { BadRequestError, UnauthorizedError } = require("../../utils/errors");
 const { createUserToken } = require("../../utils/tokens");
 
 const { PrismaClient } = require("@prisma/client");
-const { create } = require("domain");
 const prisma = new PrismaClient();
 
 const createPublicUser = ({
