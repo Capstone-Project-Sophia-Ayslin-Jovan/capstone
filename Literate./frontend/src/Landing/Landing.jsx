@@ -3,7 +3,7 @@
 import React from 'react'
 import { Link, Input, User, Spacer } from '@nextui-org/react';
 import "./Landing.css"
-
+// import { Link } from "react-router-dom"
 
 export default function Landing() {
   return (
@@ -24,13 +24,13 @@ export default function Landing() {
         (Primary)
       </Link>
       <Spacer />
-      <Link color="secondary" href="#">
-        "First solve the problem. Then, write the code." - Jon Johnson.
+      <Link color="secondary" href="/Login">
+        Login
         (Secondary)
       </Link>
       <Spacer />
-      <Link color="success" href="#">
-        "First solve the problem. Then, write the code." - Jon Johnson.
+      <Link color="success" href="/Signup">
+        Signup
         (Success)
       </Link>
       <Spacer />
