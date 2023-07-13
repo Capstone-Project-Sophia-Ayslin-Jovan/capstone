@@ -2,65 +2,70 @@
 
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate, Link } from "react-router-dom"
+import { Modal, Button, Text, Input, Row, Checkbox, Spacer } from "@nextui-org/react";
 
-const Login = () => {
-  const [errors, setErrors] = useState({})
+const Login = ({loggedIn, setLoggedIn}) => {
+  const [visible, setVisible] = React.useState(false);
+  const handler = () => setVisible(true);
 
-  const handleOnInputChange = (event) => {
-    if (event.target.name === "email") {
-      if (event.target.value.indexOf("@") === -1) {
-        setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
-      } else {
-        setErrors((e) => ({ ...e, email: null }))
-      }
-    }
-
-    setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
-  }
-  
+  const closeHandler = () => {
+    setVisible(false);
+    console.log("closed");
+  };
   return (
-    <div className="Login">
-      <div className="media">
-      </div>
-
-      <div className="card">
-        <h2>Login to the Portal</h2>
-        <br />
-
-        <div className="form">
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="user@gmail.com"
-              value={form.email}
-              onChange={handleOnInputChange}
-            />
-          </div>
-
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={form.password}
-              onChange={handleOnInputChange}
-            />
-          </div>
-
-          <button className="btn">
-            {isLoading ? "Loading..." : "Login"}
-          </button>
-        </div>
-
-        <div className="footer">
-          <p>
-            Don't have an account? Sign up <Link to="/register">here</Link>
-          </p>
-        </div>
-      </div>
+    <div>
+      <Button auto shadow onPress={handler}>
+        Open modal
+      </Button>
+      <Modal
+        closeButton
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={18}>
+            Login to
+            <Text b size={18}> 
+            <Spacer/>
+              Literate.
+            </Text>
+          </Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder="Email"
+          />
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder="Password"
+          />
+          <Row justify="space-between">
+            <Checkbox>
+              <Text size={14}>Remember me</Text>
+            </Checkbox>
+            <Text size={14}>Forgot password?</Text>
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto flat color="error" onPress={closeHandler}>
+            Close
+          </Button>
+          <Button auto onPress={closeHandler}>
+            Sign in
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }

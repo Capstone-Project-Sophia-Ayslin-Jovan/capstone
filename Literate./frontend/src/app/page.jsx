@@ -16,9 +16,9 @@ export default function Home() {
     <div className={styles.main}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
+          <Route path='/' element={<Landing/>} />
+          <Route path='/Login' element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+          <Route path='/Signup' element={<Signup/>} />
         </Routes>
       </BrowserRouter>
     </div>
