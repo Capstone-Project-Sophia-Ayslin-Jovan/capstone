@@ -18,7 +18,7 @@ export default function Home() {
         <NavbarContent/>
         <Routes>
           <Route path='/' element={<Landing/>} />
-          <Route path='/Login' element={<Login/>} />
+          <Route path='/Login' element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
           <Route path='/Signup' element={<Signup/>} />
         </Routes>
       </BrowserRouter>
