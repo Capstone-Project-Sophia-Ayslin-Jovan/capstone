@@ -19,7 +19,6 @@ app.use(express.json());
 app.use(morgan("tiny"));
 
 // routes
-// app.use("/auth", authRoutes);
 
 // health check
 app.get("/", async function (req, res) {
