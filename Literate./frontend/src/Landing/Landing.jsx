@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Link, Input, User, Spacer } from '@nextui-org/react';
+import { Input, User, Spacer } from '@nextui-org/react';
 import "./Landing.css"
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function Landing() {
   return (
@@ -19,27 +19,27 @@ export default function Landing() {
             size="xl"
         />
       <Spacer />
-      <Link color href="#">
+      <Link to="#">
         "First solve the problem. Then, write the code." - Jon Johnson.
         (Primary)
       </Link>
       <Spacer />
-      <Link color="secondary" href="/Login">
+      <Link to="/Login">
         Login
         (Secondary)
       </Link>
       <Spacer />
-      <Link color="success" href="/Signup">
+      <Link to="/Signup">
         Signup
         (Success)
       </Link>
       <Spacer />
-      <Link color="warning" href="#">
+      <Link to="#">
         "First solve the problem. Then, write the code." - Jon Johnson.
         (Warning)
       </Link>
       <Spacer />
-      <Link color="error" href="#">
+      <Link to="#">
         "First solve the problem. Then, write the code." - Jon Johnson. (Error)
       </Link>
       </div>

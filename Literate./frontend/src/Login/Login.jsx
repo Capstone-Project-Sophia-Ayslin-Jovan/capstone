@@ -17,7 +17,7 @@ const Login = () => {
 
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
   }
-  
+
   return (
     <div className="Login">
       <div className="media">
@@ -34,7 +34,6 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="user@gmail.com"
-              value={form.email}
               onChange={handleOnInputChange}
             />
           </div>
@@ -44,20 +43,18 @@ const Login = () => {
             <input
               type="password"
               name="password"
-              placeholder="Password"
-              value={form.password}
+              placeholder="Password"    
               onChange={handleOnInputChange}
             />
           </div>
 
           <button className="btn">
-            {isLoading ? "Loading..." : "Login"}
           </button>
         </div>
 
         <div className="footer">
           <p>
-            Don't have an account? Sign up <Link to="/register">here</Link>
+            Don't have an account? Sign up 
           </p>
         </div>
       </div>
