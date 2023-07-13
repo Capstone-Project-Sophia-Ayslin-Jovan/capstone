@@ -26,6 +26,16 @@ After you push to your branch, you will have to make a pull request if you want 
 
 Review other ppls pull requests!
 
+# Deleting Branches
+
+1. $ git branch -d branch_name
+
+# Switching to Another Person's Branch
+
+1. $ git checkout main
+2. $ git pull
+3. $ git checkout branch_name
+
 # Setting Up, Updating & Running Prisma
 
 # Setup -- NO LONGER NEEDS TO BE DONE
