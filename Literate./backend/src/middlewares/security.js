@@ -9,12 +9,10 @@ const { SECRET_KEY } = require("../config/config");
 
 const getJWT = async ({ headers }) => {
   const authToken = headers.bearer;
-  console.log("Token: ", authToken);
   if (!authToken || authToken === "undefined" || authToken === "null") {
     console.log("Invalid header: ", headers);
     throw new UnauthorizedError("Invalid header found");
   }
-  console.log("Bearer", authToken);
   return authToken;
 };
 

@@ -6,8 +6,6 @@ const userService = require("./users.service");
 router.post("/login", async function (req, res, next) {
   try {
     const { publicUser, userToken } = await userService.loginUser(req.body);
-    res.locals.token = userToken;
-    res.locals.user = publicUser;
     return res.status(200).json({ publicUser, userToken });
   } catch (err) {
     next(err);
@@ -17,8 +15,6 @@ router.post("/login", async function (req, res, next) {
 router.post("/register", async function (req, res, next) {
   try {
     const { publicUser, userToken } = await userService.registerUser(req.body);
-    res.locals.token = userToken;
-    res.locals.user = publicUser;
     return res.status(201).json({ publicUser, userToken });
   } catch (err) {
     next(err);
