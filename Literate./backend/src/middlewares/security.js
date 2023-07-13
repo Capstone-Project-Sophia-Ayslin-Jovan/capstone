@@ -1,13 +1,14 @@
 const jwt = require("jsonwebtoken");
-const { validateToken } = require("../utils/tokens");
+const { validateUserToken } = require("../utils/tokens");
 const {
   UnauthorizedError,
   InvalidTokenError,
   UnexpectedError, // Add this in getUserFromToken later
 } = require("../utils/errors");
+const { SECRET_KEY } = require("../config/config");
 
 const getJWT = async ({ headers }) => {
-  const authToken = headers["Bearer"];
+  const authToken = headers.bearer;
   console.log("Token: ", authToken);
   if (!authToken || authToken === "undefined" || authToken === "null") {
     console.log("Invalid header: ", headers);
@@ -20,32 +21,33 @@ const getJWT = async ({ headers }) => {
 const getUserFromToken = async (req, res, next) => {
   console.log("Getting User from Token...");
   try {
-    const token = getJWT(req);
+    const token = await getJWT(req);
     console.log("User Token: ", token);
     if (token) {
-      res.locals.user = jwt.verify(token, SECRET_KEY);
+      const user = jwt.verify(token, SECRET_KEY);
+      return user;
     } else {
       throw new InvalidTokenError();
     }
-    return next();
   } catch (err) {
-    return next(err);
+    throw err; // Specify errors later
   }
 };
 
 const requireAuthenticatedUser = async (req, res, next) => {
   console.log("Authenticating User...");
   try {
-    const { user } = res.locals;
+    const user = await getUserFromToken(req);
     if (!user) {
       console.log("No User Retrieved!");
-      return next(new UnauthorizedError());
+      throw new UnauthorizedError();
     }
 
     console.log("Retrieved Authenticated User: ", user);
+    res.locals.user = user;
     return next();
   } catch (err) {
-    return next(err);
+    return next(err); // Specify what errors later
   }
 };
 

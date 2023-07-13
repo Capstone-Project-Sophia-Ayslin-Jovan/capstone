@@ -1,8 +1,10 @@
 const bcrypt = require("bcrypt");
 const { BCRYPT_WORK_FACTOR } = require("../../config/config");
-const { BadRequestError, UnauthorizedError } = require("../utils/errors");
+const { BadRequestError, UnauthorizedError } = require("../../utils/errors");
+const { createUserToken } = require("../../utils/tokens");
 
 const { PrismaClient } = require("@prisma/client");
+const { create } = require("domain");
 const prisma = new PrismaClient();
 
 const createPublicUser = ({
@@ -34,19 +36,17 @@ const loginUser = async (creds) => {
   if (user) {
     const isValid = await bcrypt.compare(password, user.password);
     if (isValid === true) {
-      const userToken = await createUserToken(createPublicUser(user)); // Can change this to only be a few fields
-      res.locals.token = userToken;
-      res.locals.user = user;
-      return { user, userToken };
+      const publicUser = createPublicUser(user);
+      const userToken = await createUserToken(publicUser);
+      return { publicUser, userToken };
     }
-    console.log("Wrong password");
+    console.log("Wrong password!");
   }
   throw new UnauthorizedError("Invalid Password/Email combination");
 };
 
 const registerUser = async (creds) => {
   const { username, password, firstName, lastName, email } = creds;
-
   const normalizedEmail = email.toLowerCase();
   const existingUserWithEmail = await prisma.user.findFirst({
     where: { email: normalizedEmail },
@@ -68,10 +68,9 @@ const registerUser = async (creds) => {
     },
   });
 
-  const userToken = await createUserToken(createPublicUser(user)); // Can change this to only be a few fields
-  res.locals.token = userToken;
-  res.locals.user = user;
-  return { user, userToken };
+  const publicUser = createPublicUser(user);
+  const userToken = await createUserToken(publicUser);
+  return { publicUser, userToken };
 };
 
 module.exports = { loginUser, registerUser };

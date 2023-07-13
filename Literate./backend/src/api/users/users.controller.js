@@ -5,8 +5,10 @@ const userService = require("./users.service");
 
 router.post("/login", async function (req, res, next) {
   try {
-    const user = await userService.loginUser(req.body);
-    return res.status(200).json(user);
+    const { publicUser, userToken } = await userService.loginUser(req.body);
+    res.locals.token = userToken;
+    res.locals.user = publicUser;
+    return res.status(200).json({ publicUser, userToken });
   } catch (err) {
     next(err);
   }
@@ -14,8 +16,10 @@ router.post("/login", async function (req, res, next) {
 
 router.post("/register", async function (req, res, next) {
   try {
-    const user = await userService.registerUser(req.body);
-    return res.status(201).json(user);
+    const { publicUser, userToken } = await userService.registerUser(req.body);
+    res.locals.token = userToken;
+    res.locals.user = publicUser;
+    return res.status(201).json({ publicUser, userToken });
   } catch (err) {
     next(err);
   }
@@ -23,6 +27,7 @@ router.post("/register", async function (req, res, next) {
 
 router.get("/me", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
+    console.log(res.locals);
     const { user } = res.locals;
     if (user) {
       console.log("Retrieved User: ", user);
