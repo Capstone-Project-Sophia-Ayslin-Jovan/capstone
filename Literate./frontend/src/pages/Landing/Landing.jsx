@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import {
   Spacer,
@@ -11,10 +10,9 @@ import {
   Grid,
 } from "@nextui-org/react";
 import "./Landing.css";
-import NavbarContent from "../../components/NavbarContent/NavbarContent";
+import NavbarContent from "../NavbarContent/NavbarContent";
 import { useState } from "react";
 // import { Link } from "react-router-dom"
-
 export default function Landing() {
   const learnMore = () => {};
   return (
@@ -36,47 +34,43 @@ export default function Landing() {
             </Text> */}
           </Row>
         </Container>
-
-        <Spacer y={10} />
-
-        <Container display="flex">
-          <Row justify="right">
-            <Button className="get-strt-btn" size="xl">
-              Get Started
-            </Button>
-          </Row>
-        </Container>
+        <Spacer y={6} />
+        <div className="get-strt-btn">
+          <Button size="xl">Get Started</Button>
+        </div>
       </div>
-      <div className="card-container">
-        <Spacer y={4} />
-        <Card className="info-card">
-          <Card.Header>
-            <Text h3>Budgeting Made Easy</Text>
-          </Card.Header>
-          <Card.Body>
+      <Spacer y={8} />
+      <div>
+        <h1>What We Offer</h1>
+        <div className="card-container">
+          <Spacer y={4} />
+          <div className="info-card">
+            <div>
+              <Text h3>Budgeting Made Easy</Text>
+            </div>
             <Text p size={18}>
               Track your income, set spending limits for different categories,
               and make real-time updates on your financial progress. By keeping
               a close eye on your spending, you'll gain a better understanding
               of where your money goes and make informed decisions.
             </Text>
-          </Card.Body>
-        </Card>
-        <Spacer x={1} />
-        <Card className="info-card">
-          <Card.Header>
-            <Text h3>Expense Tracking at Your Fingertips</Text>
-          </Card.Header>
-          <Card.Body>
-            <Text p size={18}>
-              Go beyond simple budgeting and expand your expense tracking
-              capabilities. Literate allows you to effortlessly log and
-              categorize your expenses, providing you with a clear overview of
-              your spending habits.
-            </Text>
-          </Card.Body>
-        </Card>
-        <Spacer x={1} />
+          </div>
+          <Spacer x={1} />
+          <Card className="info-card">
+            <Card.Header>
+              <Text h3>Expense Tracking at Your Fingertips</Text>
+            </Card.Header>
+            <Card.Body>
+              <Text p size={18}>
+                Go beyond simple budgeting and expand your expense tracking
+                capabilities. Literate allows you to effortlessly log and
+                categorize your expenses, providing you with a clear overview of
+                your spending habits.
+              </Text>
+            </Card.Body>
+          </Card>
+          <Spacer x={1} />
+        </div>
         <Card className="info-card">
           <Card.Header>
             <Text h3>Financial Education, Simplified</Text>
@@ -91,16 +85,24 @@ export default function Landing() {
         </Card>{" "}
       </div>
       <Spacer y={8} />
-      <h1 id="about">Our Mission</h1>
-      <Text p size={20}>
-        Our mission is to provide college students with the tools, knowledge,
-        and guidance they need to navigate the complexities of personal finance.
-        We aim to empower students to create budgets, track their expenses, and
-        develop healthy financial habits that will serve them well beyond their
-        college years. With Literate, we want to equip students with the
-        essential money management skills they need to thrive academically and
-        financially.
-      </Text>
+      <div className="about">
+        <div className="about-blurb">
+          <h1 id="about">Our Mission</h1>
+          <Text p size={24}>
+            Our mission is to provide college students with the tools,
+            knowledge, and guidance they need to navigate the complexities of
+            personal finance. We aim to empower students to create budgets,
+            track their expenses, and develop healthy financial habits that will
+            serve them well beyond their college years. With Literate, we want
+            to equip students with the essential money management skills they
+            need to thrive academically and financially.
+          </Text>
+        </div>
+        <img
+          className="piggy"
+          src="https://static.vecteezy.com/system/resources/previews/017/559/133/non_2x/pig-money-box-icon-outline-illustration-vector.jpg"
+        />
+      </div>
     </div>
   );
 }
