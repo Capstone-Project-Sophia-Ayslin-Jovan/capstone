@@ -15,3 +15,24 @@
 img {
   width: 75%;
 }
+.get-strt-btn {
+  display: flex;
+  justify-content: center;
+}
+.piggy {
+  width: 25%;
+}
+.about-blurb {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+.about {
+  display: flex;
+  flex-direction: row;
+}
+/* Text {
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+} */
