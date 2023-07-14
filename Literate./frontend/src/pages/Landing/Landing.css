@@ -1,12 +1,8 @@
 .landing-page {
-  color: rgb(51, 179, 184);
-}
-.landing-page {
   background-color: green;
 }
 .card-container {
   display: flex;
-
   justify-content: space-around;
 }
 .info-card {
@@ -14,4 +10,20 @@
 }
 img {
   width: 75%;
+}
+.get-strt-btn {
+  display: flex;
+  justify-content: center;
+}
+.piggy {
+  width: 25%;
+}
+.about-blurb {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+.about {
+  display: flex;
+  flex-direction: row;
 }
