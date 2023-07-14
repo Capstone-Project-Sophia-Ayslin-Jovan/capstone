@@ -1,3 +1,17 @@
-.landing-page{
-    color: rgb(51, 179, 184);
+.landing-page {
+  color: rgb(51, 179, 184);
+}
+.landing-page {
+  background-color: green;
+}
+.card-container {
+  display: flex;
+
+  justify-content: space-around;
+}
+.info-card {
+  padding: 12px;
+}
+img {
+  width: 75%;
 }
