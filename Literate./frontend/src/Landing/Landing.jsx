@@ -1,6 +1,5 @@
 "use client";
 
-
 import React from "react";
 import { Spacer, Text, Button, Container, Row } from "@nextui-org/react";
 import "./Landing.css";
