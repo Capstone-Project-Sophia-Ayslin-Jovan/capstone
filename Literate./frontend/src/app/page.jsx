@@ -8,7 +8,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "../Landing/Landing";
 import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
-import NavbarContent from "../NavbarContent/NavbarContent";
 
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
