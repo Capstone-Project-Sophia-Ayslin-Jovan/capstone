@@ -17,17 +17,16 @@ const NavbarContent = () => {
   return (
     <div>
       <Navbar variant={"sticky"}>
-        <Spacer x={2} />
-        <Navbar.Brand className="logo">Literate.</Navbar.Brand>
-        <Spacer x={2} />
         <Navbar.Content>
-          <Navbar.Link>Home</Navbar.Link>
+          <Navbar.Brand className="logo">Literate.</Navbar.Brand>
           <Spacer x={3} />
-          <Navbar.Link>About</Navbar.Link>
+          <Navbar.Link href="/">Home</Navbar.Link>
+          <Spacer x={3} />
+          <Navbar.Link href="#about">About</Navbar.Link>
           <Spacer x={3} />
           <Navbar.Link>Contact</Navbar.Link>
-          <Spacer x={8} />
-          <Button className="login-btn" auto ghost onPress={handler}>
+          <Spacer x={25} />
+          <Button className="login-btn" auto ghost onClick={handler}>
             Login
           </Button>
           <Spacer x={5} />
