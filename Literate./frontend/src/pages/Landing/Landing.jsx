@@ -10,7 +10,7 @@ import {
   Grid,
 } from "@nextui-org/react";
 import "./Landing.css";
-import NavbarContent from "../NavbarContent/NavbarContent";
+import NavbarContent from "../../components/NavbarContent/NavbarContent";
 import { useState } from "react";
 // import { Link } from "react-router-dom"
 export default function Landing() {
