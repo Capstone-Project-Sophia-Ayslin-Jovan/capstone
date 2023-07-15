@@ -42,13 +42,14 @@ export default function Landing() {
       <Spacer y={8} />
       <div>
         <h1>What We Offer</h1>
+        <Spacer y={4} />
         <div className="card-container">
           <Spacer y={4} />
           <div className="info-card">
             <div>
-              <Text h3>Budgeting Made Easy</Text>
+              <Text h2>Budgeting Made Easy</Text>
             </div>
-            <Text p size={18}>
+            <Text p size={24}>
               Track your income, set spending limits for different categories,
               and make real-time updates on your financial progress. By keeping
               a close eye on your spending, you'll gain a better understanding
@@ -56,33 +57,25 @@ export default function Landing() {
             </Text>
           </div>
           <Spacer x={1} />
-          <Card className="info-card">
-            <Card.Header>
-              <Text h3>Expense Tracking at Your Fingertips</Text>
-            </Card.Header>
-            <Card.Body>
-              <Text p size={18}>
-                Go beyond simple budgeting and expand your expense tracking
-                capabilities. Literate allows you to effortlessly log and
-                categorize your expenses, providing you with a clear overview of
-                your spending habits.
-              </Text>
-            </Card.Body>
-          </Card>
+          <div className="info-card">
+            <Text h2>Expense Tracking at Your Fingertips</Text>
+            <Text p size={24}>
+              Go beyond simple budgeting and expand your expense tracking
+              capabilities. Literate allows you to effortlessly log and
+              categorize your expenses, providing you with a clear overview of
+              your spending habits.
+            </Text>
+          </div>
           <Spacer x={1} />
-        </div>
-        <Card className="info-card">
-          <Card.Header>
-            <Text h3>Financial Education, Simplified</Text>
-          </Card.Header>
-          <Card.Body>
-            <Text size={18}>
+          <div className="info-card">
+            <Text h2>Financial Education, Simplified</Text>
+            <Text size={24}>
               Allow us to be your personal financial tutor. From budgeting
               basics to credit card management and savings strategies, you'll
               gain valuable insights and practical knowledge.
             </Text>
-          </Card.Body>
-        </Card>{" "}
+          </div>
+        </div>
       </div>
       <Spacer y={8} />
       <div className="about">
