@@ -12,7 +12,7 @@ import {
 import "./Landing.css";
 import NavbarContent from "../../components/NavbarContent/NavbarContent";
 import { useState } from "react";
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 export default function Landing() {
   const learnMore = () => {};
   return (
@@ -36,7 +36,9 @@ export default function Landing() {
         </Container>
         <Spacer y={6} />
         <div className="get-strt-btn">
-          <Button size="xl">Get Started</Button>
+          <Link to="/signup">
+            <Button size="xl">Get Started</Button>
+          </Link>
         </div>
       </div>
       <Spacer y={8} />
