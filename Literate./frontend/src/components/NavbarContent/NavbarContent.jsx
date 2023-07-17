@@ -14,6 +14,7 @@ import {
 } from "@nextui-org/react";
 import "./NavbarContent.css";
 import apiClient from "../../services/apiClient";
+import Login from "../../pages/Login/Login";
 
 // import Errors from "../../../../backend/src/utils/errors";
 const NavbarContent = ({ appState, setAppState }) => {
@@ -87,66 +88,7 @@ const NavbarContent = ({ appState, setAppState }) => {
           <Spacer x={3} />
           <Navbar.Link>Contact</Navbar.Link>
           <Spacer x={25} />
-          <Button auto ghost onPress={handler}>
-            Login
-          </Button>
-          <Spacer x={3} />
-          <Modal
-            closeButton
-            aria-labelledby="modal-title"
-            open={visible}
-            onClose={closeHandler}
-          >
-            <Modal.Header>
-              <Text id="modal-title" size={24}>
-                Welcome back!
-                <Text b size={28}>
-                  <Spacer />
-                  Sign In
-                </Text>
-              </Text>
-            </Modal.Header>
-            <Modal.Body>
-              <Input
-                clearable
-                bordered
-                fullWidth
-                color="primary"
-                size="lg"
-                name="email"
-                label="Email"
-                placeholder="Email"
-                value={loginForm.email}
-                onChange={handleLoginChange}
-              />
-              <Input.Password
-                clearable
-                bordered
-                fullWidth
-                color="primary"
-                size="lg"
-                name="password"
-                label="Password"
-                placeholder="Password"
-                value={loginForm.password}
-                onChange={handleLoginChange}
-              />
-              <Row justify="space-between">
-                <Checkbox>
-                  <Text size={14}>Remember me</Text>
-                </Checkbox>
-                <Text size={14}>Forgot password?</Text>
-              </Row>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button auto flat color="error" onPress={closeHandler}>
-                Close
-              </Button>
-              <Button auto onPress={handleSubmit}>
-                Sign in
-              </Button>
-            </Modal.Footer>
-          </Modal>
+          <Login loginForm={loginForm} />
         </Navbar.Content>
         <Spacer x={24} />
       </Navbar>
