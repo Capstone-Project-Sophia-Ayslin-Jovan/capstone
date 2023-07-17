@@ -25,4 +25,5 @@ const AuthorizeContextProvider = ({ props }) => {
   );
 };
 
+export default AuthorizeContextProvider;
 export const useAuthContext = () => useContext(AuthContext);
