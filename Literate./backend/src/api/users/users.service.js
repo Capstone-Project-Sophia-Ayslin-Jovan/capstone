@@ -32,7 +32,7 @@ const createPublicUser = ({
 const loginUser = async (creds) => {
   const { email, password } = creds;
 
-  const requiredCreds = ["firstName", "password"];
+  const requiredCreds = ["email", "password"];
   try {
     validateFields({
       required: requiredCreds,
