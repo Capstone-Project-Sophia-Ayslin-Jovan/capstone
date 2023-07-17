@@ -42,7 +42,7 @@ class ApiClient {
   async signUp(creds) {
     // Make register post request using generalized request method above with creds
     return await this.request({
-      endpoint: `user/register`,
+      endpoint: `users/register`,
       method: `POST`,
       data: creds,
     });
@@ -51,7 +51,7 @@ class ApiClient {
   async login(creds) {
     // Make login post request using generalized request method above with creds
     return await this.request({
-      endpoint: `user/login`,
+      endpoint: `users/login`,
       method: `POST`,
       data: creds,
     });
@@ -60,7 +60,7 @@ class ApiClient {
   async fetchUserFromToken() {
     // Make me get request using generalized request method above with userId
     return await this.request({
-      endpoint: `user/me`,
+      endpoint: `users/me`,
       method: `GET`,
     });
   }
