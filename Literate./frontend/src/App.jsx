@@ -7,6 +7,7 @@ import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import { AuthContextProvider } from "./contexts/authUser";
+import { Home } from "./pages/Home/Home";
 import "./App.css";
 
 export default function AppContainer() {
@@ -21,17 +22,27 @@ export default function AppContainer() {
 }
 
 function App() {
+  //usestates and variables
   const [loggedIn, setLoggedIn] = useState(false);
+  const [appState, setAppState] = useState({
+    user: null,
+    token: null,
+    loggedIn: false,
+  });
   return (
     <div className={styles.main}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route
+            path="/"
+            element={<Landing appState={appState} setAppState={setAppState} />}
+          />
           <Route
             path="/Login"
             element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           />
           <Route path="/Signup" element={<Signup />} />
+          <Route path="/Home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
