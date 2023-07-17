@@ -32,7 +32,7 @@ const createPublicUser = ({
 const loginUser = async (creds) => {
   const { email, password } = creds;
 
-  const requiredCreds = ["Email", "Password"];
+  const requiredCreds = ["firstName", "password"];
   try {
     validateFields({
       required: requiredCreds,
@@ -65,12 +65,13 @@ const registerUser = async (creds) => {
   const { firstName, lastName, username, email, password } = creds;
 
   const requiredCreds = [
-    "First Name",
-    "Last Name",
-    "Username",
-    "Email",
-    "Password",
+    "firstName",
+    "lastName",
+    "username",
+    "email",
+    "password",
   ];
+  console.log(creds);
   try {
     validateFields({
       required: requiredCreds,
