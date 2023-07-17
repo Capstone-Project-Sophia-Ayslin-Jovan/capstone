@@ -13,7 +13,7 @@ import {
   Container,
 } from "@nextui-org/react";
 import NavbarContent from "../../components/NavbarContent/NavbarContent";
-import apiClient from "../../../services/apiClient";
+import apiClient from "../../services/apiClient";
 
 const Signup = () => {
   const navigate = useNavigate();
