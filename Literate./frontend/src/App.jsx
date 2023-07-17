@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
-// import { AuthorizeContextProvider} from "./contexts/authUser";
+import { AuthorizeProvider } from "./contexts/authUser";
 import { Home } from "./pages/Home/Home";
 import "./App.css";
 
@@ -14,9 +14,9 @@ export default function AppContainer() {
   // 2. Use at the root of your app
   return (
     <NextUIProvider>
-      {/* <AuthorizeContextProvider> */}
+      <AuthorizeProvider>
         <App />
-      {/* </AuthorizeContextProvider> */}
+      </AuthorizeProvider>
     </NextUIProvider>
   );
 }

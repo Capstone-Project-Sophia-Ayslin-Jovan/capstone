@@ -22,7 +22,7 @@ class ApiClient {
     };
     // Pushes token into authorization key value pair
     if (this.token) {
-      headers["bearer"] = this.token;
+      headers.bearer = this.token;
     }
     // Attempt to make axios request with url and return that data
     try {
@@ -41,7 +41,6 @@ class ApiClient {
 
   async signUp(creds) {
     // Make register post request using generalized request method above with creds
-    console.log('creds', creds)
     return await this.request({
       endpoint: `users/register`,
       method: `POST`,

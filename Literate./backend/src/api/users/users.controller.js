@@ -23,7 +23,6 @@ router.post("/register", async function (req, res, next) {
 
 router.get("/me", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
-    console.log(res.locals);
     const { user } = res.locals;
     if (user) {
       console.log("Retrieved User: ", user);
