@@ -41,6 +41,7 @@ class ApiClient {
 
   async signUp(creds) {
     // Make register post request using generalized request method above with creds
+    console.log('creds', creds)
     return await this.request({
       endpoint: `users/register`,
       method: `POST`,
