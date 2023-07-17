@@ -38,6 +38,7 @@ const NavbarContent = () => {
           <Button auto ghost onPress={handler}>
             Login
           </Button>
+          <Spacer x={3} />
           <Modal
             closeButton
             aria-labelledby="modal-title"
@@ -86,8 +87,8 @@ const NavbarContent = () => {
               </Button>
             </Modal.Footer>
           </Modal>
-          <Spacer x={5} />
         </Navbar.Content>
+        <Spacer x={24} />
       </Navbar>
     </div>
   );

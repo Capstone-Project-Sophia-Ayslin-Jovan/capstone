@@ -3,10 +3,14 @@
 }
 .card-container {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 .info-card {
-  padding: 12px;
+  border-radius: 15px;
+  background-color: bisque;
+  padding: 20px;
+  width: 400px;
 }
 img {
   width: 75%;
