@@ -12,7 +12,7 @@ import {
 import "./Landing.css";
 import NavbarContent from "../../components/NavbarContent/NavbarContent";
 import { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 export default function Landing({ appState, setAppState }) {
   const learnMore = () => {};
   return (
@@ -51,7 +51,7 @@ export default function Landing({ appState, setAppState }) {
             <div>
               <Text h2>Budgeting Made Easy</Text>
             </div>
-            <Text p size={24}>
+            <Text size={24}>
               Track your income, set spending limits for different categories,
               and make real-time updates on your financial progress. By keeping
               a close eye on your spending, you'll gain a better understanding
@@ -61,7 +61,7 @@ export default function Landing({ appState, setAppState }) {
           <Spacer x={1} />
           <div className="info-card">
             <Text h2>Expense Tracking at Your Fingertips</Text>
-            <Text p size={24}>
+            <Text size={24}>
               Go beyond simple budgeting and expand your expense tracking
               capabilities. Literate allows you to effortlessly log and
               categorize your expenses, providing you with a clear overview of
@@ -83,7 +83,7 @@ export default function Landing({ appState, setAppState }) {
       <div className="about">
         <div className="about-blurb">
           <h1 id="about">Our Mission</h1>
-          <Text p size={24}>
+          <Text size={24}>
             Our mission is to provide college students with the tools,
             knowledge, and guidance they need to navigate the complexities of
             personal finance. We aim to empower students to create budgets,

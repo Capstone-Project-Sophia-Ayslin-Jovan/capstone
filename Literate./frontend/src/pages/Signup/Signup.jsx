@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -13,9 +13,11 @@ import {
   Container,
 } from "@nextui-org/react";
 import NavbarContent from "../../components/NavbarContent/NavbarContent";
+import { AuthorizeContext } from "../../contexts/authUser";
 import apiClient from "../../services/apiClient";
 
 const Signup = () => {
+  const { authState, setAuthState } = useContext(AuthorizeContext);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -29,7 +31,7 @@ const Signup = () => {
   });
 
   const handleOnInputChange = (event) => {
-    console.log(event.target.name)
+    console.log(event.target.name);
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
@@ -83,9 +85,8 @@ const Signup = () => {
       });
 
       if (data) {
-        // setAppState((s) => ({ ...s, user: data.user, isAuthenticated: true }))
-        localStorage.setItem("Literate_token", data.token)
-
+        localStorage.setItem("literate_token", data.userToken);
+        setAuthState((state) => ({ ...state, isAuthenticated: true }));
         setIsLoading(false);
       } else {
         setErrors((e) => ({
@@ -104,7 +105,6 @@ const Signup = () => {
       setIsLoading(false);
     }
     // navigate("/")
-    
   };
 
   return (
@@ -132,6 +132,7 @@ const Signup = () => {
               name="firstName"
               value={form.firstName}
               onChange={handleOnInputChange}
+              aria-label="Input"
             />
             <Spacer />
             <Input
@@ -144,6 +145,7 @@ const Signup = () => {
               name="lastName"
               value={form.lastName}
               onChange={handleOnInputChange}
+              aria-label="Input"
             />
           </Row>
         </Container>
@@ -158,6 +160,7 @@ const Signup = () => {
           name="username"
           value={form.username}
           onChange={handleOnInputChange}
+          aria-label="Input"
         />
         <Spacer />
         <Input
@@ -170,9 +173,10 @@ const Signup = () => {
           name="email"
           value={form.email}
           onChange={handleOnInputChange}
+          aria-label="Input"
         />
         <Spacer />
-        <Input
+        <Input.Password
           clearable
           bordered
           fullWidth
@@ -182,9 +186,10 @@ const Signup = () => {
           name="password"
           value={form.password}
           onChange={handleOnInputChange}
+          aria-label="Input"
         />
         <Spacer />
-        <Input
+        <Input.Password
           clearable
           bordered
           fullWidth
@@ -194,6 +199,7 @@ const Signup = () => {
           name="passwordConfirm"
           value={form.passwordConfirm}
           onChange={handleOnInputChange}
+          aria-label="Input"
         />
         <Spacer />
       </div>

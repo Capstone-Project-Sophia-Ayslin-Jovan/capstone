@@ -13,7 +13,7 @@ import {
   Checkbox,
 } from "@nextui-org/react";
 import "./NavbarContent.css";
-import apiClient from "../../../services/apiClient";
+import apiClient from "../../services/apiClient";
 
 // import Errors from "../../../../backend/src/utils/errors";
 const NavbarContent = ({ appState, setAppState }) => {
