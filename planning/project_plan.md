@@ -1,6 +1,6 @@
 # Project Plan
 
-Pod Members: **Jova, Sophia, Ayslin**
+Pod Members: **Jovan, Sophia, Ayslin**
 
 ## Problem Statement and Description
 
@@ -60,10 +60,12 @@ List all the pages and screens in the app. Include wireframes for at least 3 of 
 
 ## Data Model
 
-Describe your app's data model using diagrams or tables
+![DataTable](images/tables.png)
 
 ## Endpoints
 
-List the API endpoints you will need to implement.
+/user/register --> Registers User
+/user/login --> Logs User In
+/user/me --> Access user information with middleware
 
 **_Don't forget to set up your Issues, Milestones, and Project Board!_**
