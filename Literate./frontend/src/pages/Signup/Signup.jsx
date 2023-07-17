@@ -1,107 +1,93 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { useState } from 'react'
-import { useNavigate, Link } from "react-router-dom"
-import { Modal, Button, Text, Input, Row, Checkbox, Spacer } from "@nextui-org/react";
+import React from "react";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import {
+  Modal,
+  Button,
+  Text,
+  Input,
+  Row,
+  Checkbox,
+  Spacer,
+  Container,
+} from "@nextui-org/react";
+import NavbarContent from "../../components/NavbarContent/NavbarContent";
+import apiClient from "../../../services/apiClient"
 
 const Signup = () => {
   const [visible, setVisible] = React.useState(false);
   const handler = () => setVisible(true);
 
-  const closeHandler = () => {
-    setVisible(false);
-    console.log("closed");
-  };
   return (
     <div>
-      <Button auto shadow onPress={handler}>
-        Open modal
-      </Button>
-      <Modal
-        closeButton
-        aria-labelledby="modal-title"
-        open={visible}
-        onClose={closeHandler}
-      >
-        <Modal.Header>
-          <Text id="modal-title" size={18}>
-            Register with
-            <Text b size={18}> 
-            <Spacer/>
-              Literate.
-            </Text>
-          </Text>
-        </Modal.Header>
-        <Modal.Body>
-      <div className='form'>
-        <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="First Name"
-          />
-          <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="Last Name"
-          />
-          <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="Username"
-          />
-          <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="Email"
-          />
-          <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="Password"
-          />
-          <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="Confirm Password"
-          />
-        </div>
-          <Row justify="space-between">
-            <Checkbox>
-              <Text size={14}>Remember me</Text>
-            </Checkbox>
-            <Text size={14}>Forgot password?</Text>
+      <NavbarContent />
+      <Spacer />
+      <div className="form">
+        <Container>
+          <Row>
+            <Spacer x={6}/>
+            <Input
+              clearable
+              bordered
+              width="500px"
+              color="primary"
+              size="lg"
+              placeholder="First Name"
+            />
+            <Spacer />
+            <Input
+              clearable
+              bordered
+              width="500px"
+              color="primary"
+              size="lg"
+              placeholder="Last Name"
+            />
           </Row>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button auto flat color="error" onPress={closeHandler}>
-            Close
-          </Button>
-          <Button auto onPress={closeHandler}>
-            Sign up
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        </Container>
+        <Spacer />
+        <Input
+          clearable
+          bordered
+          fullWidth
+          color="primary"
+          size="lg"
+          placeholder="Username"
+        />
+        <Spacer />
+        <Input
+          clearable
+          bordered
+          fullWidth
+          color="primary"
+          size="lg"
+          placeholder="Email"
+        />
+        <Spacer />
+        <Input
+          clearable
+          bordered
+          fullWidth
+          color="primary"
+          size="lg"
+          placeholder="Password"
+        />
+        <Spacer />
+        <Input
+          clearable
+          bordered
+          fullWidth
+          color="primary"
+          size="lg"
+          placeholder="Confirm Password"
+        />
+        <Spacer />
+      </div>
+      <Button>Sign up</Button>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
