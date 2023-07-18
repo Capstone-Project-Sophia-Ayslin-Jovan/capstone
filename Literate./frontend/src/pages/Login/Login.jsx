@@ -1,9 +1,17 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { useState } from 'react'
-import { useNavigate, Link } from "react-router-dom"
-import { Modal, Button, Text, Input, Row, Checkbox, Spacer } from "@nextui-org/react";
+import React from "react";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import {
+  Modal,
+  Button,
+  Text,
+  Input,
+  Row,
+  Checkbox,
+  Spacer,
+} from "@nextui-org/react";
 
 const Login = () => {
   const [visible, setVisible] = React.useState(false);
@@ -44,7 +52,7 @@ const Login = () => {
       }
       if (data) {
         setAppState((s) => ({ ...s, loggedIn: true }));
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("literate_token", data.userToken);
         navigate("/Home");
       } else {
         setErrors((e) => ({
@@ -66,67 +74,67 @@ const Login = () => {
   return (
     <div>
       <Button auto ghost onPress={handler}>
-            Login
+        Login
+      </Button>
+      <Spacer x={3} />
+      <Modal
+        closeButton
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={24}>
+            Welcome back!
+            <Text b size={28}>
+              <Spacer />
+              Sign In
+            </Text>
+          </Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            name="email"
+            label="Email"
+            placeholder="Email"
+            value={loginForm.email}
+            onChange={handleLoginChange}
+          />
+          <Input.Password
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            name="password"
+            label="Password"
+            placeholder="Password"
+            value={loginForm.password}
+            onChange={handleLoginChange}
+          />
+          <Row justify="space-between">
+            <Checkbox>
+              <Text size={14}>Remember me</Text>
+            </Checkbox>
+            <Text size={14}>Forgot password?</Text>
+          </Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto flat color="error" onPress={closeHandler}>
+            Close
           </Button>
-          <Spacer x={3} />
-          <Modal
-            closeButton
-            aria-labelledby="modal-title"
-            open={visible}
-            onClose={closeHandler}
-          >
-            <Modal.Header>
-              <Text id="modal-title" size={24}>
-                Welcome back!
-                <Text b size={28}>
-                  <Spacer />
-                  Sign In
-                </Text>
-              </Text>
-            </Modal.Header>
-            <Modal.Body>
-              <Input
-                clearable
-                bordered
-                fullWidth
-                color="primary"
-                size="lg"
-                name="email"
-                label="Email"
-                placeholder="Email"
-                value={loginForm.email}
-                onChange={handleLoginChange}
-              />
-              <Input.Password
-                clearable
-                bordered
-                fullWidth
-                color="primary"
-                size="lg"
-                name="password"
-                label="Password"
-                placeholder="Password"
-                value={loginForm.password}
-                onChange={handleLoginChange}
-              />
-              <Row justify="space-between">
-                <Checkbox>
-                  <Text size={14}>Remember me</Text>
-                </Checkbox>
-                <Text size={14}>Forgot password?</Text>
-              </Row>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button auto flat color="error" onPress={closeHandler}>
-                Close
-              </Button>
-              <Button auto onPress={handleSubmit}>
-                Sign in
-              </Button>
-            </Modal.Footer>
-          </Modal>
+          <Button auto onPress={handleSubmit}>
+            Sign in
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
