@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   Button,
@@ -17,7 +16,7 @@ import { AuthorizeContext } from "../../contexts/authUser";
 import apiClient from "../../services/apiClient";
 
 const Signup = () => {
-  const { authState, setAuthState } = useContext(AuthorizeContext);
+  const { setAuthState } = useContext(AuthorizeContext);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -88,6 +87,7 @@ const Signup = () => {
         localStorage.setItem("literate_token", data.userToken);
         setAuthState((state) => ({ ...state, isAuthenticated: true }));
         setIsLoading(false);
+        navigate("/Home");
       } else {
         setErrors((e) => ({
           ...e,
@@ -104,7 +104,6 @@ const Signup = () => {
       }));
       setIsLoading(false);
     }
-    // navigate("/")
   };
 
   return (

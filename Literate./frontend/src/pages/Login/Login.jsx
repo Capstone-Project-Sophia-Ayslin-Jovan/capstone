@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   Modal,
@@ -12,8 +11,11 @@ import {
   Checkbox,
   Spacer,
 } from "@nextui-org/react";
+import apiClient from "../../services/apiClient";
+import { AuthorizeContext } from "../../contexts/authUser";
 
 const Login = () => {
+  const { setAuthState } = useContext(AuthorizeContext);
   const [visible, setVisible] = React.useState(false);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState("");
@@ -51,7 +53,7 @@ const Login = () => {
         return;
       }
       if (data) {
-        setAppState((s) => ({ ...s, loggedIn: true }));
+        setAuthState((state) => ({ ...state, isAuthenticated: true }));
         localStorage.setItem("literate_token", data.userToken);
         navigate("/Home");
       } else {
