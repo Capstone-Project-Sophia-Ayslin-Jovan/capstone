@@ -71,7 +71,6 @@ const registerUser = async (creds) => {
     "email",
     "password",
   ];
-  console.log(creds);
   try {
     validateFields({
       required: requiredCreds,
