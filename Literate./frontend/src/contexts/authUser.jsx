@@ -1,6 +1,6 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import apiClient from "../services/apiClient";
-import { useNavigate } from "react-router-dom";
+
 const AuthorizeContext = createContext();
 
 const AuthorizeProvider = ({ children }) => {
@@ -27,18 +27,23 @@ const AuthorizeProvider = ({ children }) => {
         }
       } else {
         console.log("FrontEnd: User Not Authenticated!");
+        console.log(error, message);
         setAuthState((state) => ({ ...state, isAuthenticated: false }));
       }
     };
     fetchUser();
   }, [authState.isAuthenticated]);
 
-  //   const handleLogout = async () => {
-  //     await apiClient.logoutUser();
-  //     setAppState((state) => ({ ...state, user: {} }));
-  //   };
+  const handleLogout = async () => {
+    localStorage.removeItem("literate_token");
+    apiClient.setToken(null);
+    setAuthState({
+      user: null,
+      isAuthenticated: false,
+    });
+  };
 
-  const passedProps = { authState, setAuthState };
+  const passedProps = { authState, setAuthState, handleLogout };
 
   return (
     <AuthorizeContext.Provider value={passedProps}>
