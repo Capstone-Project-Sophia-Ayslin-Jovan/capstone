@@ -78,7 +78,7 @@ const NavbarContent = ({ appState, setAppState }) => {
   };
   return (
     <div>
-      <Navbar variant={"sticky"}>
+      <Navbar variant="floating">
         <Navbar.Content>
           <Navbar.Brand className="logo">Literate.</Navbar.Brand>
           <Spacer x={3} />
@@ -87,6 +87,8 @@ const NavbarContent = ({ appState, setAppState }) => {
           <Navbar.Link href="#about">About</Navbar.Link>
           <Spacer x={3} />
           <Navbar.Link>Contact</Navbar.Link>
+          <Spacer x={3} />
+          <Navbar.Link href="/Budget">Budget</Navbar.Link>
           <Spacer x={25} />
           <Login loginForm={loginForm} />
         </Navbar.Content>

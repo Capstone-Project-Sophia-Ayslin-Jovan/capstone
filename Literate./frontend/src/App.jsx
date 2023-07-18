@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import Budget from "./pages/Budget/Budget"
 import { AuthorizeProvider } from "./contexts/authUser";
 import { Home } from "./pages/Home/Home";
 import "./App.css";
@@ -43,6 +44,7 @@ function App() {
           />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Home" element={<Home />} />
+          <Route path="/Budget" element={<Budget />} />
         </Routes>
       </BrowserRouter>
     </div>
