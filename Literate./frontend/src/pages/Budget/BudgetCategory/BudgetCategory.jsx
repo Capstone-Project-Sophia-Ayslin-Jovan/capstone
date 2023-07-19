@@ -9,6 +9,8 @@ import {
   Row,
   Checkbox,
 } from "@nextui-org/react";
+import SubCategoryCard from "../SubCategoryCard/SubCategoryCard";
+import { Route } from "react-router-dom";
 
 const BudgetCategory = ({ handleNextStep, handlePreviousStep }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -23,14 +25,6 @@ const BudgetCategory = ({ handleNextStep, handlePreviousStep }) => {
     }
   };
 
-  const handleNext = () => {
-    if (selectedCategories.length > 0) {
-      handleNextStep();
-    } else {
-      // No checkboxes are checked
-      // Handle the case when no checkboxes are checked
-    }
-  };
   console.log(selectedCategories)
   return (
     <div>
@@ -38,7 +32,7 @@ const BudgetCategory = ({ handleNextStep, handlePreviousStep }) => {
       <Spacer y={5} />
       <Text h3>What will you be budgeting?</Text>
 
-      <Checkbox.Group color="secondary" label="Check all that apply">
+      <Checkbox.Group color="default" label="Check all that apply">
         <Checkbox
           onChange={(checked) => handleChange("essentials", checked)}
           value="essentials"
@@ -64,7 +58,13 @@ const BudgetCategory = ({ handleNextStep, handlePreviousStep }) => {
           Other
         </Checkbox>
       </Checkbox.Group>
-
+      <div>
+        {selectedCategories.map((page, index) => (
+            <div key={index}>
+                <SubCategoryCard page={page}/>
+            </div>
+        ))}
+      </div>
       <Spacer y={5} />
       <Row>
         <Spacer x={4} />

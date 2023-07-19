@@ -5,6 +5,7 @@ import BudgetLanding from "./BudgetLanding/BudgetLanding";
 import BudgetGoal from "./BudgetGoal/BudgetGoal";
 import BudgetCategory from "./BudgetCategory/BudgetCategory";
 import BudgetExpenses from "./BudgetExpenses/BudgetExpenses";
+// import Home from "../Home/Home";
 
 const Budget = () => {
   const [step, setStep] = useState(1);

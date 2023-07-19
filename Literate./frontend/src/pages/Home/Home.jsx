@@ -1,5 +1,53 @@
-import React from "react";
-
-export const Home = () => {
-  return <div>This is the Home Page</div>;
+import React, { useContext } from "react";
+import { Button, Container, Row, Text, Spacer } from "@nextui-org/react";
+import "./Home.css";
+import Sidebar from "../../components/NavbarContent/Sidebar/Sidebar";
+import { AuthorizeContext } from "../../contexts/authUser";
+import { useNavigate } from "react-router-dom";
+export const Home = ({ handleToggle, isOpen }) => {
+  const { logoutUser } = useContext(AuthorizeContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logoutUser();
+    navigate("/");
+  };
+  return (
+    <div>
+      <Container>
+        <Row>
+          <Button
+            light
+            className="menu-toggle-btn"
+            onPress={() => handleToggle()}
+          >
+            <img
+              className="menu"
+              src="https://www.svgrepo.com/show/506800/burger-menu.svg"
+            />
+          </Button>
+          <Spacer x={32} />
+          <div className="logout-btn">
+            <Button auto ghost onPress={handleLogout}>
+              Logout
+            </Button>
+          </div>
+        </Row>
+      </Container>
+      {console.log(isOpen)}
+      <Sidebar isOpen={isOpen} />
+      {/* </div> */}
+      <Spacer y={6} />
+      <Container>
+        <Row gap={1}>
+          <Container>
+            <Text size={"$6xl"} style={{ marginBottom: 0 }}>
+              Literate.
+            </Text>
+            <Text size={"$xl"}>Smart Money, Bright Future</Text>
+          </Container>
+          <img src="https://static.vecteezy.com/system/resources/previews/002/884/391/original/illustration-of-saving-money-in-the-household-sector-for-investment-spending-and-daily-life-vector.jpg" />
+        </Row>
+      </Container>
+    </div>
+  );
 };

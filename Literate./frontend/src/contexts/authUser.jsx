@@ -1,6 +1,6 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import apiClient from "../services/apiClient";
-import { useNavigate } from "react-router-dom";
+
 const AuthorizeContext = createContext();
 
 const AuthorizeProvider = ({ children }) => {
@@ -11,34 +11,45 @@ const AuthorizeProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const userToken = localStorage.getItem("literate_token");
-      apiClient.setToken(userToken);
+      try {
+        const userToken = localStorage.getItem("literate_token");
+        apiClient.setToken(userToken);
 
-      if (userToken) {
-        const { data, error, message } = await apiClient.fetchUserFromToken();
-        console.log("Data Fetched From Token: ", data);
+        if (userToken) {
+          const { data, error, message } = await apiClient.fetchUserFromToken();
+          console.log("Data Fetched From Token: ", data);
 
-        if (data) {
-          setAuthState((state) => ({
-            ...state,
-            user: data.user,
-            isAuthenticated: true,
-          }));
+          if (data) {
+            setAuthState((state) => ({
+              ...state,
+              user: data.user,
+              isAuthenticated: true,
+            }));
+          } else {
+            console.log("FrontEnd: User Not Authenticated!");
+            setAuthState((state) => ({ ...state, isAuthenticated: false }));
+            throw error;
+          }
+        } else {
+          console.log("FrontEnd: No token detected!");
         }
-      } else {
-        console.log("FrontEnd: User Not Authenticated!");
-        setAuthState((state) => ({ ...state, isAuthenticated: false }));
+      } catch (err) {
+        console.log(err);
       }
     };
     fetchUser();
   }, [authState.isAuthenticated]);
 
-  //   const handleLogout = async () => {
-  //     await apiClient.logoutUser();
-  //     setAppState((state) => ({ ...state, user: {} }));
-  //   };
+  const logoutUser = async () => {
+    localStorage.removeItem("literate_token");
+    apiClient.setToken(null);
+    setAuthState({
+      user: null,
+      isAuthenticated: false,
+    });
+  };
 
-  const passedProps = { authState, setAuthState };
+  const passedProps = { authState, setAuthState, logoutUser };
 
   return (
     <AuthorizeContext.Provider value={passedProps}>
