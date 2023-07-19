@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Container, Row, Text, Spacer } from "@nextui-org/react";
 import "./Home.css";
 import Sidebar from "../../components/NavbarContent/Sidebar/Sidebar";
-export const Home = ({ handleLogout, handleToggle, isOpen }) => {
+import { AuthorizeContext } from "../../contexts/authUser";
+import { useNavigate } from "react-router-dom";
+export const Home = ({ handleToggle, isOpen }) => {
+  const { logoutUser } = useContext(AuthorizeContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logoutUser();
+    navigate("/");
+  };
   return (
     <div>
       <Container>
