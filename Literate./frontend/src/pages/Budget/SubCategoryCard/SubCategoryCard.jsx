@@ -11,10 +11,13 @@ import {
   Checkbox,
 } from "@nextui-org/react";
 
-const SubCategoryCard = () => {
+const SubCategoryCard = ({page}) => {
   return (
-    <div>SubCategoryCard</div>
-  )
-}
+    <div>
+      <Text h3>Budget Amount Left: $</Text>
+      <Text h3> {page} </Text>
+    </div>
+  );
+};
 
-export default SubCategoryCard
+export default SubCategoryCard;
