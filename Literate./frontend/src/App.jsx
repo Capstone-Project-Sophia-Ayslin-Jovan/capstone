@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import styles from "./page.module.css";
-import { Link } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
