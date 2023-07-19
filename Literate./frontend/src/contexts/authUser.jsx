@@ -11,30 +11,36 @@ const AuthorizeProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const userToken = localStorage.getItem("literate_token");
-      apiClient.setToken(userToken);
+      try {
+        const userToken = localStorage.getItem("literate_token");
+        apiClient.setToken(userToken);
 
-      if (userToken) {
-        const { data, error, message } = await apiClient.fetchUserFromToken();
-        console.log("Data Fetched From Token: ", data);
+        if (userToken) {
+          const { data, error, message } = await apiClient.fetchUserFromToken();
+          console.log("Data Fetched From Token: ", data);
 
-        if (data) {
-          setAuthState((state) => ({
-            ...state,
-            user: data.user,
-            isAuthenticated: true,
-          }));
+          if (data) {
+            setAuthState((state) => ({
+              ...state,
+              user: data.user,
+              isAuthenticated: true,
+            }));
+          } else {
+            console.log("FrontEnd: User Not Authenticated!");
+            setAuthState((state) => ({ ...state, isAuthenticated: false }));
+            throw error;
+          }
+        } else {
+          console.log("FrontEnd: No token detected!");
         }
-      } else {
-        console.log("FrontEnd: User Not Authenticated!");
-        console.log(error, message);
-        setAuthState((state) => ({ ...state, isAuthenticated: false }));
+      } catch (err) {
+        console.log(err);
       }
     };
     fetchUser();
   }, [authState.isAuthenticated]);
 
-  const handleLogout = async () => {
+  const logoutUser = async () => {
     localStorage.removeItem("literate_token");
     apiClient.setToken(null);
     setAuthState({
@@ -43,7 +49,7 @@ const AuthorizeProvider = ({ children }) => {
     });
   };
 
-  const passedProps = { authState, setAuthState, handleLogout };
+  const passedProps = { authState, setAuthState, logoutUser };
 
   return (
     <AuthorizeContext.Provider value={passedProps}>
