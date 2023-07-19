@@ -9,6 +9,7 @@ import Signup from "./pages/Signup/Signup";
 // import { AuthorizeContextProvider} from "./contexts/authUser";
 import { Home } from "./pages/Home/Home";
 import "./App.css";
+import Budget from "./pages/Budget/Budget";
 export default function AppContainer() {
   // 2. Use at the root of your app
   return (
@@ -69,6 +70,7 @@ function App() {
               />
             }
           />
+          <Route path="/Budget" element={<Budget/>} />
         </Routes>
       </BrowserRouter>
     </div>
