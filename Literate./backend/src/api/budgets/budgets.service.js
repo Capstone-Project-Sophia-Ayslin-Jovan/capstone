@@ -1,24 +1,30 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 //creates new budget for given user
-const createBudget = async function (userId, data) {
-  console.log("USER ID", userId);
+const createBudget = async function (data) {
+  const { userId, budgetData } = data;
   const budget = await prisma.budget.create({
-    where: { id: userId },
     data: {
-      Budget: {
-        budgetTotal: "data.budgetGoal",
-        subCategory: [
-          {
-            totalSpent: 0,
-            name: "data.subCatName",
-            category: "data.category",
-            allocation: 0,
-          },
-        ],
+      budgetTotal: budgetData.budgetTotal,
+      subCategory: {
+        create: {
+          totalSpent: budgetData.subCategory.totalSpent,
+          category: budgetData.subCategory.category,
+          allocation: budgetData.subCategory.allocation,
+          name: budgetData.subCategory.name,
+        },
+      },
+      user: {
+        connect: {
+          id: userId,
+        },
       },
     },
+    include: {
+      subCategory: true,
+    },
   });
+  console.log(budget);
   return { budget };
 };
 module.exports = { createBudget };

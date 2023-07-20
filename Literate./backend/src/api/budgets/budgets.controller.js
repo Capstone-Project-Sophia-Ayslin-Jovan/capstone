@@ -4,8 +4,8 @@ const budgetService = require("./budgets.service");
 
 router.post("/", async function (req, res, next) {
   try {
-    const { budgetInfo } = await budgetService.createBudget(req.body);
-    return res.status(200).json({ budgetInfo });
+    const { budget } = await budgetService.createBudget(req.body);
+    return res.status(200).json({ budget });
   } catch (err) {
     next(err);
   }
