@@ -14,15 +14,19 @@ import {
 import SubCategoryInput from "../SubCategoryInput/SubCategoryInput";
 import SubCategoryCard from "../SubCategoryCard/SubCategoryCard";
 
-const BudgetExpenses = ({ handleNextStep, handlePreviousStep }) => {
+const BudgetExpenses = ({
+  budgetInfo,
+  setBudgetInfo,
+  handleNextStep,
+  handlePreviousStep,
+}) => {
+  const [inputCount, setInputCount] = useState(1);
+  const [inputs, setInputs] = useState([]);
 
-    const [inputCount, setInputCount] = useState(1);
-    const [inputs, setInputs] = useState([]);
-  
-    const addInput = () => {
-      setInputCount(inputCount + 1);
-      setInputs([...inputs, inputCount]);
-    };
+  const addInput = () => {
+    setInputCount(inputCount + 1);
+    setInputs([...inputs, inputCount]);
+  };
 
   return (
     <div>
@@ -33,7 +37,7 @@ const BudgetExpenses = ({ handleNextStep, handlePreviousStep }) => {
       <Text h3>Budget Amount Left: $</Text>
       <Row>
         <Spacer x={20} />
-        <SubCategoryInput/>
+        <SubCategoryInput />
       </Row>
       <Spacer y={2} />
       <Row>
