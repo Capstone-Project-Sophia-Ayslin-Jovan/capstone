@@ -1,5 +1,6 @@
 import { Spacer, Button, Container, Col, Text } from "@nextui-org/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = ({ isOpen }) => {
@@ -20,17 +21,25 @@ const Sidebar = ({ isOpen }) => {
             <Text size={18} h3>
               Hi, User's firstname!
             </Text>
-            <Button>Overview</Button>
+            <Link to={"/Home"}>
+              <Button>Home</Button>
+            </Link>
             <Spacer y={0.25} />
-            <Button>Modules</Button>
+            <Link to={"/Modules"}>
+              <Button>Modules</Button>
+            </Link>
             <Spacer y={1} />
 
             <Text size={18} h3>
               ACCOUNT
             </Text>
-            <Button>Profile</Button>
+            <Link to={"/Profile"}>
+              <Button>Profile</Button>
+            </Link>
             <Spacer y={0.25} />
-            <Button>Budget</Button>
+            <Link to={"/Budget"}>
+              <Button>Budget</Button>
+            </Link>
           </div>
         </Col>
       </Container>

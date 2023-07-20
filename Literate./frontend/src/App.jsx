@@ -33,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/Signup" element={<Signup />} />
+          <Route path="/Budget" element={<Budget />} />
           <Route
             path="/Home"
             element={<Home handleToggle={handleToggle} isOpen={isOpen} />}
