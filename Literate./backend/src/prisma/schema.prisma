@@ -25,7 +25,7 @@ model User {
 
 model Budget {
   id          String        @id @default(uuid())
-  user        User?         @relation(fields: [userId], references: [id])
+  user        User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String?       @unique
   budgetTotal Int
   created_at  DateTime      @default(now())
@@ -35,7 +35,7 @@ model Budget {
 
 model subCategory {
   id         String    @id @default(uuid())
-  budget     Budget    @relation(fields: [budgetId], references: [id])
+  budget     Budget    @relation(fields: [budgetId], references: [id], onDelete: Cascade)
   budgetId   String
   name       String
   category   String

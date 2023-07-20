@@ -29,16 +29,15 @@ function App() {
   }
   return (
     <div className={styles.main}>
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route
             path="/Home"
             element={<Home handleToggle={handleToggle} isOpen={isOpen} />}
           />
-          <Route path="/Budget" element={<Budget />} />
+          <Route path="/Budget/*" element={<Budget />} />
         </Routes>
       </BrowserRouter>
     </div>

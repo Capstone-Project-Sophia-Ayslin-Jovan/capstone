@@ -10,8 +10,17 @@ import {
   Row,
   Checkbox,
 } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
-const BudgetGoal = ({ handleNextStep, handlePreviousStep }) => {
+const BudgetGoal = ({
+  budgetInfo,
+  setBudgetInfo,
+  handleNextStep,
+  handlePreviousStep,
+}) => {
+  const handleOnChange = (e) => {
+    setBudgetInfo((info) => ({ ...info, [e.target.name]: e.target.value }));
+  };
   return (
     <div>
       <Text h1>What is your budgeting goal?</Text>
@@ -23,9 +32,10 @@ const BudgetGoal = ({ handleNextStep, handlePreviousStep }) => {
         color="primary"
         type="number"
         size="xl"
-        placeholder="$"
-        name="budget"
-        label="Desired monthly spending"
+        labelLeft="$"
+        name="budgetGoal"
+        onChange={handleOnChange}
+        value={budgetInfo.budgetGoal}
       />
       <Spacer y={2} />
       <Row>
