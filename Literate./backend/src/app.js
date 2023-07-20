@@ -10,6 +10,7 @@ const app = express();
 // const { NotFoundError } = require("./utils/errors");
 
 const userRoutes = require("./api/users/users.controller");
+const budgetRoutes = require("./api/budgets/budgets.controller");
 
 // enable cross-origin resource sharing for all origins for all requests hosting our frontend.
 app.use(cors());
@@ -28,6 +29,7 @@ app.get("/", async function (req, res) {
 });
 
 app.use("/users", userRoutes);
+app.use("/budgets", budgetRoutes);
 
 // /** Handle 404 errors -- this matches everything */
 // app.use(function (req, res, next) {

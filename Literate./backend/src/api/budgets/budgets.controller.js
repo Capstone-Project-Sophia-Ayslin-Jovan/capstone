@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const budgetService = require("./budgets.service");
+
 router.post("/", async function (req, res, next) {
   try {
     const { budgetInfo } = await budgetService.createBudget(req.body);
-    return res.status(200).json({ publicUser, userToken });
+    return res.status(200).json({ budgetInfo });
   } catch (err) {
     next(err);
   }
