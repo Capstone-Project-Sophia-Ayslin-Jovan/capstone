@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button, Container, Row, Text, Spacer } from "@nextui-org/react";
 import "./Home.css";
-import Sidebar from "../../components/NavbarContent/Sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import { AuthorizeContext } from "../../contexts/authUser";
 import { useNavigate } from "react-router-dom";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
