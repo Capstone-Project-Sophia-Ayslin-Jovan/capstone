@@ -20,7 +20,7 @@ const BudgetResults = ({ handleNextStep, handlePreviousStep }) => {
       <Row>
         <Button onPress={handlePreviousStep}>Back</Button>
         <Spacer x={1} />
-        <Button onPress={handleNextStep}>Next</Button>
+        <Button onPress={handleNextStep}>Finish</Button>
       </Row>
     </div>
   );
