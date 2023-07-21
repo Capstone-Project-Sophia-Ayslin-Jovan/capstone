@@ -45,13 +45,6 @@ const BudgetCategory = ({
         <Checkbox value="Recreation">Recreation</Checkbox>
         <Checkbox value="Other">Other</Checkbox>
       </Checkbox.Group>
-      {/* <div>
-        {selectedCategories.map((page, index) => (
-          <div key={index}>
-            <SubCategoryCard page={page} />
-          </div>
-        ))}
-      </div> */}
       <Spacer y={5} />
       <Row>
         <Spacer x={4} />

@@ -25,16 +25,18 @@ const SubCategoryInput = () => {
   };
   return (
     <div>
-      <Button onClick={addInput}>Add Subcategories +</Button>
       <Spacer y={1.3} />
-      {inputs.map((input, index) => (
+      <Row>
+        <Spacer x={17}/>
+        <Text>Subcategory</Text>
+        <Spacer x={4.5}/>
+        <Text>$ Amount</Text>
+      </Row>
         <Row>
           <Spacer y={3} />
-          <Spacer x={-1} />
+          <Spacer x={13}/>
           <Input
-            key={index}
             type="text"
-            value={input}
             onChange={(e) => handleInputChange(index, e.target.value)}
             clearable
             bordered
@@ -42,19 +44,83 @@ const SubCategoryInput = () => {
             size="md"
           />
           <Spacer x={1} />
-          <Text h3> $ </Text>
           <Input
-            key={index}
             type="number"
-            value={input}
+            onChange={(e) => handleInputChange(index, e.target.value)}
+            clearable
+            bordered
+            color="primary"
+            size="md"
+            labelLeft="$"
+          />
+        </Row>
+        <Row>
+          <Spacer y={3} />
+          <Spacer x={13}/>
+          <Input
+            type="text"
             onChange={(e) => handleInputChange(index, e.target.value)}
             clearable
             bordered
             color="primary"
             size="md"
           />
+          <Spacer x={1} />
+          <Input
+            type="number"
+            onChange={(e) => handleInputChange(index, e.target.value)}
+            clearable
+            bordered
+            color="primary"
+            size="md"
+            labelLeft="$"
+          />
         </Row>
-      ))}
+        <Row>
+          <Spacer y={3} />
+          <Spacer x={13}/>
+          <Input
+            type="text"
+            onChange={(e) => handleInputChange(index, e.target.value)}
+            clearable
+            bordered
+            color="primary"
+            size="md"
+          />
+          <Spacer x={1} />
+          <Input
+            type="number"
+            onChange={(e) => handleInputChange(index, e.target.value)}
+            clearable
+            bordered
+            color="primary"
+            size="md"
+            labelLeft="$"
+          />
+        </Row>
+        <Row>
+          <Spacer y={3} />
+          <Spacer x={13}/>
+          <Input
+            type="text"
+            onChange={(e) => handleInputChange(index, e.target.value)}
+            clearable
+            bordered
+            color="primary"
+            size="md"
+          />
+          <Spacer x={1} />
+          <Input
+            type="number"
+            onChange={(e) => handleInputChange(index, e.target.value)}
+            clearable
+            bordered
+            color="primary"
+            size="md"
+            labelLeft="$"
+          />
+        </Row>
+        
     </div>
   );
 };
