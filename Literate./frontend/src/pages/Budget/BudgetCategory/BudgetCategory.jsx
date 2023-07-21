@@ -9,62 +9,49 @@ import {
   Row,
   Checkbox,
 } from "@nextui-org/react";
-import SubCategoryCard from "../SubCategoryCard/SubCategoryCard";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
-const BudgetCategory = ({ handleNextStep, handlePreviousStep }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
-
-  const handleChange = (value, checked) => {
-    if (checked) {
-      setSelectedCategories([...selectedCategories, value]);
-    } else {
-      setSelectedCategories(
-        selectedCategories.filter((category) => category !== value)
-      );
+const BudgetCategory = ({
+  budgetInfo,
+  setBudgetInfo,
+  handleNextStep,
+  handlePreviousStep,
+}) => {
+  const handleOnChange = (e) => {
+    const catObj = {};
+    for (let value of e) {
+      catObj[value] = {};
     }
+    setBudgetInfo((info) => ({ ...info, budgetCategories: catObj }));
   };
-
-  console.log(selectedCategories)
+  console.log(budgetInfo);
   return (
     <div>
       <Text h1>What will you be budgeting?</Text>
       <Spacer y={5} />
       <Text h3>What will you be budgeting?</Text>
 
-      <Checkbox.Group color="default" label="Check all that apply">
-        <Checkbox
-          onChange={(checked) => handleChange("essentials", checked)}
-          value="essentials"
-        >
-          Essentials
-        </Checkbox>
-        <Checkbox onChange={(checked) => handleChange("bills", checked)} value="bills">
-          Housing, Utilities, & Bills
-        </Checkbox>
-        <Checkbox onChange={(checked) => handleChange("transportation", checked)} value="transportation">
-          Transportation
-        </Checkbox>
-        <Checkbox onChange={(checked) => handleChange("subscriptions", checked)} value="subscriptions">
-          Subscriptions & Memberships
-        </Checkbox>
-        <Checkbox onChange={(checked) => handleChange("health", checked)} value="health">
-          Health & Insurance
-        </Checkbox>
-        <Checkbox onChange={(checked) => handleChange("recreation", checked)} value="recreation">
-          Recreation
-        </Checkbox>
-        <Checkbox onChange={(checked) => handleChange("other", checked)} value="other">
-          Other
-        </Checkbox>
+      <Checkbox.Group
+        color="default"
+        label="Check all that apply"
+        value={Object.keys(budgetInfo.budgetCategories)}
+        onChange={handleOnChange}
+      >
+        <Checkbox value="Essentials">Essentials</Checkbox>
+        <Checkbox value="Bills">Housing, Utilities, & Bills</Checkbox>
+        <Checkbox value="Transportation">Transportation</Checkbox>
+        <Checkbox value="Subscriptions">Subscriptions & Memberships</Checkbox>
+        <Checkbox value="Health">Health & Insurance</Checkbox>
+        <Checkbox value="Recreation">Recreation</Checkbox>
+        <Checkbox value="Other">Other</Checkbox>
       </Checkbox.Group>
-      <div>
+      {/* <div>
         {selectedCategories.map((page, index) => (
-            <div key={index}>
-                <SubCategoryCard page={page}/>
-            </div>
+          <div key={index}>
+            <SubCategoryCard page={page} />
+          </div>
         ))}
-      </div>
+      </div> */}
       <Spacer y={5} />
       <Row>
         <Spacer x={4} />

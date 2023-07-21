@@ -27,6 +27,7 @@ const createBudget = async function (data) {
   console.log(budget);
   return { budget };
 };
+
 const getBudget = async (budgetId) => {
   try {
     console.log(budgetId);

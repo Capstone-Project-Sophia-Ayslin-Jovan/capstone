@@ -28,6 +28,7 @@ const AuthorizeProvider = ({ children }) => {
           } else {
             console.log("FrontEnd: User Not Authenticated!");
             setAuthState((state) => ({ ...state, isAuthenticated: false }));
+            console.log(message);
             throw error;
           }
         } else {

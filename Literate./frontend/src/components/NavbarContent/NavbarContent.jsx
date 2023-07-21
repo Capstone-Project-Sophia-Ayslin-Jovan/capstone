@@ -36,11 +36,13 @@ const NavbarContent = ({ appState, setAppState }) => {
           <Navbar.Link href="#about">About</Navbar.Link>
           <Spacer x={3} />
           <Navbar.Link>Contact</Navbar.Link>
+
           <Spacer x={24} />
           <div>
             <Spacer y={1} />
             <Login loginForm={loginForm} />
           </div>
+
         </Navbar.Content>
         <Spacer x={24} />
       </Navbar>

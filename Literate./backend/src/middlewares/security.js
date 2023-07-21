@@ -45,6 +45,7 @@ const requireAuthenticatedUser = async (req, res, next) => {
     res.locals.user = user;
     return next();
   } catch (err) {
+    console.log(err); // Token ends up here
     return next(err); // Specify what errors later
   }
 };
