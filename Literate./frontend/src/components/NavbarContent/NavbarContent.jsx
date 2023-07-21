@@ -2,16 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import {
-  Navbar,
-  Button,
-  Spacer,
-  Modal,
-  Text,
-  Input,
-  Row,
-  Checkbox,
-} from "@nextui-org/react";
+import { Navbar, Spacer, Image, Text } from "@nextui-org/react";
 import "./NavbarContent.css";
 import apiClient from "../../services/apiClient";
 import Login from "../../pages/Login/Login";
@@ -28,8 +19,12 @@ const NavbarContent = ({ appState, setAppState }) => {
   return (
     <div>
       <Navbar variant="floating">
-        <Navbar.Content>
-          <Navbar.Brand className="logo">Literate.</Navbar.Brand>
+        <Navbar.Content underlineHeight={"normal"}>
+          <Navbar.Brand className="logo">
+            <Navbar.Link href="/">
+              <Text h4>Literate.</Text>
+            </Navbar.Link>
+          </Navbar.Brand>
           <Spacer x={3} />
           <Navbar.Link href="/">Home</Navbar.Link>
           <Spacer x={3} />
@@ -42,7 +37,6 @@ const NavbarContent = ({ appState, setAppState }) => {
             <Spacer y={1} />
             <Login loginForm={loginForm} />
           </div>
-
         </Navbar.Content>
         <Spacer x={24} />
       </Navbar>

@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import "./Landing.css";
 import NavbarContent from "../../components/NavbarContent/NavbarContent";
+import Footer from "../../components/Footer/Footer";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Pie } from "react-chartjs-2";
@@ -62,9 +63,11 @@ export default function Landing({ appState, setAppState }) {
         <Spacer y={6} />
       </div>
       <div>
-        <h1>What We Offer</h1>
+        <h2>
+          Becoming financially literate is hard. That's why we've made it easy.
+        </h2>
         <Spacer y={4} />
-        <div className="container1">
+        <div className="container">
           <Spacer y={4} />
           <div className="info-card">
             <div>
@@ -79,12 +82,12 @@ export default function Landing({ appState, setAppState }) {
             <Spacer y={2} />
             <Text h3>
               Interested in being able to manage your money better? Become a
-              budgeting pro at the click of a button!
+              budgeting pro now!
             </Text>
             <Spacer y={2} />
             <div className="get-strt-btn">
               <Link to="/signup">
-                <Button bordered ghost rounded size="lg">
+                <Button bordered ghost rounded size="xl">
                   Get Started
                 </Button>
               </Link>
@@ -94,23 +97,36 @@ export default function Landing({ appState, setAppState }) {
             <Pie data={data} />
           </div>
         </div>
-        <div className="info-card">
-          <Text h2>Expense Tracking at Your Fingertips</Text>
-          <Text size={24}>
-            Go beyond simple budgeting and expand your expense tracking
-            capabilities. Literate allows you to effortlessly log and categorize
-            your expenses, providing you with a clear overview of your spending
-            habits.
-          </Text>
+        <Spacer y={6} />
+        <div className="container">
+          <img
+            className="expense-pic"
+            src="https://blog.darwinbox.com/hubfs/Travel%20and%20Expense%20Management%20Definition%2C%20Significance%20%26%20Key%20Features.jpg"
+          ></img>
+          <div className="info-card2">
+            <Text h2>Expense Tracking at Your Fingertips</Text>
+            <Text size={24}>
+              Go beyond simple budgeting and expand your expense tracking
+              capabilities. Literate allows you to effortlessly log and
+              categorize your expenses, providing you with a clear overview of
+              your spending habits.
+            </Text>
+          </div>
         </div>
-        <Spacer x={1} />
-        <div className="info-card">
-          <Text h2>Financial Education, Simplified</Text>
-          <Text size={24}>
-            Allow us to be your personal financial tutor. From budgeting basics
-            to credit card management and savings strategies, you'll gain
-            valuable insights and practical knowledge.
-          </Text>
+        <Spacer y={4} />
+        <div className="container">
+          <div className="info-card">
+            <Text h2>Financial Education, Simplified</Text>
+            <Text size={24}>
+              From budgeting basics to credit card management and savings
+              strategies, you'll gain valuable insights and practical knowledge.
+            </Text>
+          </div>
+          <Link to="/About">
+            <Button rounded size={"xl"}>
+              Learn More
+            </Button>
+          </Link>
         </div>
         <Spacer y={4} />
       </div>
@@ -130,9 +146,11 @@ export default function Landing({ appState, setAppState }) {
         </div>
         <img
           className="piggy"
-          src="https://static.vecteezy.com/system/resources/previews/017/559/133/non_2x/pig-money-box-icon-outline-illustration-vector.jpg"
+          src="https://logowik.com/content/uploads/images/piggy-bank8686.jpg"
         />
       </div>
+      <Spacer y={6} />
+      <Footer />
     </div>
   );
 }
