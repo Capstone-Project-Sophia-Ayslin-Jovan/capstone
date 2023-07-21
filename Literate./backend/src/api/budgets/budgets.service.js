@@ -27,4 +27,48 @@ const createBudget = async function (data) {
   console.log(budget);
   return { budget };
 };
-module.exports = { createBudget };
+const getBudget = async (budgetId) => {
+  try {
+    console.log(budgetId);
+    const budgetInfo = await prisma.budget.findUnique({
+      where: { id: budgetId },
+      include: {
+        subCategory: true,
+      },
+    });
+    return { budgetInfo };
+  } catch (err) {
+    throw err;
+  }
+};
+const updateBudget = async (budgetId) => {
+  try {
+    const { userId, budgetData } = data;
+    const updatedBudget = await prisma.budget.update({
+      where: { id: budgetId },
+      update: {
+        //might not need this clause tbh
+        data: {
+          budgetTotal: budgetData.newTotal,
+          subCategory: {
+            totalSpent: budgetData.subCategory.newTotalSpent,
+            category: budgetData.subCategory.newCategory,
+            allocation: budgetData.subCategory.newAllocation,
+            name: budgetData.subCategory.newName,
+          },
+        },
+      },
+      include: {
+        subCategory: true,
+      },
+    });
+    return { updatedBudget };
+  } catch (err) {
+    throw err;
+  }
+};
+module.exports = {
+  createBudget,
+  getBudget,
+  updateBudget,
+};
