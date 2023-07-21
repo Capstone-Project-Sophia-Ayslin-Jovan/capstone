@@ -38,7 +38,6 @@ function App() {
             path="/Home"
             element={<Home handleToggle={handleToggle} isOpen={isOpen} />}
           />
-          <Route path="/Budget/*" element={<Budget />} />
         </Routes>
       </BrowserRouter>
     </div>
