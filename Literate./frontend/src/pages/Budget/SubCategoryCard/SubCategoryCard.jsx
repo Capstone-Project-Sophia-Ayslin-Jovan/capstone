@@ -1,21 +1,17 @@
 "use client";
 import React from "react";
-import {
-  Navbar,
-  Button,
-  Spacer,
-  Modal,
-  Text,
-  Input,
-  Row,
-  Checkbox,
-} from "@nextui-org/react";
+import { Spacer, Modal, Text, Input, Row, Card } from "@nextui-org/react";
+import SubCategoryInput from "../SubCategoryInput/SubCategoryInput";
 
-const SubCategoryCard = ({page}) => {
+const SubCategoryCard = ({ category }) => {
   return (
-    <div>
-      <Text h3>Budget Amount Left: $</Text>
-      <Text h3> {page} </Text>
+    <div className="sub-cat-card">
+      <Spacer x={4}/>
+        <Card>
+          <Text h2> {category} </Text>
+          <SubCategoryInput />
+        </Card>
+
     </div>
   );
 };
