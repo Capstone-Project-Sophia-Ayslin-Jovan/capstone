@@ -37,7 +37,7 @@ const BudgetExpenses = ({
   //   };
   //   fetchBudgetInfo();
   // }, [budgetInfo]);
-  console.log(budgetInfo);
+  console.log(budgetInfo.subCategories);
   return (
     <div>
       <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
