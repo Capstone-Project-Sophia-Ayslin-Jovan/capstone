@@ -9,8 +9,7 @@ const Sidebar = ({ isOpen, handleToggle, handleLogout }) => {
   const { user } = authState;
   return (
     <div>
-      <Container>
-        {console.log(isOpen)}
+      <Container responsive="true">
         <Col>
           <button className="menu-toggle-btn" onClick={() => handleToggle()}>
             <img

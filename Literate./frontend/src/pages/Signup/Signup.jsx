@@ -118,7 +118,7 @@ const Signup = () => {
         </Text>
       </Text>
       <div className="form">
-        <Container>
+        <Container responsive="true">
           <Row>
             <Spacer x={7.5} />
             <Input

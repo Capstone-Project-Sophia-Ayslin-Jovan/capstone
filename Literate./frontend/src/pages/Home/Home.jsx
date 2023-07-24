@@ -26,6 +26,7 @@ export const Home = ({ handleToggle, isOpen }) => {
   };
   return (
     <div>
+
       <div className="home-container">
         {/* <Header
         handleToggle={handleToggle}

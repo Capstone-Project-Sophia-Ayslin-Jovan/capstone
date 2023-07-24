@@ -34,10 +34,12 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/Signup" element={<Signup />} />
           <Route
+<
             path="/Profile"
             element={<Profile handleToggle={handleToggle} isOpen={isOpen} />}
           />
           <Route
+
             path="/Budget"
             element={<Budget handleToggle={handleToggle} isOpen={isOpen} />}
           />
