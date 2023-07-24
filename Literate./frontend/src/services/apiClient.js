@@ -58,10 +58,32 @@ class ApiClient {
   }
 
   async fetchUserFromToken() {
-    // Make me get request using generalized request method above with userId
     return await this.request({
       endpoint: `users/me`,
       method: `GET`,
+    });
+  }
+
+  async createBudget(data) {
+    return await this.request({
+      endpoint: `budgets/budget`,
+      method: `POST`,
+      data: data,
+    });
+  }
+
+  async getBudget(id) {
+    return await this.request({
+      endpoint: `budgets/budget/${id}`,
+      method: `GET`,
+    });
+  }
+
+  async updateBudget(id, data) {
+    return await this.request({
+      endpoint: `budgets/budget/${id}`,
+      method: `PUT`,
+      data: data,
     });
   }
 }

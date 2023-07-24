@@ -14,23 +14,24 @@ import {
 import { Link } from "react-router-dom";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 
-const BudgetLanding = ({ handleNextStep, handlePreviousStep, isOpen, handleToggle }) => {
+const BudgetLanding = ({
+  handleNextStep,
+  handlePreviousStep,
+  isOpen,
+  handleToggle,
+}) => {
   return (
     <div>
-      <Button
-            light
-            className="menu-toggle-btn"
-            onPress={() => handleToggle()}
-          >
-            <img
-              className="menu"
-              src="https://www.svgrepo.com/show/506800/burger-menu.svg"
-            />
+      <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
+        <img
+          className="menu"
+          src="https://www.svgrepo.com/show/506800/burger-menu.svg"
+        />
       </Button>
       <Container>
-      <Sidebar isOpen={isOpen} />
-      {/* </div> */}
-      <Spacer y={6} />
+        <Sidebar isOpen={isOpen} />
+        {/* </div> */}
+        <Spacer y={6} />
       </Container>
       <Text h3 className="description">
         Budgeting is the process of creating a financial plan to allocate and
@@ -42,10 +43,6 @@ const BudgetLanding = ({ handleNextStep, handlePreviousStep, isOpen, handleToggl
       <Spacer y={4} />
       <Button className="start-btn" size="xl" onPress={handleNextStep}>
         Start Budgeting
-      </Button>
-      <Spacer y={2} />
-      <Button className="start-btn" size="xl" onPress={handlePreviousStep}>
-        Back
       </Button>
     </div>
   );

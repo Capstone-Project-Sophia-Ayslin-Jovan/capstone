@@ -11,24 +11,6 @@ const {
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const createPublicUser = ({
-  id,
-  firstName,
-  lastName,
-  username,
-  email,
-  imageUrl,
-}) => {
-  return {
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
-    username: username,
-    email: email,
-    imageUrl: imageUrl,
-  };
-};
-
 const loginUser = async (creds) => {
   const { email, password } = creds;
 
@@ -48,9 +30,9 @@ const loginUser = async (creds) => {
   if (user) {
     const isValid = await bcrypt.compare(password, user.password);
     if (isValid === true) {
-      const publicUser = createPublicUser(user);
-      const userToken = await createUserToken(publicUser);
-      return { publicUser, userToken };
+      delete user["password"];
+      const userToken = await createUserToken(user);
+      return { user, userToken };
     }
     console.log("Wrong password!");
   }
@@ -96,9 +78,21 @@ const registerUser = async (creds) => {
     },
   });
 
-  const publicUser = createPublicUser(user);
-  const userToken = await createUserToken(publicUser);
-  return { publicUser, userToken };
+  delete user["password"];
+  const userToken = await createUserToken(user);
+  return { user, userToken };
 };
 
-module.exports = { loginUser, registerUser };
+const updateUser = async (id, data) => {
+  // Add validation & Also enable the user to update password that is hashed
+  // How do i add authentication to this? Probably in the route??
+  const updatedUser = await prisma.user.update({
+    where: { id: id },
+    data: data,
+  });
+  console.log(updatedUser);
+  if (updateUser) return { isSuccess: true };
+  else return { isSuccess: false };
+};
+
+module.exports = { loginUser, registerUser, updateUser };

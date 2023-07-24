@@ -1,19 +1,38 @@
 "use client";
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
 import BudgetResults from "./BudgetResults/BudgetResults";
 import BudgetLanding from "./BudgetLanding/BudgetLanding";
 import BudgetGoal from "./BudgetGoal/BudgetGoal";
 import BudgetCategory from "./BudgetCategory/BudgetCategory";
 import BudgetExpenses from "./BudgetExpenses/BudgetExpenses";
-// import Home from "../Home/Home";
+import { AuthorizeContext } from "../../contexts/authUser";
+import apiClient from "../../services/apiClient";
 
-const Budget = ({handleToggle, isOpen}) => {
-  // Perhaps change to context
+const Budget = ({ handleToggle, isOpen }) => {
   const [budgetInfo, setBudgetInfo] = useState({
-    budgetGoal: 0,
-    budgetCategories: {},
+    name: "",
+    total: 0,
+    subCategory: [],
+    hasBudget: false,
   });
+
+  const { authState } = useContext(AuthorizeContext);
+  useEffect(() => {
+    const fetchUserBudget = async () => {
+      if (authState.user !== null) {
+        const data = await apiClient.getBudget(authState.user.currBudgetId);
+        const budget = data.data.budget;
+        if (budget !== null) console.log(budget);
+        setBudgetInfo({
+          name: budget.name,
+          total: budget.total,
+          subCategory: budget.subCategory,
+          hasBudget: true,
+        });
+      }
+    };
+    fetchUserBudget();
+  }, [authState.user]);
 
   const [step, setStep] = useState(0);
   const handleNextStep = () => {
