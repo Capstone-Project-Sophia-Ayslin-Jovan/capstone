@@ -8,14 +8,18 @@ import {
   Input,
   Row,
   Checkbox,
+  Container,
 } from "@nextui-org/react";
 import { Link, Route } from "react-router-dom";
+import Sidebar from "../../../components/Sidebar/Sidebar";
 
 const BudgetCategory = ({
   budgetInfo,
   setBudgetInfo,
   handleNextStep,
   handlePreviousStep,
+  isOpen,
+  handleToggle,
 }) => {
   const handleOnChange = (e) => {
     const catObj = {};
@@ -27,6 +31,17 @@ const BudgetCategory = ({
   console.log(budgetInfo);
   return (
     <div>
+      <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
+        <img
+          className="menu"
+          src="https://www.svgrepo.com/show/506800/burger-menu.svg"
+        />
+      </Button>
+      <Container>
+        <Sidebar isOpen={isOpen} />
+        {/* </div> */}
+        <Spacer y={6} />
+      </Container>
       <Text h1>What will you be budgeting?</Text>
       <Spacer y={5} />
       <Text h3>What will you be budgeting?</Text>

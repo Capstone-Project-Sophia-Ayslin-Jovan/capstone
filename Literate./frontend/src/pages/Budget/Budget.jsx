@@ -8,7 +8,7 @@ import BudgetCategory from "./BudgetCategory/BudgetCategory";
 import BudgetExpenses from "./BudgetExpenses/BudgetExpenses";
 // import Home from "../Home/Home";
 
-const Budget = () => {
+const Budget = ({handleToggle, isOpen}) => {
   // Perhaps change to context
   const [budgetInfo, setBudgetInfo] = useState({
     budgetGoal: 0,
@@ -29,6 +29,8 @@ const Budget = () => {
         <BudgetLanding
           handleNextStep={handleNextStep}
           handlePreviousStep={handlePreviousStep}
+          handleToggle={handleToggle}
+          isOpen={isOpen}
         />
       );
     case 1:
@@ -38,6 +40,8 @@ const Budget = () => {
           setBudgetInfo={setBudgetInfo}
           handleNextStep={handleNextStep}
           handlePreviousStep={handlePreviousStep}
+          handleToggle={handleToggle}
+          isOpen={isOpen}
         />
       );
     case 2:
@@ -47,6 +51,8 @@ const Budget = () => {
           setBudgetInfo={setBudgetInfo}
           handleNextStep={handleNextStep}
           handlePreviousStep={handlePreviousStep}
+          handleToggle={handleToggle}
+          isOpen={isOpen}
         />
       );
     case 3:
@@ -56,6 +62,8 @@ const Budget = () => {
           setBudgetInfo={setBudgetInfo}
           handleNextStep={handleNextStep}
           handlePreviousStep={handlePreviousStep}
+          handleToggle={handleToggle}
+          isOpen={isOpen}
         />
       );
     case 4:
@@ -65,6 +73,8 @@ const Budget = () => {
           setBudgetInfo={setBudgetInfo}
           handleNextStep={handleNextStep}
           handlePreviousStep={handlePreviousStep}
+          handleToggle={handleToggle}
+          isOpen={isOpen}
         />
       );
   }
