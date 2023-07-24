@@ -1,41 +1,22 @@
 import React, { useContext } from "react";
-import { Button, Container, Row, Text, Spacer } from "@nextui-org/react";
+import {
+  Button,
+  Container,
+  Row,
+  Text,
+  Spacer,
+  Link,
+  Card,
+} from "@nextui-org/react";
 import "./Home.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { AuthorizeContext } from "../../contexts/authUser";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-
+import Header from "../../components/Header/Header";
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-const data = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
-        "rgba(255, 159, 64, 1)",
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-
 export const Home = ({ handleToggle, isOpen }) => {
   const { logoutUser } = useContext(AuthorizeContext);
   const navigate = useNavigate();
@@ -45,41 +26,86 @@ export const Home = ({ handleToggle, isOpen }) => {
   };
   return (
     <div>
-      <Container>
-        <Row>
-          <Button
-            light
-            className="menu-toggle-btn"
-            onPress={() => handleToggle()}
-          >
-            <img
-              className="menu"
-              src="https://www.svgrepo.com/show/506800/burger-menu.svg"
-            />
-          </Button>
-          <Spacer x={32} />
-          <div className="logout-btn">
-            <Button auto ghost onPress={handleLogout}>
-              Logout
-            </Button>
-          </div>
-        </Row>
-      </Container>
-      <Sidebar isOpen={isOpen} />
-      {/* </div> */}
-      <Spacer y={6} />
-      <Container>
-        <Row gap={1}>
-          <Container>
-            <Text size={"$6xl"} style={{ marginBottom: 0 }}>
-              Literate.
-            </Text>
-            <Text size={"$xl"}>Smart Money, Bright Future</Text>
-          </Container>
-          <img src="https://static.vecteezy.com/system/resources/previews/002/884/391/original/illustration-of-saving-money-in-the-household-sector-for-investment-spending-and-daily-life-vector.jpg" />
-        </Row>
-      </Container>
-      {/* <Pie data={data}></Pie> */}
+
+      <div className="home-container">
+        {/* <Header
+        handleToggle={handleToggle}
+        isOpen={isOpen}
+        handleLogout={handleLogout}
+      /> */}
+        <Sidebar
+          handleToggle={handleToggle}
+          handleLogout={handleLogout}
+          isOpen={isOpen}
+        />
+        {/* <div className="logout-btn">
+        <Button auto ghost onPress={handleLogout}>
+          Logout
+        </Button>
+      </div> */}
+        <Container>
+          <Row gap={1}>
+            <Container>
+              <Text className="app-title" size={"$2xl"} h2>
+                Literate.
+              </Text>
+              <Spacer y={4} />
+              <Text h2>We've got what you need.</Text>
+              <Spacer y={2} />
+              <Text h3>
+                Check out our personal budget helper and start tracking your
+                funds today!
+              </Text>
+              <Spacer y={2} />
+              <div className="budget-stuff">
+                <div className="info-blurb">
+                  <Text size={24} h3>
+                    With our budgeting tool you'll be able to:
+                  </Text>
+                  <Text size={21} p>
+                    1. Be more cognizant of your spending.
+                  </Text>
+                  <Text size={21} p>
+                    2. Know where your money is going.
+                  </Text>
+                  <Text size={21} p>
+                    3. Become a better budgeter.
+                  </Text>
+                </div>
+                <Spacer x={4} />
+                <img
+                  className="clipboard"
+                  src="https://static.vecteezy.com/system/resources/previews/021/899/929/original/budget-management-icon-planner-personal-budget-and-family-budget-personal-financial-control-cash-flow-flat-illustration-vector.jpg"
+                />
+              </div>
+              <Link href="/Budget">
+                <Button size={"xl"} auto>
+                  Start Budgeting
+                </Button>
+              </Link>
+              <Spacer y={6} />
+              <Text h3>
+                Want to brush up on your financial knowledge? Check out our
+                quick lessons about money management and spending.
+              </Text>
+              <img src="https://static.vecteezy.com/system/resources/previews/001/974/416/non_2x/financial-planning-investment-education-free-vector.jpg" />
+              <Text size={24} p>
+                Our adaptive learning platform customizes your experience,
+                tailoring each module to suit your skill level and aspirations.
+                Track your progress, earn achievements, and celebrate milestones
+                along the way.
+              </Text>
+              <Link href="/Modules">
+                <Button auto size={"xl"}>
+                  Start Learning
+                </Button>
+              </Link>
+            </Container>
+          </Row>
+        </Container>
+      </div>
+      <Spacer y={12} />
+      <Footer />
     </div>
   );
 };
