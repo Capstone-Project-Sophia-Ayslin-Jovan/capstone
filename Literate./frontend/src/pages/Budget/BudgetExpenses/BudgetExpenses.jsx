@@ -57,8 +57,8 @@ const BudgetExpenses = ({
           expenses?
         </Text>
 
-        <Text h3>Budget Amount Left: ${budgetInfo.budgetGoal}</Text>
-        {Object.keys(budgetInfo.budgetCategories).map((category, index) => (
+        <Text h3>Budget Amount Left: ${budgetInfo.total}</Text>
+        {budgetInfo.subCategories.map((category, index) => (
           <div key={index}>
             <SubCategoryCard category={category} />
           </div>
