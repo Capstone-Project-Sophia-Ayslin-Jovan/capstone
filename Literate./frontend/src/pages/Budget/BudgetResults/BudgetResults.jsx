@@ -9,14 +9,38 @@ import {
   Input,
   Row,
   Checkbox,
+  Container,
 } from "@nextui-org/react";
+import Sidebar from "../../../components/Sidebar/Sidebar";
 
-const BudgetResults = ({ handleNextStep, handlePreviousStep }) => {
+const BudgetResults = ({
+  budgetInfo,
+  handleNextStep,
+  handlePreviousStep,
+  isOpen,
+  handleToggle,
+}) => {
   return (
     <div>
-        <Text>
-            Results
-        </Text>
+      <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
+        <img
+          className="menu"
+          src="https://www.svgrepo.com/show/506800/burger-menu.svg"
+        />
+      </Button>
+      <Container>
+        <Sidebar isOpen={isOpen} />
+        {/* </div> */}
+        <Spacer y={6} />
+      </Container>
+      <Text h1>Your Budget: $ {budgetInfo.budgetGoal}</Text>
+
+      <Container>
+        {Object.keys(budgetInfo.budgetCategories).map((category, index) => (
+          <div key={index}></div>
+        ))}
+      </Container>
+
       <Row>
         <Button onPress={handlePreviousStep}>Back</Button>
         <Spacer x={1} />

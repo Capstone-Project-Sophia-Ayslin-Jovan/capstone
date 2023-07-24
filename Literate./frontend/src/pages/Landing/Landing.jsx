@@ -49,9 +49,9 @@ export default function Landing({ appState, setAppState }) {
       <NavbarContent appState={appState} setAppState={setAppState} />
       <div>
         <Spacer y={6} />
-        <Container>
+        <Container responsive="true">
           <Row gap={1}>
-            <Container>
+            <Container responsive="true">
               <Text size={"$8xl"} style={{ marginBottom: 0 }}>
                 Literate.
               </Text>
