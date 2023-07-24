@@ -11,38 +11,16 @@ const {
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const createPublicUser = ({
-  id,
-  firstName,
-  lastName,
-  username,
-  email,
-  imageUrl,
-}) => {
-  return {
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
-    username: username,
-    email: email,
-    imageUrl: imageUrl,
-  };
-};
-
 const loginUser = async (creds) => {
   const { email, password } = creds;
 
   const requiredCreds = ["email", "password"];
-  try {
-    validateFields({
-      required: requiredCreds,
-      obj: creds,
-      location: "Login User: Backend",
-    });
-    validateEmail(email);
-  } catch (err) {
-    throw err;
-  }
+  validateFields({
+    required: requiredCreds,
+    obj: creds,
+    location: "Backend: Login User",
+  });
+  validateEmail(email);
 
   const normalizedEmail = email.toLowerCase();
   const user = await prisma.user.findFirst({
@@ -52,9 +30,9 @@ const loginUser = async (creds) => {
   if (user) {
     const isValid = await bcrypt.compare(password, user.password);
     if (isValid === true) {
-      const publicUser = createPublicUser(user);
-      const userToken = await createUserToken(publicUser);
-      return { publicUser, userToken };
+      delete user["password"];
+      const userToken = await createUserToken(user);
+      return { user, userToken };
     }
     console.log("Wrong password!");
   }
@@ -71,17 +49,13 @@ const registerUser = async (creds) => {
     "email",
     "password",
   ];
-  try {
-    validateFields({
-      required: requiredCreds,
-      obj: creds,
-      location: "Login User: Backend",
-    });
-    validateEmail(email);
-    validatePassword(password);
-  } catch (err) {
-    throw err;
-  }
+  validateFields({
+    required: requiredCreds,
+    obj: creds,
+    location: "Backend: Register User",
+  });
+  validateEmail(email);
+  validatePassword(password);
 
   const normalizedEmail = email.toLowerCase();
   const existingUserWithEmail = await prisma.user.findFirst({
@@ -104,9 +78,21 @@ const registerUser = async (creds) => {
     },
   });
 
-  const publicUser = createPublicUser(user);
-  const userToken = await createUserToken(publicUser);
-  return { publicUser, userToken };
+  delete user["password"];
+  const userToken = await createUserToken(user);
+  return { user, userToken };
 };
 
-module.exports = { loginUser, registerUser };
+const updateUser = async (id, data) => {
+  // Add validation & Also enable the user to update password that is hashed
+  // How do i add authentication to this? Probably in the route??
+  const updatedUser = await prisma.user.update({
+    where: { id: id },
+    data: data,
+  });
+  console.log(updatedUser);
+  if (updateUser) return { isSuccess: true };
+  else return { isSuccess: false };
+};
+
+module.exports = { loginUser, registerUser, updateUser };

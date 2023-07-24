@@ -6,8 +6,7 @@ import "./Sidebar.css";
 const Sidebar = ({ isOpen }) => {
   return (
     <div>
-      <Container>
-        {console.log(isOpen)}
+      <Container responsive="true">
         <Col>
           <div
             className={isOpen ? "sidebaropen" : "sidebarclosed"}

@@ -37,4 +37,13 @@ router.get("/me", security.requireAuthenticatedUser, async (req, res, next) => {
   }
 });
 
+router.put("/user/:id", async function (req, res, next) {
+  try {
+    const { isSuccess } = await userService.updateUser(req.params.id, req.body);
+    return res.status(201).json({ isSuccess });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

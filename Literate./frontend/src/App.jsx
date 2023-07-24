@@ -25,7 +25,6 @@ function App() {
   //handler for making sidebar pop in and out
   function handleToggle() {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   }
   return (
     <div className={styles.main}>
@@ -33,7 +32,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Budget" element={<Budget />} />
+          <Route
+            path="/Budget"
+            element={<Budget handleToggle={handleToggle} isOpen={isOpen} />}
+          />
           <Route
             path="/Home"
             element={<Home handleToggle={handleToggle} isOpen={isOpen} />}

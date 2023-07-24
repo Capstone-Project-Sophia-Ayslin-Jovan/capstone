@@ -65,7 +65,6 @@ export const Home = ({ handleToggle, isOpen }) => {
           </div>
         </Row>
       </Container>
-      {console.log(isOpen)}
       <Sidebar isOpen={isOpen} />
       {/* </div> */}
       <Spacer y={6} />
@@ -80,7 +79,7 @@ export const Home = ({ handleToggle, isOpen }) => {
           <img src="https://static.vecteezy.com/system/resources/previews/002/884/391/original/illustration-of-saving-money-in-the-household-sector-for-investment-spending-and-daily-life-vector.jpg" />
         </Row>
       </Container>
-      <Pie data={data}></Pie>
+      {/* <Pie data={data}></Pie> */}
     </div>
   );
 };

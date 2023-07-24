@@ -20,7 +20,6 @@ const getUserFromToken = async (req, res, next) => {
   console.log("Getting User from Token...");
   try {
     const token = await getJWT(req);
-    console.log("User Token: ", token);
     if (token) {
       const user = jwt.verify(token, SECRET_KEY);
       return user;
@@ -41,7 +40,6 @@ const requireAuthenticatedUser = async (req, res, next) => {
       throw new UnauthorizedError();
     }
 
-    console.log("Retrieved Authenticated User: ", user);
     res.locals.user = user;
     return next();
   } catch (err) {
