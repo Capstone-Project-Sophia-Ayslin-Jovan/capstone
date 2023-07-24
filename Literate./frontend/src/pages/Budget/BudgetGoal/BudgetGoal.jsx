@@ -50,7 +50,7 @@ const BudgetGoal = ({
         labelLeft="$"
         name="budgetGoal"
         onChange={handleOnChange}
-        value={budgetInfo.budgetGoal}
+        value={budgetInfo.total}
       />
       <Spacer y={2} />
       <Row>

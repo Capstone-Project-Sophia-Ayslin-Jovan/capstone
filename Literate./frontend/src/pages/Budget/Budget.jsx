@@ -22,13 +22,31 @@ const Budget = ({ handleToggle, isOpen }) => {
       if (authState.user !== null) {
         const data = await apiClient.getBudget(authState.user.currBudgetId);
         const budget = data.data.budget;
-        if (budget !== null) console.log(budget);
-        setBudgetInfo({
-          name: budget.name,
-          total: budget.total,
-          subCategory: budget.subCategory,
-          hasBudget: true,
-        });
+        if (budget !== null) {
+          let subCatArray = [];
+          console.log(budget.subCategory);
+          for (let x of budget.subCategory) {
+            const foundObject = subCatArray.find((obj) =>
+              Object.keys(obj).includes(x.category)
+            );
+            if (!foundObject)
+              subCatArray.push({
+                [x.category]: [{ name: x.name, allocation: x.allocation }],
+              });
+            else
+              foundObject[x.category].push({
+                name: x.name,
+                allocation: x.allocation,
+              });
+          }
+          console.log(subCatArray);
+          setBudgetInfo({
+            name: budget.name,
+            total: budget.total,
+            subCategories: subCatArray,
+            hasBudget: true,
+          });
+        }
       }
     };
     fetchUserBudget();
