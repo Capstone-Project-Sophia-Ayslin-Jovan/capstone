@@ -1,7 +1,6 @@
 const { validateFields } = require("../../utils/validate");
-
+const userService = require("../users/users.service");
 const { PrismaClient } = require("@prisma/client");
-const { all } = require("./budgets.controller");
 const prisma = new PrismaClient();
 //creates new budget for given user
 const createBudget = async function (data) {
@@ -46,7 +45,10 @@ const createBudget = async function (data) {
       subCategory: true,
     },
   });
-  console.log(budget);
+  const { isSuccess } = await userService.updateUser(userId, {
+    currBudgetId: budget.id,
+  });
+  console.log(isSuccess);
   return { budget };
 };
 
@@ -62,9 +64,8 @@ const getBudget = async (id) => {
 const updateBudget = async (id, { budgetData }) => {
   // Should the id be the userId or the budgetId, for now I think budgetId works best
   const { subCategories } = budgetData;
-  console.log(subCategories);
   // Data validation
-  const deleteBudget = await prisma.budget.update({
+  const deleteBudgetCat = await prisma.budget.update({
     where: { id: id },
     data: { subCategory: { deleteMany: {} } },
   });

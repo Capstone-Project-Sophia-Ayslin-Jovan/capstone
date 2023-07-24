@@ -65,7 +65,6 @@ export const Home = ({ handleToggle, isOpen }) => {
           </div>
         </Row>
       </Container>
-      {console.log(isOpen)}
       <Sidebar isOpen={isOpen} />
       {/* </div> */}
       <Spacer y={6} />

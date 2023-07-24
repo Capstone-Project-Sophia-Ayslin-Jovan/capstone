@@ -28,7 +28,7 @@ const BudgetCategory = ({
     }
     setBudgetInfo((info) => ({ ...info, budgetCategories: catObj }));
   };
-  console.log(budgetInfo);
+
   return (
     <div>
       <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
