@@ -1,0 +1,14 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
+/* .account-title {
+  float: left;
+} */
+.profile-page {
+  width: 1000px;
+}

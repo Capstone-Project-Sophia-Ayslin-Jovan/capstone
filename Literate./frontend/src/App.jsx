@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import { Profile } from "./pages/Profile/Profile";
 import { AuthorizeProvider } from "./contexts/authUser";
 import { Home } from "./pages/Home/Home";
 import "./App.css";
@@ -25,7 +26,6 @@ function App() {
   //handler for making sidebar pop in and out
   function handleToggle() {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   }
   return (
     <div className={styles.main}>
@@ -33,7 +33,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Budget" element={<Budget />} />
+          <Route
+            path="/Profile"
+            element={<Profile handleToggle={handleToggle} isOpen={isOpen} />}
+          />
+          <Route
+            path="/Budget"
+            element={<Budget handleToggle={handleToggle} isOpen={isOpen} />}
+          />
           <Route
             path="/Home"
             element={<Home handleToggle={handleToggle} isOpen={isOpen} />}
