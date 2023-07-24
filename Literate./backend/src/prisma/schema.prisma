@@ -11,24 +11,25 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  firstName  String
-  lastName   String
-  username   String   @unique
-  email      String   @unique
-  password   String
-  imageUrl   String
+  id           String   @id @default(uuid())
+  firstName    String
+  lastName     String
+  username     String   @unique
+  email        String   @unique
+  password     String
+  imageUrl     String
   currBudgetId String?
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  Budget     Budget?
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  Budget       Budget?
 }
 
 model Budget {
   id          String        @id @default(uuid())
   user        User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String?       @unique
-  budgetTotal Int
+  name        String
+  total       Int
   created_at  DateTime      @default(now())
   updated_at  DateTime      @updatedAt
   subCategory subCategory[]

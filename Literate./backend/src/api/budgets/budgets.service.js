@@ -1,18 +1,40 @@
+const { validateFields } = require("../../utils/validate");
+
 const { PrismaClient } = require("@prisma/client");
+const { all } = require("./budgets.controller");
 const prisma = new PrismaClient();
 //creates new budget for given user
 const createBudget = async function (data) {
+  // Rewrite this to make it cleaner later
   const { userId, budgetData } = data;
+  const { name, total, subCategories } = budgetData;
+
+  // We need more validation later
+  const requiredCreds = ["userId", "total", "subCategories"];
+  validateFields({
+    required: requiredCreds,
+    obj: { userId, total, subCategories },
+    location: "Backend: Create Budget",
+  });
+
+  // // Should validate for each category
+  // // Normalize in database as wella
+  // const subCategoryData = [];
+  // for (let subCategory of subCategories) {
+  //   subCategoryData.push({
+  //     name: subCategory.name,
+  //     category: subCategory.category,
+  //     allocation: subCategory.allocation,
+  //     totalSpent: subCategory.totalSpent,
+  //   });
+  // }
+
   const budget = await prisma.budget.create({
     data: {
-      budgetTotal: budgetData.budgetTotal,
+      name: name,
+      total: total,
       subCategory: {
-        create: {
-          totalSpent: budgetData.subCategory.totalSpent,
-          category: budgetData.subCategory.category,
-          allocation: budgetData.subCategory.allocation,
-          name: budgetData.subCategory.name,
-        },
+        create: subCategories,
       },
       user: {
         connect: {
@@ -28,45 +50,36 @@ const createBudget = async function (data) {
   return { budget };
 };
 
-const getBudget = async (budgetId) => {
-  try {
-    console.log(budgetId);
-    const budgetInfo = await prisma.budget.findUnique({
-      where: { id: budgetId },
-      include: {
-        subCategory: true,
-      },
-    });
-    return { budgetInfo };
-  } catch (err) {
-    throw err;
-  }
+const getBudget = async (id) => {
+  const budget = await prisma.budget.findUnique({
+    where: { id: id },
+    include: {
+      subCategory: true,
+    },
+  });
+  return { budget };
 };
-const updateBudget = async (budgetId) => {
-  try {
-    const { userId, budgetData } = data;
-    const updatedBudget = await prisma.budget.update({
-      where: { id: budgetId },
-      update: {
-        //might not need this clause tbh
-        data: {
-          budgetTotal: budgetData.newTotal,
-          subCategory: {
-            totalSpent: budgetData.subCategory.newTotalSpent,
-            category: budgetData.subCategory.newCategory,
-            allocation: budgetData.subCategory.newAllocation,
-            name: budgetData.subCategory.newName,
-          },
-        },
+const updateBudget = async (id, { budgetData }) => {
+  // Should the id be the userId or the budgetId, for now I think budgetId works best
+  const { subCategories } = budgetData;
+  console.log(subCategories);
+  // Data validation
+  const deleteBudget = await prisma.budget.update({
+    where: { id: id },
+    data: { subCategory: { deleteMany: {} } },
+  });
+  const updatedBudget = await prisma.budget.update({
+    where: { id: id },
+    data: {
+      subCategory: {
+        create: subCategories,
       },
-      include: {
-        subCategory: true,
-      },
-    });
-    return { updatedBudget };
-  } catch (err) {
-    throw err;
-  }
+    },
+    include: {
+      subCategory: true,
+    },
+  });
+  return { updatedBudget };
 };
 module.exports = {
   createBudget,

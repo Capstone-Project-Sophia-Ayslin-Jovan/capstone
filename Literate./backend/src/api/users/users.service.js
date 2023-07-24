@@ -33,16 +33,12 @@ const loginUser = async (creds) => {
   const { email, password } = creds;
 
   const requiredCreds = ["email", "password"];
-  try {
-    validateFields({
-      required: requiredCreds,
-      obj: creds,
-      location: "Login User: Backend",
-    });
-    validateEmail(email);
-  } catch (err) {
-    throw err;
-  }
+  validateFields({
+    required: requiredCreds,
+    obj: creds,
+    location: "Backend: Login User",
+  });
+  validateEmail(email);
 
   const normalizedEmail = email.toLowerCase();
   const user = await prisma.user.findFirst({
@@ -71,17 +67,13 @@ const registerUser = async (creds) => {
     "email",
     "password",
   ];
-  try {
-    validateFields({
-      required: requiredCreds,
-      obj: creds,
-      location: "Login User: Backend",
-    });
-    validateEmail(email);
-    validatePassword(password);
-  } catch (err) {
-    throw err;
-  }
+  validateFields({
+    required: requiredCreds,
+    obj: creds,
+    location: "Backend: Register User",
+  });
+  validateEmail(email);
+  validatePassword(password);
 
   const normalizedEmail = email.toLowerCase();
   const existingUserWithEmail = await prisma.user.findFirst({
