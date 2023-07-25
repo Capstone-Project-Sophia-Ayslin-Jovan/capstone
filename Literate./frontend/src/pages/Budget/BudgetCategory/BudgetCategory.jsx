@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   Button,
@@ -18,35 +18,22 @@ const BudgetCategory = ({
   setBudgetInfo,
   handleNextStep,
   handlePreviousStep,
-  isOpen,
-  handleToggle,
 }) => {
-  const handleOnChange = (values) => {
-    setBudgetInfo((info) => ({ ...info, subCategories: values }));
-    console.log(budgetInfo.subCategories);
-  };
+  const [categories, setCategories] = useState([]);
 
+  const handleOnChange = (values) => {
+    setCategories(values);
+  };
+  budgetInfo.subCategories = categories;
   return (
     <div>
-      <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
-        <img
-          className="menu"
-          src="https://www.svgrepo.com/show/506800/burger-menu.svg"
-        />
-      </Button>
-      <Container>
-        <Sidebar isOpen={isOpen} />
-        {/* </div> */}
-        <Spacer y={6} />
-      </Container>
       <Text h1>What will you be budgeting?</Text>
       <Spacer y={5} />
-      <Text h3>What will you be budgeting?</Text>
 
       <Checkbox.Group
         color="default"
         label="Check all that apply"
-        value={budgetInfo.subCategories.map((obj) => Object.keys(obj)).flat()}
+        value={categories}
         onChange={handleOnChange}
       >
         <Checkbox value="Essentials">Essentials</Checkbox>

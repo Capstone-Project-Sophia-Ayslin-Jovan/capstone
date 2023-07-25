@@ -12,8 +12,8 @@ router.post("/budget", async function (req, res, next) {
 });
 router.get("/budget/:id", async (req, res, next) => {
   try {
-    const { budget } = await budgetService.getBudget(req.params.id);
-    return res.status(200).json({ budget });
+    const budget = await budgetService.getBudget(req.params.id);
+    return res.status(200).json(budget);
   } catch (err) {
     next(err);
   }
