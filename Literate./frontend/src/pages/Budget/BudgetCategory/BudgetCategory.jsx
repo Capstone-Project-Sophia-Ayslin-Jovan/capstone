@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   Button,
@@ -21,9 +21,10 @@ const BudgetCategory = ({
   isOpen,
   handleToggle,
 }) => {
+  const [categories, setCategories] = useState([]);
+
   const handleOnChange = (values) => {
-    setBudgetInfo((info) => ({ ...info, subCategories: values }));
-    console.log(budgetInfo.subCategories);
+    setCategories(values);
   };
 
   return (
@@ -46,7 +47,7 @@ const BudgetCategory = ({
       <Checkbox.Group
         color="default"
         label="Check all that apply"
-        value={budgetInfo.subCategories.map((obj) => Object.keys(obj)).flat()}
+        value={categories}
         onChange={handleOnChange}
       >
         <Checkbox value="Essentials">Essentials</Checkbox>
