@@ -25,14 +25,14 @@ model User {
 }
 
 model Budget {
-  id          String        @id @default(uuid())
-  user        User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String?       @unique
-  name        String
-  total       Int
-  created_at  DateTime      @default(now())
-  updated_at  DateTime      @updatedAt
-  subCategory subCategory[]
+  id            String        @id @default(uuid())
+  user          User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String?       @unique
+  name          String
+  total         Int
+  created_at    DateTime      @default(now())
+  updated_at    DateTime      @updatedAt
+  subCategories subCategory[]
 }
 
 model subCategory {

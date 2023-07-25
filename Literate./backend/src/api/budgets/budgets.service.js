@@ -4,17 +4,15 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 //creates new budget for given user
 const createBudget = async function (data) {
-  // Rewrite this to make it cleaner later
-  const { userId, budgetData } = data;
-  const { name, total, subCategories } = budgetData;
+  const { userId, name, total, budgetData } = data;
 
   // We need more validation later
-  const requiredCreds = ["userId", "total", "subCategories"];
-  validateFields({
-    required: requiredCreds,
-    obj: { userId, total, subCategories },
-    location: "Backend: Create Budget",
-  });
+  // const requiredCreds = ["userId", "total", "subCategories"];
+  // validateFields({
+  //   required: requiredCreds,
+  //   obj: { userId, total, subCategories },
+  //   location: "Backend: Create Budget",
+  // });
 
   // // Should validate for each category
   // // Normalize in database as wella
@@ -27,12 +25,20 @@ const createBudget = async function (data) {
   //     totalSpent: subCategory.totalSpent,
   //   });
   // }
+  const subCategories = [];
+  for (let catObj of budgetData) {
+    const catName = Object.keys(catObj)[0];
+    for (let subCatObj of catObj[catName]) {
+      subCatObj["category"] = catName;
+      subCategories.push(subCatObj);
+    }
+  }
 
   const budget = await prisma.budget.create({
     data: {
       name: name,
       total: total,
-      subCategory: {
+      subCategories: {
         create: subCategories,
       },
       user: {
@@ -42,7 +48,7 @@ const createBudget = async function (data) {
       },
     },
     include: {
-      subCategory: true,
+      subCategories: true,
     },
   });
   const { isSuccess } = await userService.updateUser(userId, {
