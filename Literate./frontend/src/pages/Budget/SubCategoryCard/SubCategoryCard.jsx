@@ -4,7 +4,7 @@ import { Spacer, Modal, Text, Input, Row, Card } from "@nextui-org/react";
 import SubCategoryInput from "../SubCategoryInput/SubCategoryInput";
 
 const SubCategoryCard = ({ category }) => {
-  console.log("HERERE", category);
+  console.log("category", category);
   return (
     <div className="sub-cat-card">
       <Spacer x={4} />
