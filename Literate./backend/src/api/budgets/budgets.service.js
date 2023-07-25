@@ -53,13 +53,38 @@ const createBudget = async function (data) {
 };
 
 const getBudget = async (id) => {
-  const budget = await prisma.budget.findUnique({
+  const budgetData = await prisma.budget.findUnique({
     where: { id: id },
     include: {
       subCategory: true,
     },
   });
-  return { budget };
+
+  let budgetArray = [];
+  const fields = ["name", "allocation", "totalSpent"];
+  for (let x of budgetData.subCategory) {
+    const foundObject = budgetArray.find((obj) =>
+      Object.keys(obj).includes(x.category)
+    );
+    const obj = {};
+    for (let y of fields) {
+      obj[y] = x[y];
+    }
+    if (!foundObject) {
+      console.log(obj);
+      budgetArray.push({
+        [x.category]: [obj],
+      });
+    } else foundObject[x.category].push(obj);
+  }
+
+  const budget = {
+    name: budgetData.name,
+    total: budgetData.total,
+    budgetData: budgetArray,
+  };
+
+  return budget;
 };
 const updateBudget = async (id, { budgetData }) => {
   // Should the id be the userId or the budgetId, for now I think budgetId works best
