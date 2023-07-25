@@ -19,25 +19,12 @@ const BudgetGoal = ({
   setBudgetInfo,
   handleNextStep,
   handlePreviousStep,
-  isOpen,
-  handleToggle,
 }) => {
   const handleOnChange = (e) => {
     setBudgetInfo((info) => ({ ...info, [e.target.name]: e.target.value }));
   };
   return (
     <div>
-      <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
-        <img
-          className="menu"
-          src="https://www.svgrepo.com/show/506800/burger-menu.svg"
-        />
-      </Button>
-      <Container>
-        <Sidebar isOpen={isOpen} />
-        {/* </div> */}
-        <Spacer y={6} />
-      </Container>
       <Text h1>What is your budgeting goal?</Text>
       <Spacer y={2} />
       <Input

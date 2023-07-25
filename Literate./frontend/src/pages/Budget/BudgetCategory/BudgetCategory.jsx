@@ -18,31 +18,17 @@ const BudgetCategory = ({
   setBudgetInfo,
   handleNextStep,
   handlePreviousStep,
-  isOpen,
-  handleToggle,
 }) => {
   const [categories, setCategories] = useState([]);
 
   const handleOnChange = (values) => {
     setCategories(values);
   };
-
+  budgetInfo.subCategories = categories;
   return (
     <div>
-      <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
-        <img
-          className="menu"
-          src="https://www.svgrepo.com/show/506800/burger-menu.svg"
-        />
-      </Button>
-      <Container>
-        <Sidebar isOpen={isOpen} />
-        {/* </div> */}
-        <Spacer y={6} />
-      </Container>
       <Text h1>What will you be budgeting?</Text>
       <Spacer y={5} />
-      <Text h3>What will you be budgeting?</Text>
 
       <Checkbox.Group
         color="default"
