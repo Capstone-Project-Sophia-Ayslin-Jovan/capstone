@@ -22,17 +22,6 @@ const BudgetLanding = ({
 }) => {
   return (
     <div>
-      <Button light className="menu-toggle-btn" onPress={() => handleToggle()}>
-        <img
-          className="menu"
-          src="https://www.svgrepo.com/show/506800/burger-menu.svg"
-        />
-      </Button>
-      <Container>
-        <Sidebar isOpen={isOpen} />
-        {/* </div> */}
-        <Spacer y={6} />
-      </Container>
       <Text h3 className="description">
         Budgeting is the process of creating a financial plan to allocate and
         manage your income, expenses, and savings. It involves estimating your
