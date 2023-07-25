@@ -22,10 +22,10 @@ const BudgetCategory = ({
   const [categories, setCategories] = useState([]);
 
   const handleOnChange = (values) => {
-    setCategories(values);
+    setCategories(values.filter(value => typeof value === 'string'));
   };
   const handleBudgetCatSubmit = () => {
-    let array = [];
+    let newSubCatArray = [];
     for (let category of categories) {
       const foundObject = budgetInfo.budgetData.find((obj) =>
         Object.keys(obj).includes(category)
@@ -36,7 +36,7 @@ const BudgetCategory = ({
         });
       else newSubCatArray.push(foundObject);
     }
-    setBudgetInfo((info) => ({ ...info, budgetData: array }));
+    setBudgetInfo((info) => ({ ...info, budgetData: newSubCatArray }));
     handleNextStep();
   };
 
@@ -46,7 +46,7 @@ const BudgetCategory = ({
       <Spacer y={5} />
 
       <Checkbox.Group
-        color="default"
+        color="secondary"
         label="Check all that apply"
         value={categories}
         onChange={handleOnChange}
