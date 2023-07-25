@@ -9,7 +9,7 @@ const SubCategoryCard = ({ category }) => {
     <div className="sub-cat-card">
       <Spacer x={4} />
       <Card>
-        <Text h2> {Object.keys(category)} </Text>
+        <Text h2> {category} </Text>
         <SubCategoryInput />
       </Card>
     </div>

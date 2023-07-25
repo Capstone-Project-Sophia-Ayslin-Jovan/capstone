@@ -48,9 +48,10 @@ const BudgetGoal = ({
         type="number"
         size="xl"
         labelLeft="$"
-        name="budgetGoal"
+        name="total"
         onChange={handleOnChange}
         value={budgetInfo.total}
+        aria-label="Input"
       />
       <Spacer y={2} />
       <Row>
