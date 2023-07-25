@@ -22,7 +22,6 @@ const BudgetExpenses = ({
   handleNextStep,
   handlePreviousStep,
 }) => {
-  console.log(budgetInfo.subCategories);
   return (
     <div>
       <Container responsive="true">
@@ -31,13 +30,15 @@ const BudgetExpenses = ({
           expenses?
         </Text>
 
-        <Text h3>Budget Amount Left: ${budgetInfo.total}</Text>
-        {budgetInfo.subCategories.map((category, index) => (
+        <Text h3>Budget Amount Left: ${budgetInfo.budgetLeft}</Text>
+        {budgetInfo.budgetData.map((category, index) => (
           <div key={index}>
-            <SubCategoryCard category={category} index={index} />
+            <SubCategoryCard
+              category={Object.keys(category)[0]}
+              index={index}
+            />
           </div>
         ))}
-
         <Spacer y={2} />
         <Row>
           <Spacer x={15} />

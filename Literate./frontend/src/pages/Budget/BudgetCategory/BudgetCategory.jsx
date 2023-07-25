@@ -24,7 +24,22 @@ const BudgetCategory = ({
   const handleOnChange = (values) => {
     setCategories(values);
   };
-  budgetInfo.subCategories = categories;
+  const handleBudgetCatSubmit = () => {
+    let array = [];
+    for (let category of categories) {
+      const foundObject = budgetInfo.budgetData.find((obj) =>
+        Object.keys(obj).includes(category)
+      );
+      if (!foundObject)
+        array.push({
+          [category]: [],
+        });
+      else newSubCatArray.push(foundObject);
+    }
+    setBudgetInfo((info) => ({ ...info, budgetData: array }));
+    handleNextStep();
+  };
+
   return (
     <div>
       <Text h1>What will you be budgeting?</Text>
@@ -53,7 +68,7 @@ const BudgetCategory = ({
         <Spacer x={4} />
         <Button onPress={handlePreviousStep}>Back</Button>
         <Spacer x={1} />
-        <Button onPress={handleNextStep}>Next</Button>
+        <Button onPress={handleBudgetCatSubmit}>Next</Button>
       </Row>
     </div>
   );
