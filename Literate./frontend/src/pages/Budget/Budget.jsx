@@ -10,7 +10,7 @@ const Budget = ({ handleToggle, isOpen }) => {
   const [budgetInfo, setBudgetInfo] = useState({
     name: "",
     total: 0,
-    subCategories: [],
+    budgetData: [],
     hasBudget: false,
   });
 
