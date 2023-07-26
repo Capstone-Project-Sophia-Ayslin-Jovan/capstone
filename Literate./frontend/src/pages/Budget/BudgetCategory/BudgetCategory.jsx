@@ -20,7 +20,7 @@ const BudgetCategory = ({
   handlePreviousStep,
 }) => {
   const [categories, setCategories] = useState(
-    budgetInfo.budgetData.map((obj) => Object.keys(obj)).flat()
+    Object.keys(budgetInfo.budgetData)
   );
 
   const handleOnChange = (values) => {
@@ -28,18 +28,13 @@ const BudgetCategory = ({
     setCategories(values);
   };
   const handleBudgetCatSubmit = () => {
-    let newSubCatArray = [];
+    let catObj = {};
     for (let category of categories) {
-      const foundObject = budgetInfo.budgetData.find((obj) =>
-        Object.keys(obj).includes(category)
-      );
-      if (!foundObject)
-        newSubCatArray.push({
-          [category]: [],
-        });
-      else newSubCatArray.push(foundObject);
+      const isPresent = Object.keys(budgetInfo.budgetData).includes(category);
+      if (!isPresent) catObj[category] = [];
+      else catObj[category] = budgetInfo.budgetData[category];
     }
-    setBudgetInfo((info) => ({ ...info, budgetData: newSubCatArray }));
+    setBudgetInfo((info) => ({ ...info, budgetData: catObj }));
     handleNextStep();
   };
 

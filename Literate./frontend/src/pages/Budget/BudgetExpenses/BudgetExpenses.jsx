@@ -22,6 +22,11 @@ const BudgetExpenses = ({
   handleNextStep,
   handlePreviousStep,
 }) => {
+  console.log(budgetInfo.budgetData);
+  const [subCatInput, setSubCatInput] = useState(budgetInfo.budgetData);
+  const handleSubmitExpenses = () => {
+    handleNextStep;
+  };
   return (
     <div>
       <Container responsive="true">
@@ -31,11 +36,12 @@ const BudgetExpenses = ({
         </Text>
 
         <Text h3>Budget Amount Left: ${budgetInfo.budgetLeft}</Text>
-        {budgetInfo.budgetData.map((category, index) => (
+        {Object.keys(budgetInfo.budgetData).map((key, index) => (
           <div key={index}>
             <SubCategoryCard
-              category={Object.keys(category)[0]}
               index={index}
+              name={key}
+              subCatInput={budgetInfo.budgetData}
             />
           </div>
         ))}
@@ -44,7 +50,7 @@ const BudgetExpenses = ({
           <Spacer x={15} />
           <Button onPress={handlePreviousStep}>Back</Button>
           <Spacer x={1} />
-          <Button onPress={handleNextStep}>Next</Button>
+          <Button onPress={handleSubmitExpenses}>Next</Button>
         </Row>
       </Container>
     </div>
