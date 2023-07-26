@@ -11,10 +11,8 @@ import {
   Checkbox,
 } from "@nextui-org/react";
 
-const SubCategoryInput = ({ name, subCatInput }) => {
-  console.log(subCatInput);
-
-  const [inputPairs, setInputPairs] = useState(subCatInput[name]);
+const SubCategoryInput = ({ name, budgetData }) => {
+  const [inputPairs, setInputPairs] = useState(budgetData[name]);
 
   for (let x = inputPairs.length; x < 5; x++) {
     inputPairs.push({ name: "", allocation: 0 });
@@ -25,8 +23,7 @@ const SubCategoryInput = ({ name, subCatInput }) => {
     const updatedInput = [...inputPairs];
     updatedInput[index][key] = value;
     setInputPairs(updatedInput);
-    subCatInput[name] = inputPairs;
-    console.log(subCatInput);
+    budgetData[name] = inputPairs;
   };
 
   return (

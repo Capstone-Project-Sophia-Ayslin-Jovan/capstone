@@ -6,14 +6,23 @@ import BudgetGoal from "./BudgetGoal/BudgetGoal";
 import BudgetCategory from "./BudgetCategory/BudgetCategory";
 import BudgetExpenses from "./BudgetExpenses/BudgetExpenses";
 
+import { AuthorizeContext } from "../../contexts/authUser";
+
 const Budget = ({ handleToggle, isOpen }) => {
-  const [budgetInfo, setBudgetInfo] = useState({
-    name: "",
-    total: 0,
-    budgetLeft: 0,
-    budgetData: {},
-    hasBudget: false,
-  });
+  const { authState } = useContext(AuthorizeContext);
+  useEffect(() => {
+    setBudgetInfo({
+      userId: authState.user?.id,
+      name: "",
+      total: 0,
+      budgetLeft: 0,
+      budgetData: {},
+      hasBudget: false,
+    });
+  }, [authState.isAuthenticated]);
+  const [budgetInfo, setBudgetInfo] = useState({});
+
+  console.log(budgetInfo);
 
   const [step, setStep] = useState(0);
   const handleNextStep = () => {
