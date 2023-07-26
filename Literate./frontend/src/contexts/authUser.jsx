@@ -11,31 +11,27 @@ const AuthorizeProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      try {
-        const userToken = localStorage.getItem("literate_token");
-        apiClient.setToken(userToken);
+      const userToken = localStorage.getItem("literate_token");
+      apiClient.setToken(userToken);
 
-        if (userToken) {
-          const { data, error, message } = await apiClient.fetchUserFromToken();
-          console.log("Data Fetched From Token: ", data);
+      if (userToken) {
+        const { data, error, message } = await apiClient.fetchUserFromToken();
+        console.log("Data Fetched From Token: ", data);
 
-          if (data) {
-            setAuthState((state) => ({
-              ...state,
-              user: data.user,
-              isAuthenticated: true,
-            }));
-          } else {
-            console.log("FrontEnd: User Not Authenticated!");
-            setAuthState((state) => ({ ...state, isAuthenticated: false }));
-            console.log(message);
-            throw error;
-          }
+        if (data) {
+          setAuthState((state) => ({
+            ...state,
+            user: data.user,
+            isAuthenticated: true,
+          }));
         } else {
-          console.log("FrontEnd: No token detected!");
+          console.log("FrontEnd: User Not Authenticated!");
+          setAuthState((state) => ({ ...state, isAuthenticated: false }));
+          console.log(message);
+          throw error;
         }
-      } catch (err) {
-        console.log(err);
+      } else {
+        console.log("FrontEnd: No token detected!");
       }
     };
     fetchUser();

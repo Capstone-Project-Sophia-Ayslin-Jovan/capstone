@@ -41,8 +41,8 @@ model subCategory {
   budgetId   String
   name       String
   category   String
-  totalSpent Int
-  allocation Int
+  totalSpent Int       @default(0)
+  allocation Int       @default(0)
   billDate   DateTime?
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
