@@ -11,7 +11,7 @@ const Budget = ({ handleToggle, isOpen }) => {
     name: "",
     total: 0,
     budgetLeft: 0,
-    budgetData: [],
+    budgetData: {},
     hasBudget: false,
   });
 

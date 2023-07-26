@@ -11,18 +11,24 @@ import {
   Checkbox,
 } from "@nextui-org/react";
 
-const SubCategoryInput = () => {
-  const [inputs, setInputs] = useState([]);
+const SubCategoryInput = ({ name, subCatInput }) => {
+  console.log(subCatInput);
 
-  const addInput = () => {
-    setInputs([...inputs, ""]);
+  const [inputPairs, setInputPairs] = useState(subCatInput[name]);
+
+  for (let x = inputPairs.length; x < 5; x++) {
+    inputPairs.push({ name: "", allocation: 0 });
+  }
+
+  const handleInputChange = (e, index, key) => {
+    const { value } = e.target;
+    const updatedInput = [...inputPairs];
+    updatedInput[index][key] = value;
+    setInputPairs(updatedInput);
+    subCatInput[name] = inputPairs;
+    console.log(subCatInput);
   };
 
-  const handleInputChange = (index, value) => {
-    const newInputs = [...inputs];
-    newInputs[index] = value;
-    setInputs(newInputs);
-  };
   return (
     <div>
       <Spacer y={1.3} />
@@ -32,102 +38,34 @@ const SubCategoryInput = () => {
         <Spacer x={4.5} />
         <Text>$ Amount</Text>
       </Row>
-      <Row>
-        <Spacer y={3} />
-        <Spacer x={13} />
-        <Input
-          type="text"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          aria-label="Input"
-        />
-        <Spacer x={1} />
-        <Input
-          type="number"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          labelLeft="$"
-          aria-label="Input"
-        />
-      </Row>
-      <Row>
-        <Spacer y={3} />
-        <Spacer x={13} />
-        <Input
-          type="text"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          aria-label="Input"
-        />
-        <Spacer x={1} />
-        <Input
-          type="number"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          labelLeft="$"
-          aria-label="Input"
-        />
-      </Row>
-      <Row>
-        <Spacer y={3} />
-        <Spacer x={13} />
-        <Input
-          type="text"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          aria-label="Input"
-        />
-        <Spacer x={1} />
-        <Input
-          type="number"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          labelLeft="$"
-          aria-label="Input"
-        />
-      </Row>
-      <Row>
-        <Spacer y={3} />
-        <Spacer x={13} />
-        <Input
-          type="text"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          aria-label="Input"
-        />
-        <Spacer x={1} />
-        <Input
-          type="number"
-          onChange={(e) => handleInputChange(index, e.target.value)}
-          clearable
-          bordered
-          color="primary"
-          size="md"
-          labelLeft="$"
-          aria-label="Input"
-        />
-      </Row>
+      {inputPairs.map((input, index) => (
+        <Row key={index}>
+          <Input
+            type="text"
+            onChange={(e) => handleInputChange(e, index, "name")}
+            clearable
+            bordered
+            name="name"
+            value={input.name}
+            color="primary"
+            size="md"
+            aria-label="Input"
+          />
+          <Spacer x={1} />
+          <Input
+            type="number"
+            onChange={(e) => handleInputChange(e, index, "allocation")}
+            clearable
+            bordered
+            name="allocation"
+            value={input.allocation}
+            color="primary"
+            size="md"
+            labelLeft="$"
+            aria-label="Input"
+          />
+        </Row>
+      ))}
     </div>
   );
 };
