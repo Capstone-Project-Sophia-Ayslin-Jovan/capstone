@@ -30,7 +30,6 @@ const createBudget = async function (data) {
   for (let catName in budgetData) {
     for (let subCatObj of budgetData[catName]) {
       subCatObj["category"] = catName;
-      subCatObj["totalSpent"] = 0;
       subCatObj.allocation = parseInt(subCatObj.allocation);
       subCategories.push(subCatObj);
     }
