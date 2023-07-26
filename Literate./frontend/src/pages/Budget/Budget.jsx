@@ -6,14 +6,12 @@ import BudgetGoal from "./BudgetGoal/BudgetGoal";
 import BudgetCategory from "./BudgetCategory/BudgetCategory";
 import BudgetExpenses from "./BudgetExpenses/BudgetExpenses";
 
+import { BudgetContext } from "../../contexts/budget";
+
 const Budget = ({ handleToggle, isOpen }) => {
-  const [budgetInfo, setBudgetInfo] = useState({
-    name: "",
-    total: 0,
-    budgetLeft: 0,
-    budgetData: {},
-    hasBudget: false,
-  });
+  const { budgetInfo, setBudgetInfo } = useContext(BudgetContext);
+
+  console.log(budgetInfo);
 
   const [step, setStep] = useState(0);
   const handleNextStep = () => {

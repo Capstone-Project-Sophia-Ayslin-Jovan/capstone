@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import { Profile } from "./pages/Profile/Profile";
 import { AuthorizeProvider } from "./contexts/authUser";
+import { BudgetProvider } from "./contexts/budget";
 import { Home } from "./pages/Home/Home";
 import "./App.css";
 import Budget from "./pages/Budget/Budget";
@@ -15,7 +16,9 @@ export default function AppContainer() {
   return (
     <NextUIProvider>
       <AuthorizeProvider>
-        <App />
+        <BudgetProvider>
+          <App />
+        </BudgetProvider>
       </AuthorizeProvider>
     </NextUIProvider>
   );
@@ -38,7 +41,6 @@ function App() {
             element={<Profile handleToggle={handleToggle} isOpen={isOpen} />}
           />
           <Route
-
             path="/Budget"
             element={<Budget handleToggle={handleToggle} isOpen={isOpen} />}
           />

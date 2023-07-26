@@ -4,6 +4,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 //creates new budget for given user
 const createBudget = async function (data) {
+  console.log(data);
   const { userId, name, total, budgetData } = data;
 
   // We need more validation later
@@ -26,10 +27,10 @@ const createBudget = async function (data) {
   //   });
   // }
   const subCategories = [];
-  for (let catObj of budgetData) {
-    const catName = Object.keys(catObj)[0];
-    for (let subCatObj of catObj[catName]) {
+  for (let catName in budgetData) {
+    for (let subCatObj of budgetData[catName]) {
       subCatObj["category"] = catName;
+      subCatObj.allocation = parseInt(subCatObj.allocation);
       subCategories.push(subCatObj);
     }
   }
@@ -37,7 +38,7 @@ const createBudget = async function (data) {
   const budget = await prisma.budget.create({
     data: {
       name: name,
-      total: total,
+      total: parseInt(total),
       subCategories: {
         create: subCategories,
       },

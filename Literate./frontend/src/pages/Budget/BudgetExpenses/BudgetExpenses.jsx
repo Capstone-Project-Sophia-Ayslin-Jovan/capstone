@@ -22,10 +22,10 @@ const BudgetExpenses = ({
   handleNextStep,
   handlePreviousStep,
 }) => {
-  console.log(budgetInfo.budgetData);
-  const [subCatInput, setSubCatInput] = useState(budgetInfo.budgetData);
-  const handleSubmitExpenses = () => {
-    handleNextStep;
+  const handleSubmitExpenses = async () => {
+    console.log(budgetInfo);
+    await apiClient.createBudget(budgetInfo);
+    //handleNextStep();
   };
   return (
     <div>
@@ -41,7 +41,7 @@ const BudgetExpenses = ({
             <SubCategoryCard
               index={index}
               name={key}
-              subCatInput={budgetInfo.budgetData}
+              budgetData={budgetInfo.budgetData}
             />
           </div>
         ))}
@@ -50,7 +50,7 @@ const BudgetExpenses = ({
           <Spacer x={15} />
           <Button onPress={handlePreviousStep}>Back</Button>
           <Spacer x={1} />
-          <Button onPress={handleSubmitExpenses}>Next</Button>
+          <Button onPress={handleSubmitExpenses}>Submit</Button>
         </Row>
       </Container>
     </div>
