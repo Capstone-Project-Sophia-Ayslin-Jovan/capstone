@@ -60,16 +60,17 @@ const createBudget = async function (data) {
 };
 
 const getBudget = async (id) => {
+  console.log(id);
   const budgetData = await prisma.budget.findUnique({
     where: { id: id },
     include: {
-      subCategory: true,
+      subCategories: true,
     },
   });
-
+  if (!budgetData) return null;
   let budgetArray = [];
   const fields = ["name", "allocation", "totalSpent"];
-  for (let x of budgetData.subCategory) {
+  for (let x of budgetData.subCategories) {
     const foundObject = budgetArray.find((obj) =>
       Object.keys(obj).includes(x.category)
     );

@@ -4,6 +4,7 @@ import apiClient from "../services/apiClient";
 const AuthorizeContext = createContext();
 
 const AuthorizeProvider = ({ children }) => {
+  const [initialized, setInitialized] = useState(false);
   const [authState, setAuthState] = useState({
     user: null,
     isAuthenticated: false,
@@ -24,9 +25,14 @@ const AuthorizeProvider = ({ children }) => {
             user: data.user,
             isAuthenticated: true,
           }));
+          setInitialized(true);
         } else {
           console.log("FrontEnd: User Not Authenticated!");
-          setAuthState((state) => ({ ...state, isAuthenticated: false }));
+          setAuthState((state) => ({
+            ...state,
+            isAuthenticated: false,
+          }));
+          setInitialized(true);
           console.log(message);
           throw error;
         }
@@ -35,7 +41,7 @@ const AuthorizeProvider = ({ children }) => {
       }
     };
     fetchUser();
-  }, [authState.isAuthenticated]);
+  }, [authState.isAuthenticated, initialized]);
 
   const logoutUser = async () => {
     localStorage.removeItem("literate_token");
@@ -46,7 +52,13 @@ const AuthorizeProvider = ({ children }) => {
     });
   };
 
-  const passedProps = { authState, setAuthState, logoutUser };
+  const passedProps = {
+    authState,
+    setAuthState,
+    logoutUser,
+    initialized,
+    setInitialized,
+  };
 
   return (
     <AuthorizeContext.Provider value={passedProps}>
