@@ -17,8 +17,13 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import Header from "../../components/Header/Header";
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+import { BudgetContext } from "../../contexts/budget";
+
 export const Home = ({ handleToggle, isOpen }) => {
   const { logoutUser } = useContext(AuthorizeContext);
+  const { budgetInfo } = useContext(BudgetContext);
+  console.log(budgetInfo);
   const navigate = useNavigate();
   const handleLogout = () => {
     logoutUser();
@@ -26,7 +31,6 @@ export const Home = ({ handleToggle, isOpen }) => {
   };
   return (
     <div>
-
       <div className="home-container">
         {/* <Header
         handleToggle={handleToggle}
