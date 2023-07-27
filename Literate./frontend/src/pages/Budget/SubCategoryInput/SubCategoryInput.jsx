@@ -1,15 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Navbar,
-  Button,
-  Spacer,
-  Modal,
-  Text,
-  Input,
-  Row,
-  Checkbox,
-} from "@nextui-org/react";
+import { Spacer, Text, Input, Row } from "@nextui-org/react";
 
 const SubCategoryInput = ({ name, budgetData }) => {
   console.log("BudgetName:", name);

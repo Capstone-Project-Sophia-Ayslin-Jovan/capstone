@@ -32,21 +32,12 @@ export const Home = ({ handleToggle, isOpen }) => {
   return (
     <div>
       <div className="home-container">
-        {/* <Header
-        handleToggle={handleToggle}
-        isOpen={isOpen}
-        handleLogout={handleLogout}
-      /> */}
         <Sidebar
           handleToggle={handleToggle}
           handleLogout={handleLogout}
           isOpen={isOpen}
         />
-        {/* <div className="logout-btn">
-        <Button auto ghost onPress={handleLogout}>
-          Logout
-        </Button>
-      </div> */}
+
         <Container>
           <Row gap={1}>
             <Container>
