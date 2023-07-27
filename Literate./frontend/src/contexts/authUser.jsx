@@ -38,6 +38,7 @@ const AuthorizeProvider = ({ children }) => {
         }
       } else {
         console.log("FrontEnd: No token detected!");
+        setInitialized(true);
       }
     };
     fetchUser();
