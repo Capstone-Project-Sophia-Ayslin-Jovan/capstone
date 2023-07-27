@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Navbar,
   Button,
@@ -13,8 +13,6 @@ import {
   Grid,
 } from "@nextui-org/react";
 import SubCategoryCard from "../SubCategoryCard/SubCategoryCard";
-import apiClient from "../../../services/apiClient";
-import Sidebar from "../../../components/Sidebar/Sidebar";
 
 const BudgetExpenses = ({
   budgetInfo,
@@ -22,11 +20,6 @@ const BudgetExpenses = ({
   handleNextStep,
   handlePreviousStep,
 }) => {
-  const handleSubmitExpenses = async () => {
-    console.log(budgetInfo);
-    await apiClient.createBudget(budgetInfo);
-    //handleNextStep();
-  };
   return (
     <div>
       <Container responsive="true">
@@ -50,7 +43,7 @@ const BudgetExpenses = ({
           <Spacer x={15} />
           <Button onPress={handlePreviousStep}>Back</Button>
           <Spacer x={1} />
-          <Button onPress={handleSubmitExpenses}>Submit</Button>
+          <Button onPress={handleNextStep}>Next</Button>
         </Row>
       </Container>
     </div>

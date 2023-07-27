@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 
 const SubCategoryInput = ({ name, budgetData }) => {
+  console.log("BudgetName:", name);
   const [inputPairs, setInputPairs] = useState(budgetData[name]);
 
   for (let x = inputPairs.length; x < 5; x++) {

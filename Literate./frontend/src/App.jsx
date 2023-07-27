@@ -11,6 +11,9 @@ import { BudgetProvider } from "./contexts/budget";
 import { Home } from "./pages/Home/Home";
 import "./App.css";
 import Budget from "./pages/Budget/Budget";
+import AuthRoute from "./components/AuthRoute/AuthRoute";
+import NotAuthRoute from "./components/NotAuthRoute/NotAuthRoute";
+
 export default function AppContainer() {
   // 2. Use at the root of your app
   return (
@@ -34,19 +37,45 @@ function App() {
     <div className={styles.main}>
       <BrowserRouter forceRefresh={true}>
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/Signup" element={<Signup />} />
+          <Route
+            path="/"
+            element={
+              <NotAuthRoute>
+                <Landing />
+              </NotAuthRoute>
+            }
+          />
+          <Route
+            path="/Signup"
+            element={
+              <NotAuthRoute>
+                <Signup />
+              </NotAuthRoute>
+            }
+          />
           <Route
             path="/Profile"
-            element={<Profile handleToggle={handleToggle} isOpen={isOpen} />}
+            element={
+              <AuthRoute>
+                <Profile handleToggle={handleToggle} isOpen={isOpen} />
+              </AuthRoute>
+            }
           />
           <Route
             path="/Budget"
-            element={<Budget handleToggle={handleToggle} isOpen={isOpen} />}
+            element={
+              <AuthRoute>
+                <Budget handleToggle={handleToggle} isOpen={isOpen} />
+              </AuthRoute>
+            }
           />
           <Route
             path="/Home"
-            element={<Home handleToggle={handleToggle} isOpen={isOpen} />}
+            element={
+              <AuthRoute>
+                <Home handleToggle={handleToggle} isOpen={isOpen} />
+              </AuthRoute>
+            }
           />
         </Routes>
       </BrowserRouter>
