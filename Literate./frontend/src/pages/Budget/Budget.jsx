@@ -5,8 +5,8 @@ import BudgetLanding from "./BudgetLanding/BudgetLanding";
 import BudgetGoal from "./BudgetGoal/BudgetGoal";
 import BudgetCategory from "./BudgetCategory/BudgetCategory";
 import BudgetExpenses from "./BudgetExpenses/BudgetExpenses";
-
 import { BudgetContext } from "../../contexts/budget";
+import NameAndDate from "./NameAndDate/NameAndDate";
 
 const Budget = ({ handleToggle, isOpen }) => {
   const { budgetInfo, setBudgetInfo } = useContext(BudgetContext);
@@ -33,7 +33,7 @@ const Budget = ({ handleToggle, isOpen }) => {
       );
     case 1:
       return (
-        <BudgetGoal
+        <NameAndDate
           budgetInfo={budgetInfo}
           setBudgetInfo={setBudgetInfo}
           handleNextStep={handleNextStep}
@@ -41,6 +41,15 @@ const Budget = ({ handleToggle, isOpen }) => {
         />
       );
     case 2:
+      return (
+        <BudgetGoal
+          budgetInfo={budgetInfo}
+          setBudgetInfo={setBudgetInfo}
+          handleNextStep={handleNextStep}
+          handlePreviousStep={handlePreviousStep}
+        />
+      );
+    case 3:
       return (
         <BudgetCategory
           budgetInfo={budgetInfo}
@@ -51,7 +60,7 @@ const Budget = ({ handleToggle, isOpen }) => {
           isOpen={isOpen}
         />
       );
-    case 3:
+    case 4:
       return (
         <BudgetExpenses
           budgetInfo={budgetInfo}
@@ -62,7 +71,7 @@ const Budget = ({ handleToggle, isOpen }) => {
           isOpen={isOpen}
         />
       );
-    case 4:
+    case 5:
       return (
         <BudgetResults
           budgetInfo={budgetInfo}

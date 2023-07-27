@@ -25,7 +25,7 @@ const BudgetGoal = ({
   };
   return (
     <div>
-      <Text h1>What is your budgeting goal?</Text>
+      <Text h1>What is your budgeting goal for this time?</Text>
       <Spacer y={2} />
       <Input
         clearable

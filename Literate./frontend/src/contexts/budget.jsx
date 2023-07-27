@@ -18,6 +18,8 @@ const BudgetProvider = ({ children }) => {
           setBudgetInfo({
             userId: authState.user?.id,
             name: budgetData.data.name,
+            startDate: budgetData.data.startDate,
+            endDate: budgetData.data.endDate,
             total: budgetData.data.total,
             budgetLeft: 0,
             budgetData: budgetData.data.budgetData,
