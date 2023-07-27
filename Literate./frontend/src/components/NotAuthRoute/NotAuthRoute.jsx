@@ -4,6 +4,7 @@ import { useContext } from "react";
 
 const NotAuthRoute = ({ children }) => {
   const { authState, initialized } = useContext(AuthorizeContext);
+  console.log("Initialized: ", initialized);
   if (!initialized) return null;
   console.log("Initialized: ", initialized);
 

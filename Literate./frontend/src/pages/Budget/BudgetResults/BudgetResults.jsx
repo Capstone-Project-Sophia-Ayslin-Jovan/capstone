@@ -1,23 +1,14 @@
 "use client";
 import React, { useContext } from "react";
-import {
-  Navbar,
-  Button,
-  Spacer,
-  Modal,
-  Text,
-  Input,
-  Row,
-  Checkbox,
-  Container,
-} from "@nextui-org/react";
+import "./BudgetResults.css";
+import { Button, Spacer, Text, Row, Grid } from "@nextui-org/react";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import SubCategoryResults from "../SubCategoryResults/SubCategoryResults";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthorizeContext } from "../../../contexts/authUser";
 import { BudgetContext } from "../../../contexts/budget";
 import apiClient from "../../../services/apiClient";
-
+import { Pie } from "react-chartjs-2";
 const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
   const navigate = useNavigate();
   const { setAuthState, setInitialized } = useContext(AuthorizeContext);
@@ -36,9 +27,8 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
 
   return (
     <div>
-      <Text h1>Your Budget: $ {budgetInfo.budgetGoal}</Text>
-
-      <Container>
+      <Text h1>Your Budget: $ {budgetInfo.total}</Text>
+      <div className="grid">
         {Object.keys(budgetInfo.budgetData).map((key, index) => (
           <div key={index}>
             <SubCategoryResults
@@ -47,7 +37,7 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
             />
           </div>
         ))}
-      </Container>
+      </div>
 
       <Row>
         <Button onPress={handlePreviousStep}>Back</Button>

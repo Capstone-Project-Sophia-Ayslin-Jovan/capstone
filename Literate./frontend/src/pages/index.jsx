@@ -1,0 +1,1 @@
+import Landing from "./pages/Landing/Landing";

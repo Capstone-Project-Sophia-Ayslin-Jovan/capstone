@@ -9,8 +9,9 @@ const BudgetProvider = ({ children }) => {
   const [budgetInfo, setBudgetInfo] = useState({});
 
   useEffect(() => {
+    console.log(authState);
     const fetchBudget = async () => {
-      if (authState.isAuthenticated && authState.user.currBudgetId) {
+      if (authState.isAuthenticated && authState.user.currBudgetId !== null) {
         const budgetData = await apiClient.getBudget(
           authState.user.currBudgetId
         );
@@ -18,21 +19,25 @@ const BudgetProvider = ({ children }) => {
           setBudgetInfo({
             userId: authState.user?.id,
             name: budgetData.data.name,
+            startDate: budgetData.data.startDate,
+            endDate: budgetData.data.endDate,
             total: budgetData.data.total,
             budgetLeft: 0,
             budgetData: budgetData.data.budgetData,
             hasBudget: true,
           });
         } else {
-          setBudgetInfo({
-            userId: authState.user?.id,
-            name: "",
-            total: 0,
-            budgetLeft: 0,
-            budgetData: {},
-            hasBudget: false,
-          });
+          console.log("Curr Budget Id is wrong: ", authState.user.currBudgetId);
         }
+      } else {
+        setBudgetInfo({
+          userId: authState.user?.id,
+          name: "",
+          total: 0,
+          budgetLeft: 0,
+          budgetData: {},
+          hasBudget: false,
+        });
       }
     };
     fetchBudget();
