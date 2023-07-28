@@ -29,10 +29,15 @@ const BudgetProvider = ({ children }) => {
         } else {
           console.log("Curr Budget Id is wrong: ", authState.user.currBudgetId);
         }
+
+        // {BudgetData: "essentials": [{name:, allocation:0}], 'transportation': [{}]}
+        // Array.array(budgetInfo.budgetData).map((key) =>{key.map})
       } else {
         setBudgetInfo({
           userId: authState.user?.id,
           name: "",
+          startDate: null,
+          endDate: null,
           total: 0,
           budgetLeft: 0,
           budgetData: {},
