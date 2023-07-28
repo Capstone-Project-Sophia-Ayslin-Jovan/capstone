@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Spacer, Text, Input, Row } from "@nextui-org/react";
+import { Spacer, Text, Input, Row, Container } from "@nextui-org/react";
 
 const SubCategoryInput = ({ name, budgetData }) => {
   console.log("BudgetName:", name);
@@ -27,8 +27,9 @@ const SubCategoryInput = ({ name, budgetData }) => {
         <Spacer x={4.5} />
         <Text>$ Amount</Text>
       </Row>
+      {/* <Container justify="center" alignContent="center"> */}
       {inputPairs.map((input, index) => (
-        <Row key={index}>
+        <Row className="input-pairs" key={index}>
           <Input
             type="text"
             onChange={(e) => handleInputChange(e, index, "name")}
@@ -55,6 +56,7 @@ const SubCategoryInput = ({ name, budgetData }) => {
           />
         </Row>
       ))}
+      {/* </Container> */}
     </div>
   );
 };

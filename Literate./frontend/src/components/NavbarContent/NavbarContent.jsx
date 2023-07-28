@@ -17,30 +17,21 @@ const NavbarContent = ({ appState, setAppState }) => {
   const navigate = useNavigate();
   //useEffect checking if user is already logged in, if so will redirect to home page
   return (
-    <div>
-      <Navbar variant="floating">
-        <Navbar.Content underlineHeight={"normal"}>
-          <Navbar.Brand className="logo">
-            <Navbar.Link href="/">
-              <Text h4>Literate.</Text>
-            </Navbar.Link>
-          </Navbar.Brand>
-          <Spacer x={3} />
-          <Navbar.Link href="/">Home</Navbar.Link>
-          <Spacer x={3} />
-          <Navbar.Link href="#about">About</Navbar.Link>
-          <Spacer x={3} />
-          <Navbar.Link>Contact</Navbar.Link>
-
-          <Spacer x={24} />
-          <div>
-            <Spacer y={1} />
-            <Login loginForm={loginForm} />
-          </div>
-        </Navbar.Content>
-        <Spacer x={24} />
-      </Navbar>
-    </div>
+    <Navbar variant="sticky">
+      <Navbar.Brand>
+        <Text h4>Literate.</Text>
+      </Navbar.Brand>
+      <Navbar.Content underlineHeight={"normal"}>
+        <Navbar.Link href="/">Home</Navbar.Link>
+        <Spacer x={2} />
+        <Navbar.Link href="#about">About</Navbar.Link>
+        <Spacer x={2} />
+        <Navbar.Link>Contact</Navbar.Link>
+      </Navbar.Content>
+      <Navbar.Content>
+        <Login loginForm={loginForm} />
+      </Navbar.Content>
+    </Navbar>
   );
 };
 export default NavbarContent;

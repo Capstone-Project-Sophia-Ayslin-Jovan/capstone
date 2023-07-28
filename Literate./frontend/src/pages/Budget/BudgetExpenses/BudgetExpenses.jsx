@@ -28,7 +28,7 @@ const BudgetExpenses = ({
           expenses?
         </Text>
 
-        <Text h3>Budget Amount Left: ${budgetInfo.budgetLeft}</Text>
+        <Text h3>Budget Amount Left: ${budgetInfo.total}</Text>
         {Object.keys(budgetInfo.budgetData).map((key, index) => (
           <div key={index}>
             <SubCategoryCard
