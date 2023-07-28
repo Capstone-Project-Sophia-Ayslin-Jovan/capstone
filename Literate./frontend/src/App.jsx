@@ -9,7 +9,6 @@ import { Profile } from "./pages/Profile/Profile";
 import { AuthorizeProvider } from "./contexts/authUser";
 import { BudgetProvider } from "./contexts/budget";
 import { Home } from "./pages/Home/Home";
-import "./App.css";
 import Budget from "./pages/Budget/Budget";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
 import NotAuthRoute from "./components/NotAuthRoute/NotAuthRoute";
