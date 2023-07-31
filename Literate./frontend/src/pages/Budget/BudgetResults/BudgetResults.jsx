@@ -82,6 +82,7 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
             />
           </div>
         ))}
+      </Container>
       </div>
       <div className="piechart">
         <Pie data={data} />

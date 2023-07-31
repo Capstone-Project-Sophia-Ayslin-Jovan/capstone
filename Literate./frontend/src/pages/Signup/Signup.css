@@ -1,0 +1,8 @@
+.signup::before {
+  background-image: url(https://logowik.com/content/uploads/images/piggy-bank8686.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: "blur(8px)";
+}
