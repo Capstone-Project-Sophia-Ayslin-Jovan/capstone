@@ -54,7 +54,7 @@ export default function MSBudget() {
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
-        backgroundColor="#ffffff"
+        backgroundColor="white"
         maxWidth={800}
         p={6}
         m="10px auto"
