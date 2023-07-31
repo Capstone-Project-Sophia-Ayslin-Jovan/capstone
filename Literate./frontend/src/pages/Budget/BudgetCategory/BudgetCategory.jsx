@@ -19,15 +19,7 @@ const BudgetCategory = ({
   handleNextStep,
   handlePreviousStep,
 }) => {
-  const [categories, setCategories] = useState(
-    Object.keys(budgetInfo.budgetData)
-  );
-
-  const handleOnChange = (values) => {
-    console.log(categories);
-    setCategories(values);
-  };
-  const handleBudgetCatSubmit = () => {
+  const handleOnChange = (categories) => {
     let catObj = {};
     for (let category of categories) {
       const isPresent = Object.keys(budgetInfo.budgetData).includes(category);
@@ -35,18 +27,16 @@ const BudgetCategory = ({
       else catObj[category] = budgetInfo.budgetData[category];
     }
     setBudgetInfo((info) => ({ ...info, budgetData: catObj }));
-    handleNextStep();
   };
 
   return (
     <div>
       <Text h1>What will you be budgeting?</Text>
       <Spacer y={5} />
-
       <Checkbox.Group
         color="secondary"
         label="Check all that apply"
-        value={categories}
+        value={Object.keys(budgetInfo.budgetData)}
         onChange={handleOnChange}
       >
         <Checkbox value="Essentials">Essentials</Checkbox>
@@ -61,13 +51,6 @@ const BudgetCategory = ({
         <Checkbox value="Recreation">Recreation</Checkbox>
         <Checkbox value="Other">Other</Checkbox>
       </Checkbox.Group>
-      <Spacer y={5} />
-      <Row>
-        <Spacer x={4} />
-        <Button onPress={handlePreviousStep}>Back</Button>
-        <Spacer x={1} />
-        <Button onPress={handleBudgetCatSubmit}>Next</Button>
-      </Row>
     </div>
   );
 };

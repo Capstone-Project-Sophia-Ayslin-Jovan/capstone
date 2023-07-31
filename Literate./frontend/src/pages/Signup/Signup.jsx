@@ -8,10 +8,13 @@ import {
   Input,
   Row,
   Checkbox,
+  Col,
   Spacer,
   Container,
+  Grid,
+  Card,
 } from "@nextui-org/react";
-import NavbarContent from "../../components/NavbarContent/NavbarContent";
+import Nav from "../../components/Nav/Nav";
 import { AuthorizeContext } from "../../contexts/authUser";
 import apiClient from "../../services/apiClient";
 
@@ -87,7 +90,7 @@ const Signup = () => {
         localStorage.setItem("literate_token", data.userToken);
         setAuthState((state) => ({ ...state, isAuthenticated: true }));
         setIsLoading(false);
-        navigate("/Home");
+        navigate("/Dashboard");
       } else {
         setErrors((e) => ({
           ...e,
@@ -107,105 +110,116 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <NavbarContent />
-      <Spacer />
-      <Text id="modal-title" size={18}>
-        Sign up with
-        <Text b size={30}>
-          <Spacer />
-          Literate.
-        </Text>
-      </Text>
-      <div className="form">
-        <Container responsive="true">
-          <Row>
-            <Spacer x={7.5} />
-            <Input
-              clearable
-              bordered
-              width="500px"
-              color="primary"
-              size="lg"
-              placeholder="First Name"
-              name="firstName"
-              value={form.firstName}
-              onChange={handleOnInputChange}
-              aria-label="Input"
-            />
-            <Spacer />
-            <Input
-              clearable
-              bordered
-              width="500px"
-              color="primary"
-              size="lg"
-              placeholder="Last Name"
-              name="lastName"
-              value={form.lastName}
-              onChange={handleOnInputChange}
-              aria-label="Input"
-            />
-          </Row>
-        </Container>
-        <Spacer />
-        <Input
-          clearable
-          bordered
-          fullWidth
-          color="primary"
-          size="lg"
-          placeholder="Username"
-          name="username"
-          value={form.username}
-          onChange={handleOnInputChange}
-          aria-label="Input"
-        />
-        <Spacer />
-        <Input
-          clearable
-          bordered
-          fullWidth
-          color="primary"
-          size="lg"
-          placeholder="Email"
-          name="email"
-          value={form.email}
-          onChange={handleOnInputChange}
-          aria-label="Input"
-        />
-        <Spacer />
-        <Input.Password
-          clearable
-          bordered
-          fullWidth
-          color="primary"
-          size="lg"
-          placeholder="Password"
-          name="password"
-          value={form.password}
-          onChange={handleOnInputChange}
-          aria-label="Input"
-        />
-        <Spacer />
-        <Input.Password
-          clearable
-          bordered
-          fullWidth
-          color="primary"
-          size="lg"
-          placeholder="Confirm Password"
-          name="passwordConfirm"
-          value={form.passwordConfirm}
-          onChange={handleOnInputChange}
-          aria-label="Input"
-        />
-        <Spacer />
-      </div>
-      <Button onPress={handleOnSubmit} disabled={isLoading}>
-        Sign up
-      </Button>
-    </div>
+    <>
+      <Nav />
+      <Container
+        display="flex"
+        alignItems="center"
+        css={{ justifyContent: "center" }}
+        // css={{
+        //   backgroundImage: `url(https://logowik.com/content/uploads/images/piggy-bank8686.jpg)`,
+        //   backgroundPosition: "center",
+        //   backgroundRepeat: "no-repeat",
+        //   backgroundAttachment: "fixed",
+        //   backgroundSize: "cover",
+        // }}
+      >
+        <Card css={{ width: "40vw" }}>
+          <Card.Header css={{ textAlign: "center", justifyContent: "center" }}>
+            <Text id="modal-title" size={30} textAlign="center">
+              Sign Up with Literate.
+            </Text>
+          </Card.Header>
+          <Card.Divider></Card.Divider>
+          <Card.Body>
+            <Grid.Container gap={2} justify="center">
+              <Grid xs={12} md={6}>
+                <Input
+                  clearable
+                  bordered
+                  fullWidth
+                  color="primary"
+                  size="lg"
+                  placeholder="First Name"
+                  name="firstName"
+                  aria-label="Input"
+                />
+              </Grid>
+              <Grid xs={12} md={6}>
+                <Input
+                  clearable
+                  bordered
+                  fullWidth
+                  color="primary"
+                  size="lg"
+                  placeholder="Last Name"
+                  name="lastName"
+                  aria-label="Input"
+                />
+              </Grid>
+              <Grid xs={12}>
+                <Input
+                  clearable
+                  bordered
+                  fullWidth
+                  color="primary"
+                  size="lg"
+                  placeholder="Username"
+                  name="username"
+                  aria-label="Input"
+                />
+              </Grid>
+              <Grid xs={12}>
+                <Input
+                  clearable
+                  bordered
+                  fullWidth
+                  color="primary"
+                  size="lg"
+                  placeholder="Email"
+                  name="email"
+                  aria-label="Input"
+                />
+              </Grid>
+              <Grid xs={12}>
+                <Input.Password
+                  clearable
+                  bordered
+                  fullWidth
+                  color="primary"
+                  size="lg"
+                  placeholder="Password"
+                  name="password"
+                  aria-label="Input"
+                />
+              </Grid>
+              <Grid xs={12}>
+                <Input.Password
+                  clearable
+                  bordered
+                  fullWidth
+                  color="primary"
+                  size="lg"
+                  placeholder="Confirm Password"
+                  name="passwordConfirm"
+                  aria-label="Input"
+                />
+              </Grid>
+              <Grid xs={12} justify="center">
+                <Button
+                  auto
+                  flat
+                  onPress={handleOnSubmit}
+                  css={{ width: "6vw" }}
+                >
+                  Sign Up
+                </Button>
+              </Grid>
+            </Grid.Container>
+          </Card.Body>
+        </Card>
+      </Container>
+    </>
   );
 };
 

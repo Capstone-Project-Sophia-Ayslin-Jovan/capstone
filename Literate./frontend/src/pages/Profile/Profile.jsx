@@ -8,17 +8,12 @@ import { AuthorizeContext } from "../../contexts/authUser";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
 export const Profile = ({ handleToggle, isOpen }) => {
-  const { authState, logoutUser } = useContext(AuthorizeContext);
+  const { authState } = useContext(AuthorizeContext);
   const { user } = authState;
   console.log("User:", user);
   return (
     <div className="profile-page">
       <div className="container">
-        <Sidebar
-          handleLogout={logoutUser}
-          handleToggle={handleToggle}
-          isOpen={isOpen}
-        />
         <Container>
           <Text h2 className="account-title">
             My Account
