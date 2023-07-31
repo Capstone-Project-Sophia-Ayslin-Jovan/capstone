@@ -1,24 +1,23 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Navbar,
-  Button,
-  Spacer,
-  Modal,
-  Text,
-  Input,
-  Row,
-  Checkbox,
-  Container
-} from "@nextui-org/react";
-
-const SubCategoryResults = ({category, budgetInfo}) => {
+import { Text, Container, Grid, Card } from "@nextui-org/react";
+import "./SubCategoryResults.css";
+const SubCategoryResults = ({ category, categoryValues }) => {
   return (
-    <Container responsive="true">
-      <Text h2> {category} </Text>
-      <Text h4> </Text>
-    </Container>
+    <div className="category-results">
+      <Container responsive="true">
+        <Card css={{ width: 400 }}>
+          <Card.Body>
+            <Text h2>{category}</Text>
+            {categoryValues.map(({ name, allocation }) => (
+              <Text size={24} p>
+                {name} ${allocation}
+              </Text>
+            ))}
+          </Card.Body>
+        </Card>
+      </Container>
+    </div>
   );
 };
-
 export default SubCategoryResults;

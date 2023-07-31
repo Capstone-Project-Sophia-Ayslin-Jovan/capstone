@@ -32,16 +32,6 @@ export const Home = () => {
   return (
     <div>
       <div className="home-container">
-        {/* <Header
-        handleToggle={handleToggle}
-        isOpen={isOpen}
-        handleLogout={handleLogout}
-      /> */}
-        {/* <div className="logout-btn">
-        <Button auto ghost onPress={handleLogout}>
-          Logout
-        </Button>
-      </div> */}
         <Container>
           <Row gap={1}>
             <Container>
