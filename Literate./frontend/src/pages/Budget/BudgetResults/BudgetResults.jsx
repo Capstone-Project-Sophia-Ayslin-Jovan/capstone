@@ -48,12 +48,6 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
           </div>
         ))}
       </Container>
-
-      <Row>
-        <Button onPress={handlePreviousStep}>Back</Button>
-        <Spacer x={1} />
-        <Button onPress={handleSubmitResults}>Finish</Button>
-      </Row>
     </div>
   );
 };

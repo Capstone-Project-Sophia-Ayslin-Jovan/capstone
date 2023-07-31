@@ -29,10 +29,6 @@ const BudgetLanding = ({
         categories of expenses, such as housing, transportation, food,
         entertainment, and savings.
       </Text>
-      <Spacer y={4} />
-      <Button className="start-btn" size="xl" onPress={handleNextStep}>
-        Start Budgeting
-      </Button>
     </div>
   );
 };

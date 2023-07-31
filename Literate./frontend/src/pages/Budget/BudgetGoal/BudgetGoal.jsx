@@ -40,13 +40,6 @@ const BudgetGoal = ({
         value={budgetInfo.total}
         aria-label="Input"
       />
-      <Spacer y={2} />
-      <Row>
-        <Spacer x={4} />
-        <Button onPress={handlePreviousStep}>Back</Button>
-        <Spacer x={1} />
-        <Button onPress={handleNextStep}>Next</Button>
-      </Row>
     </div>
   );
 };

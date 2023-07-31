@@ -20,7 +20,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 import { BudgetContext } from "../../contexts/budget";
 
-export const Home = ({ handleToggle, isOpen }) => {
+export const Home = () => {
   const { logoutUser } = useContext(AuthorizeContext);
   const { budgetInfo } = useContext(BudgetContext);
   console.log(budgetInfo);
@@ -37,11 +37,6 @@ export const Home = ({ handleToggle, isOpen }) => {
         isOpen={isOpen}
         handleLogout={handleLogout}
       /> */}
-        <Sidebar
-          handleToggle={handleToggle}
-          handleLogout={handleLogout}
-          isOpen={isOpen}
-        />
         {/* <div className="logout-btn">
         <Button auto ghost onPress={handleLogout}>
           Logout
@@ -50,9 +45,6 @@ export const Home = ({ handleToggle, isOpen }) => {
         <Container>
           <Row gap={1}>
             <Container>
-              <Text className="app-title" size={"$2xl"} h2>
-                Literate.
-              </Text>
               <Spacer y={4} />
               <Text h2>We've got what you need.</Text>
               <Spacer y={2} />
