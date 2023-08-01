@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   Progress,
   Box,
@@ -35,18 +35,34 @@ import {
 } from "@nextui-org/react";
 
 import { useToast } from "@chakra-ui/react";
-import { BudgetContext } from "../../contexts/budget";
-import BudgetGoal from "./BudgetGoal/BudgetGoal";
 import BudgetLanding from "./BudgetLanding/BudgetLanding";
 import BudgetCategory from "./BudgetCategory/BudgetCategory";
 import BudgetExpenses from "./BudgetExpenses/BudgetExpenses";
 import BudgetResults from "./BudgetResults/BudgetResults";
+import BudgetInfo from "./BudgetInfo/BudgetInfo";
+import apiClient from "../../services/apiClient";
+import { AuthorizeContext } from "../../contexts/authUser";
 
 export default function MSBudget() {
-  const { budgetInfo, setBudgetInfo } = useContext(BudgetContext);
+  const { authState, setAuthState } = useContext(AuthorizeContext);
+  const [budgetInfo, setBudgetInfo] = useState({});
+
+  // This is to avoid user not being defined.
+  useEffect(() => {
+    setBudgetInfo({
+      userId: authState.user?.id,
+      name: null,
+      startDate: null,
+      endDate: null,
+      goal: null,
+      budgetData: {},
+    });
+  }, [authState.isAuthenticated]);
+
   const toast = useToast();
   const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(20);
+  const [progress, setProgress] = useState(16.67);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   return (
     <>
@@ -69,19 +85,26 @@ export default function MSBudget() {
           isAnimated
         ></Progress> */}
         <NextUIProgress value={progress} />
+        <Spacer y={1} />
         {step === 1 ? (
           <BudgetLanding />
         ) : step === 2 ? (
-          <BudgetGoal budgetInfo={budgetInfo} setBudgetInfo={setBudgetInfo} />
+          <BudgetInfo
+            budgetInfo={budgetInfo}
+            setBudgetInfo={setBudgetInfo}
+            setIsDisabled={setIsDisabled}
+          />
         ) : step === 3 ? (
           <BudgetCategory
             budgetInfo={budgetInfo}
             setBudgetInfo={setBudgetInfo}
+            setIsDisabled={setIsDisabled}
           />
         ) : step === 4 ? (
           <BudgetExpenses
             budgetInfo={budgetInfo}
             setBudgetInfo={setBudgetInfo}
+            setIsDisabled={setIsDisabled}
           />
         ) : (
           <BudgetResults budgetInfo={budgetInfo} />
@@ -93,29 +116,33 @@ export default function MSBudget() {
                 onPress={() => {
                   if (step !== 1) {
                     setStep(step - 1);
-                    setProgress(progress - 20);
+                    setProgress(progress - 16.67);
                   }
                 }}
-                isDisabled={step === 1}
-                colorScheme="teal"
-                variant="solid"
-                w="7rem"
-                mr="5%"
+                disabled={step === 1 || step >= 6}
               >
                 Back
               </Button>
-              {step === 5 ? (
+              {step >= 5 ? (
                 <Button
-                  w="7rem"
-                  colorScheme="red"
-                  variant="solid"
-                  onPress={() => {
-                    if (step !== 6) setStep(step + 1);
+                  disabled={step >= 6}
+                  color="success"
+                  onPress={async () => {
+                    setStep(step + 1);
+                    setProgress(100);
+                    console.log(budgetInfo);
+                    const budget = await apiClient.createBudget(budgetInfo);
+                    setAuthState((state) => {
+                      const updateAuthState = { ...state };
+                      console.log(updateAuthState);
+                      updateAuthState.user.currBudgetId = budget.id;
+                      console.log(updateAuthState);
+                      return updateAuthState;
+                    });
                     toast({
-                      title: "Account created.",
-                      description: "We've created your account for you.",
+                      title: "Budget Created.",
+                      description: "Click on Home to View Your budget",
                       status: "success",
-                      duration: 3000,
                       isClosable: true,
                     });
                   }}
@@ -125,16 +152,11 @@ export default function MSBudget() {
               ) : (
                 <Button
                   w="7rem"
+                  disabled={step > 1 ? isDisabled : false}
                   onPress={() => {
                     setStep(step + 1);
-                    if (step === 5) {
-                      setProgress(100);
-                    } else {
-                      setProgress(progress + 20);
-                    }
+                    setProgress(progress + 16.67);
                   }}
-                  colorScheme="teal"
-                  variant="outline"
                 >
                   Next
                 </Button>

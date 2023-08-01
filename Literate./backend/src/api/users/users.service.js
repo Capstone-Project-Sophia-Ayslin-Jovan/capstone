@@ -55,7 +55,7 @@ const registerUser = async (creds) => {
     location: "Backend: Register User",
   });
   validateEmail(email);
-  validatePassword(password);
+  // validatePassword(password);
 
   const normalizedEmail = email.toLowerCase();
   const existingUserWithEmail = await prisma.user.findFirst({

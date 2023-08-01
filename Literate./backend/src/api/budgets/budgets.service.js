@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 //creates new budget for given user
 const createBudget = async function (data) {
   console.log(data);
-  const { userId, name, total, budgetData } = data;
+  const { userId, name, goal, startDate, endDate, budgetData } = data;
 
   // We need more validation later
   // const requiredCreds = ["userId", "total", "subCategories"];
@@ -34,11 +34,13 @@ const createBudget = async function (data) {
       subCategories.push(subCatObj);
     }
   }
-
+  console.log("User Id", userId);
   const budget = await prisma.budget.create({
     data: {
       name: name,
-      total: parseInt(total),
+      goal: parseInt(goal),
+      startDate: new Date(startDate).toISOString(),
+      endDate: new Date(endDate).toISOString(),
       subCategories: {
         create: subCategories,
       },
@@ -52,17 +54,15 @@ const createBudget = async function (data) {
       subCategories: true,
     },
   });
-  const { isSuccess } = await userService.updateUser(userId, {
-    currBudgetId: budget.id,
-  });
-  console.log(isSuccess);
+
   return { budget };
 };
 
-const getBudget = async (id) => {
-  console.log(id);
+const getBudget = async (userId) => {
+  //This has been updated to use userId
+  console.log(userId);
   const budgetData = await prisma.budget.findUnique({
-    where: { id: id },
+    where: { userId: userId },
     include: {
       subCategories: true,
     },
@@ -88,11 +88,13 @@ const getBudget = async (id) => {
 
   const budget = {
     name: budgetData.name,
-    total: budgetData.total,
+    goal: budgetData.goal,
+    startDate: budgetData.startDate,
+    endDate: budgetData.endDate,
     budgetData: budgetArray,
   };
 
-  return budget;
+  return { budget };
 };
 const updateBudget = async (id, { budgetData }) => {
   // Should the id be the userId or the budgetId, for now I think budgetId works best

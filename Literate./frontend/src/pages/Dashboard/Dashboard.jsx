@@ -78,8 +78,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
 const NavItem = ({ icon, children, pathname, ...rest }) => {
   const location = useLocation();
-
-  console.log(location);
   return (
     <Link to={pathname}>
       <Flex

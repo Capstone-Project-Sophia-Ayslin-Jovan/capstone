@@ -25,7 +25,7 @@ function Nav() {
   ];
   return (
     <Layout>
-      <Navbar variant="sticky" css={{}}>
+      <Navbar>
         <Navbar.Toggle showIn="xs" />
         <Navbar.Brand>
           <Text b color="inherit" hideIn="xs">

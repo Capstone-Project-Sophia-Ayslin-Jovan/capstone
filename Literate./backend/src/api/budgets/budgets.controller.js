@@ -10,9 +10,9 @@ router.post("/budget", async function (req, res, next) {
     next(err);
   }
 });
-router.get("/budget/:id", async (req, res, next) => {
+router.get("/budget/:userId", async (req, res, next) => {
   try {
-    const budget = await budgetService.getBudget(req.params.id);
+    const budget = await budgetService.getBudget(req.params.userId);
     return res.status(200).json(budget);
   } catch (err) {
     next(err);
