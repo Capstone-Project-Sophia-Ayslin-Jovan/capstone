@@ -24,16 +24,11 @@
   display: flex;
   justify-content: flex-end;
 }
-.info-blurb {
-  /* width: 300px; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: flex-start; */
-}
+
 .budget-stuff {
   display: flex;
   flex-direction: row;
 }
 .clipboard {
-  width: 50%;
+  width: 55%;
 }

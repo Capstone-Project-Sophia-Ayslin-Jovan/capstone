@@ -13,6 +13,7 @@ import {
   MSBudget,
   Profile,
   Dashboard,
+  ExpenseTracking,
 } from "./pages/index";
 import { AuthRoute, NotAuthRoute } from "./components/index";
 
@@ -90,6 +91,14 @@ function App() {
             element={
               <AuthRoute>
                 <Dashboard display={<MSBudget />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Add-Expense"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ExpenseTracking />}></Dashboard>
               </AuthRoute>
             }
           />

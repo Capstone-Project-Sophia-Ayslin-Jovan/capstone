@@ -56,17 +56,16 @@ export default function Landing({ appState, setAppState }) {
             </Text>
             <Text size={"$2xl"}>Smart Money, Bright Future</Text>
           </Container>
-          <img src="https://static.vecteezy.com/system/resources/previews/002/884/391/original/illustration-of-saving-money-in-the-household-sector-for-investment-spending-and-daily-life-vector.jpg" />
+          <img src="https://img.freepik.com/free-vector/tiny-students-sitting-near-books-getting-university-degree-paying-money-education-business-flat-vector-illustration-college-scholarship-finance-system-school-fee-economy-student-loan-concept_74855-21037.jpg?w=2000&t=st=1690861950~exp=1690862550~hmac=99af581cf1a764d5638d3e94211f73e0c6501665816a853ce03089cf4b8200ad" />
         </Row>
       </Container>
-      <Spacer y={6} />
-      <div>
+      <Spacer y={2} />
+      <Container>
         <h2>
           Becoming financially literate is hard. That's why we've made it easy.
         </h2>
-        <Spacer y={4} />
+        <Spacer y={8} />
         <div className="container">
-          <Spacer y={4} />
           <div className="info-card">
             <div>
               <Text h2>Budgeting Made Easy</Text>
@@ -75,12 +74,12 @@ export default function Landing({ appState, setAppState }) {
               Track your income, set spending limits for different categories,
               and make real-time updates on your financial progress. By keeping
               a close eye on your spending, you'll gain a better understanding
-              of where your money goes and make informed decisions.
+              of where your money goes and make better informed decisions.
             </Text>
             <Spacer y={2} />
             <Text h3>
               Interested in being able to manage your money better? Become a
-              budgeting pro now!
+              budgeting pro today!
             </Text>
             <Spacer y={2} />
             <div className="get-strt-btn">
@@ -99,7 +98,7 @@ export default function Landing({ appState, setAppState }) {
         <div className="container">
           <img
             className="expense-pic"
-            src="https://blog.darwinbox.com/hubfs/Travel%20and%20Expense%20Management%20Definition%2C%20Significance%20%26%20Key%20Features.jpg"
+            src="https://img.freepik.com/free-vector/salary-gap-male-female-business-characters_74855-19874.jpg?w=2000&t=st=1690860830~exp=1690861430~hmac=55c0723d6ee73830ce652595c1a118fe5dead6c9dc2121e868a4ee94ecaafbf4"
           ></img>
           <div className="info-card2">
             <Text h2>Expense Tracking at Your Fingertips</Text>
@@ -119,34 +118,35 @@ export default function Landing({ appState, setAppState }) {
               From budgeting basics to credit card management and savings
               strategies, you'll gain valuable insights and practical knowledge.
             </Text>
-          </div>
-          <Link to="/About">
-            <Button rounded size={"xl"}>
-              Learn More
-            </Button>
-          </Link>
+            <Spacer y={2} />
+            <Link to="/About">
+              <Button rounded ghost color={"success"} size={"xl"}>
+                Learn More
+              </Button>
+            </Link>
+          </div>{" "}
+          <img
+            className="piggy"
+            src="https://img.freepik.com/free-vector/piggy-bank-concept-illustration_114360-5612.jpg?w=1800&t=st=1690862781~exp=1690863381~hmac=73e7344fe8e770c8c94a3f79af8a34c2e13c0a44c88cba336d346f21d9f76f0d"
+          />
         </div>
         <Spacer y={4} />
-      </div>
-      <Spacer y={8} />
-      <div className="about">
-        <div className="about-blurb">
-          <h1 id="about">Our Mission</h1>
-          <Text size={24}>
-            Our mission is to provide college students with the tools,
-            knowledge, and guidance they need to navigate the complexities of
-            personal finance. We aim to empower students to create budgets,
-            track their expenses, and develop healthy financial habits that will
-            serve them well beyond their college years. With Literate, we want
-            to equip students with the essential money management skills they
-            need to thrive academically and financially.
-          </Text>
+
+        <div className="about">
+          <div className="about-blurb">
+            <h1 id="about">Our Mission</h1>
+            <Text size={24}>
+              We look to provide the financially untrained with the tools,
+              knowledge, and guidance they need to navigate the complexities of
+              personal finance. We aim to empower students to create budgets,
+              track their expenses, and develop healthy financial habits that
+              will serve them well beyond their college years. With Literate, we
+              want to equip students with the essential money management skills
+              they need to thrive academically and financially.
+            </Text>
+          </div>
         </div>
-        <img
-          className="piggy"
-          src="https://logowik.com/content/uploads/images/piggy-bank8686.jpg"
-        />
-      </div>
+      </Container>
       <Spacer y={6} />
       <Footer />
     </>
