@@ -43,6 +43,8 @@ const Login = () => {
   };
   //handler for submission of login form
   const handleSubmit = async (event) => {
+    // const key = event.key;
+    // if (key === "return" || event.type === "click") {
     setIsLoading(true);
     setErrors((e) => ({ ...e, loginForm: null }));
     try {
@@ -71,6 +73,7 @@ const Login = () => {
         loginForm: message ? String(message) : String(err),
       }));
       setIsLoading;
+      // }
     }
   };
   return (
@@ -123,7 +126,7 @@ const Login = () => {
           <Button auto flat color="error" onPress={closeHandler}>
             Close
           </Button>
-          <Button auto onPress={handleSubmit}>
+          <Button auto onPress={handleSubmit} onKeyDown={handleSubmit}>
             Login
           </Button>
         </Modal.Footer>

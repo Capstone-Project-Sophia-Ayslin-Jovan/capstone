@@ -63,7 +63,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <NextUIText size={30} weight="bold">
-          Literate
+          Literate.
         </NextUIText>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>

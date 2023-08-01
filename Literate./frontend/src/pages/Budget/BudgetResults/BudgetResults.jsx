@@ -12,6 +12,7 @@ const BudgetResults = ({ budgetInfo }) => {
   const [labels, setLabels] = useState([]);
   const [dataPoints, setDataPoints] = useState([]);
   const navigate = useNavigate();
+  
   const { setAuthState, setInitialized } = useContext(AuthorizeContext);
 
   for (let key in budgetInfo.budgetData) {
@@ -19,21 +20,18 @@ const BudgetResults = ({ budgetInfo }) => {
       (obj) => obj.name !== "" && obj.allocation !== 0
     );
   }
-
   const budgetLabels = Object.keys(budgetInfo.budgetData);
   // setLabels(budgetLabels);
-
   const subCatSum = new Array(budgetLabels.length).fill(0);
   Object.keys(budgetInfo.budgetData).map((category, index) =>
     budgetInfo.budgetData[category].map((listItem) => {
       subCatSum[index] += parseInt(listItem.allocation);
     })
   );
-
-  console.log("after mapping");
   const handleSubmitResults = async () => {
+    console.log(budgetInfo);
     await apiClient.createBudget(budgetInfo);
-    setInitialized(false);
+    setAuthState((state) => ({ ...state, isAuthenticated: true }));
     navigate("/Home");
   };
 
@@ -58,5 +56,4 @@ const BudgetResults = ({ budgetInfo }) => {
     </>
   );
 };
-
 export default BudgetResults;
