@@ -13,31 +13,27 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
   const [labels, setLabels] = useState([]);
   const [dataPoints, setDataPoints] = useState([]);
   const navigate = useNavigate();
-  const { setAuthState, setInitialized } = useContext(AuthorizeContext);
+  const { setAuthState } = useContext(AuthorizeContext);
   const { setBudgetInfo } = useContext(BudgetContext);
   for (let key in budgetInfo.budgetData) {
     budgetInfo.budgetData[key] = budgetInfo.budgetData[key].filter(
       (obj) => obj.name !== "" && obj.allocation !== 0
     );
   }
-
   const budgetLabels = Object.keys(budgetInfo.budgetData);
   // setLabels(budgetLabels);
-
   const subCatSum = new Array(budgetLabels.length).fill(0);
   Object.keys(budgetInfo.budgetData).map((category, index) =>
     budgetInfo.budgetData[category].map((listItem) => {
       subCatSum[index] += parseInt(listItem.allocation);
     })
   );
-
-  console.log("after mapping");
   const handleSubmitResults = async () => {
+    console.log(budgetInfo);
     await apiClient.createBudget(budgetInfo);
-    setInitialized(false);
+    setAuthState((state) => ({ ...state, isAuthenticated: true }));
     navigate("/Home");
   };
-
   const data = {
     labels: budgetLabels,
     datasets: [
@@ -66,7 +62,6 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
       },
     ],
   };
-
   return (
     <div>
       <Text h1>
@@ -82,7 +77,6 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
             />
           </div>
         ))}
-      </Container>
       </div>
       <div className="piechart">
         <Pie data={data} />
@@ -99,5 +93,4 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
     </div>
   );
 };
-
 export default BudgetResults;

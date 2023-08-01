@@ -7,6 +7,7 @@ import {
   Spacer,
   Link,
   Card,
+  Col,
 } from "@nextui-org/react";
 import "./Home.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -15,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import Header from "../../components/Header/Header";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 import { BudgetContext } from "../../contexts/budget";
@@ -31,66 +31,89 @@ export const Home = () => {
   };
   return (
     <div>
-      <div className="home-container">
-        <Container>
-          <Row gap={1}>
-            <Container>
-              <Spacer y={4} />
-              <Text h2>We've got what you need.</Text>
-              <Spacer y={2} />
-              <Text h3>
-                Check out our personal budget helper and start tracking your
-                funds today!
+      <Container>
+        <Row align="center">
+          <Container>
+            <Col>
+              <Text size={36} h1>
+                We've got what you need.
               </Text>
-              <Spacer y={2} />
-              <div className="budget-stuff">
-                <div className="info-blurb">
-                  <Text size={24} h3>
-                    With our budgeting tool you'll be able to:
-                  </Text>
-                  <Text size={21} p>
-                    1. Be more cognizant of your spending.
-                  </Text>
-                  <Text size={21} p>
-                    2. Know where your money is going.
-                  </Text>
-                  <Text size={21} p>
-                    3. Become a better budgeter.
-                  </Text>
-                </div>
-                <Spacer x={4} />
-                <img
-                  className="clipboard"
-                  src="https://static.vecteezy.com/system/resources/previews/021/899/929/original/budget-management-icon-planner-personal-budget-and-family-budget-personal-financial-control-cash-flow-flat-illustration-vector.jpg"
-                />
-              </div>
-              <Link href="/Budget">
-                <Button size={"xl"} auto>
-                  Start Budgeting
-                </Button>
-              </Link>
-              <Spacer y={6} />
-              <Text h3>
-                Want to brush up on your financial knowledge? Check out our
-                quick lessons about money management and spending.
+
+              <Text size={30} h2>
+                Budget beginner? No problem, we've made it simple just for you!
               </Text>
-              <img src="https://static.vecteezy.com/system/resources/previews/001/974/416/non_2x/financial-planning-investment-education-free-vector.jpg" />
-              <Text size={24} p>
-                Our adaptive learning platform customizes your experience,
-                tailoring each module to suit your skill level and aspirations.
-                Track your progress, earn achievements, and celebrate milestones
-                along the way.
-              </Text>
-              <Link href="/Modules">
-                <Button auto size={"xl"}>
-                  Start Learning
-                </Button>
-              </Link>
-            </Container>
-          </Row>
+              <Card css={{ width: 800 }}>
+                <Card.Body>
+                  <Container>
+                    <Row>
+                      <img
+                        className="clipboard"
+                        src="https://static.vecteezy.com/system/resources/previews/021/899/929/original/budget-management-icon-planner-personal-budget-and-family-budget-personal-financial-control-cash-flow-flat-illustration-vector.jpg"
+                      />
+                      <Container css={{ width: 400 }}>
+                        <Text size={26} h3>
+                          With our budgeting tool you'll be able to:
+                        </Text>
+                        <Text size={24} p>
+                          1. Be more cognizant of your spending.
+                        </Text>
+                        <Text size={24} p>
+                          2. Know where your money is going.
+                        </Text>
+                        <Text size={24} p>
+                          3. Become a better budgeter.
+                        </Text>
+                        <Spacer y={2} />
+                        <Link href="/Budget">
+                          <Button flat size={"xl"} auto>
+                            Start Budgeting
+                          </Button>
+                        </Link>
+                      </Container>
+                    </Row>
+                  </Container>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Container>
+        </Row>
+        <Spacer y={4} />
+        <Container responsive>
+          {/* <Row> */}
+          <Spacer y={4} />
+          {/* <Container> */}
+          <Text size={32} h2>
+            Brush up on your financial knowledge and check out our quick lessons
+            on money management and spending.
+          </Text>
+          {/* </Container> */}
+
+          <Card css={{ width: 900 }}>
+            <Card.Body>
+              <Container responsive>
+                <Row>
+                  <Col>
+                    <Text size={24} p>
+                      Our learning platform offers quick and thorough modules to
+                      give you the knowledge you need to be successful. Track
+                      your progress, and celebrate milestones along the way.
+                    </Text>
+                    <Spacer y={2} />
+                    <Link href="/Dashboard/Modules">
+                      <Button flat color={"success"} auto size={"xl"}>
+                        Start Learning
+                      </Button>
+                    </Link>
+                  </Col>
+                  <img src="https://img.freepik.com/free-vector/students-watching-webinar-computer-studying-online_74855-15522.jpg?w=2000&t=st=1690904398~exp=1690904998~hmac=9f3071f8f17a50a1e57f35bc396df4c2e7449be07b93577e38159d6333feed0d" />
+                </Row>
+              </Container>
+            </Card.Body>
+          </Card>
+          {/* </Row> */}
         </Container>
-      </div>
-      <Spacer y={12} />
+      </Container>
+      <Spacer y={10} />
       <Footer />
     </div>
   );
