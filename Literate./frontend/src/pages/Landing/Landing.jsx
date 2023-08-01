@@ -10,7 +10,7 @@ import {
   Grid,
 } from "@nextui-org/react";
 import "./Landing.css";
-import NavbarContent from "../../components/NavbarContent/NavbarContent";
+import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -45,23 +45,21 @@ export default function Landing({ appState, setAppState }) {
   };
   const learnMore = () => {};
   return (
-    <div>
-      <NavbarContent appState={appState} setAppState={setAppState} />
-      <div>
-        <Spacer y={6} />
-        <Container responsive="true">
-          <Row gap={1}>
-            <Container responsive="true">
-              <Text size={"$8xl"} style={{ marginBottom: 0 }}>
-                Literate.
-              </Text>
-              <Text size={"$2xl"}>Smart Money, Bright Future</Text>
-            </Container>
-            <img src="https://static.vecteezy.com/system/resources/previews/002/884/391/original/illustration-of-saving-money-in-the-household-sector-for-investment-spending-and-daily-life-vector.jpg" />
-          </Row>
-        </Container>
-        <Spacer y={6} />
-      </div>
+    <>
+      <Nav appState={appState} setAppState={setAppState} />
+      <Spacer y={6} />
+      <Container responsive="true">
+        <Row gap={1}>
+          <Container responsive="true">
+            <Text size={"$8xl"} style={{ marginBottom: 0 }}>
+              Literate.
+            </Text>
+            <Text size={"$2xl"}>Smart Money, Bright Future</Text>
+          </Container>
+          <img src="https://static.vecteezy.com/system/resources/previews/002/884/391/original/illustration-of-saving-money-in-the-household-sector-for-investment-spending-and-daily-life-vector.jpg" />
+        </Row>
+      </Container>
+      <Spacer y={6} />
       <div>
         <h2>
           Becoming financially literate is hard. That's why we've made it easy.
@@ -151,6 +149,6 @@ export default function Landing({ appState, setAppState }) {
       </div>
       <Spacer y={6} />
       <Footer />
-    </div>
+    </>
   );
 }

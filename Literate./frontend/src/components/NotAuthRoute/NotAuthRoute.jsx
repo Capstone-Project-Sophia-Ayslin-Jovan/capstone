@@ -4,12 +4,10 @@ import { useContext } from "react";
 
 const NotAuthRoute = ({ children }) => {
   const { authState, initialized } = useContext(AuthorizeContext);
-  console.log("Initialized: ", initialized);
   if (!initialized) return null;
-  console.log("Initialized: ", initialized);
 
   if (initialized && authState.isAuthenticated)
-    return <Navigate to="/Home" replace />;
+    return <Navigate to="/Dashboard" replace />;
 
   return <>{children}</>;
 };

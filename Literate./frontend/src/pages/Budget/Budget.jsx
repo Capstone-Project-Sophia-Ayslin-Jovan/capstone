@@ -11,8 +11,6 @@ import NameAndDate from "./NameAndDate/NameAndDate";
 const Budget = ({ handleToggle, isOpen }) => {
   const { budgetInfo, setBudgetInfo } = useContext(BudgetContext);
 
-  console.log(budgetInfo);
-
   const [step, setStep] = useState(0);
   const handleNextStep = () => {
     setStep(step + 1);

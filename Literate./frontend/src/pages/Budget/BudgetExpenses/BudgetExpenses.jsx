@@ -38,13 +38,6 @@ const BudgetExpenses = ({
             />
           </div>
         ))}
-        <Spacer y={2} />
-        <Row>
-          <Spacer x={15} />
-          <Button onPress={handlePreviousStep}>Back</Button>
-          <Spacer x={1} />
-          <Button onPress={handleNextStep}>Next</Button>
-        </Row>
       </Container>
     </div>
   );

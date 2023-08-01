@@ -1,37 +1,37 @@
 import { useEffect, useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import styles from "./page.module.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Landing from "./pages/Landing/Landing";
-import Login from "./pages/Login/Login";
-import Signup from "./pages/Signup/Signup";
-import { Profile } from "./pages/Profile/Profile";
 import { AuthorizeProvider } from "./contexts/authUser";
 import { BudgetProvider } from "./contexts/budget";
-import { Home } from "./pages/Home/Home";
-import Budget from "./pages/Budget/Budget";
-import AuthRoute from "./components/AuthRoute/AuthRoute";
-import NotAuthRoute from "./components/NotAuthRoute/NotAuthRoute";
+import {
+  Landing,
+  Login,
+  Signup,
+  Home,
+  MSBudget,
+  Profile,
+  Dashboard,
+} from "./pages/index";
+import { AuthRoute, NotAuthRoute } from "./components/index";
 
 export default function AppContainer() {
   // 2. Use at the root of your app
   return (
     <NextUIProvider>
-      <AuthorizeProvider>
-        <BudgetProvider>
-          <App />
-        </BudgetProvider>
-      </AuthorizeProvider>
+      <ChakraProvider>
+        <AuthorizeProvider>
+          <BudgetProvider>
+            <App />
+          </BudgetProvider>
+        </AuthorizeProvider>
+      </ChakraProvider>
     </NextUIProvider>
   );
 }
+
 function App() {
-  //usestates and variables
-  const [isOpen, setIsOpen] = useState(false);
-  //handler for making sidebar pop in and out
-  function handleToggle() {
-    setIsOpen(!isOpen);
-  }
   return (
     <div className={styles.main}>
       <BrowserRouter forceRefresh={true}>
@@ -53,26 +53,43 @@ function App() {
             }
           />
           <Route
-            path="/Profile"
+            path="/Dashboard/Profile"
             element={
               <AuthRoute>
-                <Profile handleToggle={handleToggle} isOpen={isOpen} />
+                <Dashboard display={<Profile />}></Dashboard>
               </AuthRoute>
             }
           />
-          <Route
+          <Route path="/budget" element={<MSBudget></MSBudget>}></Route>
+          {/* <Route
             path="/Budget"
             element={
               <AuthRoute>
                 <Budget handleToggle={handleToggle} isOpen={isOpen} />
               </AuthRoute>
             }
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/Home"
             element={
               <AuthRoute>
                 <Home handleToggle={handleToggle} isOpen={isOpen} />
+              </AuthRoute>
+            }
+          /> */}
+          <Route
+            path="/Dashboard"
+            element={
+              <AuthRoute>
+                <Dashboard display={<Home />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Create-Budget"
+            element={
+              <AuthRoute>
+                <Dashboard display={<MSBudget />}></Dashboard>
               </AuthRoute>
             }
           />

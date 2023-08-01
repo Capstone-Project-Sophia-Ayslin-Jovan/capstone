@@ -55,7 +55,7 @@ const Login = () => {
       if (data) {
         setAuthState((state) => ({ ...state, isAuthenticated: true }));
         localStorage.setItem("literate_token", data.userToken);
-        navigate("/Home");
+        navigate("/Dashboard");
       } else {
         setErrors((e) => ({
           ...e,
@@ -75,10 +75,9 @@ const Login = () => {
   };
   return (
     <div>
-      <Button auto ghost onPress={handler}>
+      <Button auto onPress={handler} css={{ width: "3vw" }}>
         Login
       </Button>
-      <Spacer x={3} />
       <Modal
         closeButton
         aria-labelledby="modal-title"
@@ -90,7 +89,7 @@ const Login = () => {
             Welcome back!
             <Text b size={28}>
               <Spacer />
-              Sign In
+              Login
             </Text>
           </Text>
         </Modal.Header>
@@ -119,19 +118,13 @@ const Login = () => {
             value={loginForm.password}
             onChange={handleLoginChange}
           />
-          <Row justify="space-between">
-            <Checkbox>
-              <Text size={14}>Remember me</Text>
-            </Checkbox>
-            <Text size={14}>Forgot password?</Text>
-          </Row>
         </Modal.Body>
         <Modal.Footer>
           <Button auto flat color="error" onPress={closeHandler}>
             Close
           </Button>
           <Button auto onPress={handleSubmit}>
-            Sign in
+            Login
           </Button>
         </Modal.Footer>
       </Modal>
