@@ -10,7 +10,7 @@ const SubCategoryResults = ({ category, categoryValues }) => {
           <Card.Body>
             <Text h2>{category}</Text>
             {categoryValues.map(({ name, allocation }) => (
-              <Text size={24} p>
+              <Text size={24}>
                 {name} ${allocation}
               </Text>
             ))}

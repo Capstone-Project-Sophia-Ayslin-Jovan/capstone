@@ -14,22 +14,17 @@ import {
 import { Link } from "react-router-dom";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 
-const BudgetLanding = ({
-  handleNextStep,
-  handlePreviousStep,
-  isOpen,
-  handleToggle,
-}) => {
+const BudgetLanding = ({}) => {
   return (
-    <div>
-      <Text h3 className="description">
+    <Container>
+      <Text size={30}>
         Budgeting is the process of creating a financial plan to allocate and
         manage your income, expenses, and savings. It involves estimating your
         income sources and setting limits on how much you will spend on various
         categories of expenses, such as housing, transportation, food,
         entertainment, and savings.
       </Text>
-    </div>
+    </Container>
   );
 };
 

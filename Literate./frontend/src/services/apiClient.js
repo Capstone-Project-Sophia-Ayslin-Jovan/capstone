@@ -72,9 +72,9 @@ class ApiClient {
     });
   }
 
-  async getBudget(id) {
+  async getBudget(userId) {
     return await this.request({
-      endpoint: `budgets/budget/${id}`,
+      endpoint: `budgets/budget/${userId}`,
       method: `GET`,
     });
   }
