@@ -25,7 +25,7 @@ function Nav() {
   ];
   return (
     <Layout>
-      <Navbar variant="sticky" css={{}}>
+      <Navbar>
         <Navbar.Toggle showIn="xs" />
         <Navbar.Brand>
           <Text b color="inherit" hideIn="xs">
@@ -75,7 +75,7 @@ function Nav() {
             <Login loginForm={loginForm} />
           </Navbar.Item>
           <Navbar.Item>
-            <Button auto as={Link} href="/signup" css={{ width: "3vw" }}>
+            <Button auto ghost as={Link} href="/signup" css={{ width: "3vw" }}>
               Sign Up
             </Button>
           </Navbar.Item>

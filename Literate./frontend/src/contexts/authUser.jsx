@@ -42,7 +42,8 @@ const AuthorizeProvider = ({ children }) => {
       }
     };
     fetchUser();
-  }, [authState.isAuthenticated, initialized]);
+  }, [authState.isAuthenticated]);
+  // Removed initalize from the dependendies
 
   const logoutUser = async () => {
     localStorage.removeItem("literate_token");

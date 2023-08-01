@@ -6,15 +6,15 @@ import Sidebar from "../../../components/Sidebar/Sidebar";
 import SubCategoryResults from "../SubCategoryResults/SubCategoryResults";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthorizeContext } from "../../../contexts/authUser";
-import { BudgetContext } from "../../../contexts/budget";
 import apiClient from "../../../services/apiClient";
 import { Pie } from "react-chartjs-2";
-const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
+const BudgetResults = ({ budgetInfo }) => {
   const [labels, setLabels] = useState([]);
   const [dataPoints, setDataPoints] = useState([]);
   const navigate = useNavigate();
+  
   const { setAuthState, setInitialized } = useContext(AuthorizeContext);
-  const { setBudgetInfo } = useContext(BudgetContext);
+
   for (let key in budgetInfo.budgetData) {
     budgetInfo.budgetData[key] = budgetInfo.budgetData[key].filter(
       (obj) => obj.name !== "" && obj.allocation !== 0
@@ -30,11 +30,13 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
   );
   console.log("after mapping");
   const handleSubmitResults = async () => {
+    console.log(budgetInfo);
     await apiClient.createBudget(budgetInfo);
     setBudgetInfo((state) => ({...state, hasBudget: true}))
-    setInitialized(false);
+    setAuthState((state) => ({ ...state, isAuthenticated: true }));
     navigate("/Dashboard");
   };
+
   const data = {
     labels: budgetLabels,
     datasets: [
@@ -64,6 +66,22 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
     ],
   };
   return (
+    <>
+      <div>
+        <Text h1>
+          {budgetInfo.name}: $ {budgetInfo.total}
+        </Text>
+        <Spacer y={4} />
+        <div className="grid">
+          {Object.keys(budgetInfo.budgetData).map((key, index) => (
+            <div key={index}>
+              <SubCategoryResults
+                category={key}
+                categoryValues={budgetInfo.budgetData[key]}
+              />
+            </div>
+          ))}
+        </div>
     <div>
       <Text h1>
         {budgetInfo.name}: $ {budgetInfo.total}
@@ -82,16 +100,7 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
       <div className="piechart">
         <Pie data={data} />
       </div>
-      <Row>
-        <Button size={"xl"} onPress={handlePreviousStep}>
-          Back
-        </Button>
-        <Spacer x={1} />
-        <Button size={"xl"} onPress={handleSubmitResults}>
-          Finish
-        </Button>
-      </Row>
-    </div>
+    </>
   );
 };
 export default BudgetResults;

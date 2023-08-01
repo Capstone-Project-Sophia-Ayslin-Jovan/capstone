@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./Profile.css";
-import Header from "../../components/Header/Header";
-import { Container, Spacer, Text } from "@nextui-org/react";
+import { Container, Spacer, Text, Card, Divider } from "@nextui-org/react";
 import axios from "axios";
 import Footer from "../../components/Footer/Footer";
 import { AuthorizeContext } from "../../contexts/authUser";
@@ -13,40 +12,46 @@ export const Profile = ({ handleToggle, isOpen }) => {
   console.log("User:", user);
   return (
     <div className="profile-page">
-      <div className="container">
-        <Container>
-          <Text h2 className="account-title">
-            My Account
-          </Text>
-          <hr></hr>
-          <Text h3>Account Information</Text>
-          <Spacer y={2} />
-          <div className="container">
-            <div className="info-container">
-              <Text size={24} p>
-                Username
-              </Text>
-              <Text size={20} p>
-                {user?.username}
-              </Text>
-              <Text size={18} color="blue" p>
-                Change Username
-              </Text>
-              <Text p></Text>
-              <Spacer y={4} />
-              <Text size={24} p>
-                Password
-              </Text>
-              <Text size={20} p>
-                *********
-              </Text>
-              <Text size={18} color="blue" p>
-                Change Password
-              </Text>
-            </div>
-          </div>
-        </Container>
-      </div>
+      <Container>
+        <Text h1 className="account-title">
+          My Account
+        </Text>
+        <Divider></Divider>
+        <Spacer y={2} />
+        <Text size={34} h2>
+          Account Information
+        </Text>
+
+        <Card>
+          <Card.Body>
+            {/* <Text size={28} css={{ fontWeight: "bold" }}>
+              Email
+            </Text>
+            <Text size={22}>{user?.email}</Text>
+            <Spacer y={2} /> */}
+
+            <Text size={28} css={{ fontWeight: "bold" }} p>
+              Username
+            </Text>
+            <Text size={24} p>
+              {user?.username}
+            </Text>
+            <Text size={22} color="blue" p>
+              Change Username
+            </Text>
+            <Divider></Divider>
+            <Text size={28} css={{ fontWeight: "bold" }} p>
+              Password
+            </Text>
+            <Text size={24} p>
+              *********
+            </Text>
+            <Text size={22} color="blue" p>
+              Change Password
+            </Text>
+          </Card.Body>
+        </Card>
+      </Container>
       <Spacer y={20} />
       <Footer />
     </div>

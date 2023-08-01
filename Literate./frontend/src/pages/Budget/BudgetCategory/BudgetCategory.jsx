@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Navbar,
   Button,
@@ -9,16 +9,14 @@ import {
   Row,
   Checkbox,
   Container,
+  Grid,
 } from "@nextui-org/react";
-import { Link, Route } from "react-router-dom";
-import Sidebar from "../../../components/Sidebar/Sidebar";
 
-const BudgetCategory = ({
-  budgetInfo,
-  setBudgetInfo,
-  handleNextStep,
-  handlePreviousStep,
-}) => {
+const BudgetCategory = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
+  useEffect(() => {
+    setIsDisabled(true);
+    if (Object.keys(budgetInfo.budgetData).length >= 1) setIsDisabled(false);
+  }, [budgetInfo]);
   const handleOnChange = (categories) => {
     let catObj = {};
     for (let category of categories) {
@@ -30,12 +28,16 @@ const BudgetCategory = ({
   };
 
   return (
-    <div>
-      <Text h1>What will you be budgeting?</Text>
-      <Spacer y={5} />
+    <Container>
+      <Container display="flex" justify="center">
+        <Text h2 weight="bold">
+          Choose What Categories to Budget
+        </Text>
+      </Container>
+      <Spacer y={1} />
       <Checkbox.Group
-        color="secondary"
-        label="Check all that apply"
+        color="primary"
+        label="Select Categories"
         value={Object.keys(budgetInfo.budgetData)}
         onChange={handleOnChange}
       >
@@ -51,7 +53,7 @@ const BudgetCategory = ({
         <Checkbox value="Recreation">Recreation</Checkbox>
         <Checkbox value="Other">Other</Checkbox>
       </Checkbox.Group>
-    </div>
+    </Container>
   );
 };
 
