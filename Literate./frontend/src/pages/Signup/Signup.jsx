@@ -33,7 +33,6 @@ const Signup = () => {
   });
 
   const handleOnInputChange = (event) => {
-    console.log(event.target.name);
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
@@ -78,6 +77,7 @@ const Signup = () => {
     }
 
     try {
+      console.log(form);
       const { data } = await apiClient.signUp({
         firstName: form.firstName,
         lastName: form.lastName,
@@ -143,6 +143,7 @@ const Signup = () => {
                   placeholder="First Name"
                   name="firstName"
                   aria-label="Input"
+                  onChange={handleOnInputChange}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -155,6 +156,7 @@ const Signup = () => {
                   placeholder="Last Name"
                   name="lastName"
                   aria-label="Input"
+                  onChange={handleOnInputChange}
                 />
               </Grid>
               <Grid xs={12}>
@@ -167,6 +169,7 @@ const Signup = () => {
                   placeholder="Username"
                   name="username"
                   aria-label="Input"
+                  onChange={handleOnInputChange}
                 />
               </Grid>
               <Grid xs={12}>
@@ -179,6 +182,7 @@ const Signup = () => {
                   placeholder="Email"
                   name="email"
                   aria-label="Input"
+                  onChange={handleOnInputChange}
                 />
               </Grid>
               <Grid xs={12}>
@@ -191,6 +195,7 @@ const Signup = () => {
                   placeholder="Password"
                   name="password"
                   aria-label="Input"
+                  onChange={handleOnInputChange}
                 />
               </Grid>
               <Grid xs={12}>
@@ -203,6 +208,7 @@ const Signup = () => {
                   placeholder="Confirm Password"
                   name="passwordConfirm"
                   aria-label="Input"
+                  onChange={handleOnInputChange}
                 />
               </Grid>
               <Grid xs={12} justify="center">
