@@ -16,24 +16,45 @@ import Footer from "../../components/Footer/Footer";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import Header from "../../components/Header/Header";
-ChartJS.register(ArcElement, Tooltip, Legend);
-
+import CurrentBudget from "./CurrentBudget/CurrentBudget";
 import { BudgetContext } from "../../contexts/budget";
-
-export const Home = () => {
+ChartJS.register(ArcElement, Tooltip, Legend);
+export const Home = ({ handleToggle, isOpen }) => {
   const { logoutUser } = useContext(AuthorizeContext);
-  const { budgetInfo } = useContext(BudgetContext);
-  console.log(budgetInfo);
   const navigate = useNavigate();
+  const { budgetInfo, setBudgetInfo } = useContext(BudgetContext);
+  const { authState } = useContext(AuthorizeContext);
   const handleLogout = () => {
     logoutUser();
     navigate("/");
   };
   return (
     <div>
+      {console.log("budget: ", budgetInfo)}
       <div className="home-container">
         <Container>
-          <Row gap={1}>
+          {budgetInfo.hasBudget ? (
+            <Container>
+              <CurrentBudget />
+              <Spacer y={6} />
+              <Text h3>
+                Want to brush up on your financial knowledge? Check out our
+                quick lessons about money management and spending.
+              </Text>
+              <img src="https://static.vecteezy.com/system/resources/previews/001/974/416/non_2x/financial-planning-investment-education-free-vector.jpg" />
+              <Text size={24} p>
+                Our adaptive learning platform customizes your experience,
+                tailoring each module to suit your skill level and aspirations.
+                Track your progress, earn achievements, and celebrate milestones
+                along the way.
+              </Text>
+              <Link href="/Modules">
+                <Button auto size={"xl"}>
+                  Start Learning
+                </Button>
+              </Link>
+            </Container>
+          ) : (
             <Container>
               <Spacer y={4} />
               <Text h2>We've got what you need.</Text>
@@ -87,7 +108,7 @@ export const Home = () => {
                 </Button>
               </Link>
             </Container>
-          </Row>
+          )}
         </Container>
       </div>
       <Spacer y={12} />

@@ -20,24 +20,21 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
       (obj) => obj.name !== "" && obj.allocation !== 0
     );
   }
-
   const budgetLabels = Object.keys(budgetInfo.budgetData);
   // setLabels(budgetLabels);
-
   const subCatSum = new Array(budgetLabels.length).fill(0);
   Object.keys(budgetInfo.budgetData).map((category, index) =>
     budgetInfo.budgetData[category].map((listItem) => {
       subCatSum[index] += parseInt(listItem.allocation);
     })
   );
-
   console.log("after mapping");
   const handleSubmitResults = async () => {
     await apiClient.createBudget(budgetInfo);
+    setBudgetInfo((state) => ({...state, hasBudget: true}))
     setInitialized(false);
-    navigate("/Home");
+    navigate("/Dashboard");
   };
-
   const data = {
     labels: budgetLabels,
     datasets: [
@@ -66,7 +63,6 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
       },
     ],
   };
-
   return (
     <div>
       <Text h1>
@@ -82,7 +78,6 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
             />
           </div>
         ))}
-      </Container>
       </div>
       <div className="piechart">
         <Pie data={data} />
@@ -99,5 +94,4 @@ const BudgetResults = ({ budgetInfo, handlePreviousStep }) => {
     </div>
   );
 };
-
 export default BudgetResults;

@@ -15,6 +15,12 @@ import {
   Dashboard,
 } from "./pages/index";
 import { AuthRoute, NotAuthRoute } from "./components/index";
+import ModulesLanding from "./pages/Modules/ModulesLanding/ModulesLanding";
+import ModulesIntro from "./pages/Modules/ModulesIntro/ModulesIntro";
+import ModulesBudgeting from "./pages/Modules/ModulesBudgeting/ModulesBudgeting";
+import ModulesCredit from "./pages/Modules/ModulesCredit/ModulesCredit";
+import ModulesInvesting from "./pages/Modules/ModulesInvesting/ModulesInvesting";
+import ModulesSavings from "./pages/Modules/ModulesSavings/ModulesSavings";
 
 export default function AppContainer() {
   // 2. Use at the root of your app
@@ -90,6 +96,54 @@ function App() {
             element={
               <AuthRoute>
                 <Dashboard display={<MSBudget />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Modules"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesLanding />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/ModulesIntro"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesIntro />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/ModulesBudgeting"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesBudgeting />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/ModulesCredit"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesCredit />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/ModulesInvesting"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesInvesting />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/ModulesSavings"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesSavings/>}></Dashboard>
               </AuthRoute>
             }
           />
