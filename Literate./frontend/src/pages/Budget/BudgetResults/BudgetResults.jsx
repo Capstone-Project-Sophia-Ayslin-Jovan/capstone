@@ -32,7 +32,7 @@ const BudgetResults = ({ budgetInfo }) => {
     console.log(budgetInfo);
     await apiClient.createBudget(budgetInfo);
     setAuthState((state) => ({ ...state, isAuthenticated: true }));
-    navigate("/Home");
+    navigate("/Dashboard");
   };
 
   return (

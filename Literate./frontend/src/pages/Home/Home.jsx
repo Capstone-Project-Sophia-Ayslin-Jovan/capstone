@@ -19,12 +19,12 @@ import { Pie } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 import { BudgetContext } from "../../contexts/budget";
-
-export const Home = () => {
+ChartJS.register(ArcElement, Tooltip, Legend);
+export const Home = ({ handleToggle, isOpen }) => {
   const { logoutUser } = useContext(AuthorizeContext);
-  const { budgetInfo } = useContext(BudgetContext);
-  console.log(budgetInfo);
   const navigate = useNavigate();
+  const { budgetInfo, setBudgetInfo } = useContext(BudgetContext);
+  const { authState } = useContext(AuthorizeContext);
   const handleLogout = () => {
     logoutUser();
     navigate("/");
