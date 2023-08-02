@@ -109,7 +109,7 @@ function App() {
             }
           />
           <Route
-            path="/Dashboard/ModulesIntro"
+            path="/Dashboard/Modules/Intro"
             element={
               <AuthRoute>
                 <Dashboard display={<ModulesIntro />}></Dashboard>
@@ -117,7 +117,7 @@ function App() {
             }
           />
           <Route
-            path="/Dashboard/ModulesBudgeting"
+            path="/Dashboard/Modules/Budgeting"
             element={
               <AuthRoute>
                 <Dashboard display={<ModulesBudgeting />}></Dashboard>
@@ -125,7 +125,7 @@ function App() {
             }
           />
           <Route
-            path="/Dashboard/ModulesCredit"
+            path="/Dashboard/Modules/Credit"
             element={
               <AuthRoute>
                 <Dashboard display={<ModulesCredit />}></Dashboard>
@@ -133,7 +133,7 @@ function App() {
             }
           />
           <Route
-            path="/Dashboard/ModulesInvesting"
+            path="/Dashboard/Modules/Investing"
             element={
               <AuthRoute>
                 <Dashboard display={<ModulesInvesting />}></Dashboard>
@@ -141,7 +141,7 @@ function App() {
             }
           />
           <Route
-            path="/Dashboard/ModulesSavings"
+            path="/Dashboard/Modules/Savings"
             element={
               <AuthRoute>
                 <Dashboard display={<ModulesSavings/>}></Dashboard>

@@ -31,6 +31,8 @@ import {
   Container,
   Progress as NextUIProgress,
 } from "@nextui-org/react";
+import "./ModulesBudgeting.css";
+import { Link } from "react-router-dom";
 
 const ModulesBudgeting = () => {
   return (
@@ -40,29 +42,32 @@ const ModulesBudgeting = () => {
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         backgroundColor="white"
-        maxWidth={800}
-        p={6}
+        maxWidth={1200}
+        p={8}
         m="10px auto"
-        as="form"
         position="relative"
       >
-        <Text h4>
+        <Text h1>Budgeting</Text>
+        <Text h2 size={30}>
           Lesson Overview: In this budgeting lesson, we will delve into the
           fundamental concepts of budgeting, a crucial skill that can lead you
           to financial independence. Understanding the importance of creating a
           personal budget, tracking your income and expenses, and making
           informed financial decisions are key elements of this lesson.
         </Text>
-
-        <Text h4>
+        <Text h2 size={30}>
           Learning Goals: By the end of this lesson, you should recognize the
           significance of budgeting and its role in achieving financial
           independence in the future. You will gain insights into the benefits
           of budgeting and learn how to effectively manage your financial
           resources.
         </Text>
+        <img
+          className="tracking-expense"
+          src="https://cdn-icons-png.flaticon.com/512/4530/4530555.png"
+        />
 
-        <Text h4>
+        <Text h2 size={30}>
           Creating a personal budget is a cornerstone of financial success and
           an essential step towards becoming financially independent. A budget
           serves as a financial roadmap, enabling you to manage your money
@@ -102,6 +107,15 @@ const ModulesBudgeting = () => {
           essential to be proactive and deliberate in managing your budget to
           achieve your financial goals.
         </Text>
+        <Row>
+          <Link to="/Dashboard/Modules/Intro">
+            <Button> Back</Button>
+          </Link>
+          <Spacer x={35}/>
+          <Link to="/Dashboard/Modules/Savings">
+            <Button> Next</Button>
+          </Link>
+        </Row>
       </Box>
     </>
   );
