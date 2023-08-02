@@ -1,3 +1,14 @@
 .credit-card{
     width: 400px;
 }
+
+.next-btn{
+    position: absolute; /* Position the button absolutely within the parent div */
+    top: 50%; /* Vertically center the button */
+    right: 20px; /* Adjust the right position as needed */
+    transform: translateY(-50%);
+}
+
+.debt{
+    width: 600px;
+}

@@ -25,7 +25,7 @@ import {
   Spacer,
   Modal,
   Text,
-  Input,
+  Pagination,
   Row,
   Checkbox,
   Container,
@@ -42,13 +42,13 @@ const ModulesSavings = () => {
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         backgroundColor="white"
-        maxWidth={1200}
+        maxWidth={2000}
         p={8}
         m="10px auto"
         position="relative"
       >
         <Text h1>Saving</Text>
-        <Text h2 size={30}>
+        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
           Lesson Overview: In this comprehensive lesson on saving, we will
           explore various aspects, including the significance of saving money,
           the different types of saving goals, and the process of creating an
@@ -57,7 +57,7 @@ const ModulesSavings = () => {
           provide practical strategies for building financial security.
         </Text>
 
-        <Text h2 size={30}>
+        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
           Learning Goals: By the end of this lesson, you will understand the
           critical role of saving in achieving your financial objectives. You
           will learn to set and pursue saving goals, both short-term and
@@ -69,13 +69,13 @@ const ModulesSavings = () => {
           src="https://cdn-icons-png.flaticon.com/512/6475/6475889.png"
         />
 
-        <Text h2 size={30}>
+        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
           Saving money is a fundamental pillar of financial success and plays a
           pivotal role in realizing your dreams and aspirations. Whether you are
           aiming for short-term objectives, such as saving for a new phone, or
           pursuing long-term goals, like building a comfortable retirement fund,
           saving is the key to turning your aspirations into reality.
-          <Text h2 size={30}>
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             {" "}
             Understanding the importance of saving: Saving money is more than
             just setting aside a portion of your income; it is an essential step
@@ -86,7 +86,7 @@ const ModulesSavings = () => {
             invest in your personal growth, and make major life decisions
             without undue financial stress.
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             Types of saving goals: Saving goals can vary widely in terms of time
             horizon and purpose. Short-term goals may include saving for a
             vacation, purchasing a new gadget, or creating an emergency fund. On
@@ -95,7 +95,11 @@ const ModulesSavings = () => {
             retirement. By understanding the different types of saving goals,
             you can prioritize and allocate your resources accordingly.{" "}
           </Text>
-          <Text h2 size={30}>
+          <img
+            className="piggy"
+            src="https://static.vecteezy.com/system/resources/previews/001/312/507/original/piggy-bank-with-gold-coin-free-vector.jpg"
+          />
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             Creating a saving plan: Setting saving goals is only the first step;
             an effective saving plan is the roadmap that guides you towards
             achieving those goals. A saving plan involves devising a strategy to
@@ -113,7 +117,7 @@ const ModulesSavings = () => {
             goals and adjusting your plan accordingly ensures that your saving
             strategy remains relevant and effective.
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             In conclusion, saving is a powerful financial tool that empowers you
             to achieve your dreams and build financial security. By
             understanding the significance of saving, setting appropriate saving
@@ -128,9 +132,9 @@ const ModulesSavings = () => {
           <Link to="/Dashboard/Modules/Budgeting">
             <Button> Back</Button>
           </Link>
-          <Spacer x={35}/>
+          <Spacer x={35} />
           <Link to="/Dashboard/Modules/Credit">
-            <Button> Next</Button>
+            <Button className="next-btn"> Next</Button>
           </Link>
         </Row>
       </Box>

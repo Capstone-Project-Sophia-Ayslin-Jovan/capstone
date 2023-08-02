@@ -25,7 +25,7 @@ import {
   Spacer,
   Modal,
   Text,
-  Input,
+  Pagination,
   Row,
   Checkbox,
   Container,
@@ -43,7 +43,7 @@ const ModulesInvesting = () => {
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         backgroundColor="white"
-        maxWidth={1200}
+        maxWidth={2000}
         p={8}
         m="10px auto"
         position="relative"
@@ -69,44 +69,44 @@ const ModulesInvesting = () => {
           src="https://cdn-icons-png.flaticon.com/512/6410/6410570.png"
         />
 
-        <Text h2 size={30}>
+        <Text h2 css={{fontWeight:"$normal"}} size={30}>
           Investing and its significance: Investing involves deploying your
           money into assets or financial instruments with the expectation of
           generating a profit or a positive return over time. It is a
           fundamental element of building wealth and achieving financial
           independence. By investing wisely, you can make your money work for
           you, creating opportunities for growth and financial security.
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Types of investments: There are numerous investment options
             available, each with its own risk and return profile. Some common
             investment choices include:
-            <Text h2 size={25}>
+            <Text h2 css={{fontWeight:"$normal"}} size={25}>
               Stocks: Investing in shares of publicly traded companies. Stocks
               can offer significant potential for long-term growth but also come
               with higher volatility and risk.
             </Text>
-            <Text h2 size={25}>
+            <Text h2 css={{fontWeight:"$normal"}} size={25}>
               Bonds: Lending money to governments or corporations in exchange
               for periodic interest payments and the return of the principal
               amount. Bonds are generally considered safer than stocks but may
               have lower potential for growth.
             </Text>
-            <Text h2 size={25}>
+            <Text h2 css={{fontWeight:"$normal"}} size={25}>
               Mutual Funds: Pooling money from multiple investors to invest in a
               diversified portfolio of stocks, bonds, or other assets. Mutual
               funds offer diversification and professional management.
             </Text>
-            <Text h2 size={25}>
+            <Text h2 css={{fontWeight:"$normal"}} size={25}>
               Real Estate: Investing in properties for rental income or capital
               appreciation. Real estate can provide a tangible asset with the
               potential for passive income and value appreciation.
             </Text>
-            <Text h2 size={25}>
+            <Text h2 css={{fontWeight:"$normal"}} size={25}>
               Retirement Accounts: Tax-advantaged accounts such as 401(k)s or
               IRAs designed to help individuals save for retirement.
             </Text>
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Understanding risk and return: Investing involves taking risks with
             the expectation of receiving higher returns. Different types of
             investments carry varying levels of risk, and it's essential to
@@ -115,7 +115,11 @@ const ModulesInvesting = () => {
             crucial to align your investment choices with your risk tolerance
             and financial goals.
           </Text>
-          <Text h2 size={30}>
+          <img
+          className="coin"
+          src="https://static.vecteezy.com/system/resources/previews/013/740/642/original/grow-money-clipart-design-illustration-yellow-golden-coin-with-finance-graph-flat-icon-cartoon-style-use-for-finance-diagram-infographic-investment-finance-wealth-budget-concept-vector.jpg"
+        />
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Conducting research before investing: Investing wisely requires
             conducting thorough research on potential investment opportunities.
             Analyze the performance history, market trends, and economic
@@ -123,7 +127,7 @@ const ModulesInvesting = () => {
             fundamentals and assessing the future outlook of an investment can
             help you make informed decisions and reduce potential risks.
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Importance of starting early: Starting early in your investment
             journey is one of the most powerful advantages you have. The concept
             of compounding allows your investments to grow not only based on
@@ -133,7 +137,7 @@ const ModulesInvesting = () => {
             advantage of time, which can make a significant difference in your
             investment outcomes over the long run.
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             In conclusion, investing is a key aspect of financial planning that
             can lead to wealth accumulation and financial independence.
             Understanding different investment options, considering risk and
@@ -150,7 +154,7 @@ const ModulesInvesting = () => {
           </Link>
           <Spacer x={35}/>
           <Link to="/Dashboard/Modules">
-            <Button> Next</Button>
+            <Button className="next-btn"> Finish </Button>
           </Link>
         </Row>
       </Box>

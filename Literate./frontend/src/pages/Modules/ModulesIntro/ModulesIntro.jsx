@@ -42,14 +42,14 @@ const ModulesIntro = () => {
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         backgroundColor="white"
-        maxWidth={1200}
+        maxWidth={2000}
         p={8}
         m="10px auto"
         position="relative"
         className="text"
       >
         <Text h1>Introduction</Text>
-        <Text h2 size={30}>
+        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
           Lesson Overview: Financial literacy is a crucial concept that
           profoundly impacts your life and financial well-being. In this lesson,
           we will explore the fundamental principles of financial literacy and
@@ -58,7 +58,7 @@ const ModulesIntro = () => {
           set financial goals, and effectively manage your money.
         </Text>
 
-        <Text h2 size={30}>
+        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
           Learning Goals: By the end of this lesson, you should have a clear
           understanding of the basics of financial literacy habits. We will
           cover various areas that contribute to financial literacy, including
@@ -70,7 +70,7 @@ const ModulesIntro = () => {
           src="https://static.vecteezy.com/system/resources/previews/002/698/207/original/jar-with-money-coins-and-bills-dollars-free-vector.jpg"
         />
 
-        <Text h2 size={30}>
+        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
           Financial literacy plays a vital role in achieving financial success
           and stability in the long run. It involves making wise decisions with
           your money, setting achievable financial objectives, and managing your
@@ -79,19 +79,21 @@ const ModulesIntro = () => {
           quality of life. There are several key areas to focus on when
           developing good financial literacy habits:
           <Spacer y={1} />
-          <Text h2 size={30}>
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             Budgeting: Budgeting is the process of creating a plan for your
             income and expenses. It allows you to track your spending,
             prioritize your financial goals, and ensure you have enough funds
             for both necessities and future aspirations.
           </Text>
-          <Text h2 size={30}>
+          <Spacer y={2} />
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             Saving: Saving is a fundamental aspect of financial well-being. By
             consistently setting aside a portion of your income, you create a
             safety net for unexpected expenses and have funds to pursue your
             dreams, such as travel, education, or investments.
           </Text>
-          <Text h2 size={30}>
+          <Spacer y={2} />
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             Debt Management: Understanding how to manage debt is crucial for
             maintaining a healthy financial status. Being aware of the types of
             debt you incur, making timely payments, and minimizing high-interest
@@ -101,7 +103,12 @@ const ModulesIntro = () => {
             facilities at favorable terms, while poor credit can limit your
             financial options.
           </Text>
-          <Text h2 size={30}>
+          <Spacer y={2} />
+          <img
+          className="money-jar"
+          src="https://static.vecteezy.com/system/resources/previews/024/043/961/original/money-clipart-transparent-background-free-png.png"
+        />
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             Investing: Investing is a powerful tool for growing your wealth over
             time. By putting your money into various investment vehicles such as
             stocks, bonds, or real estate, you have the potential to generate
@@ -112,7 +119,8 @@ const ModulesIntro = () => {
             navigate economic challenges confidently and make the most of your
             resources.
           </Text>
-          <Text h2 size={30}>
+          <Spacer y={2} />
+          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             In conclusion, financial literacy is an essential skill that can
             significantly impact your financial well-being and future
             prosperity. By understanding the importance of budgeting, saving,
@@ -120,14 +128,14 @@ const ModulesIntro = () => {
             solid foundation for your financial journey and work towards
             achieving long-term financial independence.
           </Text>
+          <Spacer y={2} />
         </Text>
         <Row>
           <Link to="/Dashboard/Modules">
             <Button> Back</Button>
           </Link>
-          <Spacer x={35}/>
           <Link to="/Dashboard/Modules/Budgeting">
-            <Button> Next</Button>
+            <Button className="next-btn"> Next</Button>
           </Link>
         </Row>
       </Box>
