@@ -21,6 +21,7 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 import { BudgetContext } from "../../contexts/budget";
 import CategoryHome from "./CategoryHome";
+
 export const Home = ({ category, allocationSum }) => {
   const { budget } = useContext(BudgetContext);
   console.log(budget);

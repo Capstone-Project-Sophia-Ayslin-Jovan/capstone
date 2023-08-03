@@ -31,6 +31,11 @@ const Signup = () => {
     password: "",
     passwordConfirm: "",
   });
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  function validateEmail(email) {
+    return emailRegex.test(email);
+  }
 
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
@@ -54,7 +59,7 @@ const Signup = () => {
       }
     }
     if (event.target.name === "email") {
-      if (event.target.value.indexOf("@") === -1) {
+      if (!validateEmail(event.target.value)) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
       } else {
         setErrors((e) => ({ ...e, email: null }));
@@ -108,7 +113,7 @@ const Signup = () => {
       setIsLoading(false);
     }
   };
-
+  console.log("something wrong with email:", errors.email);
   return (
     <>
       <Nav />
@@ -211,6 +216,16 @@ const Signup = () => {
                   onChange={handleOnInputChange}
                 />
               </Grid>
+              {errors.passwordConfirm ? (
+                <Text color="error">{errors.passwordConfirm}</Text>
+              ) : (
+                <Spacer y={1} />
+              )}
+              {errors.email ? (
+                <Text color="error">{errors.email}</Text>
+              ) : (
+                <Spacer y={1} />
+              )}
               <Grid xs={12} justify="center">
                 <Button
                   auto
