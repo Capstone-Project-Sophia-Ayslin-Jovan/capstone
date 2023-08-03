@@ -137,7 +137,7 @@ const Signup = () => {
             //   backgroundSize: "cover",
             // }}
           >
-            <Card css={{ width: "40vw" }}>
+            <Card className="card" css={{ width: "40vw" }}>
               <Card.Header
                 css={{ textAlign: "center", justifyContent: "center" }}
               >

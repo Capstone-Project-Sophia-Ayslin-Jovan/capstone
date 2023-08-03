@@ -35,3 +35,46 @@ img {
 .expense-pic {
   width: 60%;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-card {
+  flex: 0 0 50%;
+}
+
+.ex-graph {
+  flex: 0 0 40%;
+}
+
+.expense-pic {
+  max-width: 40%;
+}
+
+.info-card2 {
+  flex: 0 0 50%;
+}
+
+.piggy {
+  max-width: 40%;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .ex-graph,
+  .expense-pic,
+  .piggy {
+    max-width: 100%;
+  }
+
+  .info-card2 {
+    margin-top: 2rem;
+  }
+}
