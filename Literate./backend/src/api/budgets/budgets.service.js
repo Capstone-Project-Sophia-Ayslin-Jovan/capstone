@@ -67,58 +67,83 @@ const getBudget = async (userId) => {
       subCategories: true,
     },
   });
+  console.log(budgetData);
   if (!budgetData) return null;
-  let budgetArray = [];
-  const fields = ["name", "allocation", "totalSpent"];
+  let budgetObj = {};
+  const fields = ["id", "name", "allocation", "totalSpent", "updated_at"];
   for (let x of budgetData.subCategories) {
-    const foundObject = budgetArray.find((obj) =>
-      Object.keys(obj).includes(x.category)
-    );
     const obj = {};
     for (let y of fields) {
       obj[y] = x[y];
     }
-    if (!foundObject) {
-      console.log(obj);
-      budgetArray.push({
-        [x.category]: [obj],
-      });
-    } else foundObject[x.category].push(obj);
+
+    if (Object.keys(budgetObj).includes(x.category)) {
+      budgetObj[x.category].push(obj);
+    } else {
+      budgetObj[x.category] = [obj];
+    }
   }
 
+  function orderObjectByKeysAndName(obj, order) {
+    const orderedObj = {};
+
+    order.forEach((key) => {
+      if (obj.hasOwnProperty(key)) {
+        const orderedArray = obj[key].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        orderedObj[key] = orderedArray;
+        delete obj[key];
+      }
+    });
+
+    for (const key in obj) {
+      orderedObj[key] = obj[key];
+    }
+
+    return orderedObj;
+  }
+
+  const orderedCategories = orderObjectByKeysAndName(
+    budgetObj,
+    Object.keys(budgetObj).sort()
+  );
+  console.log(orderedCategories);
+
   const budget = {
+    id: budgetData.id,
     name: budgetData.name,
     goal: budgetData.goal,
     startDate: budgetData.startDate,
     endDate: budgetData.endDate,
-    budgetData: budgetArray,
+    budgetData: orderedCategories,
   };
-
   return { budget };
 };
-const updateBudget = async (id, { budgetData }) => {
-  // Should the id be the userId or the budgetId, for now I think budgetId works best
-  const { subCategories } = budgetData;
+
+// id is subcategory id !!!
+const updateBudget = async (id, { newExpense }) => {
   // Data validation
-  const deleteBudgetCat = await prisma.budget.update({
+  const subCategory = await prisma.subCategory.findUnique({
     where: { id: id },
-    data: { subCategory: { deleteMany: {} } },
   });
-  const updatedBudget = await prisma.budget.update({
+
+  const updatedSubCategory = await prisma.subCategory.update({
     where: { id: id },
-    data: {
-      subCategory: {
-        create: subCategories,
-      },
-    },
-    include: {
-      subCategory: true,
-    },
+    data: { totalSpent: subCategory.totalSpent + parseInt(newExpense) },
   });
-  return { updatedBudget };
+
+  return { updatedSubCategory };
 };
+
+const deleteBudget = async (id) => {
+  const deletedBudget = await prisma.budget.delete({ where: { id: id } });
+  return { deletedBudget };
+};
+
 module.exports = {
   createBudget,
   getBudget,
   updateBudget,
+  deleteBudget,
 };

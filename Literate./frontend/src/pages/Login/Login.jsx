@@ -82,7 +82,7 @@ const Login = () => {
   };
   return (
     <div>
-      <Button auto onPress={handler} css={{ width: "3vw" }}>
+      <Button auto onPress={handler} css={{ minWidth: "6vw" }}>
         Login
       </Button>
       <Modal

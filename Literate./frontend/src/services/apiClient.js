@@ -86,6 +86,13 @@ class ApiClient {
       data: data,
     });
   }
+
+  async deleteBudget(id) {
+    return await this.request({
+      endpoint: `budgets/budget/${id}`,
+      method: `DELETE`,
+    });
+  }
 }
 
 // Export class -- hardcoded localhost

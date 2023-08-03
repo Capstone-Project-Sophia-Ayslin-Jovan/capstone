@@ -7,28 +7,38 @@ const BudgetContext = createContext();
 const BudgetProvider = ({ children }) => {
   const { authState } = useContext(AuthorizeContext);
   const [budget, setBudget] = useState({});
+  console.log(authState.isAuthenticated);
 
   useEffect(() => {
+    console.log("Entering budget useEffect");
     const fetchBudget = async () => {
-      if (authState.isAuthenticated) {
+      if (authState.isAuthenticated && authState.user?.id) {
+        console.log("User is checked for authenticated here");
         const { data } = await apiClient.getBudget(authState.user.id);
-        const { budget } = data;
-        console.log(data);
-        if (budget !== null) {
+        console.log(authState.user);
+        if (data !== null) {
+          const { budget } = data;
           console.log(budget);
-          setBudget({
-            userId: authState.user?.id,
-            name: budget.name,
-            startDate: budget.startDate.substring(0, 10),
-            endDate: budget.endDate.substring(0, 10),
-            goal: budget.goal,
-            budgetData: budget.budgetData,
-          });
+          if (budget !== null) {
+            setBudget({
+              userId: authState.user?.id,
+              id: budget.id,
+              name: budget.name,
+              startDate: budget.startDate.substring(0, 10),
+              endDate: budget.endDate.substring(0, 10),
+              goal: budget.goal,
+              budgetData: budget.budgetData,
+              isUpdated: false,
+            });
+          }
+        } else {
+          console.log("HERE");
+          setBudget({});
         }
       }
     };
     fetchBudget();
-  }, [authState.isAuthenticated]);
+  }, [authState.user, budget.isUpdated]);
 
   const passedProps = { budget, setBudget };
 

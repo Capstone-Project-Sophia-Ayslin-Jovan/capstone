@@ -37,16 +37,15 @@ model Budget {
 }
 
 model subCategory {
-  id         String    @id @default(uuid())
-  budget     Budget    @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  id         String   @id @default(uuid())
+  budget     Budget   @relation(fields: [budgetId], references: [id], onDelete: Cascade)
   budgetId   String
   name       String
   category   String
-  totalSpent Int       @default(0)
-  allocation Int       @default(0)
-  billDate   DateTime?
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
+  totalSpent Int      @default(0)
+  allocation Int      @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 enum Role {
