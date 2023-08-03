@@ -175,6 +175,7 @@ export default function MSBudget() {
                           title: "Budget Created.",
                           description: "Click on Home to View Your budget",
                           status: "success",
+                          position: "bottom-right",
                           duration: null,
                           isClosable: true,
                         });

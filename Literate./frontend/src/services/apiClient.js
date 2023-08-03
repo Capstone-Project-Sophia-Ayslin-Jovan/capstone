@@ -93,6 +93,13 @@ class ApiClient {
       method: `DELETE`,
     });
   }
+
+  async getStats(id, category) {
+    return await this.request({
+      endpoint: `budgets/budget/stats/${id}/${category}`,
+      method: `GET`,
+    });
+  }
 }
 
 // Export class -- hardcoded localhost
