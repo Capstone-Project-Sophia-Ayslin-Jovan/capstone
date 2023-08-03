@@ -26,6 +26,7 @@ import ModulesBudgeting from "./pages/Modules/ModulesBudgeting/ModulesBudgeting"
 import ModulesCredit from "./pages/Modules/ModulesCredit/ModulesCredit";
 import ModulesInvesting from "./pages/Modules/ModulesInvesting/ModulesInvesting";
 import ModulesSavings from "./pages/Modules/ModulesSavings/ModulesSavings";
+import Loading from "./pages/Loading/Loading";
 
 export default function AppContainer() {
   const theme = extendTheme({
@@ -191,6 +192,14 @@ function App() {
             element={
               <AuthRoute>
                 <Dashboard display={<ExpenseTracking />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Loading"
+            element={
+              <AuthRoute>
+                <Dashboard display={<Loading />}></Dashboard>
               </AuthRoute>
             }
           />

@@ -6,3 +6,28 @@
   background-size: cover;
   filter: "blur(8px)";
 }
+
+.loading-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 40vw;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 650px) {
+  .card {
+    width: 80vw;
+  }
+}

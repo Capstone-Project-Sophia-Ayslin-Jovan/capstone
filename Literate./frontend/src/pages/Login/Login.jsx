@@ -13,17 +13,17 @@ import {
 } from "@nextui-org/react";
 import apiClient from "../../services/apiClient";
 import { AuthorizeContext } from "../../contexts/authUser";
+import Loading from "../Loading/Loading";
+import "./Login.css"
 
 const Login = () => {
   const { setAuthState } = useContext(AuthorizeContext);
   const [visible, setVisible] = React.useState(false);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState("");
-  // const [checkErrors, setCheckErrors]= useState("")
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  //useEffect checking if user is already logged in, if so will redirect to home page
 
   //handler functions for opening/closing login form
   const handler = () => setVisible(true);
@@ -68,6 +68,7 @@ const Login = () => {
           ...e,
           loginForm: "Invalid username/password combination",
         }));
+        console.log("loginForm:", loginForm);
         setIsLoading(false);
       }
     } catch (err) {
@@ -85,68 +86,92 @@ const Login = () => {
       <Button auto onPress={handler} css={{ minWidth: "6vw" }}>
         Login
       </Button>
-      <Modal
-        closeButton
-        aria-labelledby="modal-title"
-        open={visible}
-        onClose={closeHandler}
-      >
-        <Modal.Header>
-          <Text id="modal-title" size={24}>
-            Welcome back!
-            <Text b size={28}>
-              <Spacer />
-              Login
-            </Text>
-          </Text>
-        </Modal.Header>
-        <Modal.Body>
-          {errors && (
-            <Text color="warning" size={18} css={{ fontWeight: "$normal" }} h2>
-              {errors.email}
-            </Text>
-          )}
-          <Input
-            clearable
-            isRequired
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            name="email"
-            label="Email"
-            placeholder="Email"
-            value={loginForm.email}
-            onChange={handleLoginChange}
-          />
-          <Input.Password
-            clearable
-            isRequired
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            name="password"
-            label="Password"
-            placeholder="Password"
-            value={loginForm.password}
-            onChange={handleLoginChange}
-            onKeyUp={handleKeyPress}
-          />
-        </Modal.Body>
-        <Text>Don't have an account?</Text>
-        <Link to={"/Signup"}>
-          <Text color="primary">Sign up here!</Text>
-        </Link>
-        <Modal.Footer>
-          <Button auto flat color="error" onPress={closeHandler}>
-            Close
-          </Button>
-          <Button auto onPress={handleSubmit} onKeyDown={handleSubmit}>
-            Login
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {isLoading ? (
+        <Modal
+          css={{ height: 150 }}
+          aria-labelledby="modal-title"
+          open={visible}
+        >
+          <div className="loading-card">
+            <Loading />
+          </div>
+        </Modal>
+      ) : (
+        <div>
+          <Modal
+            closeButton
+            aria-labelledby="modal-title"
+            open={visible}
+            onClose={closeHandler}
+          >
+            <Modal.Header>
+              <Text id="modal-title" size={24}>
+                Welcome back!
+                <Text b size={28}>
+                  <Spacer />
+                  Login
+                </Text>
+              </Text>
+            </Modal.Header>
+            <Modal.Body>
+              {errors && (
+                <Text
+                  color="warning"
+                  size={18}
+                  css={{ fontWeight: "$normal" }}
+                  h2
+                >
+                  {errors.email}
+                </Text>
+              )}
+              <Input
+                clearable
+                isRequired
+                bordered
+                fullWidth
+                color="primary"
+                size="lg"
+                name="email"
+                label="Email"
+                placeholder="Email"
+                value={loginForm.email}
+                onChange={handleLoginChange}
+              />
+              <Input.Password
+                clearable
+                isRequired
+                bordered
+                fullWidth
+                color="primary"
+                size="lg"
+                name="password"
+                label="Password"
+                placeholder="Password"
+                value={loginForm.password}
+                onChange={handleLoginChange}
+                onKeyUp={handleKeyPress}
+              />
+            </Modal.Body>
+            {errors.loginForm ? (
+              <Text color="error">{errors.loginForm}</Text>
+            ) : (
+              <></>
+            )}
+            <Text>Don't have an account?</Text>
+            <Link to={"/Signup"}>
+              <Text color="primary">Sign up here!</Text>
+            </Link>
+            <Modal.Footer>
+              <Button auto flat color="error" onPress={closeHandler}>
+                Close
+              </Button>
+              <Button auto onPress={handleSubmit} onKeyDown={handleSubmit}>
+                Login
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      )}
     </div>
   );
 };

@@ -21,6 +21,7 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 import { BudgetContext } from "../../contexts/budget";
 import CategoryHome from "./CategoryHome";
+
 export const Home = ({ category, allocationSum }) => {
   const { budget } = useContext(BudgetContext);
   console.log(budget);
@@ -33,7 +34,7 @@ export const Home = ({ category, allocationSum }) => {
 
   return (
     <div>
-      <Container justify="center" alignContent="center">
+      <Container fluid justify="center" alignContent="center">
         {budget?.budgetData ? (
           <Container>
             <Text h1>{budget.name}</Text>
@@ -67,7 +68,7 @@ export const Home = ({ category, allocationSum }) => {
                     <Text size={36} h1>
                       We've got what you need.
                     </Text>
-                    <Card css={{ width: 1000 }}>
+                    <Card >
                       <Card.Header>
                         <Text size={30} h2>
                           Budget beginner? No problem, we've made it simple just
@@ -95,11 +96,9 @@ export const Home = ({ category, allocationSum }) => {
                                 3. Become a better budgeter.
                               </Text>
                               <Spacer y={2} />
-                              <Link href="/Budget">
-                                <Button flat size={"xl"} auto>
-                                  Start Budgeting
-                                </Button>
-                              </Link>
+                              <Button flat size={"xl"} auto>
+                                Start Budgeting
+                              </Button>
                             </Container>
                           </Row>
                         </Container>
@@ -116,7 +115,7 @@ export const Home = ({ category, allocationSum }) => {
         <Container responsive>
           <Spacer y={4} />
 
-          <Card css={{ width: 1200 }}>
+          <Card >
             <Card.Body>
               <Container>
                 <Text size={32} h2>
