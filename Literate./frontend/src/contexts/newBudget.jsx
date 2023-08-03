@@ -21,7 +21,7 @@ const NewBudgetProvider = ({ children }) => {
         userId: authState.user.id,
       }));
     }
-  }, [authState.user?.id, newBudget]);
+  }, [authState.user?.id]);
   const passedProps = { newBudget, setNewBudget };
 
   return (

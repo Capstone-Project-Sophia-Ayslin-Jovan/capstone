@@ -7,6 +7,7 @@ const BudgetContext = createContext();
 const BudgetProvider = ({ children }) => {
   const { authState } = useContext(AuthorizeContext);
   const [budget, setBudget] = useState({});
+  console.log(authState.isAuthenticated);
 
   useEffect(() => {
     console.log("Entering budget useEffect");
@@ -37,7 +38,7 @@ const BudgetProvider = ({ children }) => {
       }
     };
     fetchBudget();
-  }, [authState.isAuthenticated, budget.isUpdated]);
+  }, [authState.user, budget.isUpdated]);
 
   const passedProps = { budget, setBudget };
 

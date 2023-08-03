@@ -144,9 +144,11 @@ const ExpenseTab = ({ category, categoryValues }) => {
                   <Button
                     iconRight={<PlusIcon />}
                     color={"success"}
-                    css={{ minWidth: "6vw" }}
+                    css={{ minWidth: "8vw" }}
                     onPress={() => {
                       addExpense(subcategory.id, totalSpent);
+                      setTotalSpent("");
+                      closeHandler();
                     }}
                   >
                     Submit
