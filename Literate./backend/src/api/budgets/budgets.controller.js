@@ -39,4 +39,17 @@ router.delete("/budget/:id", async function (req, res, next) {
   }
 });
 
+router.get("/budget/stats/:id/:category", async (req, res, next) => {
+  try {
+    const { budgetStats, catStats } = await budgetService.getStats(
+      req.params.id,
+      req.params.category
+    );
+    console.log({ catStats, budgetStats });
+    return res.status(200).json({ catStats, budgetStats });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

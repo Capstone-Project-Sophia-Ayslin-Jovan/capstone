@@ -28,7 +28,7 @@ model Budget {
   user          User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId        String?       @unique
   name          String
-  goal          Int
+  goal          Float
   startDate     DateTime
   endDate       DateTime
   created_at    DateTime      @default(now())
@@ -42,8 +42,8 @@ model subCategory {
   budgetId   String
   name       String
   category   String
-  totalSpent Int      @default(0)
-  allocation Int      @default(0)
+  totalSpent Float    @default(0)
+  allocation Float    @default(0)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }

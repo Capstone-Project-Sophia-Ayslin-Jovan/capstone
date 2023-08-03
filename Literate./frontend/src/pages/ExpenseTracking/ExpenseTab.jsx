@@ -76,6 +76,11 @@ const ExpenseTab = ({ category, categoryValues }) => {
     }
   }
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   const addExpense = async (id, newExpense) => {
     console.log(id);
     await apiClient.updateBudget(id, { newExpense: newExpense });
@@ -99,10 +104,18 @@ const ExpenseTab = ({ category, categoryValues }) => {
         {categoryValues.map((subcategory, index) => (
           <Table.Row key={index}>
             <Table.Cell>{subcategory.name}</Table.Cell>
-            <Table.Cell>{subcategory.totalSpent}</Table.Cell>
-            <Table.Cell>{subcategory.allocation}</Table.Cell>
-            <Table.Cell>
-              {subcategory.allocation - subcategory.totalSpent}
+            <Table.Cell>{formatter.format(subcategory.totalSpent)}</Table.Cell>
+            <Table.Cell>{formatter.format(subcategory.allocation)}</Table.Cell>
+            <Table.Cell
+              css={
+                subcategory.allocation - subcategory.totalSpent < 0
+                  ? { color: "red" }
+                  : { color: "green" }
+              }
+            >
+              {formatter.format(
+                subcategory.allocation - subcategory.totalSpent
+              )}
             </Table.Cell>
             <Table.Cell>{getTimeAgo(subcategory.updated_at)}</Table.Cell>
             <Table.Cell>

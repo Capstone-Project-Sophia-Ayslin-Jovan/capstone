@@ -2,6 +2,7 @@ import { Button, Container, Spacer, Text, Divider } from "@nextui-org/react";
 import React, { useContext } from "react";
 import apiClient from "../../../services/apiClient";
 import { BudgetContext } from "../../../contexts/budget";
+import { PlusIcon } from "../../../components/PlusIcon/PlusIcon";
 
 const OverwriteBudget = () => {
   const { budget, setBudget } = useContext(BudgetContext);
@@ -30,6 +31,8 @@ const OverwriteBudget = () => {
       <Spacer y={3} />
       <Button
         color="success"
+        iconRight={<PlusIcon />}
+        css={{ minWidth: "13vw" }}
         onPress={() => {
           handleOnPress();
         }}
