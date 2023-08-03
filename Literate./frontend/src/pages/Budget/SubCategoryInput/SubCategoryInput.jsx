@@ -36,7 +36,6 @@ const SubCategoryInput = ({ budgetInfo, setBudgetInfo, name }) => {
     budgetInfo.budgetData[name] = inputPairs;
     setBudgetInfo(updatedBudgetInfo);
   };
-
   return (
     <Grid.Container gap={1} justify="center">
       <Grid md={8} css={{ justifyContent: "center" }}>
@@ -92,5 +91,4 @@ const SubCategoryInput = ({ budgetInfo, setBudgetInfo, name }) => {
     </Grid.Container>
   );
 };
-
 export default SubCategoryInput;

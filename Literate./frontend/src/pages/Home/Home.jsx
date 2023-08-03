@@ -66,6 +66,7 @@ export const Home = ({ category, allocationSum }) => {
   const totalSpentSum = new Array(Object.keys(budget.budgetData).length).fill(
     0
   );
+
   return (
     <div>
       <Container justify="center" alignContent="center">
