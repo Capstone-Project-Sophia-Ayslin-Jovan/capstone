@@ -13,9 +13,13 @@ import "./Landing.css";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Pie } from "react-chartjs-2";
+import { Link, useNavigate } from "react-router-dom";
+import { Doughnut, Pie } from "react-chartjs-2";
 export default function Landing({ appState, setAppState }) {
+  const navigate = useNavigate();
+  const learnMore = () => {
+    navigate("/About-Us");
+  };
   const data = {
     labels: [
       "Essentials",
@@ -28,10 +32,10 @@ export default function Landing({ appState, setAppState }) {
         label: "$ for the month",
         data: [120, 600, 90, 100],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
@@ -43,11 +47,11 @@ export default function Landing({ appState, setAppState }) {
       },
     ],
   };
-  const learnMore = () => {};
   return (
     <>
       <Nav appState={appState} setAppState={setAppState} />
       <Spacer y={6} />
+
       <Container responsive="true">
         <Row gap={1}>
           <Container responsive="true">
@@ -91,7 +95,7 @@ export default function Landing({ appState, setAppState }) {
             </div>
           </div>
           <div className="ex-graph">
-            <Pie data={data} />
+            <Doughnut data={data} />
           </div>
         </div>
         <Spacer y={6} />
@@ -120,7 +124,13 @@ export default function Landing({ appState, setAppState }) {
             </Text>
             <Spacer y={2} />
             <Link to="/About">
-              <Button rounded ghost color={"success"} size={"xl"}>
+              <Button
+                rounded
+                ghost
+                color={"success"}
+                size={"xl"}
+                onPress={learnMore}
+              >
                 Learn More
               </Button>
             </Link>
@@ -132,7 +142,7 @@ export default function Landing({ appState, setAppState }) {
         </div>
         <Spacer y={4} />
 
-        <div className="about">
+        <Container>
           <div className="about-blurb">
             <h1 id="about">Our Mission</h1>
             <Text size={24}>
@@ -145,7 +155,7 @@ export default function Landing({ appState, setAppState }) {
               they need to thrive academically and financially.
             </Text>
           </div>
-        </div>
+        </Container>
       </Container>
       <Spacer y={6} />
       <Footer />
