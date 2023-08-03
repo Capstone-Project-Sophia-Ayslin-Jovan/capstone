@@ -33,7 +33,7 @@ const Sidebar = ({ isOpen, handleToggle, handleLogout }) => {
             <Text size={18} h3>
               Hi, {user?.firstName}!
             </Text>
-            <Link to={"/Home"}>
+            <Link to={"/Dashboard"}>
               <Button>Home</Button>
             </Link>
             <Spacer y={0.25} />

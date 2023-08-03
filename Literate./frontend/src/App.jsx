@@ -14,8 +14,17 @@ import {
   Profile,
   Dashboard,
   ExpenseTracking,
+  Contact,
+  About,
+  ModulesHome,
 } from "./pages/index";
 import { AuthRoute, NotAuthRoute } from "./components/index";
+import ModulesLanding from "./pages/Modules/ModulesLanding/ModulesLanding";
+import ModulesIntro from "./pages/Modules/ModulesIntro/ModulesIntro";
+import ModulesBudgeting from "./pages/Modules/ModulesBudgeting/ModulesBudgeting";
+import ModulesCredit from "./pages/Modules/ModulesCredit/ModulesCredit";
+import ModulesInvesting from "./pages/Modules/ModulesInvesting/ModulesInvesting";
+import ModulesSavings from "./pages/Modules/ModulesSavings/ModulesSavings";
 
 export default function AppContainer() {
   // 2. Use at the root of your app
@@ -61,6 +70,30 @@ function App() {
               </AuthRoute>
             }
           />
+          <Route
+            path="/Contact-Us"
+            element={
+              <NotAuthRoute>
+                <Contact />
+              </NotAuthRoute>
+            }
+          />
+          <Route
+            path="/About-Us"
+            element={
+              <NotAuthRoute>
+                <About />
+              </NotAuthRoute>
+            }
+          />
+          <Route
+            path="/Modules"
+            element={
+              <NotAuthRoute>
+                <ModulesHome />
+              </NotAuthRoute>
+            }
+          />
           <Route path="/budget" element={<MSBudget></MSBudget>}></Route>
           {/* <Route
             path="/Budget"
@@ -91,6 +124,54 @@ function App() {
             element={
               <AuthRoute>
                 <Dashboard display={<MSBudget />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Modules"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesLanding />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Modules/Intro"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesIntro />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Modules/Budgeting"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesBudgeting />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Modules/Credit"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesCredit />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Modules/Investing"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesInvesting />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Modules/Savings"
+            element={
+              <AuthRoute>
+                <Dashboard display={<ModulesSavings/>}></Dashboard>
               </AuthRoute>
             }
           />
