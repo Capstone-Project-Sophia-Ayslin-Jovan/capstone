@@ -27,7 +27,7 @@ export const Home = () => {
 
   return (
     <div>
-      <Container justify="center" alignContent="center">
+      {/* <Container justify="center" alignContent="center">
         {budget?.budgetData ? (
           <Container>
             <Col>
@@ -100,7 +100,7 @@ export const Home = () => {
         </Container>
       </Container>
       <Spacer y={6} />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };
