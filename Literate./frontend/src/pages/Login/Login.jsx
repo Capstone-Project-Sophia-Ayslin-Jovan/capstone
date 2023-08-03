@@ -14,6 +14,7 @@ import {
 import apiClient from "../../services/apiClient";
 import { AuthorizeContext } from "../../contexts/authUser";
 import Loading from "../Loading/Loading";
+import "./Login.css"
 
 const Login = () => {
   const { setAuthState } = useContext(AuthorizeContext);
@@ -87,10 +88,13 @@ const Login = () => {
       </Button>
       {isLoading ? (
         <Modal
+          css={{ height: 150 }}
           aria-labelledby="modal-title"
           open={visible}
         >
-          <Loading />
+          <div className="loading-card">
+            <Loading />
+          </div>
         </Modal>
       ) : (
         <div>

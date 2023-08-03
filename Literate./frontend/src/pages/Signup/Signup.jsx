@@ -7,7 +7,6 @@ import {
   Text,
   Input,
   Row,
-  Checkbox,
   Col,
   Spacer,
   Container,
@@ -18,9 +17,11 @@ import Nav from "../../components/Nav/Nav";
 import { AuthorizeContext } from "../../contexts/authUser";
 import apiClient from "../../services/apiClient";
 import Loading from "../Loading/Loading";
+import "./Signup.css"
 
 const Signup = () => {
   const { setAuthState } = useContext(AuthorizeContext);
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -118,7 +119,9 @@ const Signup = () => {
   return (
     <>
       {isLoading ? (
-        <Loading />
+        <div className="loading-card">
+          <Loading />
+        </div>
       ) : (
         <div>
           <Nav />
