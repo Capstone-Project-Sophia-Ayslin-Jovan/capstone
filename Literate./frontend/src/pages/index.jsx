@@ -6,6 +6,9 @@ import MSBudget from "./Budget/MSBudget";
 import { Profile } from "./Profile/Profile";
 import Dashboard from "./Dashboard/Dashboard";
 import ExpenseTracking from "./ExpenseTracking/ExpenseTracking";
+import Contact from "./Contact/Contact";
+import About from "./About/About";
+import ModulesHome from "./ModulesHome/ModulesHome";
 export {
   Landing,
   Login,
@@ -15,4 +18,7 @@ export {
   Profile,
   Dashboard,
   ExpenseTracking,
+  Contact,
+  About,
+  ModulesHome,
 };

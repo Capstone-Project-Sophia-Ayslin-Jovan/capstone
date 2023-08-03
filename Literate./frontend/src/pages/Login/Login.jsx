@@ -19,6 +19,7 @@ const Login = () => {
   const [visible, setVisible] = React.useState(false);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState("");
+  // const [checkErrors, setCheckErrors]= useState("")
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -42,9 +43,13 @@ const Login = () => {
     setLoginForm((form) => ({ ...form, [e.target.name]: e.target.value }));
   };
   //handler for submission of login form
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = async (event) => {
-    // const key = event.key;
-    // if (key === "return" || event.type === "click") {
     setIsLoading(true);
     setErrors((e) => ({ ...e, loginForm: null }));
     try {
@@ -73,7 +78,6 @@ const Login = () => {
         loginForm: message ? String(message) : String(err),
       }));
       setIsLoading;
-      // }
     }
   };
   return (
@@ -97,8 +101,14 @@ const Login = () => {
           </Text>
         </Modal.Header>
         <Modal.Body>
+          {errors && (
+            <Text color="warning" size={18} css={{ fontWeight: "$normal" }} h2>
+              {errors.email}
+            </Text>
+          )}
           <Input
             clearable
+            isRequired
             bordered
             fullWidth
             color="primary"
@@ -111,6 +121,7 @@ const Login = () => {
           />
           <Input.Password
             clearable
+            isRequired
             bordered
             fullWidth
             color="primary"
@@ -120,8 +131,13 @@ const Login = () => {
             placeholder="Password"
             value={loginForm.password}
             onChange={handleLoginChange}
+            onKeyUp={handleKeyPress}
           />
         </Modal.Body>
+        <Text>Don't have an account?</Text>
+        <Link to={"/Signup"}>
+          <Text color="primary">Sign up here!</Text>
+        </Link>
         <Modal.Footer>
           <Button auto flat color="error" onPress={closeHandler}>
             Close

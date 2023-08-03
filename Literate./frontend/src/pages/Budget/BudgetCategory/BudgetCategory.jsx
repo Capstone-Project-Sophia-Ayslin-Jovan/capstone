@@ -45,14 +45,14 @@ const BudgetCategory = ({ setIsDisabled }) => {
         onChange={handleOnChange}
       >
         <Checkbox value="Essentials">Essentials</Checkbox>
-        <Checkbox value="Housing, Utilities, & Bills">
+        <Checkbox value="Housing,Utilities,&Bills">
           Housing, Utilities, & Bills
         </Checkbox>
         <Checkbox value="Transportation">Transportation</Checkbox>
-        <Checkbox value="Subscriptions & Memberships">
+        <Checkbox value="Subscriptions&Memberships">
           Subscriptions & Memberships
         </Checkbox>
-        <Checkbox value="Health & Insurance">Health & Insurance</Checkbox>
+        <Checkbox value="Health&Insurance">Health & Insurance</Checkbox>
         <Checkbox value="Recreation">Recreation</Checkbox>
         <Checkbox value="Other">Other</Checkbox>
       </Checkbox.Group>

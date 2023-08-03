@@ -8,6 +8,8 @@ import {
   Link,
   Card,
   Col,
+  Progress,
+  Grid,
 } from "@nextui-org/react";
 import "./Home.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -15,9 +17,8 @@ import { AuthorizeContext } from "../../contexts/authUser";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 import { BudgetContext } from "../../contexts/budget";
 
 export const Home = () => {
@@ -26,8 +27,8 @@ export const Home = () => {
 
   return (
     <div>
-      <Container>
-        <Row align="center">
+      <Container justify="center" alignContent="center">
+        {budget?.budgetData ? (
           <Container>
             <Col>
               <Text size={36} h1>
@@ -72,16 +73,9 @@ export const Home = () => {
         </Row>
         <Spacer y={4} />
         <Container responsive>
-          {/* <Row> */}
           <Spacer y={4} />
-          {/* <Container> */}
-          <Text size={32} h2>
-            Brush up on your financial knowledge and check out our quick lessons
-            on money management and spending.
-          </Text>
-          {/* </Container> */}
 
-          <Card css={{ width: 900 }}>
+          <Card css={{ width: 1200 }}>
             <Card.Body>
               <Container responsive>
                 <Row>
@@ -103,10 +97,9 @@ export const Home = () => {
               </Container>
             </Card.Body>
           </Card>
-          {/* </Row> */}
         </Container>
       </Container>
-      <Spacer y={10} />
+      <Spacer y={6} />
       <Footer />
     </div>
   );
