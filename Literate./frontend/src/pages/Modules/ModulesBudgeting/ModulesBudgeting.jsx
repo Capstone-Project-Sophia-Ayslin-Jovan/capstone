@@ -25,7 +25,7 @@ import {
   Spacer,
   Modal,
   Text,
-  Input,
+  Pagination,
   Row,
   Checkbox,
   Container,
@@ -33,6 +33,7 @@ import {
 } from "@nextui-org/react";
 import "./ModulesBudgeting.css";
 import { Link } from "react-router-dom";
+import { steps } from "framer-motion";
 
 const ModulesBudgeting = () => {
   return (
@@ -42,20 +43,20 @@ const ModulesBudgeting = () => {
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         backgroundColor="white"
-        maxWidth={1200}
+        maxWidth={2000}
         p={8}
         m="10px auto"
         position="relative"
       >
         <Text h1>Budgeting</Text>
-        <Text h2 size={30}>
+        <Text h2 css={{fontWeight:"$normal"}} size={30}>
           Lesson Overview: In this budgeting lesson, we will delve into the
           fundamental concepts of budgeting, a crucial skill that can lead you
           to financial independence. Understanding the importance of creating a
           personal budget, tracking your income and expenses, and making
           informed financial decisions are key elements of this lesson.
         </Text>
-        <Text h2 size={30}>
+        <Text h2 css={{fontWeight:"$normal"}} size={30}>
           Learning Goals: By the end of this lesson, you should recognize the
           significance of budgeting and its role in achieving financial
           independence in the future. You will gain insights into the benefits
@@ -67,7 +68,7 @@ const ModulesBudgeting = () => {
           src="https://cdn-icons-png.flaticon.com/512/4530/4530555.png"
         />
 
-        <Text h2 size={30}>
+        <Text h2 css={{fontWeight:"$normal"}} size={30}>
           Creating a personal budget is a cornerstone of financial success and
           an essential step towards becoming financially independent. A budget
           serves as a financial roadmap, enabling you to manage your money
@@ -79,7 +80,9 @@ const ModulesBudgeting = () => {
           decisions. This knowledge empowers you to prioritize your financial
           goals and align your spending with your aspirations, ensuring that
           your hard-earned money is put to its best use. A critical aspect of
-          budgeting is establishing an emergency fund. Life can be
+          budgeting is establishing an emergency fund. 
+          <img className="budgeting" src='https://png.pngtree.com/png-vector/20220821/ourmid/pngtree-budget-png-image_6119608.png'/>
+          Life can be
           unpredictable, and unexpected financial challenges may arise. Having a
           dedicated emergency fund acts as a safety net during difficult times,
           offering peace of mind and financial security. It is crucial to resist
@@ -113,7 +116,7 @@ const ModulesBudgeting = () => {
           </Link>
           <Spacer x={35}/>
           <Link to="/Dashboard/Modules/Savings">
-            <Button> Next</Button>
+            <Button className="next-btn"> Next</Button>
           </Link>
         </Row>
       </Box>

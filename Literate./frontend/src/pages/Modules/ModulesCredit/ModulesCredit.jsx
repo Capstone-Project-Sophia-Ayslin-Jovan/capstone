@@ -25,7 +25,7 @@ import {
   Spacer,
   Modal,
   Text,
-  Input,
+  Pagination,
   Row,
   Checkbox,
   Container,
@@ -42,13 +42,13 @@ const ModulesCredit = () => {
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         backgroundColor="white"
-        maxWidth={1200}
+        maxWidth={2000}
         p={8}
         m="10px auto"
         position="relative"
       >
         <Text h1>Credit and Debt Management</Text>
-        <Text h2 size={30}>
+        <Text h2 css={{fontWeight:"$normal"}} size={30}>
           Lesson Overview: In this comprehensive lesson on credit and debt
           management, we will explore the fundamental concepts of credit, debt,
           and their implications on your financial well-being. Understanding
@@ -56,7 +56,7 @@ const ModulesCredit = () => {
           rates will equip you with the knowledge needed to make responsible
           borrowing decisions and build a strong credit profile.
         </Text>
-        <Text h2 size={30}>
+        <Text h2 css={{fontWeight:"$normal"}} size={30}>
           Learning Goals: By the end of this lesson, you will have a clear
           understanding of credit and debt management. You will learn how to
           borrow responsibly, comprehend the impact of debt on your financial
@@ -68,7 +68,7 @@ const ModulesCredit = () => {
           src="https://cdn-icons-png.flaticon.com/512/2695/2695971.png"
         />
 
-        <Text h2 size={30}>
+        <Text h2 css={{fontWeight:"$normal"}} size={30}>
           Credit and its significance: Credit refers to your ability to borrow
           money based on your creditworthiness, which is assessed by lenders to
           determine your credit risk. Having access to credit is essential for
@@ -78,7 +78,7 @@ const ModulesCredit = () => {
           opportunities for favorable loan terms and interest rates in the
           future.
           <Spacer y={1} />
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Debt and its implications: Debt is the amount of money borrowed that
             must be repaid over time, often with interest. It is essential to
             manage debt responsibly to maintain a healthy financial life.
@@ -87,7 +87,7 @@ const ModulesCredit = () => {
             to financial stress, adversely affecting your creditworthiness and
             limiting your borrowing capacity in the future.
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Understanding credit scores: Credit scores are numerical
             representations of your creditworthiness, calculated based on
             factors such as payment history, credit utilization, length of
@@ -96,7 +96,8 @@ const ModulesCredit = () => {
             score indicates a lower credit risk and increases your chances of
             getting approved for loans with favorable terms.
           </Text>
-          <Text h2 size={30}>
+          <img className="debt" src="https://static.vecteezy.com/system/resources/previews/013/740/585/original/money-banknote-and-credit-card-clipart-design-illustration-green-banknote-dollar-bills-and-yellow-debit-card-flat-icon-cartoon-style-money-banknote-investment-finance-concept-vector.jpg"/>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Managing debt responsibly: To maintain a positive credit profile, it
             is crucial to manage debt responsibly. This includes making timely
             payments on all debts, avoiding carrying high credit card balances,
@@ -104,7 +105,7 @@ const ModulesCredit = () => {
             repay. Developing a debt repayment plan and budgeting can help you
             stay on track and pay off debts systematically.
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             Importance of interest rates: Interest rates are the costs of
             borrowing money and are typically expressed as a percentage of the
             total loan amount. Different types of debt come with varying
@@ -114,7 +115,7 @@ const ModulesCredit = () => {
             refinancing high-interest debt or making extra payments to reduce
             the principal amount.
           </Text>
-          <Text h2 size={30}>
+          <Text h2 css={{fontWeight:"$normal"}} size={30}>
             In conclusion, credit and debt management are crucial aspects of
             your financial journey. By understanding creditworthiness, credit
             scores, types of debt, and interest rates, you can make informed
@@ -131,7 +132,7 @@ const ModulesCredit = () => {
           </Link>
           <Spacer x={35}/>
           <Link to="/Dashboard/Modules/Investing">
-            <Button> Next</Button>
+            <Button className="next-btn"> Next</Button>
           </Link>
         </Row>
       </Box>

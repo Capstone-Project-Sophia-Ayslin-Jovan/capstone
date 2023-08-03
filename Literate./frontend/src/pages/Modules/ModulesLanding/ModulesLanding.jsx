@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   Button,
@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import "./ModulesLanding.css";
 
-const ModulesLanding = ({}) => {
+const ModulesLanding = () => {
   return (
     <div>
       <Text h1>Learning Modules</Text>
