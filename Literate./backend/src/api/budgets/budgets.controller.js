@@ -20,21 +20,23 @@ router.get("/budget/:userId", async (req, res, next) => {
 });
 router.put("/budget/:id", async function (req, res, next) {
   try {
-    const { updatedBudget } = await budgetService.updateBudget(
+    const { updatedSubCategory } = await budgetService.updateBudget(
       req.params.id,
       req.body
     );
-    return res.status(200).json({ updatedBudget });
+    return res.status(200).json({ updatedSubCategory });
   } catch (err) {
     next(err);
   }
 });
-// router.get("/:id", async (req, res, next) => {
-//   try {
-//     const budgetsInfo = await budgetService.getAllBudgets(req.params.id);
-//     return res.status(200).json({ budgetsInfo });
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+
+router.delete("/budget/:id", async function (req, res, next) {
+  try {
+    const { deletedBudget } = await budgetService.deleteBudget(req.params.id);
+    return res.status(200).json({ deletedBudget });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

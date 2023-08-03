@@ -1,5 +1,4 @@
 import React from "react";
-import { BudgetContext } from "../../contexts/budget";
 import {
   Grid,
   Card,
@@ -11,85 +10,120 @@ import {
   Modal,
   Button,
   Input,
+  Table,
+  Tooltip,
+  Badge,
 } from "@nextui-org/react";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import "./ExpenseTracking.css";
-import ExpenseCard from "./ExpenseCard";
-import { Pie } from "react-chartjs-2";
+import ExpenseTab from "./ExpenseTab";
+import { BudgetContext } from "../../contexts/budget";
+import {
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
+} from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+
 const ExpenseTracking = ({}) => {
-  const [visible, setVisible] = useState(false);
-  const openHandler = () => {
-    setVisible(true);
-  };
-  const closeHandler = () => {
-    setVisible(false);
-  };
-  const { budgetInfo } = useContext(BudgetContext);
-  const navigate = useNavigate();
-  //setting piechart labels
-  const budgetLabels = Object.keys(budgetInfo.budgetData);
-  //getting allocation sums for categories
-  const subCatSum = new Array(budgetLabels.length).fill(0);
-  Object.keys(budgetInfo.budgetData).map((category, index) =>
-    budgetInfo.budgetData[category].map((listItem) => {
-      subCatSum[index] += parseInt(listItem.allocation);
-    })
-  );
+  const { budget, setBudget } = useContext(BudgetContext);
+
+  console.log(budget);
 
   return (
-    <div>
-      <Text h1>Fall Semester : $600</Text>
+    <Card css={{ minHeight: "90vh" }}>
       <Grid.Container gap={2}>
-        <Grid xs={4}>
-          <Collapse.Group splitted>
-            <Collapse
-              css={{ width: 500 }}
-              bordered
-              title="Essentials"
-              subtitle={<Progress value={100} />}
-            >
-              <Button flat size={"lg"} onPress={openHandler}>
-                Groceries $100
-              </Button>
-              <Modal
-                width="400px"
-                closeButton
-                onClose={closeHandler}
-                open={visible}
-              >
-                <Modal.Header>
-                  <Container>
-                    <Text size={22} css={{ fontWeight: "bold" }} p>
-                      Groceries
-                    </Text>
-                    <Text size={18}>How much did you spend today?</Text>
-                  </Container>
-                </Modal.Header>
-                <Modal.Body>
-                  <Input
-                    clearable
-                    bordered
-                    type="number"
-                    // value={totalSpent}
-                    color="primary"
-                    aria-label="spent"
-                    labelLeft="$"
-                  />
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button auto color={"success"} flat>
-                    Enter
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-            </Collapse>
-          </Collapse.Group>
+        <Grid>
+          <Text h2>Expenses</Text>
         </Grid>
+        <Grid.Container gap={2}>
+          <StatsBanner />
+        </Grid.Container>
       </Grid.Container>
-      <Spacer y={4} />
-    </div>
+      <Tabs isFitted variant="enclosed">
+        <TabList mb="1em">
+          {budget?.budgetData
+            ? Object.keys(budget?.budgetData).map((category, index) => (
+                <Tab key={index}>{category}</Tab>
+              ))
+            : null}
+        </TabList>
+        <TabPanels>
+          {budget?.budgetData
+            ? Object.keys(budget?.budgetData).map((category, index) => (
+                <TabPanel key={index}>
+                  <ExpenseTab
+                    category={category}
+                    categoryValues={budget?.budgetData[category]}
+                  />
+                </TabPanel>
+              ))
+            : null}
+        </TabPanels>
+      </Tabs>
+    </Card>
   );
 };
 
 export default ExpenseTracking;
+
+function StatsBanner() {
+  return (
+    <Grid.Container gap={2} justify="center">
+      <Grid xs={4}>
+        <Card variant="bordered">
+          <Card.Body>
+            <Stat>
+              <StatLabel>
+                Total Expenses{" "}
+                <Badge isSquared color="primary" variant="flat">
+                  <Tooltip content={"Developers love Next.js"}>Primary</Tooltip>
+                </Badge>
+              </StatLabel>
+              <StatNumber>$0.00</StatNumber>
+              <StatHelpText>Feb 12 - Feb 28</StatHelpText>
+              <Progress squared color="primary" value={50} max={250} />
+            </Stat>
+          </Card.Body>
+        </Card>
+      </Grid>
+      <Grid xs={4}>
+        <Card variant="bordered">
+          <Card.Body>
+            <Stat>
+              <StatLabel>
+                Total Expenses
+                <Badge isSquared color="warning" variant="flat">
+                  <Tooltip content={"Developers love Next.js"}>Primary</Tooltip>
+                </Badge>
+              </StatLabel>
+              <StatNumber>$0.00</StatNumber>
+              <StatHelpText>Feb 12 - Feb 28</StatHelpText>
+            </Stat>
+            <Progress squared color="primary" value={200} max={250} />
+          </Card.Body>
+        </Card>
+      </Grid>
+      <Grid xs={4}>
+        <Card variant="bordered">
+          <Card.Body>
+            <Stat>
+              <StatLabel>
+                Total Expenses
+                <Badge isSquared color="secondary" variant="flat">
+                  <Tooltip content={"Developers love Next.js"}>Primary</Tooltip>
+                </Badge>
+              </StatLabel>
+              <StatNumber>$0.00</StatNumber>
+              <StatHelpText>Feb 12 - Feb 28</StatHelpText>
+            </Stat>
+          </Card.Body>
+        </Card>
+      </Grid>
+    </Grid.Container>
+  );
+}

@@ -21,14 +21,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 import { BudgetContext } from "../../contexts/budget";
 
 export const Home = () => {
-  const { logoutUser } = useContext(AuthorizeContext);
-  const { budgetInfo } = useContext(BudgetContext);
-  console.log(budgetInfo);
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    logoutUser();
-    navigate("/");
-  };
+  const { budget } = useContext(BudgetContext);
+  console.log(budget);
+
   return (
     <div>
       <Container>
@@ -54,15 +49,13 @@ export const Home = () => {
                         <Text size={26} h3>
                           With our budgeting tool you'll be able to:
                         </Text>
-                        <Text size={24} p>
+                        <Text size={24}>
                           1. Be more cognizant of your spending.
                         </Text>
-                        <Text size={24} p>
+                        <Text size={24}>
                           2. Know where your money is going.
                         </Text>
-                        <Text size={24} p>
-                          3. Become a better budgeter.
-                        </Text>
+                        <Text size={24}>3. Become a better budgeter.</Text>
                         <Spacer y={2} />
                         <Link href="/Budget">
                           <Button flat size={"xl"} auto>
@@ -93,7 +86,7 @@ export const Home = () => {
               <Container responsive>
                 <Row>
                   <Col>
-                    <Text size={24} p>
+                    <Text size={24}>
                       Our learning platform offers quick and thorough modules to
                       give you the knowledge you need to be successful. Track
                       your progress, and celebrate milestones along the way.

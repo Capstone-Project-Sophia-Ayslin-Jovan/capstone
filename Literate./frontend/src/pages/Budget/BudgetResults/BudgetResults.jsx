@@ -1,58 +1,57 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
 import "./BudgetResults.css";
-import { Button, Spacer, Text, Row, Grid } from "@nextui-org/react";
+import {
+  Button,
+  Spacer,
+  Text,
+  Row,
+  Grid,
+  Card,
+  Container,
+} from "@nextui-org/react";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import SubCategoryResults from "../SubCategoryResults/SubCategoryResults";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthorizeContext } from "../../../contexts/authUser";
-import apiClient from "../../../services/apiClient";
-import { Pie } from "react-chartjs-2";
-const BudgetResults = ({ budgetInfo }) => {
-  const [labels, setLabels] = useState([]);
-  const [dataPoints, setDataPoints] = useState([]);
-  const navigate = useNavigate();
-  
-  const { setAuthState, setInitialized } = useContext(AuthorizeContext);
 
-  for (let key in budgetInfo.budgetData) {
-    budgetInfo.budgetData[key] = budgetInfo.budgetData[key].filter(
+import { NewBudgetContext } from "../../../contexts/newBudget";
+
+const BudgetResults = ({ budgetLeft }) => {
+  const { newBudget } = useContext(NewBudgetContext);
+  for (let key in newBudget.budgetData) {
+    newBudget.budgetData[key] = newBudget.budgetData[key].filter(
       (obj) => obj.name !== "" && obj.allocation !== 0
     );
   }
-  const budgetLabels = Object.keys(budgetInfo.budgetData);
-  // setLabels(budgetLabels);
+  const budgetLabels = Object.keys(newBudget.budgetData);
+
   const subCatSum = new Array(budgetLabels.length).fill(0);
-  Object.keys(budgetInfo.budgetData).map((category, index) =>
-    budgetInfo.budgetData[category].map((listItem) => {
+  Object.keys(newBudget.budgetData).map((category, index) =>
+    newBudget.budgetData[category].map((listItem) => {
       subCatSum[index] += parseInt(listItem.allocation);
     })
   );
-  const handleSubmitResults = async () => {
-    console.log(budgetInfo);
-    await apiClient.createBudget(budgetInfo);
-    setAuthState((state) => ({ ...state, isAuthenticated: true }));
-    navigate("/Home");
-  };
 
   return (
     <>
-      <div>
-        <Text h1>
-          {budgetInfo.name}: $ {budgetInfo.total}
-        </Text>
-        <Spacer y={4} />
-        <div className="grid">
-          {Object.keys(budgetInfo.budgetData).map((key, index) => (
-            <div key={index}>
-              <SubCategoryResults
-                category={key}
-                categoryValues={budgetInfo.budgetData[key]}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      <Text h1 css={{ textAlign: "center" }}>
+        {newBudget.name}
+      </Text>
+      <Spacer y={1} />
+      <Grid.Container gap={2} justify="center">
+        {Object.keys(newBudget.budgetData).map((key, index) => (
+          <Grid key={index} md={12}>
+            <SubCategoryResults
+              category={key}
+              categoryValues={newBudget.budgetData[key]}
+            />
+          </Grid>
+        ))}
+      </Grid.Container>
+      <Text size={20} css={{ textAlign: "center" }}>
+        Budget Goal: ${newBudget.goal} &emsp; Budget Left: ${budgetLeft}
+      </Text>
     </>
   );
 };

@@ -13,14 +13,16 @@ import {
 } from "@nextui-org/react";
 import SubCategoryInput from "../SubCategoryInput/SubCategoryInput";
 import { TrashIcon } from "../../../components/TrashIcon/TrashIcon";
+import { NewBudgetContext } from "../../../contexts/newBudget";
 
-const SubCategoryCard = ({ budgetInfo, setBudgetInfo, name }) => {
+const SubCategoryCard = ({ name }) => {
+  const { newBudget, setNewBudget } = useContext(NewBudgetContext);
   const [disableTrash, setDisableTrash] = useState(false);
   useEffect(() => {
-    if (Object.keys(budgetInfo.budgetData).length === 1) setDisableTrash(true);
-  }, [budgetInfo]);
+    if (Object.keys(newBudget.budgetData).length === 1) setDisableTrash(true);
+  }, [newBudget]);
   const handleOnPress = () => {
-    setBudgetInfo((prevBudgetInfo) => {
+    setNewBudget((prevBudgetInfo) => {
       const updatedBudgetInfo = { ...prevBudgetInfo };
       delete updatedBudgetInfo.budgetData[name];
       return updatedBudgetInfo;
@@ -55,11 +57,7 @@ const SubCategoryCard = ({ budgetInfo, setBudgetInfo, name }) => {
       </Card.Header>
       <Card.Divider />
       <Card.Body>
-        <SubCategoryInput
-          budgetInfo={budgetInfo}
-          setBudgetInfo={setBudgetInfo}
-          name={name}
-        />
+        <SubCategoryInput name={name} />
       </Card.Body>
       <Card.Footer>
         <Row justify="flex-end"></Row>
