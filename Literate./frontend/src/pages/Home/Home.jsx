@@ -20,6 +20,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 import { BudgetContext } from "../../contexts/budget";
 
+
 export const Home = () => {
   const { budget } = useContext(BudgetContext);
   console.log(budget);
