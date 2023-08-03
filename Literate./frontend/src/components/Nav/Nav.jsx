@@ -37,19 +37,19 @@ function Nav() {
             Home
           </Navbar.Link>
           <Navbar.Link
-            isActive={location.pathname === "About-Us"}
+            isActive={location.pathname === "/About-Us"}
             href="/About-Us"
           >
             About Us
           </Navbar.Link>
           <Navbar.Link
-            isActive={location.pathname === "Modules"}
+            isActive={location.pathname === "/Modules"}
             href="/Modules"
           >
             Modules
           </Navbar.Link>
           <Navbar.Link
-            isActive={location.pathname === "Contact-Us"}
+            isActive={location.pathname === "/Contact-Us"}
             href="/Contact-Us"
           >
             Contact Us

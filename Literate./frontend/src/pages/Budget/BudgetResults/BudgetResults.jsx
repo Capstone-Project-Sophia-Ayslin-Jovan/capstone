@@ -12,7 +12,7 @@ const BudgetResults = ({ budgetInfo }) => {
   const [labels, setLabels] = useState([]);
   const [dataPoints, setDataPoints] = useState([]);
   const navigate = useNavigate();
-  
+
   const { setAuthState, setInitialized } = useContext(AuthorizeContext);
 
   for (let key in budgetInfo.budgetData) {
@@ -39,19 +39,19 @@ const BudgetResults = ({ budgetInfo }) => {
     <>
       <div>
         <Text h1>
-          {budgetInfo.name}: $ {budgetInfo.total}
+          {budgetInfo.name}: $ {budgetInfo.goal}
         </Text>
         <Spacer y={4} />
-        <div className="grid">
+        <Grid.Container>
           {Object.keys(budgetInfo.budgetData).map((key, index) => (
-            <div key={index}>
+            <Grid xs={8}>
               <SubCategoryResults
                 category={key}
                 categoryValues={budgetInfo.budgetData[key]}
               />
-            </div>
+            </Grid>
           ))}
-        </div>
+        </Grid.Container>
       </div>
     </>
   );

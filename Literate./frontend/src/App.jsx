@@ -14,6 +14,9 @@ import {
   Profile,
   Dashboard,
   ExpenseTracking,
+  Contact,
+  About,
+  ModulesHome,
 } from "./pages/index";
 import { AuthRoute, NotAuthRoute } from "./components/index";
 
@@ -59,6 +62,30 @@ function App() {
               <AuthRoute>
                 <Dashboard display={<Profile />}></Dashboard>
               </AuthRoute>
+            }
+          />
+          <Route
+            path="/Contact-Us"
+            element={
+              <NotAuthRoute>
+                <Contact />
+              </NotAuthRoute>
+            }
+          />
+          <Route
+            path="/About-Us"
+            element={
+              <NotAuthRoute>
+                <About />
+              </NotAuthRoute>
+            }
+          />
+          <Route
+            path="/Modules"
+            element={
+              <NotAuthRoute>
+                <ModulesHome />
+              </NotAuthRoute>
             }
           />
           <Route path="/budget" element={<MSBudget></MSBudget>}></Route>
