@@ -82,14 +82,18 @@ const Login = () => {
   };
   return (
     <div>
+      <Button auto onPress={handler} css={{ minWidth: "6vw" }}>
+        Login
+      </Button>
       {isLoading ? (
-        <Loading />
+        <Modal
+          aria-labelledby="modal-title"
+          open={visible}
+        >
+          <Loading />
+        </Modal>
       ) : (
         <div>
-          <Button auto onPress={handler} css={{ minWidth: "6vw" }}>
-            Login
-          </Button>
-
           <Modal
             closeButton
             aria-labelledby="modal-title"

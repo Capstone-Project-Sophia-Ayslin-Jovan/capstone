@@ -4,7 +4,7 @@ import { Loading } from "@nextui-org/react";
 const Loadings = () => {
   return (
     <div>
-      <Loading> Loading </Loading>
+      <Loading size="xl"> Loading </Loading>
     </div>
   );
 };
