@@ -32,3 +32,23 @@
 .clipboard {
   width: 55%;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-container {
+  max-width: 50%;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .img-container {
+    max-width: 100%;
+  }
+}

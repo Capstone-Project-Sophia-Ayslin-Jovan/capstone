@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import styles from "./page.module.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthorizeProvider } from "./contexts/authUser";
 import { BudgetProvider } from "./contexts/budget";
+import { NewBudgetProvider } from "./contexts/newBudget";
 import {
   Landing,
   Login,
@@ -25,15 +26,26 @@ import ModulesBudgeting from "./pages/Modules/ModulesBudgeting/ModulesBudgeting"
 import ModulesCredit from "./pages/Modules/ModulesCredit/ModulesCredit";
 import ModulesInvesting from "./pages/Modules/ModulesInvesting/ModulesInvesting";
 import ModulesSavings from "./pages/Modules/ModulesSavings/ModulesSavings";
+import Loading from "./pages/Loading/Loading";
 
 export default function AppContainer() {
-  // 2. Use at the root of your app
+  const theme = extendTheme({
+    styles: {
+      global: {
+        body: {
+          overflow: "auto !important", //To fix bug
+        },
+      },
+    },
+  });
   return (
     <NextUIProvider>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <AuthorizeProvider>
           <BudgetProvider>
-            <App />
+            <NewBudgetProvider>
+              <App />
+            </NewBudgetProvider>
           </BudgetProvider>
         </AuthorizeProvider>
       </ChakraProvider>
@@ -180,6 +192,14 @@ function App() {
             element={
               <AuthRoute>
                 <Dashboard display={<ExpenseTracking />}></Dashboard>
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/Dashboard/Loading"
+            element={
+              <AuthRoute>
+                <Dashboard display={<Loading />}></Dashboard>
               </AuthRoute>
             }
           />

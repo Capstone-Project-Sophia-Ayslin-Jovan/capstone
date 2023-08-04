@@ -64,7 +64,7 @@ export default function Landing({ appState, setAppState }) {
         </Row>
       </Container>
       <Spacer y={2} />
-      <Container>
+      <Container responsive="true">
         <h2>
           Becoming financially literate is hard. That's why we've made it easy.
         </h2>
@@ -145,7 +145,7 @@ export default function Landing({ appState, setAppState }) {
         </div>
         <Spacer y={4} />
 
-        <Container>
+        <Container responsive="true">
           <div className="about-blurb">
             <h1 id="about">Our Mission</h1>
             <Text size={24}>

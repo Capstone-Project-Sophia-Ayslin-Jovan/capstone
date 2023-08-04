@@ -1,23 +1,33 @@
 "use client";
 import React, { useState } from "react";
-import { Text, Container, Grid, Card } from "@nextui-org/react";
+import { Text, Container, Grid, Card, Table } from "@nextui-org/react";
 import "./SubCategoryResults.css";
 const SubCategoryResults = ({ category, categoryValues }) => {
+  // Maybe resize category title later?
   return (
-    <div className="category-results">
-      <Container responsive="true">
-        <Card css={{ width: 400 }}>
-          <Card.Body>
-            <Text h2>{category}</Text>
-            {categoryValues.map(({ name, allocation }) => (
-              <Text size={24}>
-                {name} ${allocation}
-              </Text>
-            ))}
-          </Card.Body>
-        </Card>
-      </Container>
-    </div>
+    <Container>
+      <Text h2>{category}</Text>
+      <Table
+        aria-label="Example table with static content"
+        css={{
+          height: "auto",
+          minWidth: "100%",
+        }}
+      >
+        <Table.Header>
+          <Table.Column>NAME</Table.Column>
+          <Table.Column>ALLOCATION</Table.Column>
+        </Table.Header>
+        <Table.Body>
+          {categoryValues.map(({ name, allocation }, index) => (
+            <Table.Row key={index}>
+              <Table.Cell>{name}</Table.Cell>
+              <Table.Cell>${allocation}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </Container>
   );
 };
 export default SubCategoryResults;

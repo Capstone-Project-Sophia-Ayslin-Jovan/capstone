@@ -13,19 +13,20 @@ import {
   Grid,
 } from "@nextui-org/react";
 import SubCategoryCard from "../SubCategoryCard/SubCategoryCard";
+import { NewBudgetContext } from "../../../contexts/newBudget";
 
-const BudgetExpenses = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
-  const [budgetLeft, setBudgetLeft] = useState(budgetInfo.goal);
+const BudgetExpenses = ({ budgetLeft, setBudgetLeft, setIsDisabled }) => {
+  const { newBudget } = useContext(NewBudgetContext);
 
   useEffect(() => {
     setIsDisabled(true);
-    const filteredEmpty = Object.keys(budgetInfo.budgetData).filter((value) => {
-      if (budgetInfo.budgetData[value].length === 0) return true;
+    const filteredEmpty = Object.keys(newBudget.budgetData).filter((value) => {
+      if (newBudget.budgetData[value].length === 0) return true;
       if (
-        budgetInfo.budgetData[value][0].name === null ||
-        budgetInfo.budgetData[value][0].name === "" ||
-        budgetInfo.budgetData[value][0].allocation === null ||
-        budgetInfo.budgetData[value][0].allocation === ""
+        newBudget.budgetData[value][0].name === null ||
+        newBudget.budgetData[value][0].name === "" ||
+        newBudget.budgetData[value][0].allocation === null ||
+        newBudget.budgetData[value][0].allocation === ""
       )
         return true;
     });
@@ -33,28 +34,32 @@ const BudgetExpenses = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
       setIsDisabled(false);
     }
     let totalExpenses = 0;
-    for (let category in budgetInfo.budgetData) {
-      for (let subCategory of budgetInfo.budgetData[category]) {
+    for (let category in newBudget.budgetData) {
+      for (let subCategory of newBudget.budgetData[category]) {
         if (subCategory.allocation !== null && subCategory.allocation !== "")
           totalExpenses += parseInt(subCategory.allocation);
       }
     }
-    setBudgetLeft(parseInt(budgetInfo.goal) - totalExpenses);
-  }, [budgetInfo]);
+    setBudgetLeft(parseInt(newBudget.goal) - totalExpenses);
+  }, [newBudget]);
   return (
     <Container>
       <Grid.Container justify="center" gap={2}>
         <Grid>
           <Text h2 weight="bold">
-            Allocate Money Towards Your Expenses
+            Distribute Funds To Subcategories
           </Text>
-          <Text h3 css={{ textAlign: "center" }}>
+          <Text
+            h3
+            color={budgetLeft < 0 ? "red" : "black"}
+            css={{ textAlign: "center" }}
+          >
             Budget Amount Left: ${budgetLeft}
           </Text>
         </Grid>
-        {Object.keys(budgetInfo.budgetData).map((key, index) => (
+        {Object.keys(newBudget.budgetData).map((key, index) => (
           <Grid key={index}>
-            <SubCategoryCard budgetInfo={budgetInfo} setBudgetInfo={setBudgetInfo} index={index} name={key} />
+            <SubCategoryCard index={index} name={key} />
           </Grid>
         ))}
       </Grid.Container>

@@ -25,6 +25,7 @@ import { Doughnut, Bar } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend, ...registerables);
 import { BudgetContext } from "../../contexts/budget";
 import CategoryHome from "./CategoryHome";
+
 import { left } from "@popperjs/core";
 import { Tag, TagLabel } from "@chakra-ui/tag";
 import { Box } from "@chakra-ui/layout";
@@ -120,6 +121,7 @@ export const Home = ({}) => {
   return (
     <>
       <Grid>
+
         {budget?.budgetData ? (
           <>
             <Card css={{ minHeight: "90vh", padding: 20 }}>
@@ -218,7 +220,7 @@ export const Home = ({}) => {
                     <Text size={36} h1>
                       We've got what you need.
                     </Text>
-                    <Card css={{ width: 1000 }}>
+                    <Card >
                       <Card.Header>
                         <Text size={30} h2>
                           Budget beginner? No problem, we've made it simple just
@@ -243,11 +245,9 @@ export const Home = ({}) => {
                                 3. Become a better budgeter.
                               </Text>
                               <Spacer y={2} />
-                              <Link href="/Budget">
-                                <Button flat size={"xl"} auto>
-                                  Start Budgeting
-                                </Button>
-                              </Link>
+                              <Button flat size={"xl"} auto>
+                                Start Budgeting
+                              </Button>
                             </Container>
                           </Row>
                         </Container>
@@ -264,7 +264,7 @@ export const Home = ({}) => {
         <Container responsive>
           <Spacer y={4} />
 
-          <Card css={{ width: 1200 }}>
+          <Card >
             <Card.Body>
               <Container>
                 <Text size={32} h2>

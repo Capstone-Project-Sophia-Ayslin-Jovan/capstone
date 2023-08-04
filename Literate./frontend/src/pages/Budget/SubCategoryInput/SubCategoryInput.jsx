@@ -11,9 +11,11 @@ import {
 } from "@nextui-org/react";
 
 import { PlusIcon } from "../../../components/PlusIcon/PlusIcon";
+import { NewBudgetContext } from "../../../contexts/newBudget";
 
-const SubCategoryInput = ({ budgetInfo, setBudgetInfo, name }) => {
-  const [inputPairs, setInputPairs] = useState(budgetInfo.budgetData[name]);
+const SubCategoryInput = ({ name }) => {
+  const { newBudget, setNewBudget } = useContext(NewBudgetContext);
+  const [inputPairs, setInputPairs] = useState(newBudget.budgetData[name]);
 
   const handleOnClick = () => {
     setInputPairs((state) => [
@@ -32,21 +34,12 @@ const SubCategoryInput = ({ budgetInfo, setBudgetInfo, name }) => {
     const updatedInput = [...inputPairs];
     updatedInput[index][key] = value;
     setInputPairs(updatedInput);
-    const updatedBudgetInfo = { ...budgetInfo };
-    budgetInfo.budgetData[name] = inputPairs;
-    setBudgetInfo(updatedBudgetInfo);
+    const updatedBudgetInfo = { ...newBudget };
+    updatedBudgetInfo.budgetData[name] = inputPairs;
+    setNewBudget(updatedBudgetInfo);
   };
   return (
     <Grid.Container gap={1} justify="center">
-      <Grid md={8} css={{ justifyContent: "center" }}>
-        <Button
-          iconRight={<PlusIcon fill="currentColor" />}
-          color="primary"
-          onPress={handleOnClick}
-        >
-          Add Entry
-        </Button>
-      </Grid>
       <Grid md={4.1} css={{ justifyContent: "center" }}>
         <Text color="primary">Subcategory</Text>
       </Grid>
@@ -88,6 +81,15 @@ const SubCategoryInput = ({ budgetInfo, setBudgetInfo, name }) => {
           </Grid>
         </React.Fragment>
       ))}
+      <Grid md={8} css={{ justifyContent: "center" }}>
+        <Button
+          iconRight={<PlusIcon fill="currentColor" />}
+          color="primary"
+          onPress={handleOnClick}
+        >
+          Add Entry
+        </Button>
+      </Grid>
     </Grid.Container>
   );
 };

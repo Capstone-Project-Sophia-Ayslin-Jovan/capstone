@@ -15,7 +15,6 @@ import { Layout } from "../Layout/Layout";
 import Login from "../../pages/Login/Login";
 function Nav() {
   let location = useLocation();
-  console.log(location, "location");
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const collapseItems = [
     { name: "Home", pathname: "/" },
@@ -25,7 +24,7 @@ function Nav() {
   ];
   return (
     <Layout>
-      <Navbar>
+      <Navbar variant="sticky">
         <Navbar.Toggle showIn="xs" />
         <Navbar.Brand>
           <Text b color="inherit" hideIn="xs">
@@ -75,7 +74,13 @@ function Nav() {
             <Login loginForm={loginForm} />
           </Navbar.Item>
           <Navbar.Item>
-            <Button auto ghost as={Link} href="/signup" css={{ width: "3vw" }}>
+            <Button
+              auto
+              ghost
+              as={Link}
+              href="/signup"
+              css={{ minWidth: "6vw" }}
+            >
               Sign Up
             </Button>
           </Navbar.Item>

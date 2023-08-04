@@ -4,7 +4,6 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 //creates new budget for given user
 const createBudget = async function (data) {
-  console.log(data);
   const { userId, name, goal, startDate, endDate, budgetData } = data;
 
   // We need more validation later
@@ -30,7 +29,7 @@ const createBudget = async function (data) {
   for (let catName in budgetData) {
     for (let subCatObj of budgetData[catName]) {
       subCatObj["category"] = catName;
-      subCatObj.allocation = parseInt(subCatObj.allocation);
+      subCatObj.allocation = parseFloat(subCatObj.allocation);
       subCategories.push(subCatObj);
     }
   }
@@ -38,7 +37,7 @@ const createBudget = async function (data) {
   const budget = await prisma.budget.create({
     data: {
       name: name,
-      goal: parseInt(goal),
+      goal: parseFloat(goal),
       startDate: new Date(startDate).toISOString(),
       endDate: new Date(endDate).toISOString(),
       subCategories: {
@@ -68,57 +67,118 @@ const getBudget = async (userId) => {
     },
   });
   if (!budgetData) return null;
-  let budgetArray = [];
-  const fields = ["name", "allocation", "totalSpent"];
+  let budgetObj = {};
+  const fields = ["id", "name", "allocation", "totalSpent", "updated_at"];
   for (let x of budgetData.subCategories) {
-    const foundObject = budgetArray.find((obj) =>
-      Object.keys(obj).includes(x.category)
-    );
     const obj = {};
     for (let y of fields) {
       obj[y] = x[y];
     }
-    if (!foundObject) {
-      console.log(obj);
-      budgetArray.push({
-        [x.category]: [obj],
-      });
-    } else foundObject[x.category].push(obj);
+
+    if (Object.keys(budgetObj).includes(x.category)) {
+      budgetObj[x.category].push(obj);
+    } else {
+      budgetObj[x.category] = [obj];
+    }
   }
 
+  function orderObjectByKeysAndName(obj, order) {
+    const orderedObj = {};
+
+    order.forEach((key) => {
+      if (obj.hasOwnProperty(key)) {
+        const orderedArray = obj[key].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        orderedObj[key] = orderedArray;
+        delete obj[key];
+      }
+    });
+
+    for (const key in obj) {
+      orderedObj[key] = obj[key];
+    }
+
+    return orderedObj;
+  }
+
+  const orderedCategories = orderObjectByKeysAndName(
+    budgetObj,
+    Object.keys(budgetObj).sort()
+  );
+
   const budget = {
+    id: budgetData.id,
     name: budgetData.name,
     goal: budgetData.goal,
     startDate: budgetData.startDate,
     endDate: budgetData.endDate,
-    budgetData: budgetArray,
+    budgetData: orderedCategories,
   };
-
   return { budget };
 };
-const updateBudget = async (id, { budgetData }) => {
-  // Should the id be the userId or the budgetId, for now I think budgetId works best
-  const { subCategories } = budgetData;
+
+// id is subcategory id !!!
+const updateBudget = async (id, { newExpense }) => {
   // Data validation
-  const deleteBudgetCat = await prisma.budget.update({
+  const subCategory = await prisma.subCategory.findUnique({
     where: { id: id },
-    data: { subCategory: { deleteMany: {} } },
   });
-  const updatedBudget = await prisma.budget.update({
+
+  const updatedSubCategory = await prisma.subCategory.update({
     where: { id: id },
-    data: {
-      subCategory: {
-        create: subCategories,
-      },
-    },
-    include: {
-      subCategory: true,
-    },
+    data: { totalSpent: subCategory.totalSpent + parseFloat(newExpense) },
   });
-  return { updatedBudget };
+
+  return { updatedSubCategory };
 };
+
+const deleteBudget = async (id) => {
+  const deletedBudget = await prisma.budget.delete({ where: { id: id } });
+  return { deletedBudget };
+};
+
+const getBudgetStats = async (id) => {
+  const subCategories = await prisma.subCategory.findMany({
+    where: { budgetId: id },
+  });
+  let budgetTotalSpent = 0;
+  let budgetTotalAllocation = 0;
+  for (let entry of subCategories) {
+    budgetTotalSpent += entry.totalSpent;
+    budgetTotalAllocation += entry.allocation;
+  }
+  const budgetTotalRemaining = budgetTotalAllocation - budgetTotalSpent;
+  return { budgetTotalSpent, budgetTotalAllocation, budgetTotalRemaining };
+};
+
+const getStats = async (id, category) => {
+  console.log(category);
+  const subCategories = await prisma.subCategory.findMany({
+    where: { budgetId: id, category: category },
+  });
+  let catTotalSpent = 0;
+  let catTotalAllocation = 0;
+  for (let entry of subCategories) {
+    catTotalSpent += entry.totalSpent;
+    catTotalAllocation += entry.allocation;
+  }
+  const catTotalRemaining = catTotalAllocation - catTotalSpent;
+
+  const catStats = {
+    catTotalSpent: catTotalSpent,
+    catTotalAllocation: catTotalAllocation,
+    catTotalRemaining: catTotalRemaining,
+  };
+
+  const budgetStats = await getBudgetStats(id);
+  return { budgetStats, catStats };
+};
+
 module.exports = {
   createBudget,
   getBudget,
   updateBudget,
+  deleteBudget,
+  getStats,
 };
