@@ -56,6 +56,12 @@ const registerUser = async (creds) => {
   });
   validateEmail(email);
   // validatePassword(password);
+  function capitalizeWords(sentence) {
+    return sentence
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
 
   const normalizedEmail = email.toLowerCase();
   const existingUserWithEmail = await prisma.user.findFirst({
@@ -69,8 +75,8 @@ const registerUser = async (creds) => {
   const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
   const user = await prisma.user.create({
     data: {
-      firstName: firstName,
-      lastName: lastName,
+      firstName: capitalizeWords(firstName),
+      lastName: capitalizeWords(lastName),
       username: username,
       email: normalizedEmail,
       password: hashedPassword,
