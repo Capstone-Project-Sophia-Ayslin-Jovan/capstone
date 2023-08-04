@@ -11,7 +11,6 @@ import {
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
-import Soap from "../../assets/soap.png";
 const Contact = ({ appState, setAppState }) => {
   return (
     <div>
@@ -24,7 +23,10 @@ const Contact = ({ appState, setAppState }) => {
           <Grid xs={3}>
             <Card css={{ width: 300 }}>
               <Card.Body>
-                <Avatar size={""} src={Soap} />
+                <Avatar
+                  size={"$30"}
+                  src="https://media.licdn.com/dms/image/D4E03AQGaBQUcMHcL5g/profile-displayphoto-shrink_200_200/0/1681787366519?e=1696464000&v=beta&t=N_zFAnE5NucIAHK1NAZbZeyeCvQ3_-YzJg-bI97Z9uE"
+                />
                 <Spacer y={2} />
                 <Container css={{ textAlign: "center" }}>
                   <Text size={18} color="gray" h2>
@@ -69,10 +71,12 @@ const Contact = ({ appState, setAppState }) => {
                   <Text size={20} h2>
                     Student at Cornell University
                   </Text>{" "}
-                  <Image
-                    width={60}
-                    src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
-                  />
+                  <Link to="https://www.linkedin.com/in/ayslin-walker/">
+                    <Image
+                      width={60}
+                      src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
+                    />
+                  </Link>
                 </Container>
               </Card.Body>
             </Card>
@@ -96,10 +100,12 @@ const Contact = ({ appState, setAppState }) => {
                   <Text size={20} h2>
                     Student at Morehouse College
                   </Text>{" "}
-                  <Image
-                    width={60}
-                    src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
-                  />
+                  <Link to="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAADbVEpEBqZb6_adXRK8Z6xWRWZEbrHrOXlI&keywords=jovan%20ford&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=bb99db47-b294-4249-a234-5c7747c1a6d9&sid=dUI">
+                    <Image
+                      width={60}
+                      src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
+                    />
+                  </Link>
                 </Container>
               </Card.Body>
             </Card>

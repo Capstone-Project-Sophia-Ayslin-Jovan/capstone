@@ -25,7 +25,7 @@ import {
   Spacer,
   Pagination,
   Text,
-  Input,
+  Card,
   Row,
   Checkbox,
   Container,
@@ -48,23 +48,40 @@ const ModulesIntro = () => {
         position="relative"
         className="text"
       >
-        <Text h1>Introduction</Text>
-        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-          Lesson Overview: Financial literacy is a crucial concept that
-          profoundly impacts your life and financial well-being. In this lesson,
-          we will explore the fundamental principles of financial literacy and
-          its significance in building wealth for the future. By understanding
-          and adopting good financial habits, you can make informed decisions,
-          set financial goals, and effectively manage your money.
-        </Text>
-
-        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-          Learning Goals: By the end of this lesson, you should have a clear
-          understanding of the basics of financial literacy habits. We will
-          cover various areas that contribute to financial literacy, including
-          budgeting, saving, investing, debt management, and understanding
-          credit.
-        </Text>
+        <Text h1>Money Matters</Text>
+        <Container gap={2} responsive justify="space-around">
+          <Row justify="space-evenly">
+            <Card css={{ width: 700 }}>
+              <Card.Body>
+                <Text size={30} h2>
+                  Lesson Overview:
+                </Text>
+                <Text h2 css={{ fontWeight: "$normal" }} size={24}>
+                  Financial literacy is a crucial concept that profoundly
+                  impacts your life and financial well-being. In this lesson, we
+                  will explore the fundamental principles of financial literacy
+                  and its significance in building wealth for the future.
+                </Text>
+                <Text h2 css={{ fontWeight: "$normal" }} size={24}>
+                  By understanding and adopting good financial habits, you can
+                  make informed decisions, set financial goals, and effectively
+                  manage your money.
+                </Text>
+              </Card.Body>
+            </Card>
+            <Container>
+              <Text size={30} h2>
+                Learning Goals:
+              </Text>
+              <Text h2 css={{ fontWeight: "$normal", width: 600 }} size={24}>
+                By the end of this lesson, you should have a clear understanding
+                of the basics of financial literacy habits including: -
+                budgeting - saving investing, debt management, and understanding
+                credit.
+              </Text>
+            </Container>
+          </Row>
+        </Container>
         <img
           className="money-jar"
           src="https://static.vecteezy.com/system/resources/previews/002/698/207/original/jar-with-money-coins-and-bills-dollars-free-vector.jpg"
@@ -105,9 +122,9 @@ const ModulesIntro = () => {
           </Text>
           <Spacer y={2} />
           <img
-          className="money-jar"
-          src="https://static.vecteezy.com/system/resources/previews/024/043/961/original/money-clipart-transparent-background-free-png.png"
-        />
+            className="money-jar"
+            src="https://static.vecteezy.com/system/resources/previews/024/043/961/original/money-clipart-transparent-background-free-png.png"
+          />
           <Text h2 css={{ fontWeight: "$normal" }} size={30}>
             Investing: Investing is a powerful tool for growing your wealth over
             time. By putting your money into various investment vehicles such as
