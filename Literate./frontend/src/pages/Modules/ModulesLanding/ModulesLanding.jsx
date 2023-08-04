@@ -16,85 +16,87 @@ import "./ModulesLanding.css";
 const ModulesLanding = () => {
   return (
     <div>
-      <Text h1>Learning Modules</Text>
-      <Spacer y={2} />
+      <Text size={42} css={{ fontWeight: "$normal" }} h1>
+        Learn with Literate.
+      </Text>
       <div className="modules-cards">
-        <Collapse.Group>
+        <Collapse.Group splitted>
           <Collapse title="Money Matters" bordered="true" shadow="true">
-            <Text h4>
-              Learn the fundamental principles, emphasizing the significance of
-              building wealth through informed decisions, financial goals, and
-              effective money management.
+            <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
+              Explore the art of budgeting, uncover the secrets of smart saving,
+              and unravel the mysteries of debt management. From setting
+              financial goals that align with your dreams to making informed
+              investment decisions, this module will equip you with tools to
+              make confident choices about your financial future.
             </Text>
             <Link to="/Dashboard/Modules/Intro">
-              <Button> Start Here</Button>
+              <Button size={"lg"} flat color={"success"}>
+                Learn
+              </Button>
             </Link>
           </Collapse>
-        </Collapse.Group>
 
-        <Spacer y={1} />
-
-        <Collapse.Group>
           <Collapse title="Financial Futurists" bordered="true" shadow="true">
-            <Text h4>
-              Learn the fundamental concepts crucial for financial independence,
-              including creating a personal budget, tracking income and
-              expenses, and making informed financial decisions.
+            <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
+              Join us on a journey of financial enlightenment as we demystify
+              concepts such as compound interest, emergency funds, and the power
+              of mindful spending. Whether you're a student just embarking on
+              your financial journey or an experienced professional seeking to
+              enhance your financial prowess, "Mastering Your Finances" promises
+              to lay the cornerstone for a lifetime of fiscal success.
             </Text>
             <Link to="/Dashboard/Modules/Budgeting">
-              <Button> Start Here</Button>
+              <Button size={"lg"} flat color={"success"}>
+                Learn
+              </Button>
             </Link>
           </Collapse>
-        </Collapse.Group>
 
-        <Spacer y={1} />
-
-        <Collapse.Group>
           <Collapse title="Live to Save" bordered="true" shadow="true">
-            <Text h4>
-              Learn the significance of saving money, different types of saving
-              goals, and creating an effective saving plan to build financial
-              security through cultivating a saving habit and implementing
-              practical strategies.
+            <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
+              Uncover the techniques to cut unnecessary expenses, create an
+              effective budget, and establish an emergency fund that offers
+              security during unforeseen circumstances. Gain insights into
+              automating your savings and explore the various avenues to
+              optimize your funds, including high-yield savings accounts,
+              investments, and retirement planning.
             </Text>
             <Link to="/Dashboard/Modules/Savings">
-              <Button> Start Here</Button>
+              <Button size={"lg"} flat color={"success"}>
+                Learn
+              </Button>
             </Link>
           </Collapse>
-        </Collapse.Group>
 
-        <Spacer y={1} />
-
-        <Collapse.Group>
-          <Collapse
-            title="The Cash Chronicles"
-            bordered="true"
-            shadow="true"
-          >
-            <Text h4>
+          <Collapse title="The Cash Chronicles" bordered="true" shadow="true">
+            <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
               Learn the fundamental concepts such as creditworthiness, credit
               scores, types of debt, and interest rates, providing knowledge for
               responsible borrowing decisions and building a strong credit
               profile.
             </Text>
             <Link to="/Dashboard/Modules/Credit">
-              <Button> Start Here</Button>
+              <Button size={"lg"} flat color={"success"}>
+                Learn
+              </Button>
             </Link>
           </Collapse>
-        </Collapse.Group>
 
-        <Spacer y={1} />
-
-        <Collapse.Group>
-          <Collapse title="From Pennies to Prosperity" bordered="true" shadow="true">
-            <Text h4>
+          <Collapse
+            title="From Pennies to Prosperity"
+            bordered="true"
+            shadow="true"
+          >
+            <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
               Learn the vital role in building wealth and achieving financial
               goals, covering various investment options, risk and return
               considerations, and emphasizing the significance of starting early
               on the investment journey.
             </Text>
             <Link to="/Dashboard/Modules/Investing">
-              <Button> Start Here</Button>
+              <Button size={"lg"} flat color={"success"}>
+                Learn
+              </Button>
             </Link>
           </Collapse>
         </Collapse.Group>

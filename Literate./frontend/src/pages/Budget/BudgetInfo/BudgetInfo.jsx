@@ -9,21 +9,22 @@ import {
 } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
+import { NewBudgetContext } from "../../../contexts/newBudget";
 
-const BudgetInfo = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
+const BudgetInfo = ({ setIsDisabled }) => {
+  const { newBudget, setNewBudget } = useContext(NewBudgetContext);
   useEffect(() => {
     setIsDisabled(true);
     if (
-      budgetInfo.name !== null &&
-      budgetInfo.goal !== null &&
-      budgetInfo.startDate !== null &&
-      budgetInfo.endDate !== null
+      newBudget.name !== null &&
+      newBudget.goal !== null &&
+      newBudget.startDate !== null &&
+      newBudget.endDate !== null
     )
       setIsDisabled(false);
-  }, [budgetInfo]);
-
+  }, [newBudget]);
   const handleChange = (e) => {
-    setBudgetInfo((info) => ({ ...info, [e.target.name]: e.target.value }));
+    setNewBudget((info) => ({ ...info, [e.target.name]: e.target.value }));
   };
   return (
     <Container display="flex" justify="center">
@@ -43,7 +44,7 @@ const BudgetInfo = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
             size="xl"
             name="name"
             onChange={handleChange}
-            value={budgetInfo.name ? budgetInfo.name : ""}
+            value={newBudget.name ? newBudget.name : ""}
             aria-label="Input"
           />
         </Grid>
@@ -60,7 +61,7 @@ const BudgetInfo = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
             labelLeft="$"
             name="goal"
             onChange={handleChange}
-            value={budgetInfo.goal ? budgetInfo.goal : ""}
+            value={newBudget.goal ? newBudget.goal : ""}
             aria-label="Input"
           />
         </Grid>
@@ -73,7 +74,7 @@ const BudgetInfo = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
             type="date"
             name="startDate"
             onChange={handleChange}
-            value={budgetInfo.startDate ? budgetInfo.startDate : ""}
+            value={newBudget.startDate ? newBudget.startDate : ""}
             aria-label="Input"
           />
         </Grid>
@@ -86,7 +87,7 @@ const BudgetInfo = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
             type="date"
             name="endDate"
             onChange={handleChange}
-            value={budgetInfo.endDate ? budgetInfo.endDate : ""}
+            value={newBudget.endDate ? newBudget.endDate : ""}
             aria-label="Input"
           />
         </Grid>

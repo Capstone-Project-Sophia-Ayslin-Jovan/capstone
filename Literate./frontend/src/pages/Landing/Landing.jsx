@@ -64,40 +64,43 @@ export default function Landing({ appState, setAppState }) {
         </Row>
       </Container>
       <Spacer y={2} />
-      <Container>
+      <Container responsive="true">
         <h2>
           Becoming financially literate is hard. That's why we've made it easy.
         </h2>
         <Spacer y={8} />
-        <div className="container">
-          <div className="info-card">
-            <div>
-              <Text h2>Budgeting Made Easy</Text>
+        <Container responsive="true">
+          <Row justify="space-around">
+            <div className="info-card">
+              <div>
+                <Text h2>Budgeting Made Easy</Text>
+              </div>
+              <Text size={24}>
+                Track your income, set spending limits for different categories,
+                and make real-time updates on your financial progress. By
+                keeping a close eye on your spending, you'll gain a better
+                understanding of where your money goes and make better informed
+                decisions.
+              </Text>
+              <Spacer y={2} />
+              <Text h3>
+                Interested in being able to manage your money better? Become a
+                budgeting pro today!
+              </Text>
+              <Spacer y={2} />
+              <div className="get-strt-btn">
+                <Link to="/signup">
+                  <Button bordered ghost rounded size="xl">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <Text size={24}>
-              Track your income, set spending limits for different categories,
-              and make real-time updates on your financial progress. By keeping
-              a close eye on your spending, you'll gain a better understanding
-              of where your money goes and make better informed decisions.
-            </Text>
-            <Spacer y={2} />
-            <Text h3>
-              Interested in being able to manage your money better? Become a
-              budgeting pro today!
-            </Text>
-            <Spacer y={2} />
-            <div className="get-strt-btn">
-              <Link to="/signup">
-                <Button bordered ghost rounded size="xl">
-                  Get Started
-                </Button>
-              </Link>
+            <div className="ex-graph">
+              <Doughnut data={data} />
             </div>
-          </div>
-          <div className="ex-graph">
-            <Doughnut data={data} />
-          </div>
-        </div>
+          </Row>
+        </Container>
         <Spacer y={6} />
         <div className="container">
           <img
@@ -142,7 +145,7 @@ export default function Landing({ appState, setAppState }) {
         </div>
         <Spacer y={4} />
 
-        <Container>
+        <Container responsive="true">
           <div className="about-blurb">
             <h1 id="about">Our Mission</h1>
             <Text size={24}>

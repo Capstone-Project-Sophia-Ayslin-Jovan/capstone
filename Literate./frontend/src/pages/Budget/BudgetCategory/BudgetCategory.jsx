@@ -11,20 +11,23 @@ import {
   Container,
   Grid,
 } from "@nextui-org/react";
+import { NewBudgetContext } from "../../../contexts/newBudget";
 
-const BudgetCategory = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
+const BudgetCategory = ({ setIsDisabled }) => {
+  const { newBudget, setNewBudget } = useContext(NewBudgetContext);
+
   useEffect(() => {
     setIsDisabled(true);
-    if (Object.keys(budgetInfo.budgetData).length >= 1) setIsDisabled(false);
-  }, [budgetInfo]);
+    if (Object.keys(newBudget.budgetData).length >= 1) setIsDisabled(false);
+  }, [newBudget]);
   const handleOnChange = (categories) => {
     let catObj = {};
     for (let category of categories) {
-      const isPresent = Object.keys(budgetInfo.budgetData).includes(category);
+      const isPresent = Object.keys(newBudget.budgetData).includes(category);
       if (!isPresent) catObj[category] = [];
-      else catObj[category] = budgetInfo.budgetData[category];
+      else catObj[category] = newBudget.budgetData[category];
     }
-    setBudgetInfo((info) => ({ ...info, budgetData: catObj }));
+    setNewBudget((info) => ({ ...info, budgetData: catObj }));
   };
 
   return (
@@ -38,7 +41,7 @@ const BudgetCategory = ({ budgetInfo, setBudgetInfo, setIsDisabled }) => {
       <Checkbox.Group
         color="primary"
         label="Select Categories"
-        value={Object.keys(budgetInfo.budgetData)}
+        value={Object.keys(newBudget.budgetData)}
         onChange={handleOnChange}
       >
         <Checkbox value="Essentials">Essentials</Checkbox>
