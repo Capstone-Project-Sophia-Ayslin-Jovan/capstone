@@ -22,11 +22,11 @@ const CategoryHome = ({
   const [isVeryLow, setIsVeryLow] = useState(false);
   //progress bar conditional rendering
   useEffect(() => {
-    if (totalSpentSum >= allocationSum * 0.9) {
+    if (totalSpentSum >= allocationSum * 0.75) {
       setIsLow(false); // Reset the other flag
       setIsVeryLow(true);
     } else if (
-      totalSpentSum < allocationSum * 0.9 &&
+      totalSpentSum < allocationSum * 0.75 &&
       totalSpentSum >= allocationSum * 0.5
     ) {
       setIsLow(true);

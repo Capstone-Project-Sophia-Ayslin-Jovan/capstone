@@ -36,22 +36,12 @@ img {
   width: 60%;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .info-card {
   flex: 0 0 50%;
 }
 
 .ex-graph {
   flex: 0 0 40%;
-}
-
-.expense-pic {
-  max-width: 40%;
 }
 
 .info-card2 {

@@ -25,13 +25,15 @@ import { Doughnut, Bar } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend, ...registerables);
 import { BudgetContext } from "../../contexts/budget";
 import CategoryHome from "./CategoryHome";
-
-import { left } from "@popperjs/core";
 import { Tag, TagLabel } from "@chakra-ui/tag";
-import { Box } from "@chakra-ui/layout";
+import { useNavigate } from "react-router";
 export const Home = ({}) => {
+  const navigate = useNavigate();
   const { budget } = useContext(BudgetContext);
 
+  const handleClick = () => {
+    navigate("/Dashboard/Create-Budget");
+  };
   const budgetLabels = budget.budgetData
     ? Object.keys(budget?.budgetData)
     : null;
@@ -93,8 +95,11 @@ export const Home = ({}) => {
       },
     ],
   };
-  const barLabels = Object.keys(budget.budgetData);
-  const barDataSet = new Array(barLabels.length).fill(0);
+  const barLabels = budget.budgetData ? Object.keys(budget?.budgetData) : null;
+
+  const barDataSet = budget.budgetData
+    ? new Array(barLabels.length).fill(0)
+    : null;
 
   budget.budgetData
     ? Object.keys(budget.budgetData).map((category, index) => {
@@ -114,14 +119,13 @@ export const Home = ({}) => {
     ],
   };
 
-  const totalSpentSum = new Array(Object.keys(budget.budgetData).length).fill(
-    0
-  );
+  const totalSpentSum = budget.budgetData
+    ? new Array(Object.keys(budget.budgetData).length).fill(0)
+    : null;
 
   return (
     <>
       <Grid>
-
         {budget?.budgetData ? (
           <>
             <Card css={{ minHeight: "90vh", padding: 20 }}>
@@ -213,69 +217,58 @@ export const Home = ({}) => {
           </>
         ) : (
           <Row align="center">
-            <Container>
+            <Container responsive>
               <Card>
                 <Card.Body>
-                  <Col>
-                    <Text size={36} h1>
-                      We've got what you need.
+                  <Container>
+                    <Text css={{ fontWeight: "$normal" }} size={36} h2>
+                      Budget beginner? No problem, we've made it simple just for
+                      you!
                     </Text>
-                    <Card >
-                      <Card.Header>
-                        <Text size={30} h2>
-                          Budget beginner? No problem, we've made it simple just
-                          for you!
-                        </Text>
-                      </Card.Header>
-                      <Card.Body>
-                        <Container>
-                          <Row>
-                            <img src="https://static.vecteezy.com/system/resources/previews/021/899/929/original/budget-management-icon-planner-personal-budget-and-family-budget-personal-financial-control-cash-flow-flat-illustration-vector.jpg" />
-                            <Container css={{ width: 400 }}>
-                              <Text size={26} h3>
-                                With our budgeting tool you'll be able to:
-                              </Text>
-                              <Text size={24} p>
-                                1. Be more cognizant of your spending.
-                              </Text>
-                              <Text size={24} p>
-                                2. Know where your money is going.
-                              </Text>
-                              <Text size={24} p>
-                                3. Become a better budgeter.
-                              </Text>
-                              <Spacer y={2} />
-                              <Button flat size={"xl"} auto>
-                                Start Budgeting
-                              </Button>
-                            </Container>
-                          </Row>
+                    <Container>
+                      <Row>
+                        <img src="https://img.freepik.com/free-vector/sad-bankrupt-thinking-money-problems-cup-coffee-cartoon-illustration_74855-14505.jpg?w=2000&t=st=1691129828~exp=1691130428~hmac=95b9f47c40284d398a649528b345d737d844318f95b9c99097e2174aa3fc2683" />
+                        <Container css={{ width: 500 }}>
+                          <Text size={26} h3>
+                            With our budgeting tool you'll be able to:
+                          </Text>
+                          <Text size={24} p>
+                            1. Be more cognizant of your spending.
+                          </Text>
+                          <Text size={24} p>
+                            2. Know where your money is going.
+                          </Text>
+                          <Text size={24} p>
+                            3. Become a better budgeter.
+                          </Text>
+                          <Spacer y={2} />
+                          <Button flat size={"xl"} auto onPress={handleClick}>
+                            Start Budgeting
+                          </Button>
                         </Container>
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                      </Row>
+                    </Container>
+                  </Container>
                 </Card.Body>
               </Card>
             </Container>
           </Row>
         )}
 
-        <Spacer y={4} />
+        <Spacer y={2} />
         <Container responsive>
-          <Spacer y={4} />
-
-          <Card >
+          <Card>
             <Card.Body>
-              <Container>
-                <Text size={32} h2>
+              <Container responsive>
+                <Text css={{ fontWeight: "$normal" }} size={36} h2>
                   Brush up on your financial knowledge and check out our quick
-                  lessons on money management and spending.
+                  lessons on money management and spending!
                 </Text>
                 <Spacer y={2} />
                 <Container responsive>
                   <Row>
                     <Col>
-                      <Text size={24} p>
+                      <Text css={{ fontWeight: "$normal" }} size={26} h2>
                         Our learning platform offers quick and thorough modules
                         to give you the knowledge you need to be successful.
                         Track your progress, and celebrate milestones along the
