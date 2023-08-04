@@ -107,22 +107,7 @@ function App() {
             }
           />
           <Route path="/budget" element={<MSBudget></MSBudget>}></Route>
-          {/* <Route
-            path="/Budget"
-            element={
-              <AuthRoute>
-                <Budget handleToggle={handleToggle} isOpen={isOpen} />
-              </AuthRoute>
-            }
-          /> */}
-          {/* <Route
-            path="/Home"
-            element={
-              <AuthRoute>
-                <Home handleToggle={handleToggle} isOpen={isOpen} />
-              </AuthRoute>
-            }
-          /> */}
+
           <Route
             path="/Dashboard"
             element={
@@ -183,7 +168,7 @@ function App() {
             path="/Dashboard/Modules/Savings"
             element={
               <AuthRoute>
-                <Dashboard display={<ModulesSavings/>}></Dashboard>
+                <Dashboard display={<ModulesSavings />}></Dashboard>
               </AuthRoute>
             }
           />
