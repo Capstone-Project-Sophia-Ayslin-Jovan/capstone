@@ -84,10 +84,12 @@ const NavItem = ({ icon, children, pathname, ...rest }) => {
         align="center"
         p="4"
         mx="4"
+        my="1"
         borderRadius="lg"
         role="group"
         cursor="pointer"
-        bg={location.pathname == pathname ? "#0072f5" : ""}
+        bg={location.pathname == pathname ? "#0072f5" : "white"}
+        color={location.pathname === pathname ? "white" : "black"}
         _hover={{
           bg: "#0072f5",
           color: "white",

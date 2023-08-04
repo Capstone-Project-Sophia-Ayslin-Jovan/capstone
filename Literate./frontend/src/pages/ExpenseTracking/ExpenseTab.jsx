@@ -10,7 +10,17 @@ import {
   Text,
   useAsyncList,
   useCollator,
+  Grid,
+  Badge,
 } from "@nextui-org/react";
+import {
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
+} from "@chakra-ui/react";
 import { PlusIcon } from "../../components/PlusIcon/PlusIcon";
 import apiClient from "../../services/apiClient";
 import { BudgetContext } from "../../contexts/budget";
@@ -106,16 +116,22 @@ const ExpenseTab = ({ category, categoryValues }) => {
             <Table.Cell>{subcategory.name}</Table.Cell>
             <Table.Cell>{formatter.format(subcategory.totalSpent)}</Table.Cell>
             <Table.Cell>{formatter.format(subcategory.allocation)}</Table.Cell>
-            <Table.Cell
-              css={
-                subcategory.allocation - subcategory.totalSpent < 0
-                  ? { color: "red" }
-                  : { color: "green" }
-              }
-            >
-              {formatter.format(
-                subcategory.allocation - subcategory.totalSpent
-              )}
+            <Table.Cell>
+              <Badge
+                isSquared
+                size="lg"
+                color={
+                  subcategory.allocation - subcategory.totalSpent < 0
+                    ? "error"
+                    : "success"
+                }
+                variant="flat"
+                css={{ width: "7vh", fontSize: "14px" }}
+              >
+                {formatter.format(
+                  subcategory.allocation - subcategory.totalSpent
+                )}
+              </Badge>
             </Table.Cell>
             <Table.Cell>{getTimeAgo(subcategory.updated_at)}</Table.Cell>
             <Table.Cell>
