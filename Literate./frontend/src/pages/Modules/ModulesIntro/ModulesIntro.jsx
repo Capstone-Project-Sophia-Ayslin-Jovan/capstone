@@ -79,7 +79,9 @@ const ModulesIntro = () => {
               </Text>
             </Card.Body>
           </Card>
+
           <Spacer y={2} />
+
           <Container>
             <Row>
               <Container>
@@ -110,6 +112,7 @@ const ModulesIntro = () => {
             </Row>
           </Container>
         </Container>
+        
         <Container>
           <Container>
             {/* <Row> */}
