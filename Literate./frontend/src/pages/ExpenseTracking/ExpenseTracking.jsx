@@ -13,6 +13,7 @@ import {
   Table,
   Tooltip,
   Badge,
+  Divider,
 } from "@nextui-org/react";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
@@ -54,7 +55,7 @@ const ExpenseTracking = ({}) => {
     setCatChosen(e.target.name);
   };
 
-  return (
+  return budget.budgetData ? (
     <Card css={{ minHeight: "90vh" }}>
       <Grid.Container gap={2}>
         <Grid>
@@ -88,6 +89,34 @@ const ExpenseTracking = ({}) => {
         </TabPanels>
       </Tabs>
     </Card>
+  ) : (
+    <Container
+      alignContent="center"
+      alignItems="center"
+      justify="center"
+      css={{ textAlign: "center" }}
+    >
+      <Card css={{ width: 700 }}>
+        <Card.Body>
+          <Text
+            css={{ fontWeight: "$normal", textAlign: "center" }}
+            size={36}
+            h1
+          >
+            Looks like you haven't created a budget yet!
+          </Text>
+          <Divider></Divider>
+          <Text
+            css={{ fontWeight: "$normal", textAlign: "center" }}
+            size={36}
+            h1
+          >
+            To create a new budget, check out the "Create a Budget" tab in the
+            sidebar!
+          </Text>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 // Total Remaining of Budget
