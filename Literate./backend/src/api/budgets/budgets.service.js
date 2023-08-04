@@ -6,37 +6,26 @@ const prisma = new PrismaClient();
 const createBudget = async function (data) {
   const { userId, name, goal, startDate, endDate, budgetData } = data;
 
-  // We need more validation later
-  // const requiredCreds = ["userId", "total", "subCategories"];
-  // validateFields({
-  //   required: requiredCreds,
-  //   obj: { userId, total, subCategories },
-  //   location: "Backend: Create Budget",
-  // });
+  function capitalizeWords(sentence) {
+    return sentence
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
 
-  // // Should validate for each category
-  // // Normalize in database as wella
-  // const subCategoryData = [];
-  // for (let subCategory of subCategories) {
-  //   subCategoryData.push({
-  //     name: subCategory.name,
-  //     category: subCategory.category,
-  //     allocation: subCategory.allocation,
-  //     totalSpent: subCategory.totalSpent,
-  //   });
-  // }
   const subCategories = [];
   for (let catName in budgetData) {
     for (let subCatObj of budgetData[catName]) {
       subCatObj["category"] = catName;
       subCatObj.allocation = parseFloat(subCatObj.allocation);
+      subCatObj.name = capitalizeWords(subCatObj.name);
       subCategories.push(subCatObj);
     }
   }
   console.log("User Id", userId);
   const budget = await prisma.budget.create({
     data: {
-      name: name,
+      name: capitalizeWords(name),
       goal: parseFloat(goal),
       startDate: new Date(startDate).toISOString(),
       endDate: new Date(endDate).toISOString(),

@@ -27,6 +27,7 @@ import {
   StatHelpText,
   StatArrow,
   StatGroup,
+  Box,
 } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import apiClient from "../../services/apiClient";
@@ -90,33 +91,28 @@ const ExpenseTracking = ({}) => {
       </Tabs>
     </Card>
   ) : (
-    <Container
-      alignContent="center"
-      alignItems="center"
-      justify="center"
-      css={{ textAlign: "center" }}
+    <Box
+      borderWidth="1px"
+      rounded="lg"
+      shadow="1px 1px 3px rgba(0,0,0,0.3)"
+      backgroundColor="white"
+      maxWidth={800}
+      p={6}
+      m="10px auto"
+      as="form"
+      position="relative"
     >
-      <Card css={{ width: 700 }}>
-        <Card.Body>
-          <Text
-            css={{ fontWeight: "$normal", textAlign: "center" }}
-            size={36}
-            h1
-          >
-            Looks like you haven't created a budget yet!
-          </Text>
-          <Divider></Divider>
-          <Text
-            css={{ fontWeight: "$normal", textAlign: "center" }}
-            size={36}
-            h1
-          >
-            To create a new budget, check out the "Create a Budget" tab in the
-            sidebar!
-          </Text>
-        </Card.Body>
-      </Card>
-    </Container>
+      <Container>
+        <Text css={{ fontWeight: "$normal", textAlign: "center" }} size={36} h1>
+          Looks like you haven't created a budget yet!
+        </Text>
+        <Divider></Divider>
+        <Text css={{ fontWeight: "$normal", textAlign: "center" }} size={36} h1>
+          To create a new budget, check out the "Create a Budget" tab in the
+          sidebar!
+        </Text>
+      </Container>
+    </Box>
   );
 };
 // Total Remaining of Budget
