@@ -206,19 +206,28 @@ const ModulesIntro = () => {
             </Grid.Container>
             {/* </Row> */}
           </Container>{" "}
-          <Spacer />
-          <Image
-            width={"70%"}
-            src="https://img.freepik.com/free-vector/tiny-businessman-with-spyglass-standing-stack-coins-increase-income-flat-vector-illustration-financial-growth-investment-success-concept-banner-website-design-landing-web-page_74855-25330.jpg?w=2000&t=st=1691135109~exp=1691135709~hmac=3c64b8229df06e85211e5a5de0e7077151a754fd41d68d7b62ff9ab48bd9dbe7"
-          />
-          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-            In conclusion, financial literacy is an essential skill that can
-            significantly impact your financial well-being and future
-            prosperity. By understanding the importance of budgeting, saving,
-            debt management, credit knowledge, and investing, you can build a
-            solid foundation for your financial journey and work towards
-            achieving long-term financial independence.
-          </Text>
+          <Spacer y={2} />
+          <Container justify="center">
+            <Row>
+              <Image
+                // width={"70%"}
+                src="https://img.freepik.com/free-vector/tiny-businessman-with-spyglass-standing-stack-coins-increase-income-flat-vector-illustration-financial-growth-investment-success-concept-banner-website-design-landing-web-page_74855-25330.jpg?w=2000&t=st=1691135109~exp=1691135709~hmac=3c64b8229df06e85211e5a5de0e7077151a754fd41d68d7b62ff9ab48bd9dbe7"
+              />
+              <Container>
+                <Text h2 css={{ fontWeight: "$normal", width: 600 }} size={26}>
+                  In conclusion, financial literacy is an essential skill that
+                  can significantly impact your financial well-being and future
+                  prosperity.
+                </Text>
+                <Text h2 css={{ fontWeight: "$normal", width: 600 }} size={26}>
+                  By understanding the importance of budgeting, saving, debt
+                  management, credit knowledge, and investing, you can build a
+                  solid foundation for your financial journey and work towards
+                  achieving long-term financial independence.
+                </Text>
+              </Container>
+            </Row>
+          </Container>
           <Spacer y={2} />
         </Container>
         <Row>

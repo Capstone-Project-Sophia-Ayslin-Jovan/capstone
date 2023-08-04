@@ -18,24 +18,7 @@ const CategoryHome = ({
   categoryValues,
 }) => {
   const { budget } = useContext(BudgetContext);
-  const [isLow, setIsLow] = useState(false);
-  const [isVeryLow, setIsVeryLow] = useState(false);
   //progress bar conditional rendering
-  useEffect(() => {
-    if (totalSpentSum >= allocationSum * 0.75) {
-      setIsLow(false); // Reset the other flag
-      setIsVeryLow(true);
-    } else if (
-      totalSpentSum < allocationSum * 0.75 &&
-      totalSpentSum >= allocationSum * 0.5
-    ) {
-      setIsLow(true);
-      setIsVeryLow(false); // Reset the other flag
-    } else {
-      setIsLow(false);
-      setIsVeryLow(false);
-    }
-  });
   //usd formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -82,7 +65,14 @@ const CategoryHome = ({
             </Stat>
 
             <Progress
-              color={isLow ? "warning" : isVeryLow ? "error" : "primary"}
+              color={
+                totalSpentSum < allocationSum * 0.75 &&
+                totalSpentSum >= allocationSum * 0.5
+                  ? "warning"
+                  : totalSpentSum >= allocationSum * 0.75
+                  ? "error"
+                  : "primary"
+              }
               value={((allocationSum - totalSpentSum) / allocationSum) * 100}
             />
           </Container>
