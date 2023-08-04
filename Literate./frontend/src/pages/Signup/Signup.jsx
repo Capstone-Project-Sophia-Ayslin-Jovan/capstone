@@ -17,7 +17,7 @@ import Nav from "../../components/Nav/Nav";
 import { AuthorizeContext } from "../../contexts/authUser";
 import apiClient from "../../services/apiClient";
 import Loading from "../Loading/Loading";
-import "./Signup.css"
+import "./Signup.css";
 
 const Signup = () => {
   const { setAuthState } = useContext(AuthorizeContext);
@@ -239,7 +239,6 @@ const Signup = () => {
                   <Grid xs={12} justify="center">
                     <Button
                       auto
-                      flat
                       onPress={handleOnSubmit}
                       css={{ width: "6vw" }}
                     >
