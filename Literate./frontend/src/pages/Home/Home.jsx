@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Button,
   Container,
@@ -27,19 +27,42 @@ import { BudgetContext } from "../../contexts/budget";
 import CategoryHome from "./CategoryHome";
 import { Tag, TagLabel } from "@chakra-ui/tag";
 import { useNavigate } from "react-router";
+import apiClient from "../../services/apiClient";
 export const Home = ({}) => {
   const navigate = useNavigate();
   const { budget } = useContext(BudgetContext);
+  const [subCatArray, setSubCatArray] = useState([]);
+  const [barCatArray, setbarCatArray] = useState([]);
+  const [budgetStats, setBudgetStats] = useState({});
 
+  useEffect(() => {
+    const fetchStats = async () => {
+      const tempArray1 = [];
+      const tempArray2 = [];
+      for (let category of Object.keys(budget.budgetData)) {
+        const { data } = await apiClient.getStats(budget.id, category);
+        tempArray1.push(data.catStats.catTotalAllocation);
+        tempArray2.push(
+          (data.catStats.catTotalSpent / data.catStats.catTotalAllocation) * 100
+        );
+      }
+      setSubCatArray(tempArray1);
+      setbarCatArray(tempArray2);
+    };
+    fetchStats();
+  }, [budget.budgetData]);
+
+  // budget card button navigation
   const handleClick = () => {
     navigate("/Dashboard/Create-Budget");
   };
+  //setting labels for dougnut chart
   const budgetLabels = budget.budgetData
     ? Object.keys(budget?.budgetData)
     : null;
-
+  // array that stores total allocation sums
   const subCatSum = budgetLabels ? new Array(budgetLabels.length).fill(0) : [0];
-
+  // adds to allocation sum array
   budget.budgetData
     ? Object.keys(budget?.budgetData).map((category, index) =>
         budget?.budgetData[category].map((listItem) => {
@@ -78,7 +101,7 @@ export const Home = ({}) => {
     datasets: [
       {
         label: "$ for the month",
-        data: subCatSum,
+        data: subCatArray,
         backgroundColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
@@ -113,7 +136,7 @@ export const Home = ({}) => {
     datasets: [
       {
         label: "% Total Spent",
-        data: barDataSet,
+        data: barCatArray,
         backgroundColor: "rgba(255, 99, 132, 1)",
       },
     ],
