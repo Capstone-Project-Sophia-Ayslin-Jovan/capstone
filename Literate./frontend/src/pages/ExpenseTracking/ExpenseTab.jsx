@@ -171,6 +171,7 @@ const ExpenseTab = ({ category, categoryValues }) => {
                 </Modal.Body>
                 <Modal.Footer>
                   <Button
+                    auto
                     iconRight={<PlusIcon />}
                     color={"success"}
                     css={{ minWidth: "8vw" }}

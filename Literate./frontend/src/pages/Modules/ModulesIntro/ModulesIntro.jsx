@@ -60,7 +60,6 @@ const ModulesIntro = () => {
           <Text size={36} fontWeight={"normal"} h2>
             Lesson 1: Money Matters
           </Text>
-          {/* <Row justify="space-evenly"> */}
           <Card>
             <Card.Body>
               <Text size={30} h2>
@@ -79,9 +78,7 @@ const ModulesIntro = () => {
               </Text>
             </Card.Body>
           </Card>
-
           <Spacer y={2} />
-
           <Container>
             <Row>
               <Container>
@@ -112,11 +109,9 @@ const ModulesIntro = () => {
             </Row>
           </Container>
         </Container>
-        
+
         <Container>
           <Container>
-            {/* <Row> */}
-
             <Card>
               <Card.Body>
                 <Text h2 css={{ fontWeight: "$normal" }} size={24}>
@@ -207,15 +202,11 @@ const ModulesIntro = () => {
                 </Card>
               </Grid>
             </Grid.Container>
-            {/* </Row> */}
           </Container>{" "}
           <Spacer y={2} />
           <Container justify="center">
             <Row>
-              <Image
-                // width={"70%"}
-                src="https://img.freepik.com/free-vector/tiny-businessman-with-spyglass-standing-stack-coins-increase-income-flat-vector-illustration-financial-growth-investment-success-concept-banner-website-design-landing-web-page_74855-25330.jpg?w=2000&t=st=1691135109~exp=1691135709~hmac=3c64b8229df06e85211e5a5de0e7077151a754fd41d68d7b62ff9ab48bd9dbe7"
-              />
+              <Image src="https://img.freepik.com/free-vector/tiny-businessman-with-spyglass-standing-stack-coins-increase-income-flat-vector-illustration-financial-growth-investment-success-concept-banner-website-design-landing-web-page_74855-25330.jpg?w=2000&t=st=1691135109~exp=1691135709~hmac=3c64b8229df06e85211e5a5de0e7077151a754fd41d68d7b62ff9ab48bd9dbe7" />
               <Container>
                 <Text h2 css={{ fontWeight: "$normal", width: 600 }} size={26}>
                   In conclusion, financial literacy is an essential skill that
@@ -235,10 +226,22 @@ const ModulesIntro = () => {
         </Container>
         <Row>
           <Link to="/Dashboard/Modules">
-            <Button> Back</Button>
+            <Button auto flat size={"xl"}>
+              {" "}
+              Back
+            </Button>
           </Link>
           <Link to="/Dashboard/Modules/Budgeting">
-            <Button className="next-btn"> Next</Button>
+            <Button
+              auto
+              flat
+              size={"xl"}
+              color={"secondary"}
+              className="next-btn"
+            >
+              {" "}
+              Next
+            </Button>
           </Link>
         </Row>
       </Box>

@@ -112,7 +112,7 @@ const Contact = ({ appState, setAppState }) => {
           </Grid>
         </Grid.Container>
       </Container>
-      <Spacer y={10} />
+      <Spacer y={23} />
       <Footer />
     </div>
   );
