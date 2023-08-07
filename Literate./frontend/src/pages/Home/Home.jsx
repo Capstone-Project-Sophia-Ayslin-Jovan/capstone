@@ -37,17 +37,20 @@ export const Home = ({}) => {
 
   useEffect(() => {
     const fetchStats = async () => {
-      const tempArray1 = [];
-      const tempArray2 = [];
-      for (let category of Object.keys(budget.budgetData)) {
-        const { data } = await apiClient.getStats(budget.id, category);
-        tempArray1.push(data.catStats.catTotalAllocation);
-        tempArray2.push(
-          (data.catStats.catTotalSpent / data.catStats.catTotalAllocation) * 100
-        );
+      if (budget.budgetData) {
+        const tempArray1 = [];
+        const tempArray2 = [];
+        for (let category of Object.keys(budget.budgetData)) {
+          const { data } = await apiClient.getStats(budget.id, category);
+          tempArray1.push(data.catStats.catTotalAllocation);
+          tempArray2.push(
+            (data.catStats.catTotalSpent / data.catStats.catTotalAllocation) *
+              100
+          );
+        }
+        setSubCatArray(tempArray1);
+        setbarCatArray(tempArray2);
       }
-      setSubCatArray(tempArray1);
-      setbarCatArray(tempArray2);
     };
     fetchStats();
   }, [budget.budgetData]);
@@ -255,15 +258,13 @@ export const Home = ({}) => {
                           <Text size={26} h3>
                             With our budgeting tool you'll be able to:
                           </Text>
-                          <Text size={24} p>
+                          <Text size={24}>
                             1. Be more cognizant of your spending.
                           </Text>
-                          <Text size={24} p>
+                          <Text size={24}>
                             2. Know where your money is going.
                           </Text>
-                          <Text size={24} p>
-                            3. Become a better budgeter.
-                          </Text>
+                          <Text size={24}>3. Become a better budgeter.</Text>
                           <Spacer y={2} />
                           <Button flat size={"xl"} auto onPress={handleClick}>
                             Start Budgeting

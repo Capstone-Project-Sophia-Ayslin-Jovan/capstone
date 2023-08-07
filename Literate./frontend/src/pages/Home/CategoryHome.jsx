@@ -81,9 +81,9 @@ const CategoryHome = ({
         <Text size={20} h2>
           Budget Left:
         </Text>
-        {categoryValues.map(({ name, allocation, totalSpent }) => {
+        {categoryValues.map(({ name, allocation, totalSpent }, index) => {
           return (
-            <Container>
+            <Container key={index}>
               <Text
                 size={22}
                 css={
