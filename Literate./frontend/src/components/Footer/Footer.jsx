@@ -78,7 +78,7 @@ export default function SmallCentered() {
             About
           </Box>
           <Box as="a" href={"/"}>
-            Blog
+            Modules
           </Box>
           <Box as="a" href={"/Contact-Us"}>
             Contact
