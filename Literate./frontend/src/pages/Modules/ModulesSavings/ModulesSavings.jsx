@@ -84,16 +84,26 @@ const ModulesSavings = () => {
                   Learning Goals:
                 </Text>
                 <Text h2 css={{ fontWeight: "$normal" }} size={24}>
-                  By the end of this lesson, you will understand the critical
-                  role of saving in achieving your financial objectives. You
-                  will learn to set and pursue saving goals, both short-term and
-                  long-term, and acquire the skills to develop a personalized
-                  saving plan using your budget as a valuable tool.
+                  By the end of this lesson, you will:
                 </Text>
+                <UnorderedList spacing={3}>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Understand the critical role of saving in achieving your
+                    financial objectives
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Learn to set and pursue both short-term and long-term saving
+                    goals
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Acquire the skills to develop a personalized saving plan
+                    using your budget as a valuable tool{" "}
+                  </ListItem>
+                </UnorderedList>
               </Container>
               <Image
-                className="moneybag"
-                src="https://img.freepik.com/free-vector/happy-tiny-man-woman-with-big-open-wallet_74855-5869.jpg?w=2000&t=st=1691175208~exp=1691175808~hmac=fc6dab4f4fa591c3cfef4371e36f15c86ea293aabaac758bac04e3da67bdd82a"
+                css={{ width: 900 }}
+                src="https://img.freepik.com/free-vector/hand-from-phone-throwing-dollar-coin-into-piggy-bank-person-donating-money-investing-online-flat-vector-illustration-savings-charity-concept-banner-website-design-landing-web-page_74855-24597.jpg?t=st=1691432046~exp=1691432646~hmac=09284dbd8842aefaecbd3fc7588907ebbdc6f2a19a883e47fb5334b113e8ed53"
               />
             </Row>
           </Container>
@@ -101,25 +111,28 @@ const ModulesSavings = () => {
 
         <Container>
           <Container>
-            <Card>
-              <Card.Body>
-                <Text h2 css={{ fontWeight: "$normal" }} size={24}>
-                  Saving money is a fundamental pillar of financial success and
-                  plays a pivotal role in realizing your dreams and aspirations.
-                  Whether you are aiming for short-term objectives, such as
-                  saving for a new phone, or pursuing long-term goals, like
-                  building a comfortable retirement fund, saving is the key to
-                  turning your aspirations into reality.
-                </Text>
-              </Card.Body>
-            </Card>
-
             <Grid.Container gap={3} justify="center">
+              <Grid xs={6}>
+                <Container>
+                  <Text h2 css={{ fontWeight: "$normal" }} size={26}>
+                    Saving money is a fundamental pillar of financial success
+                    and plays a pivotal role in realizing your dreams and
+                    aspirations.
+                  </Text>
+                  <Text h2 css={{ fontWeight: "$normal" }} size={26}>
+                    Whether you are aiming for short-term objectives, such as
+                    saving for a new phone, or pursuing long-term goals, like
+                    building a comfortable retirement fund, saving is the key to
+                    turning your aspirations into reality.
+                  </Text>
+                </Container>
+              </Grid>
+
               <Grid xs={6}>
                 <Card>
                   <Card.Body>
                     <Text h2 size={24}>
-                      Understanding the importance of saving:
+                      The Importance Of Saving:
                     </Text>
                     <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       {" "}
@@ -140,27 +153,7 @@ const ModulesSavings = () => {
                 <Card>
                   <Card.Body>
                     <Text h2 size={24}>
-                      Types of saving goals:
-                    </Text>
-                    <Text h2 css={{ fontWeight: "$normal" }} size={24}>
-                      Saving goals can vary widely in terms of time horizon and
-                      purpose. Short-term goals may include saving for a
-                      vacation, purchasing a new gadget, or creating an
-                      emergency fund. On the other hand, long-term goals may
-                      involve saving for a down payment on a house, funding a
-                      child's education, or planning for retirement. By
-                      understanding the different types of saving goals, you can
-                      prioritize and allocate your resources accordingly.{" "}
-                    </Text>
-                  </Card.Body>
-                </Card>
-              </Grid>
-
-              <Grid xs={6}>
-                <Card>
-                  <Card.Body>
-                    <Text h2 size={24}>
-                      Creating a saving plan:
+                      Creating A Saving Plan:
                     </Text>
                     <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Setting saving goals is only the first step; an effective
@@ -187,35 +180,71 @@ const ModulesSavings = () => {
                   </Card.Body>
                 </Card>
               </Grid>
+              <Grid xs={6}>
+                <Card css={{ height: "fit-content" }}>
+                  <Card.Body>
+                    <Text h2 size={24}>
+                      Types Of Saving Goals:
+                    </Text>
+                    <Text h2 css={{ fontWeight: "$normal" }} size={24}>
+                      Saving goals can vary widely in terms of time horizon and
+                      purpose. Short-term goals may include saving for a
+                      vacation, purchasing a new gadget, or creating an
+                      emergency fund. On the other hand, long-term goals may
+                      involve saving for a down payment on a house, funding a
+                      child's education, or planning for retirement. By
+                      understanding the different types of saving goals, you can
+                      prioritize and allocate your resources accordingly.{" "}
+                    </Text>
+                  </Card.Body>
+                </Card>
+              </Grid>
             </Grid.Container>
+
+            <Row justify="space-between">
+              <Image
+                css={{ width: 1600 }}
+                src="https://img.freepik.com/free-vector/happy-tiny-people-growing-money-tree-isolated-flat-illustration_74855-16162.jpg?size=626&ext=jpg&ga=GA1.2.1734790172.1689287009&semt=ais"
+              />
+              <Spacer x={6} />
+              <Container>
+                <Text h2 css={{ fontWeight: "$normal", width: 800 }} size={24}>
+                  In conclusion, saving is a powerful financial tool that
+                  empowers you to achieve your dreams and build financial
+                  security.
+                </Text>
+                <Text h2 css={{ fontWeight: "$normal", width: 800 }} size={24}>
+                  By understanding the significance of saving, setting
+                  appropriate saving goals, and creating a personalized saving
+                  plan, you take significant steps towards financial success.
+                  Cultivating a habit of regular saving and diligently working
+                  towards your goals will contribute to your long-term financial
+                  well-being and open up opportunities for a brighter and more
+                  prosperous future.
+                </Text>
+              </Container>
+            </Row>
           </Container>
-
-          <Spacer y={2}/>
-          
-          <Image
-            className="piggy"
-            src="https://img.freepik.com/free-vector/saving-money-financial-concept_74855-7849.jpg?w=2000&t=st=1691175166~exp=1691175766~hmac=e2176eaf74a10f73c9bec00ded629cff378714f84abc0b0c71a4bd504be796dd"
-          />
-
-          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-            In conclusion, saving is a powerful financial tool that empowers you
-            to achieve your dreams and build financial security. By
-            understanding the significance of saving, setting appropriate saving
-            goals, and creating a personalized saving plan, you take significant
-            steps towards financial success. Cultivating a habit of regular
-            saving and diligently working towards your goals will contribute to
-            your long-term financial well-being and open up opportunities for a
-            brighter and more prosperous future.
-          </Text>
         </Container>
-        <Spacer y={2} />
         <Row>
           <Link to="/Dashboard/Modules/Budgeting">
-            <Button> Back</Button>
+            <Button auto flat size={"xl"}>
+              {" "}
+              Back
+            </Button>
           </Link>
           <Spacer x={35} />
           <Link to="/Dashboard/Modules/Credit">
-            <Button className="next-btn"> Next</Button>
+            <Button
+              auto
+              flat
+              size={"xl"}
+              color={"secondary"}
+              className="next-btn"
+            >
+              {" "}
+              Next
+            </Button>
           </Link>
         </Row>
       </Box>

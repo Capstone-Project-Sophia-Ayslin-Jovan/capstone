@@ -27,9 +27,11 @@ function Nav() {
       <Navbar variant="sticky">
         <Navbar.Toggle showIn="xs" />
         <Navbar.Brand>
-          <Text b color="inherit" hideIn="xs">
-            Literate.
-          </Text>
+          <Link href="/">
+            <Text b color="black" hideIn="xs">
+              Literate.
+            </Text>
+          </Link>
         </Navbar.Brand>
         <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline">
           <Navbar.Link isActive={location.pathname === "/"} href="/">
