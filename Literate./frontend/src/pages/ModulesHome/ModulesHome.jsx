@@ -1,9 +1,21 @@
 import React from "react";
-import { Container, Collapse, Text, Spacer } from "@nextui-org/react";
+import {
+  Container,
+  Collapse,
+  Text,
+  Spacer,
+  Button,
+  Row,
+} from "@nextui-org/react";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
+import { useNavigate } from "react-router";
 import "./ModulesHome.css";
 const ModulesHome = ({ appState, setAppState }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/Signup");
+  };
   return (
     <div>
       <Nav appState={appState} setAppState={setAppState} />
@@ -55,14 +67,15 @@ const ModulesHome = ({ appState, setAppState }) => {
 
           <Collapse
             shadow
-            title="The Cash Chronicles"
+            title="The Credit Chronicles"
             css={{ backgroundColor: "#E2F9B8", color: "white" }}
           >
-            <Text
-              size={26}
-              css={{ fontWeight: "$normal", color: "gray" }}
-              h2
-            ></Text>
+            <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
+              Discover the fundamental concepts such as creditworthiness, credit
+              scores, types of debt, and interest rates, providing knowledge for
+              responsible borrowing decisions and building a strong credit
+              profile.
+            </Text>
           </Collapse>
 
           <Collapse
@@ -70,13 +83,36 @@ const ModulesHome = ({ appState, setAppState }) => {
             title="From Pennies to Prosperity"
             css={{ backgroundColor: "#E2F9B8", color: "gray" }}
           >
-            <Text
-              size={26}
-              css={{ fontWeight: "$normal", color: "gray" }}
-              h2
-            ></Text>
+            <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
+              Learn the vital role in building wealth and achieving financial
+              goals, covering various investment options, risk and return
+              considerations, and emphasizing the significance of starting early
+              on the investment journey.
+            </Text>
           </Collapse>
         </Collapse.Group>
+        <Spacer y={2} />
+        <Container
+          css={{
+            textAlign: "center",
+          }}
+        >
+          <Text h2 size={28} css={{ fontWeight: "$normal" }}>
+            Interested in becoming a financial wiz? Sign up with us today to
+            start your journey towards financial freedom!
+          </Text>
+          <Row css={{ justifyContent: "center" }}>
+            <Button
+              size={"xl"}
+              auto
+              color={"success"}
+              flat
+              onPress={handleClick}
+            >
+              Join Us Today!
+            </Button>
+          </Row>
+        </Container>
       </Container>
       <Spacer y={24} />
       <Footer />

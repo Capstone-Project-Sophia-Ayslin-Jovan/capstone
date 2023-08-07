@@ -68,9 +68,9 @@ const ModulesLanding = () => {
             </Link>
           </Collapse>
 
-          <Collapse title="The Cash Chronicles" bordered="true" shadow="true">
+          <Collapse title="The Credit Chronicles" bordered="true" shadow="true">
             <Text size={26} css={{ fontWeight: "$normal", color: "gray" }} h2>
-              Learn the fundamental concepts such as creditworthiness, credit
+              Discover the fundamental concepts such as creditworthiness, credit
               scores, types of debt, and interest rates, providing knowledge for
               responsible borrowing decisions and building a strong credit
               profile.

@@ -55,7 +55,9 @@ const ModulesInvesting = () => {
         className="text"
       >
         <Container gap={2} responsive justify="space-around">
-          <Text size={36} fontWeight={"normal"} h2>Lesson 5: From Pennies to Prosperity</Text>
+          <Text size={36} fontWeight={"normal"} h2>
+            Lesson 5: From Pennies to Prosperity
+          </Text>
           <Card>
             <Card.Body>
               <Text size={30} h2>
@@ -79,43 +81,50 @@ const ModulesInvesting = () => {
                 <Text size={30} h2>
                   Learning Goals:
                 </Text>
-                <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-                  By the end of this lesson, you will have a
-                  comprehensive understanding of different types of investments,
-                  the relationship between risks and returns, and various
-                  investing strategies. You will also grasp the importance of
-                  starting early and how compounding can significantly boost
-                  your investment returns over time.
+                <Text h2 css={{ fontWeight: "$normal" }} size={24}>
+                  By the end of this lesson, you will:
                 </Text>
+                <UnorderedList spacing={3}>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Have a comprehensive understanding of different types of
+                    investments
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Understand the relationship between risks and returns and
+                    various investing strategies
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Grasp the importance of starting early
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Learn how compounding can significantly boost your
+                    investment returns over time
+                  </ListItem>
+                </UnorderedList>
               </Container>
-                <Image
-                  className="stocks"
-                  src="https://img.freepik.com/free-vector/investor-with-laptop-monitoring-growth-dividends-trader-sitting-stack-money-investing-capital-analyzing-profit-graphs-vector-illustration-finance-stock-trading-investment_74855-8432.jpg?w=2000&t=st=1691175000~exp=1691175600~hmac=aabdc0f54daf128d9c3f48680858ba111b7170cc23b7b3422c76d953a20fbeb0"
-                />
+              <Image src="https://img.freepik.com/free-vector/business-man-described-showing-graph-stock-financial-trade-market-diagram-vector-illustration-flat-design_1150-39768.jpg?w=1800&t=st=1691435512~exp=1691436112~hmac=90de4393fb6d8518b531ff1aaf44fc5b38eecfe1250d9f3814543a174765a66f" />
             </Row>
           </Container>
         </Container>
 
         <Container>
           <Container>
-            <Card>
-              <Card.Body>
-                <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-                  Investing and its significance: Investing involves deploying
-                  your money into assets or financial instruments with the
-                  expectation of generating a profit or a positive return over
-                  time. It is a fundamental element of building wealth and
-                  achieving financial independence. By investing wisely, you can
-                  make your money work for you, creating opportunities for
-                  growth and financial security.
-                </Text>
-                <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-                  There are numerous investment options available, each with its
-                  own risk and return profile. Some common investment choices
-                  include:
-                </Text>
-              </Card.Body>
-            </Card>
+            {/* <Card>
+              <Card.Body> */}
+            <Text h2 css={{ fontWeight: "$medium" }} size={26}>
+              Investing involves deploying your money into assets or financial
+              instruments with the expectation of generating a profit or a
+              positive return over time. It is a fundamental element of building
+              wealth and achieving financial independence. By investing wisely,
+              you can make your money work for you, creating opportunities for
+              growth and financial security.
+            </Text>
+            <Text h2 css={{ fontWeight: "$medium" }} size={26}>
+              There are numerous investment options available, each with its own
+              risk and return profile. Some common investment choices include:
+            </Text>
+            {/* </Card.Body>
+            </Card> */}
             <Spacer y={1} />
             <Grid.Container gap={3} justify="center">
               <Grid xs={6}>
@@ -124,7 +133,7 @@ const ModulesInvesting = () => {
                     <Text h2 size={24}>
                       Stocks:
                     </Text>
-                    <Text h2 css={{ fontWeight: "$normal" }} size={25}>
+                    <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Investing in shares of publicly traded companies. Stocks
                       can offer significant potential for long-term growth but
                       also come with higher volatility and risk.
@@ -139,7 +148,7 @@ const ModulesInvesting = () => {
                     <Text h2 size={24}>
                       Bonds:
                     </Text>
-                    <Text h2 css={{ fontWeight: "$normal" }} size={25}>
+                    <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Lending money to governments or corporations in exchange
                       for periodic interest payments and the return of the
                       principal amount. Bonds are generally considered safer
@@ -155,7 +164,7 @@ const ModulesInvesting = () => {
                     <Text h2 size={24}>
                       Mutual Funds:
                     </Text>
-                    <Text h2 css={{ fontWeight: "$normal" }} size={25}>
+                    <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Pooling money from multiple investors to invest in a
                       diversified portfolio of stocks, bonds, or other assets.
                       Mutual funds offer diversification and professional
@@ -171,7 +180,7 @@ const ModulesInvesting = () => {
                     <Text h2 size={24}>
                       Real Estate:
                     </Text>
-                    <Text h2 css={{ fontWeight: "$normal" }} size={25}>
+                    <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Investing in properties for rental income or capital
                       appreciation. Real estate can provide a tangible asset
                       with the potential for passive income and value
@@ -182,27 +191,25 @@ const ModulesInvesting = () => {
               </Grid>
 
               <Grid xs={6}>
-                <Card>
+                <Card css={{ height: "fit-content" }}>
                   <Card.Body>
                     <Text h2 size={24}>
                       Retirement Accounts:
                     </Text>
-                    <Text h2 css={{ fontWeight: "$normal" }} size={25}>
+                    <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Tax-advantaged accounts such as 401(k)s or IRAs designed
                       to help individuals save for retirement.
                     </Text>
                   </Card.Body>
                 </Card>
               </Grid>
+              <Grid xs={6}>
+                <Image src="https://img.freepik.com/free-vector/tiny-worker-looking-increasing-income-chart-through-spyglass_778687-1189.jpg?w=1800&t=st=1691436000~exp=1691436600~hmac=f06046ca7e6af3b35453792964f132f675e3df3299388115232ec822bbf22d9b" />
+              </Grid>
             </Grid.Container>
 
-            <Image
-              className="coin"
-              src="https://img.freepik.com/free-vector/woman-investing-getting-profit_74855-11229.jpg?w=2000&t=st=1691175056~exp=1691175656~hmac=f72060c7eef596780e72ae21b96d184e9ea19a185eb5fe662607e3b12999e288"
-            />
-
             <Grid.Container gap={3} justify="center">
-              <Grid>
+              <Grid xs={6}>
                 <Card>
                   <Card.Body>
                     <Text h2 size={24}>
@@ -221,7 +228,7 @@ const ModulesInvesting = () => {
                 </Card>
               </Grid>
 
-              <Grid>
+              <Grid xs={6}>
                 <Card>
                   <Card.Body>
                     <Text h2 size={24}>
@@ -240,7 +247,7 @@ const ModulesInvesting = () => {
                 </Card>
               </Grid>
 
-              <Grid>
+              <Grid xs={6}>
                 <Card>
                   <Card.Body>
                     <Text h2 size={24}>
@@ -260,27 +267,47 @@ const ModulesInvesting = () => {
                   </Card.Body>
                 </Card>
               </Grid>
+              <Grid xs={6}>
+                <Container>
+                  <Text h2 css={{ fontWeight: "$normal" }} size={24}>
+                    In conclusion, investing is a key aspect of financial
+                    planning that can lead to wealth accumulation and financial
+                    independence. Understanding different investment options,
+                    considering risk and return, and conducting thorough
+                    research are vital to making sound investment decisions.
+                  </Text>
+                  <Text h2 css={{ fontWeight: "$normal" }} size={24}>
+                    Moreover, starting early can exponentially enhance your
+                    investment growth through the power of compounding. By
+                    applying these principles, you can set yourself on a path
+                    towards achieving your financial goals and securing a
+                    prosperous future.
+                  </Text>
+                </Container>
+              </Grid>
             </Grid.Container>
           </Container>
-          <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-            In conclusion, investing is a key aspect of financial planning that
-            can lead to wealth accumulation and financial independence.
-            Understanding different investment options, considering risk and
-            return, and conducting thorough research are vital to making sound
-            investment decisions. Moreover, starting early can exponentially
-            enhance your investment growth through the power of compounding. By
-            applying these principles, you can set yourself on a path towards
-            achieving your financial goals and securing a prosperous future.
-          </Text>
         </Container>
         <Spacer y={2} />
         <Row>
           <Link to="/Dashboard/Modules/Credit">
-            <Button> Back </Button>
+            <Button auto flat size={"xl"}>
+              {" "}
+              Back{" "}
+            </Button>
           </Link>
           <Spacer x={35} />
           <Link to="/Dashboard/Modules">
-            <Button className="next-btn"> Finish </Button>
+            <Button
+              auto
+              flat
+              size={"xl"}
+              color={"success"}
+              className="next-btn"
+            >
+              {" "}
+              Finish{" "}
+            </Button>
           </Link>
         </Row>
       </Box>
