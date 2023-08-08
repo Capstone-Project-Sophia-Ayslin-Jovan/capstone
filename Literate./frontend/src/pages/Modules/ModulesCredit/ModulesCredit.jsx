@@ -9,20 +9,7 @@ import {
   OrderedList,
   ButtonGroup,
   Button as ChakraButton,
-  Heading,
-  Flex,
-  FormControl,
-  GridItem,
-  FormLabel,
   Input as ChakraInput,
-  Select,
-  SimpleGrid,
-  InputLeftAddon,
-  InputGroup,
-  Textarea,
-  FormHelperText,
-  InputRightElement,
-  Center,
 } from "@chakra-ui/react";
 import {
   Navbar,
@@ -56,7 +43,7 @@ const ModulesCredit = () => {
       >
         <Container gap={2} responsive justify="space-around">
           <Text size={36} fontWeight={"normal"} h2>
-            Lesson 4: The Cash Chronicles
+            Lesson 4: The Credit Chronicles
           </Text>
           <Card>
             <Card.Body>
@@ -83,18 +70,26 @@ const ModulesCredit = () => {
                 <Text size={30} h2>
                   Learning Goals:
                 </Text>
-                <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-                  By the end of this lesson, you will have a clear understanding
-                  of credit and debt management. You will learn how to borrow
-                  responsibly, comprehend the impact of debt on your financial
-                  health, and develop strategies to build and maintain a
-                  positive credit history.
+                <Text h2 css={{ fontWeight: "$normal" }} size={24}>
+                  By the end of this lesson, you will:
                 </Text>
+                <UnorderedList spacing={3}>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Have a clear understanding of credit and debt management
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Learn how to borrow responsibly
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Comprehend the impact of debt on your financial health
+                  </ListItem>
+                  <ListItem fontWeight="normal" fontSize="xl">
+                    Develop strategies to build and maintain a positive credit
+                    history
+                  </ListItem>
+                </UnorderedList>
               </Container>
-              <Image
-                className="cash"
-                src="https://img.freepik.com/free-vector/stack-money-gold-coins-3d-cartoon-style-icon-coins-with-dollar-sign-wad-cash-currency-flat-vector-illustration-wealth-investment-success-savings-economy-profit-concept_74855-26108.jpg?w=1800&t=st=1691175469~exp=1691176069~hmac=685f6d1b2e83a73085d720991bdea7009d1d21c80369892533add7c5d6ad597f"
-              />
+              <Image src="https://img.freepik.com/free-vector/cartoon-couple-holding-huge-credit-card-together-woman-giving-card-man-flat-vector-illustration-finances-banking-family-budget-concept-banner-website-design-landing-web-page_74855-20962.jpg?w=1480&t=st=1691434570~exp=1691435170~hmac=fec1b1dd6585bac2cd67f875e501618ea064bb40cf03a80830b908c8bd8b83a7" />
             </Row>
           </Container>
         </Container>
@@ -106,7 +101,7 @@ const ModulesCredit = () => {
                 <Card>
                   <Card.Body>
                     <Text h2 size={24}>
-                      Credit and its significance:
+                      Credit and Its Significance:
                     </Text>
                     <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Credit refers to your ability to borrow money based on
@@ -127,7 +122,7 @@ const ModulesCredit = () => {
                 <Card>
                   <Card.Body>
                     <Text h2 size={24}>
-                      Debt and its implications:
+                      Debt and Its Implications:
                     </Text>
                     <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Debt is the amount of money borrowed that must be repaid
@@ -142,12 +137,17 @@ const ModulesCredit = () => {
                   </Card.Body>
                 </Card>
               </Grid>
-
               <Grid xs={6}>
-                <Card>
+                <Image
+                  width={"70%"}
+                  src="https://img.freepik.com/free-vector/businessman-pushing-credit-score-speedometer-from-poor-good-tiny-person-improving-personal-credit-history-with-efforts-flat-vector-illustration-business-reputation-customer-loan-concept_74855-20943.jpg?w=2000&t=st=1691434706~exp=1691435306~hmac=8bbb8f3c8f2a6ae82752f58ede2d3e5558ac2a04f60bb6341b02a9ea4a536e92"
+                />
+              </Grid>
+              <Grid xs={6}>
+                <Card css={{ height: "fit-content" }}>
                   <Card.Body>
                     <Text h2 size={24}>
-                      Understanding credit scores:
+                      Understanding Credit Scores:
                     </Text>
                     <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                       Credit scores are numerical representations of your
@@ -168,17 +168,13 @@ const ModulesCredit = () => {
 
         <Spacer y={1} />
 
-        <Image
-          className="debt"
-          src="https://img.freepik.com/free-vector/businessman-pushing-credit-score-speedometer-from-poor-good-tiny-person-improving-personal-credit-history-with-efforts-flat-vector-illustration-business-reputation-customer-loan-concept_74855-20943.jpg?w=2000&t=st=1691174890~exp=1691175490~hmac=25da1bc7739b64ae2457634ee89d49d1894332946eedd48a9dbad2342684d406"
-        />
         <Container>
           <Grid.Container gap={2}>
             <Grid xs={6}>
               <Card>
                 <Card.Body>
                   <Text h2 size={24}>
-                    Managing debt responsibly:
+                    Managing Debt Responsibly:
                   </Text>
                   <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                     To maintain a positive credit profile, it is crucial to
@@ -197,7 +193,7 @@ const ModulesCredit = () => {
               <Card>
                 <Card.Body>
                   <Text h2 size={24}>
-                    Importance of interest rates:
+                    Importance of Interest Rates:
                   </Text>
                   <Text h2 css={{ fontWeight: "$normal" }} size={24}>
                     Interest rates are the costs of borrowing money and are
@@ -213,24 +209,42 @@ const ModulesCredit = () => {
               </Card>
             </Grid>
           </Grid.Container>
+          <Spacer />
+          <Container>
+            <Text h2 css={{ fontWeight: "$normal", width: 900 }} size={24}>
+              In conclusion, credit and debt management are crucial aspects of
+              your financial journey. By understanding creditworthiness, credit
+              scores, types of debt, and interest rates, you can make informed
+              financial decisions and build a strong credit profile.
+            </Text>
+            <Text h2 css={{ fontWeight: "$normal", width: 900 }} size={24}>
+              Responsible borrowing, prudent debt management, and regular
+              attention to credit-related matters will not only help you achieve
+              your financial goals but also pave the way for a stable and secure
+              financial future.
+            </Text>
+          </Container>
         </Container>
-
-        <Text h2 css={{ fontWeight: "$normal" }} size={30}>
-          In conclusion, credit and debt management are crucial aspects of your
-          financial journey. By understanding creditworthiness, credit scores,
-          types of debt, and interest rates, you can make informed financial
-          decisions and build a strong credit profile. Responsible borrowing,
-          prudent debt management, and regular attention to credit-related
-          matters will not only help you achieve your financial goals but also
-          pave the way for a stable and secure financial future.
-        </Text>
+        <Spacer y={2} />
         <Row>
           <Link to="/Dashboard/Modules/Savings">
-            <Button> Back</Button>
+            <Button auto flat size={"xl"}>
+              {" "}
+              Back
+            </Button>
           </Link>
           <Spacer x={35} />
           <Link to="/Dashboard/Modules/Investing">
-            <Button className="next-btn"> Next</Button>
+            <Button
+              auto
+              flat
+              size={"xl"}
+              color={"secondary"}
+              className="next-btn"
+            >
+              {" "}
+              Next
+            </Button>
           </Link>
         </Row>
       </Box>

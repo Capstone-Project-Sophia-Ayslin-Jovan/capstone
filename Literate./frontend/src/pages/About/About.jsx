@@ -63,7 +63,7 @@ const About = ({ appState, setAppState }) => {
           </Card.Body>
         </Card>
       </Container>
-      <Spacer y={6} />
+      <Spacer y={19} />
       <Footer />
     </div>
   );
