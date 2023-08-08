@@ -13,7 +13,7 @@ const userRoutes = require("./api/users/users.controller");
 const budgetRoutes = require("./api/budgets/budgets.controller");
 
 // enable cross-origin resource sharing for all origins for all requests hosting our frontend.
-app.use(cors());
+app.use(cors("https://literate-frontend.vercel.app/"));
 // parse incoming requests with JSON payloads
 app.use(express.json());
 // log requests info
