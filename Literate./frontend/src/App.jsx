@@ -18,6 +18,7 @@ import {
   Contact,
   About,
   ModulesHome,
+  NotFound,
 } from "./pages/index";
 import { AuthRoute, NotAuthRoute } from "./components/index";
 import ModulesLanding from "./pages/Modules/ModulesLanding/ModulesLanding";
@@ -186,6 +187,14 @@ function App() {
               <AuthRoute>
                 <Dashboard display={<Loading />}></Dashboard>
               </AuthRoute>
+            }
+          />
+          <Route
+            path="/*"
+            element={
+              <NotAuthRoute>
+                <NotFound />
+              </NotAuthRoute>
             }
           />
         </Routes>
