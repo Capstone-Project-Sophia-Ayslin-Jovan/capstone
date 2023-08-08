@@ -23,11 +23,6 @@ export const Profile = ({ handleToggle, isOpen }) => {
 
         <Card>
           <Card.Body>
-            {/* <Text size={28} css={{ fontWeight: "bold" }}>
-              Email
-            </Text>
-            <Text size={22}>{user?.email}</Text>
-            <Spacer y={2} /> */}
 
             <Text size={28} css={{ fontWeight: "bold" }} p>
               Username

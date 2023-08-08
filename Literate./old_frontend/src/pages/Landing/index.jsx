@@ -29,9 +29,6 @@ export default function Landing() {
               <Text size={"$2xl"}>Smart Money, Bright Future</Text>
             </Container>
             <img src="https://static.vecteezy.com/system/resources/previews/002/884/391/original/illustration-of-saving-money-in-the-household-sector-for-investment-spending-and-daily-life-vector.jpg" />
-            {/* <Text p size={24}>
-              Build a bright financial future.
-            </Text> */}
           </Row>
         </Container>
         <Spacer y={6} />

@@ -109,8 +109,6 @@ const ModulesInvesting = () => {
 
         <Container>
           <Container>
-            {/* <Card>
-              <Card.Body> */}
             <Text h2 css={{ fontWeight: "$medium" }} size={26}>
               Investing involves deploying your money into assets or financial
               instruments with the expectation of generating a profit or a
@@ -123,8 +121,6 @@ const ModulesInvesting = () => {
               There are numerous investment options available, each with its own
               risk and return profile. Some common investment choices include:
             </Text>
-            {/* </Card.Body>
-            </Card> */}
             <Spacer y={1} />
             <Grid.Container gap={3} justify="center">
               <Grid xs={6}>
