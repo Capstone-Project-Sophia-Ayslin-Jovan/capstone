@@ -220,7 +220,6 @@ function UserDropdown() {
             onAction={(key) => {
               switch (key) {
                 case "profile":
-                  console.log(key);
                 case "logout":
                   handleLogout();
               }

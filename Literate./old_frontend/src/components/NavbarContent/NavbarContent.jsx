@@ -11,7 +11,6 @@ const NavbarContent = () => {
 
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
 
   return (

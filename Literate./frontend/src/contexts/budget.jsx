@@ -13,21 +13,16 @@ const BudgetProvider = ({ children }) => {
   // State to hold budget data
   const [budget, setBudget] = useState({});
   
-  console.log(authState.isAuthenticated);
 
   useEffect(() => {
-    console.log("Entering budget useEffect");
     const fetchBudget = async () => {
       if (authState.isAuthenticated && authState.user?.id) {
-        console.log("User is checked for authenticated here");
         
         // Fetch budget data from the server using the user's ID
         const { data } = await apiClient.getBudget(authState.user.id);
-        console.log(authState.user);
         
         if (data !== null) {
           const { budget } = data;
-          console.log(budget);
           
           if (budget !== null) {
             // Update budget state with relevant budget details
@@ -43,7 +38,6 @@ const BudgetProvider = ({ children }) => {
             });
           }
         } else {
-          console.log("HERE");
           // Set budget state to an empty object if no budget data is received
           setBudget({});
         }

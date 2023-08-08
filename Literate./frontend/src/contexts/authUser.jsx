@@ -24,8 +24,6 @@ const AuthorizeProvider = ({ children }) => {
       if (userToken) {
         // Fetch user data using token
         const { data, error, message } = await apiClient.fetchUserFromToken();
-        console.log("Data Fetched From Token: ", data);
-
         if (data) {
           // Update authorization state if user is authenticated
           setAuthState((state) => ({
@@ -36,18 +34,15 @@ const AuthorizeProvider = ({ children }) => {
           setInitialized(true);
         } else {
           // Handle case where user is not authenticated
-          console.log("FrontEnd: User Not Authenticated!");
           setAuthState((state) => ({
             ...state,
             isAuthenticated: false,
           }));
           setInitialized(true);
-          console.log(message);
           throw error;
         }
       } else {
         // Handle case where no token is detected
-        console.log("FrontEnd: No token detected!");
         setInitialized(true);
       }
     };

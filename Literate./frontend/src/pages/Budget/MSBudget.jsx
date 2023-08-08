@@ -156,7 +156,6 @@ export default function MSBudget() {
                       iconRight={<PlusIcon fill="currentColor" />}
                       onPress={async () => {
                         setStep(step + 1);
-                        console.log(newBudget.userId);
                         await apiClient.createBudget(newBudget);
                         setBudget((state) => ({ ...state, isUpdated: true }));
                         setNewBudget({

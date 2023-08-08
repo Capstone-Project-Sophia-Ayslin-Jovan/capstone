@@ -20,14 +20,9 @@ import "./Signup.css";
 const Signup = () => {
   const { setAuthState } = useContext(AuthorizeContext);
 
-  // React Router's navigation hook
   const navigate = useNavigate();
-
-  // State for loading status and errors
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-
-  // State for form input fields
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -36,34 +31,35 @@ const Signup = () => {
     password: "",
     passwordConfirm: "",
   });
-
-  // Regular expression to validate email format
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  // Function to validate email format
   function validateEmail(email) {
     return emailRegex.test(email);
   }
 
-  // Handle input change for form fields
   const handleOnInputChange = (event) => {
+    // Validation for password and passwordConfirm match
     if (event.target.name === "password") {
-      // Check if passwords match for validation
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
-        setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }));
+        setErrors((e) => ({
+          ...e,
+          passwordConfirm: "Passwords do not match.",
+        }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
       }
     }
     if (event.target.name === "passwordConfirm") {
-      // Check if passwords match for validation
       if (form.password && form.password !== event.target.value) {
-        setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }));
+        setErrors((e) => ({
+          ...e,
+          passwordConfirm: "Passwords do not match.",
+        }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
       }
     }
-    // Validate email format
+    // Validation for email format
     if (event.target.name === "email") {
       if (!validateEmail(event.target.value)) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
@@ -72,16 +68,13 @@ const Signup = () => {
       }
     }
 
-    // Update form state with input changes
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
 
-  // Handle form submission
   const handleOnSubmit = async () => {
     setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
 
-    // Check if passwords match for validation
     if (form.passwordConfirm !== form.password) {
       setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }));
       setIsLoading(false);
@@ -91,7 +84,6 @@ const Signup = () => {
     }
 
     try {
-      // Call API to sign up
       const { data } = await apiClient.signUp({
         firstName: form.firstName,
         lastName: form.lastName,
@@ -101,11 +93,9 @@ const Signup = () => {
       });
 
       if (data) {
-        // Store user token and set authentication state
         localStorage.setItem("literate_token", data.userToken);
         setAuthState((state) => ({ ...state, isAuthenticated: true }));
         setIsLoading(false);
-        // Navigate to the dashboard
         navigate("/Dashboard");
       } else {
         setErrors((e) => ({
@@ -115,7 +105,6 @@ const Signup = () => {
         setIsLoading(false);
       }
     } catch (err) {
-      console.log(err);
       const message = err?.response?.data?.error?.message;
       setErrors((e) => ({
         ...e,
@@ -127,14 +116,12 @@ const Signup = () => {
 
   return (
     <>
-      {/* Conditionally render loading screen or signup form */}
       {isLoading ? (
         <div className="loading-card">
           <Loading />
         </div>
       ) : (
         <div>
-          {/* Render navigation bar */}
           <Nav />
           <Container
             display="flex"
@@ -143,14 +130,12 @@ const Signup = () => {
           >
             <Card className="card" css={{ width: "40vw" }}>
               <Card.Header css={{ textAlign: "center", justifyContent: "center" }}>
-                {/* Render signup form header */}
                 <Text id="modal-title" size={30} textAlign="center">
                   Sign Up with Literate.
                 </Text>
               </Card.Header>
               <Card.Divider></Card.Divider>
               <Card.Body>
-                {/* Render form input fields */}
                 <Grid.Container gap={2} justify="center">
                   <Grid xs={12} md={6}>
                     <Input
@@ -165,9 +150,82 @@ const Signup = () => {
                       onChange={handleOnInputChange}
                     />
                   </Grid>
-                  {/* ... (similar Input components for other fields) */}
+                  <Grid xs={12} md={6}>
+                    <Input
+                      clearable
+                      bordered
+                      fullWidth
+                      color="primary"
+                      size="lg"
+                      placeholder="Last Name"
+                      name="lastName"
+                      aria-label="Input"
+                      onChange={handleOnInputChange}
+                    />
+                  </Grid>
+                  <Grid xs={12}>
+                    <Input
+                      clearable
+                      bordered
+                      fullWidth
+                      color="primary"
+                      size="lg"
+                      placeholder="Username"
+                      name="username"
+                      aria-label="Input"
+                      onChange={handleOnInputChange}
+                    />
+                  </Grid>
+                  <Grid xs={12}>
+                    <Input
+                      clearable
+                      bordered
+                      fullWidth
+                      color="primary"
+                      size="lg"
+                      placeholder="Email"
+                      name="email"
+                      aria-label="Input"
+                      onChange={handleOnInputChange}
+                    />
+                  </Grid>
+                  <Grid xs={12}>
+                    <Input.Password
+                      clearable
+                      bordered
+                      fullWidth
+                      color="primary"
+                      size="lg"
+                      placeholder="Password"
+                      name="password"
+                      aria-label="Input"
+                      onChange={handleOnInputChange}
+                    />
+                  </Grid>
+                  <Grid xs={12}>
+                    <Input.Password
+                      clearable
+                      bordered
+                      fullWidth
+                      color="primary"
+                      size="lg"
+                      placeholder="Confirm Password"
+                      name="passwordConfirm"
+                      aria-label="Input"
+                      onChange={handleOnInputChange}
+                    />
+                  </Grid>
+                  {errors.passwordConfirm ? (
+                    <Text color="error">{errors.passwordConfirm}</Text>
+                  ) : (
+                    <Spacer y={1} />
+                  )}
+                  {errors.email ? (
+                    <Text color="error">{errors.email}</Text>
+                  ) : (
+                    <Spacer y={1} />
+                  )}
                   <Grid xs={12} justify="center">
-                    {/* Render signup button */}
                     <Button auto onPress={handleOnSubmit} css={{ width: "6vw" }}>
                       Sign Up
                     </Button>
