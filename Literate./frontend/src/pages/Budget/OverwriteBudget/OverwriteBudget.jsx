@@ -16,7 +16,6 @@ const OverwriteBudget = () => {
 
   return (
     <Container display="flex" justify="center">
-      {/* Congratulatory message */}
       <Text color="success" size={30} css={{ textAlign: "center" }}>
         Congratuations!
       </Text>
