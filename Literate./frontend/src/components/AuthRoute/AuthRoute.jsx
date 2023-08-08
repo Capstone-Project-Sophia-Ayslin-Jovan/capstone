@@ -4,7 +4,6 @@ import { useContext } from "react";
 
 const AuthRoute = ({ children }) => {
   const { authState, initialized } = useContext(AuthorizeContext);
-  console.log("Initialized: ", initialized);
   if (!initialized) return null;
 
   if (initialized && !authState.isAuthenticated)

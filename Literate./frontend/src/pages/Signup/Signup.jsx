@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -40,11 +38,12 @@ const Signup = () => {
   }
 
   const handleOnInputChange = (event) => {
+    // Validation for password and passwordConfirm match
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
           ...e,
-          passwordConfirm: "Password's do not match",
+          passwordConfirm: "Passwords do not match.",
         }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
@@ -54,12 +53,13 @@ const Signup = () => {
       if (form.password && form.password !== event.target.value) {
         setErrors((e) => ({
           ...e,
-          passwordConfirm: "Password's do not match",
+          passwordConfirm: "Passwords do not match.",
         }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
       }
     }
+    // Validation for email format
     if (event.target.name === "email") {
       if (!validateEmail(event.target.value)) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
@@ -84,7 +84,6 @@ const Signup = () => {
     }
 
     try {
-      console.log(form);
       const { data } = await apiClient.signUp({
         firstName: form.firstName,
         lastName: form.lastName,
@@ -106,7 +105,6 @@ const Signup = () => {
         setIsLoading(false);
       }
     } catch (err) {
-      console.log(err);
       const message = err?.response?.data?.error?.message;
       setErrors((e) => ({
         ...e,
@@ -115,7 +113,7 @@ const Signup = () => {
       setIsLoading(false);
     }
   };
-  console.log("something wrong with email:", errors.email);
+
   return (
     <>
       {isLoading ? (
@@ -129,18 +127,9 @@ const Signup = () => {
             display="flex"
             alignItems="center"
             css={{ justifyContent: "center" }}
-            // css={{
-            //   backgroundImage: `url(https://logowik.com/content/uploads/images/piggy-bank8686.jpg)`,
-            //   backgroundPosition: "center",
-            //   backgroundRepeat: "no-repeat",
-            //   backgroundAttachment: "fixed",
-            //   backgroundSize: "cover",
-            // }}
           >
             <Card className="card" css={{ width: "40vw" }}>
-              <Card.Header
-                css={{ textAlign: "center", justifyContent: "center" }}
-              >
+              <Card.Header css={{ textAlign: "center", justifyContent: "center" }}>
                 <Text id="modal-title" size={30} textAlign="center">
                   Sign Up with Literate.
                 </Text>
@@ -237,11 +226,7 @@ const Signup = () => {
                     <Spacer y={1} />
                   )}
                   <Grid xs={12} justify="center">
-                    <Button
-                      auto
-                      onPress={handleOnSubmit}
-                      css={{ width: "6vw" }}
-                    >
+                    <Button auto onPress={handleOnSubmit} css={{ width: "6vw" }}>
                       Sign Up
                     </Button>
                   </Grid>

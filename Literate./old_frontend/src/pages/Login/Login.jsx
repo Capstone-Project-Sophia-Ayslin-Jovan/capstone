@@ -11,7 +11,6 @@ const Login = ({loggedIn, setLoggedIn}) => {
 
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
   return (
     <div>

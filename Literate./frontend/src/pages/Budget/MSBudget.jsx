@@ -1,8 +1,5 @@
-"use client";
-
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import {
-  Progress,
   Box,
   ButtonGroup,
   Button as ChakraButton,
@@ -71,6 +68,7 @@ export default function MSBudget() {
   const [isDisabled, setIsDisabled] = useState(false);
   const [budgetLeft, setBudgetLeft] = useState(newBudget.goal);
 
+  // Define the steps for the stepper
   const steps = [
     { title: "Step 1", description: "What is Budgeting?" },
     { title: "Step 2", description: "Budget Information" },
@@ -79,11 +77,12 @@ export default function MSBudget() {
     { title: "Step 5", description: "Review & Create Budget" },
   ];
 
+  // Initialize the stepper with active step
   const { activeStep, setActiveStep } = useSteps({
     index: 0,
     count: steps.length,
   });
-  console.log(activeStep);
+
   const activeStepText = steps[activeStep].description;
   const slicedSteps = steps.slice(0, steps.length - 1);
 
@@ -157,7 +156,6 @@ export default function MSBudget() {
                       iconRight={<PlusIcon fill="currentColor" />}
                       onPress={async () => {
                         setStep(step + 1);
-                        console.log(newBudget.userId);
                         await apiClient.createBudget(newBudget);
                         setBudget((state) => ({ ...state, isUpdated: true }));
                         setNewBudget({

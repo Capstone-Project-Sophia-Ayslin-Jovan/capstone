@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -25,14 +23,15 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  //handler functions for opening/closing login form
+  // Handler functions for opening/closing login form
   const handler = () => setVisible(true);
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
-  //handler for taking in inputs for the login form
+
+  // Handler for taking in inputs for the login form
   const handleLoginChange = (e) => {
+    // Validation for email format
     if (e.target.name === "Email") {
       if (e.target.value.indexOf("@") === -1) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
@@ -42,7 +41,8 @@ const Login = () => {
     }
     setLoginForm((form) => ({ ...form, [e.target.name]: e.target.value }));
   };
-  //handler for submission of login form
+
+  // Handler for submission of login form
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleSubmit();
@@ -68,19 +68,18 @@ const Login = () => {
           ...e,
           loginForm: "Invalid username/password combination",
         }));
-        console.log("loginForm:", loginForm);
         setIsLoading(false);
       }
     } catch (err) {
-      console.log(err);
       const message = err?.response?.data?.error?.message;
       setErrors((e) => ({
         ...e,
         loginForm: message ? String(message) : String(err),
       }));
-      setIsLoading;
+      setIsLoading; // This seems to be missing the value to set
     }
   };
+
   return (
     <div>
       <Button auto onPress={handler} css={{ minWidth: "6vw" }}>

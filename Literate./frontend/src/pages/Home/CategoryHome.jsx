@@ -11,6 +11,7 @@ import {
   red,
 } from "@nextui-org/react";
 import { StatLabel, StatNumber, StatHelpText, Stat } from "@chakra-ui/stat";
+
 const CategoryHome = ({
   category,
   allocationSum,
@@ -18,13 +19,14 @@ const CategoryHome = ({
   categoryValues,
 }) => {
   const { budget } = useContext(BudgetContext);
-  //progress bar conditional rendering
-  //usd formatter
+
+  // Define USD formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
-  //date converter
+
+  // Function to convert date to a formatted string
   function formatDate(inputDate) {
     const months = [
       "January",
@@ -45,14 +47,17 @@ const CategoryHome = ({
     const day = parseInt(parts[2], 10);
     return `${months[monthIndex]} ${day}`;
   }
+
   return (
     <div>
+      {/* Collapse component for budget category */}
       <Collapse
         bordered
         shadow
         css={{ width: 600 }}
         title={
           <Container>
+            {/* Category name and stats */}
             <Text h2>{category}</Text>
             <Stat fontSize="lg">
               <StatLabel>Amount remaining</StatLabel>
@@ -64,6 +69,7 @@ const CategoryHome = ({
               </StatHelpText>
             </Stat>
 
+            {/* Progress bar indicating budget allocation progress */}
             <Progress
               color={
                 totalSpentSum < allocationSum * 0.75 &&
@@ -78,6 +84,7 @@ const CategoryHome = ({
           </Container>
         }
       >
+        {/* Display individual budget items */}
         <Text size={20} h2>
           Budget Left:
         </Text>
@@ -93,6 +100,7 @@ const CategoryHome = ({
                 }
                 h2
               >
+                {/* Display budget item name and remaining budget */}
                 {name} {formatter.format(allocation - totalSpent)}
               </Text>
             </Container>
