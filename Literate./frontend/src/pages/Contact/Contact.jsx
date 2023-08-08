@@ -35,7 +35,7 @@ const Contact = ({ appState, setAppState }) => {
                 <Spacer y={2} />
                 <Container css={{ textAlign: "center" }}>
                   <Text size={18} color="gray" h2>
-                    Fullstack Developer
+                    Co-Founder
                   </Text>
                   <Text size={26} h2>
                     Sophia Rodriguez
@@ -43,7 +43,11 @@ const Contact = ({ appState, setAppState }) => {
                   <Text size={20} h2>
                     Student at Stevens Institute of Technology
                   </Text>
-                  <Link to={"https://www.linkedin.com/in/sophia-rodriguez-1505a6260/"}>
+                  <Link
+                    to={
+                      "https://www.linkedin.com/in/sophia-rodriguez-1505a6260/"
+                    }
+                  >
                     <Image
                       width={60}
                       src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
@@ -65,7 +69,7 @@ const Contact = ({ appState, setAppState }) => {
                 <Spacer y={2} />
                 <Container css={{ textAlign: "center" }}>
                   <Text size={18} color="gray" h2>
-                    Frontend Developer
+                    Co-Founder
                   </Text>
                   <Text size={26} h2>
                     Ayslin Walker
@@ -95,7 +99,7 @@ const Contact = ({ appState, setAppState }) => {
                 <Spacer y={2} />
                 <Container css={{ textAlign: "center" }}>
                   <Text size={18} color="gray" h2>
-                    Frontend Developer
+                    Co-ßFounder
                   </Text>
                   <Text size={26} h2>
                     Jovan Ford
