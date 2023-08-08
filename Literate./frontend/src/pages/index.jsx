@@ -9,6 +9,7 @@ import ExpenseTracking from "./ExpenseTracking/ExpenseTracking";
 import Contact from "./Contact/Contact";
 import About from "./About/About";
 import ModulesHome from "./ModulesHome/ModulesHome";
+import NotFound from "./NotFound";
 export {
   Landing,
   Login,
@@ -21,4 +22,5 @@ export {
   Contact,
   About,
   ModulesHome,
+  NotFound,
 };
