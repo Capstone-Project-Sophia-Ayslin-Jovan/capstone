@@ -60,7 +60,7 @@ export default function Landing({ appState, setAppState }) {
             </Text>
             <Text size={"$2xl"}>Smart Money, Bright Future</Text>
           </Container>
-          <img src="https://img.freepik.com/free-vector/tiny-students-sitting-near-books-getting-university-degree-paying-money-education-business-flat-vector-illustration-college-scholarship-finance-system-school-fee-economy-student-loan-concept_74855-21037.jpg?w=2000&t=st=1690861950~exp=1690862550~hmac=99af581cf1a764d5638d3e94211f73e0c6501665816a853ce03089cf4b8200ad" />
+          <img src="https://img.freepik.com/free-vector/tiny-students-sitting-near-books-getting-university-degree-paying-money-education-business-flat-vector-illustration-college-scholarship-finance-system-school-fee-economy-student-loan-concept_74855-21037.jpg?w=2000&t=st=1691518337~exp=1691518937~hmac=29afe6dc4ac263fbcdea8679d5fc7fcb2e1fd4503cb65933bc35e01162dd6e76" />
         </Row>
       </Container>
       <Spacer y={2} />
