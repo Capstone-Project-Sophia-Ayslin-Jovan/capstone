@@ -7,11 +7,9 @@ import { PlusIcon } from "../../../components/PlusIcon/PlusIcon";
 const OverwriteBudget = () => {
   // Access the budget context
   const { budget, setBudget } = useContext(BudgetContext);
-  console.log(budget);
 
   // Handle delete and create a new budget
   const handleOnPress = async () => {
-    console.log("budget id", budget.id);
     await apiClient.deleteBudget(budget.id); // Delete current budget
     setBudget((state) => ({ ...state, isUpdated: true })); // Mark budget as updated
   };

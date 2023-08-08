@@ -9,7 +9,6 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 export const Profile = ({ handleToggle, isOpen }) => {
   const { authState } = useContext(AuthorizeContext);
   const { user } = authState;
-  console.log("User:", user);
   return (
     <div className="profile-page">
       <Container>

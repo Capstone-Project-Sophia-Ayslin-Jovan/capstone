@@ -27,7 +27,6 @@ const Login = () => {
   const handler = () => setVisible(true);
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
 
   // Handler for taking in inputs for the login form
@@ -69,11 +68,9 @@ const Login = () => {
           ...e,
           loginForm: "Invalid username/password combination",
         }));
-        console.log("loginForm:", loginForm);
         setIsLoading(false);
       }
     } catch (err) {
-      console.log(err);
       const message = err?.response?.data?.error?.message;
       setErrors((e) => ({
         ...e,
