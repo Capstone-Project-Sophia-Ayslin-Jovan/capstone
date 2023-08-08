@@ -1,12 +1,14 @@
-"use client";
-import React, { useState } from "react";
-import { Text, Container, Grid, Card, Table } from "@nextui-org/react";
+import React from "react";
+import { Text, Container, Table } from "@nextui-org/react";
 import "./SubCategoryResults.css";
+
 const SubCategoryResults = ({ category, categoryValues }) => {
-  // Maybe resize category title later?
   return (
     <Container>
+      {/* Display the category title */}
       <Text h2>{category}</Text>
+
+      {/* Create a table to display category values */}
       <Table
         aria-label="Example table with static content"
         css={{
@@ -14,12 +16,16 @@ const SubCategoryResults = ({ category, categoryValues }) => {
           minWidth: "100%",
         }}
       >
+        {/* Table Header */}
         <Table.Header>
           <Table.Column>NAME</Table.Column>
           <Table.Column>ALLOCATION</Table.Column>
         </Table.Header>
+
+        {/* Table Body */}
         <Table.Body>
           {categoryValues.map(({ name, allocation }, index) => (
+            // Display each row in the table
             <Table.Row key={index}>
               <Table.Cell>{name}</Table.Cell>
               <Table.Cell>${allocation}</Table.Cell>
@@ -30,4 +36,5 @@ const SubCategoryResults = ({ category, categoryValues }) => {
     </Container>
   );
 };
+
 export default SubCategoryResults;

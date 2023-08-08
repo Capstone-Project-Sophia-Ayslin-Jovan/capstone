@@ -11,15 +11,20 @@ import {
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+
 const Contact = ({ appState, setAppState }) => {
   return (
     <div>
+      {/* Include the navigation bar */}
       <Nav appState={appState} setAppState={setAppState} />
+
       <Container css={{ textAlign: "center" }}>
         <Text size={40} h1>
           Our Team
         </Text>
+        {/* Create a grid layout for team members */}
         <Grid.Container justify="center">
+          {/* Team member card 1 */}
           <Grid xs={3}>
             <Card css={{ width: 300 }}>
               <Card.Body>
@@ -38,11 +43,7 @@ const Contact = ({ appState, setAppState }) => {
                   <Text size={20} h2>
                     Student at Stevens Institute of Technology
                   </Text>
-                  <Link
-                    to={
-                      "https://www.linkedin.com/in/sophia-rodriguez-1505a6260/"
-                    }
-                  >
+                  <Link to={"https://www.linkedin.com/in/sophia-rodriguez-1505a6260/"}>
                     <Image
                       width={60}
                       src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
@@ -53,6 +54,7 @@ const Contact = ({ appState, setAppState }) => {
             </Card>
           </Grid>
 
+          {/* Team member card 2 */}
           <Grid xs={3}>
             <Card css={{ width: 300 }}>
               <Card.Body>
@@ -70,7 +72,7 @@ const Contact = ({ appState, setAppState }) => {
                   </Text>
                   <Text size={20} h2>
                     Student at Cornell University
-                  </Text>{" "}
+                  </Text>
                   <Link to="https://www.linkedin.com/in/ayslin-walker/">
                     <Image
                       width={60}
@@ -82,6 +84,7 @@ const Contact = ({ appState, setAppState }) => {
             </Card>
           </Grid>
 
+          {/* Team member card 3 */}
           <Grid xs={3}>
             <Card css={{ width: 300 }}>
               <Card.Body>
@@ -89,7 +92,7 @@ const Contact = ({ appState, setAppState }) => {
                   size={"$30"}
                   src="https://media.licdn.com/dms/image/C4D03AQFyqRhQBNNBeQ/profile-displayphoto-shrink_100_100/0/1627061530304?e=1696464000&v=beta&t=ApElIpiNcNSpvh9w9FEDaxN6GR071QY1IOB2zLHaKhM"
                 />
-                <Spacer y={2} />{" "}
+                <Spacer y={2} />
                 <Container css={{ textAlign: "center" }}>
                   <Text size={18} color="gray" h2>
                     Frontend Developer
@@ -99,7 +102,7 @@ const Contact = ({ appState, setAppState }) => {
                   </Text>
                   <Text size={20} h2>
                     Student at Morehouse College
-                  </Text>{" "}
+                  </Text>
                   <Link to="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAADbVEpEBqZb6_adXRK8Z6xWRWZEbrHrOXlI&keywords=jovan%20ford&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=bb99db47-b294-4249-a234-5c7747c1a6d9&sid=dUI">
                     <Image
                       width={60}
@@ -113,6 +116,7 @@ const Contact = ({ appState, setAppState }) => {
         </Grid.Container>
       </Container>
       <Spacer y={23} />
+      {/* Include the footer */}
       <Footer />
     </div>
   );

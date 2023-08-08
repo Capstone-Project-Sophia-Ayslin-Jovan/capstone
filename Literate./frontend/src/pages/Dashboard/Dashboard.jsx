@@ -32,6 +32,7 @@ import { AuthorizeContext } from "../../contexts/authUser";
 import { useContext } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 
+// Array of navigation links and their details
 const LinkItems = [
   { name: "Home", icon: FiHome, pathname: "/Dashboard" },
   {
@@ -49,6 +50,7 @@ const LinkItems = [
   { name: "Settings", icon: FiSettings },
 ];
 
+// Sidebar content component
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
@@ -76,6 +78,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
+// Navigation item component
 const NavItem = ({ icon, children, pathname, ...rest }) => {
   const location = useLocation();
   return (
@@ -111,6 +114,7 @@ const NavItem = ({ icon, children, pathname, ...rest }) => {
   );
 };
 
+// Mobile navigation component
 const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
@@ -142,12 +146,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        {/* <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        /> */}
+        {/* User dropdown component */}
         <Flex alignItems={"center"}>
           <UserDropdown />
         </Flex>
@@ -156,15 +155,18 @@ const MobileNav = ({ onOpen, ...rest }) => {
   );
 };
 
+// Dashboard component
 const Dashboard = ({ display }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+      {/* Sidebar for larger screens */}
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
       />
+      {/* Drawer (sidebar) for smaller screens */}
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -177,7 +179,9 @@ const Dashboard = ({ display }) => {
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
+      {/* Mobile navigation bar */}
       <MobileNav onOpen={onOpen} />
+      {/* Display the main content */}
       <Box ml={{ base: 0, md: 60 }} p="4">
         {display}
       </Box>
@@ -187,6 +191,7 @@ const Dashboard = ({ display }) => {
 
 export default Dashboard;
 
+// User dropdown component
 function UserDropdown() {
   const { authState, logoutUser } = useContext(AuthorizeContext);
   const handleLogout = () => {
@@ -197,6 +202,7 @@ function UserDropdown() {
       <Grid>
         <Dropdown placement="bottom-left">
           <Dropdown.Trigger>
+            {/* User information and profile picture */}
             <NextUIUser
               bordered
               as="button"
@@ -207,6 +213,7 @@ function UserDropdown() {
               src="https://static.vecteezy.com/system/resources/previews/021/548/095/non_2x/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-businessman-photo-placeholder-social-network-avatar-portrait-free-vector.jpg"
             />
           </Dropdown.Trigger>
+          {/* Dropdown menu */}
           <Dropdown.Menu
             color="primary"
             aria-label="User Actions"
@@ -219,6 +226,7 @@ function UserDropdown() {
               }
             }}
           >
+            {/* Dropdown items */}
             <Dropdown.Item key="profile" css={{ height: "$18" }}>
               <NextUIText b color="inherit" css={{ d: "flex" }}>
                 Signed in as
@@ -227,15 +235,7 @@ function UserDropdown() {
                 {authState.user?.email}
               </NextUIText>
             </Dropdown.Item>
-            {/* <Dropdown.Item key="settings" withDivider>
-              My Settings
-            </Dropdown.Item>
-            <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
-            <Dropdown.Item key="analytics" withDivider>
-              Analytics
-            </Dropdown.Item>
-            <Dropdown.Item key="system">System</Dropdown.Item>
-            <Dropdown.Item key="configurations">Configurations</Dropdown.Item> */}
+            {/* Other dropdown items */}
             <Dropdown.Item key="help_and_feedback" withDivider>
               Help & Feedback
             </Dropdown.Item>

@@ -28,6 +28,7 @@ import CategoryHome from "./CategoryHome";
 import { Tag, TagLabel } from "@chakra-ui/tag";
 import { useNavigate } from "react-router";
 import apiClient from "../../services/apiClient";
+
 export const Home = ({}) => {
   const navigate = useNavigate();
   const { budget } = useContext(BudgetContext);
@@ -40,6 +41,7 @@ export const Home = ({}) => {
       if (budget.budgetData) {
         const tempArray1 = [];
         const tempArray2 = [];
+        // Fetch stats and calculate arrays for doughnut and bar charts
         for (let category of Object.keys(budget.budgetData)) {
           const { data } = await apiClient.getStats(budget.id, category);
           tempArray1.push(data.catStats.catTotalAllocation);
@@ -59,12 +61,13 @@ export const Home = ({}) => {
   const handleClick = () => {
     navigate("/Dashboard/Create-Budget");
   };
-  //setting labels for dougnut chart
-  const budgetLabels = budget.budgetData
-    ? Object.keys(budget?.budgetData)
-    : null;
+
+  //setting labels for doughnut chart
+  const budgetLabels = budget.budgetData ? Object.keys(budget?.budgetData) : null;
+
   // array that stores total allocation sums
   const subCatSum = budgetLabels ? new Array(budgetLabels.length).fill(0) : [0];
+
   // adds to allocation sum array
   budget.budgetData
     ? Object.keys(budget?.budgetData).map((category, index) =>
@@ -73,12 +76,14 @@ export const Home = ({}) => {
         })
       )
     : null;
-  //usd formatter
+
+  // USD formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
-  //date converter
+
+  // Date converter
   function formatDate(inputDate) {
     const months = [
       "January",
@@ -99,6 +104,7 @@ export const Home = ({}) => {
     const day = parseInt(parts[2], 10);
     return `${months[monthIndex]} ${day}`;
   }
+
   const donutData = {
     labels: budgetLabels,
     datasets: [
@@ -121,6 +127,7 @@ export const Home = ({}) => {
       },
     ],
   };
+
   const barLabels = budget.budgetData ? Object.keys(budget?.budgetData) : null;
 
   const barDataSet = budget.budgetData
@@ -134,6 +141,7 @@ export const Home = ({}) => {
         });
       })
     : null;
+
   const barData = {
     labels: barLabels,
     datasets: [
@@ -153,12 +161,14 @@ export const Home = ({}) => {
     <>
       <Grid>
         {budget?.budgetData ? (
+          // Display budget information and charts
           <>
             <Card css={{ minHeight: "90vh", padding: 20 }}>
               <Grid.Container
                 css={{ display: "flex", justifyContent: "space-between" }}
               >
                 <Grid justify="space-around">
+                  {/* Display budget name and goal */}
                   <Text size={42} css={{ fontWeight: "$normal" }} h2>
                     {budget.name}
                   </Text>
@@ -173,6 +183,7 @@ export const Home = ({}) => {
                   </Badge>
                 </Grid>
                 <Grid>
+                  {/* Display date range */}
                   <Tag size={"lg"} variant={"outline"}>
                     <TagLabel>
                       {formatDate(budget.startDate)} -{" "}
@@ -185,6 +196,7 @@ export const Home = ({}) => {
               <Container>
                 <Row justify="center">
                   <Collapse.Group splitted>
+                    {/* Display categories and their allocations */}
                     {Object.keys(budget.budgetData).map((element, index) => {
                       let subCatMoney = 0;
                       budget.budgetData[element].map((subcat) => {
@@ -206,6 +218,7 @@ export const Home = ({}) => {
                     <Col>
                       <Spacer y={0.8} />
                       <Row>
+                        {/* Display doughnut and bar charts */}
                         <Card css={{ width: "fit-content" }}>
                           <Card.Header>
                             <Text css={{ fontWeight: "$normal" }} size={18} h2>
@@ -242,6 +255,7 @@ export const Home = ({}) => {
             </Card>
           </>
         ) : (
+          // Display introduction and call-to-action for new users
           <Row align="center">
             <Container responsive>
               <Card>
