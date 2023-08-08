@@ -12,9 +12,14 @@ import { useContext } from "react";
 import { NewBudgetContext } from "../../../contexts/newBudget";
 
 const BudgetInfo = ({ setIsDisabled }) => {
+  // Access the new budget context
   const { newBudget, setNewBudget } = useContext(NewBudgetContext);
+
+  // Effect to determine if budget information is complete
   useEffect(() => {
     setIsDisabled(true);
+
+    // Check if all required fields are filled
     if (
       newBudget.name !== null &&
       newBudget.goal !== null &&
@@ -23,15 +28,22 @@ const BudgetInfo = ({ setIsDisabled }) => {
     )
       setIsDisabled(false);
   }, [newBudget]);
+
+  // Handle input change and update newBudget context
   const handleChange = (e) => {
     setNewBudget((info) => ({ ...info, [e.target.name]: e.target.value }));
   };
+
   return (
     <Container display="flex" justify="center">
+      {/* Display budget information section title */}
       <Text h2 weight="bold">
         Give your Budget a Name, Goal, and Timespan!
       </Text>
+
+      {/* Grid container for budget information inputs */}
       <Grid.Container gap={2} justify="center">
+        {/* Budget Name input */}
         <Grid xs={12} md={9}>
           <Input
             clearable
@@ -48,6 +60,8 @@ const BudgetInfo = ({ setIsDisabled }) => {
             aria-label="Input"
           />
         </Grid>
+
+        {/* Budget Goal input */}
         <Grid xs={12} md={9}>
           <Input
             clearable
@@ -65,6 +79,8 @@ const BudgetInfo = ({ setIsDisabled }) => {
             aria-label="Input"
           />
         </Grid>
+
+        {/* Start Date input */}
         <Grid xs={12} md={9}>
           <Input
             label="Start Date"
@@ -78,6 +94,8 @@ const BudgetInfo = ({ setIsDisabled }) => {
             aria-label="Input"
           />
         </Grid>
+
+        {/* End Date input */}
         <Grid xs={12} md={9}>
           <Input
             label="End Date"

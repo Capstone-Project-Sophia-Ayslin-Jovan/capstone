@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   Spacer,
@@ -15,11 +14,16 @@ import Footer from "../../components/Footer/Footer";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Doughnut, Pie } from "react-chartjs-2";
+
 export default function Landing({ appState, setAppState }) {
   const navigate = useNavigate();
+
+  // Function to navigate to About Us page
   const learnMore = () => {
     navigate("/About-Us");
   };
+
+  // Data for the Doughnut chart
   const data = {
     labels: [
       "Essentials",
@@ -47,6 +51,7 @@ export default function Landing({ appState, setAppState }) {
       },
     ],
   };
+
   return (
     <>
       <Nav appState={appState} setAppState={setAppState} />
@@ -55,11 +60,13 @@ export default function Landing({ appState, setAppState }) {
       <Container responsive="true">
         <Row gap={1}>
           <Container responsive="true">
+            {/* Heading and subheading */}
             <Text size={"$8xl"} style={{ marginBottom: 0 }}>
               Literate.
             </Text>
             <Text size={"$2xl"}>Smart Money, Bright Future</Text>
           </Container>
+          {/* Image */}
           <img src="https://img.freepik.com/free-vector/tiny-students-sitting-near-books-getting-university-degree-paying-money-education-business-flat-vector-illustration-college-scholarship-finance-system-school-fee-economy-student-loan-concept_74855-21037.jpg?w=2000&t=st=1690861950~exp=1690862550~hmac=99af581cf1a764d5638d3e94211f73e0c6501665816a853ce03089cf4b8200ad" />
         </Row>
       </Container>
@@ -71,21 +78,17 @@ export default function Landing({ appState, setAppState }) {
         <Spacer y={8} />
         <Container responsive="true">
           <Row justify="space-around">
+            {/* Info card */}
             <div className="info-card">
               <div>
                 <Text h2>Budgeting Made Easy</Text>
               </div>
               <Text size={24}>
-                Track your income, set spending limits for different categories,
-                and make real-time updates on your financial progress. By
-                keeping a close eye on your spending, you'll gain a better
-                understanding of where your money goes and make better informed
-                decisions.
+                {/* Description of budgeting feature */}
               </Text>
               <Spacer y={2} />
               <Text h3>
-                Interested in being able to manage your money better? Become a
-                budgeting pro today!
+                {/* Call to action */}
               </Text>
               <Spacer y={2} />
               <div className="get-strt-btn">
@@ -96,12 +99,14 @@ export default function Landing({ appState, setAppState }) {
                 </Link>
               </div>
             </div>
+            {/* Doughnut chart */}
             <div className="ex-graph">
               <Doughnut data={data} />
             </div>
           </Row>
         </Container>
         <Spacer y={6} />
+        {/* Second section */}
         <div className="container">
           <img
             className="expense-pic"
@@ -110,20 +115,17 @@ export default function Landing({ appState, setAppState }) {
           <div className="info-card2">
             <Text h2>Expense Tracking at Your Fingertips</Text>
             <Text size={24}>
-              Go beyond simple budgeting and expand your expense tracking
-              capabilities. Literate allows you to effortlessly log and
-              categorize your expenses, providing you with a clear overview of
-              your spending habits.
+              {/* Description of expense tracking feature */}
             </Text>
           </div>
         </div>
         <Spacer y={4} />
+        {/* Third section */}
         <div className="container">
           <div className="info-card">
             <Text h2>Financial Education, Simplified</Text>
             <Text size={24}>
-              From budgeting basics to credit card management and savings
-              strategies, you'll gain valuable insights and practical knowledge.
+              {/* Description of financial education feature */}
             </Text>
             <Spacer y={2} />
             <Link to="/About">
@@ -149,13 +151,7 @@ export default function Landing({ appState, setAppState }) {
           <div className="about-blurb">
             <h1 id="about">Our Mission</h1>
             <Text size={24}>
-              We look to provide the financially untrained with the tools,
-              knowledge, and guidance they need to navigate the complexities of
-              personal finance. We aim to empower students to create budgets,
-              track their expenses, and develop healthy financial habits that
-              will serve them well beyond their college years. With Literate, we
-              want to equip students with the essential money management skills
-              they need to thrive academically and financially.
+              {/* Description of the company's mission */}
             </Text>
           </div>
         </Container>

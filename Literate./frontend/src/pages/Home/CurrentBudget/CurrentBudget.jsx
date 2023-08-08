@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect } from "react";
 import {
   Navbar,
@@ -25,10 +24,12 @@ const CurrentBudget = () => {
   return (
     <div>
       <Container>
-        {console.log("budgetInfo:", budgetInfo)}
+        {/* Loop through each budget category */}
         {Object.keys(budgetInfo.budgetData).map((key, index) => (
-          <Link to={`/${key}`}>
-            <Card key={index} isHoverable="true">
+          <Link to={`/${key}`} key={index}>
+            {/* Display a link to the budget category */}
+            <Card isHoverable="true">
+              {/* Render CurrentSubCatBudget component with category details */}
               <CurrentSubCatBudget
                 index={index}
                 name={key}
