@@ -103,6 +103,4 @@ class ApiClient {
 }
 
 // Export class -- hardcoded localhost
-export default new ApiClient(
-  "https://literate-backend-beo549ejj-jasz.vercel.app/"
-);
+export default new ApiClient("https://literate-five.vercel.app/");
