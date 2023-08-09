@@ -286,31 +286,22 @@ const ModulesInvesting = () => {
           </Container>
         </Container>
         <Spacer y={2} />
-        <Container>
-          <Row>
-            <Col>
-              <Link to="/Dashboard/Modules/Credit">
-                <Button auto flat size={"xl"}>
-                  Back{" "}
-                </Button>
-              </Link>
-            </Col>
-            <Col>
-              <Link to="/Dashboard/Modules">
-                <Button
-                  auto
-                  flat
-                  size={"xl"}
-                  color={"success"}
-                  className="next-btn"
-                >
-                  {" "}
-                  Finish{" "}
-                </Button>
-              </Link>
-            </Col>
-          </Row>
-        </Container>
+        <Grid.Container css={{ justifyContent: "space-between" }}>
+          <Grid>
+            <Link to="/Dashboard/Modules/Credit">
+              <Button auto flat size={"xl"}>
+                Back
+              </Button>
+            </Link>
+          </Grid>
+          <Grid>
+            <Link to="/Dashboard/Modules">
+              <Button auto flat size={"xl"} color={"secondary"}>
+                Next
+              </Button>
+            </Link>
+          </Grid>
+        </Grid.Container>
       </Box>
     </>
   );

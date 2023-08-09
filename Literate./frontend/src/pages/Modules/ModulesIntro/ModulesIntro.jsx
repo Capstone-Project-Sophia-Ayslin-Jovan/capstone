@@ -224,30 +224,22 @@ const ModulesIntro = () => {
           </Container>
           <Spacer y={2} />
         </Container>
-        <Container>
-          <Row>
-            <Col>
-              <Link to="/Dashboard/Modules">
-                <Button auto flat size={"xl"}>
-                  Back
-                </Button>
-              </Link>
-            </Col>
-            <Col>
-              <Link to="/Dashboard/Modules/Budgeting">
-                <Button
-                  auto
-                  flat
-                  size={"xl"}
-                  color={"secondary"}
-                  className="next-btn"
-                >
-                  Next
-                </Button>
-              </Link>
-            </Col>
-          </Row>
-        </Container>
+        <Grid.Container css={{ justifyContent: "space-between" }}>
+          <Grid>
+            <Link to="/Dashboard/Modules">
+              <Button auto flat size={"xl"}>
+                Back
+              </Button>
+            </Link>
+          </Grid>
+          <Grid>
+            <Link to="/Dashboard/Modules/Budgeting">
+              <Button auto flat size={"xl"} color={"secondary"}>
+                Next
+              </Button>
+            </Link>
+          </Grid>
+        </Grid.Container>
       </Box>
     </>
   );

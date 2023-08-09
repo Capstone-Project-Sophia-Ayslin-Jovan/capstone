@@ -183,32 +183,22 @@ const ModulesBudgeting = () => {
           </Container>
         </Container>
         <Spacer y={2} />
-        <Container>
-          <Row>
-            <Col>
-              <Link to="/Dashboard/Modules/Intro">
-                <Button auto flat size={"xl"}>
-                  {" "}
-                  Back
-                </Button>
-              </Link>
-            </Col>
-            <Col>
-              <Link to="/Dashboard/Modules/Savings">
-                <Button
-                  auto
-                  flat
-                  size={"xl"}
-                  color={"secondary"}
-                  className="next-btn"
-                >
-                  {" "}
-                  Next
-                </Button>
-              </Link>
-            </Col>
-          </Row>
-        </Container>
+        <Grid.Container css={{ justifyContent: "space-between" }}>
+          <Grid>
+            <Link to="/Dashboard/Modules/Intro">
+              <Button auto flat size={"xl"}>
+                Back
+              </Button>
+            </Link>
+          </Grid>
+          <Grid>
+            <Link to="/Dashboard/Modules/Savings">
+              <Button auto flat size={"xl"} color={"secondary"}>
+                Next
+              </Button>
+            </Link>
+          </Grid>
+        </Grid.Container>
       </Box>
     </>
   );
