@@ -120,13 +120,29 @@ const ExpenseTracking = ({}) => {
 // Define a component to display budget statistics
 function StatsBanner({ catChosen, budgetStats }) {
   const { budget, setBudget } = useContext(BudgetContext);
-
-  // Format a date string into a human-readable format
   function formatDate(inputDate) {
-    // ... (existing code)
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const parts = inputDate.split("-");
+    const monthIndex = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+
+    return `${months[monthIndex]} ${day}`;
   }
 
-  // Currency formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -134,7 +150,148 @@ function StatsBanner({ catChosen, budgetStats }) {
 
   return (
     <Grid.Container gap={2} justify="center">
-      {/* Display statistics for total remaining, total spent, and total budget remaining */}
+      <Grid xs={4}>
+        <Card variant="bordered">
+          <Card.Body>
+            <Stat>
+              <Grid.Container
+                css={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Grid>
+                  <StatLabel fontSize={25}>Total Remaining</StatLabel>
+                </Grid>
+                <Grid>
+                  <Badge isSquared color="primary" variant="flat">
+                    {catChosen}
+                  </Badge>
+                </Grid>
+              </Grid.Container>
+              <StatNumber
+                color={
+                  budgetStats.catStats &&
+                  budgetStats.catStats.catTotalRemaining < 0
+                    ? "red"
+                    : "green"
+                }
+              >
+                {budgetStats.catStats
+                  ? formatter.format(budgetStats.catStats.catTotalRemaining)
+                  : 0}
+              </StatNumber>
+              <StatHelpText>
+                {budget.startDate ? formatDate(budget.startDate) : ""} -{" "}
+                {budget.startDate ? formatDate(budget.endDate) : ""}
+              </StatHelpText>
+            </Stat>
+            <Progress
+              squared
+              color="primary"
+              value={
+                budgetStats.catStats
+                  ? budgetStats.catStats.catTotalRemaining
+                  : 100
+              }
+              max={
+                budgetStats.catStats
+                  ? budgetStats.catStats.catTotalAllocation
+                  : 100
+              }
+            />
+          </Card.Body>
+        </Card>
+      </Grid>
+      <Grid xs={4}>
+        <Card variant="bordered">
+          <Card.Body>
+            <Stat>
+              <Grid.Container
+                css={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Grid>
+                  <StatLabel fontSize={25}>Total Spent</StatLabel>
+                </Grid>
+                <Grid>
+                  <Badge isSquared color="warning" variant="flat">
+                    {budget.name ? budget.name : ""}
+                  </Badge>
+                </Grid>
+              </Grid.Container>
+              <StatNumber color="#555555">
+                {budgetStats.budgetStats
+                  ? formatter.format(budgetStats.budgetStats.budgetTotalSpent)
+                  : 0}
+              </StatNumber>
+              <StatHelpText>
+                {budget.startDate ? formatDate(budget.startDate) : ""} -{" "}
+                {budget.startDate ? formatDate(budget.endDate) : ""}
+              </StatHelpText>
+            </Stat>
+            <Progress
+              squared
+              color="primary"
+              value={
+                budgetStats.budgetStats
+                  ? budgetStats.budgetStats.budgetTotalSpent
+                  : 0
+              }
+              max={
+                budgetStats.budgetStats
+                  ? budgetStats.budgetStats.budgetTotalAllocation
+                  : 0
+              }
+            />
+          </Card.Body>
+        </Card>
+      </Grid>
+      <Grid xs={4}>
+        <Card variant="bordered">
+          <Card.Body>
+            <Stat>
+              <Grid.Container
+                css={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Grid>
+                  <StatLabel fontSize={25}>Total Budget Remaining</StatLabel>
+                </Grid>
+                <Grid>
+                  <Badge isSquared color="secondary" variant="flat">
+                    {budget.name ? budget.name : ""}
+                  </Badge>
+                </Grid>
+              </Grid.Container>
+              <StatNumber
+                color={
+                  budget.goal &&
+                  budgetStats.budgetTotalSpent &&
+                  budget.goal - budgetStats.budgetStats.budgetTotalSpent < 0
+                    ? "red"
+                    : "green"
+                }
+              >
+                {budgetStats.budgetStats && budget.goal
+                  ? formatter.format(
+                      budget.goal - budgetStats.budgetStats.budgetTotalSpent
+                    )
+                  : 0}
+              </StatNumber>
+              <StatHelpText>
+                {budget.startDate ? formatDate(budget.startDate) : ""} -{" "}
+                {budget.startDate ? formatDate(budget.endDate) : ""}
+              </StatHelpText>
+            </Stat>
+            <Progress
+              squared
+              color="primary"
+              value={
+                budgetStats.budgetStats && budget.goal
+                  ? budget.goal - budgetStats.budgetStats.budgetTotalSpent
+                  : 0
+              }
+              max={budget.goal ? budget.goal : 0}
+            />
+          </Card.Body>
+        </Card>
+      </Grid>
     </Grid.Container>
   );
 }
