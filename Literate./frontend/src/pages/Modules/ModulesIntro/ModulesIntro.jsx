@@ -226,8 +226,7 @@ const ModulesIntro = () => {
         </Container>
         <Container css={{ justifyContent: "space-between" }}>
           <Link to="/Dashboard/Modules">
-            <Button auto flat size={"xl"} css={{ justifySelf: "flex-start" }}>
-              {" "}
+            <Button auto flat size={"xl"}>
               Back
             </Button>
           </Link>
@@ -237,7 +236,6 @@ const ModulesIntro = () => {
               flat
               size={"xl"}
               color={"secondary"}
-              css={{ justifySelf: "flex-end" }}
               className="next-btn"
             >
               {" "}
