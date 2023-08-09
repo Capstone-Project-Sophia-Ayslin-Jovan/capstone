@@ -36,6 +36,7 @@ import {
   Container,
   Progress as NextUIProgress,
   Grid,
+  Col,
 } from "@nextui-org/react";
 import "./ModulesInvesting.css";
 import { Link } from "react-router-dom";
@@ -285,27 +286,31 @@ const ModulesInvesting = () => {
           </Container>
         </Container>
         <Spacer y={2} />
-        <Row>
-          <Link to="/Dashboard/Modules/Credit">
-            <Button auto flat size={"xl"}>
-              {" "}
-              Back{" "}
-            </Button>
-          </Link>
-          <Spacer x={35} />
-          <Link to="/Dashboard/Modules">
-            <Button
-              auto
-              flat
-              size={"xl"}
-              color={"success"}
-              className="next-btn"
-            >
-              {" "}
-              Finish{" "}
-            </Button>
-          </Link>
-        </Row>
+        <Container>
+          <Row>
+            <Col>
+              <Link to="/Dashboard/Modules/Credit">
+                <Button auto flat size={"xl"}>
+                  Back{" "}
+                </Button>
+              </Link>
+            </Col>
+            <Col>
+              <Link to="/Dashboard/Modules">
+                <Button
+                  auto
+                  flat
+                  size={"xl"}
+                  color={"success"}
+                  className="next-btn"
+                >
+                  {" "}
+                  Finish{" "}
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
       </Box>
     </>
   );

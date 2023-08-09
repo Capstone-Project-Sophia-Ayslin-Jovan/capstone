@@ -183,27 +183,32 @@ const ModulesBudgeting = () => {
           </Container>
         </Container>
         <Spacer y={2} />
-        <Row>
-          <Link to="/Dashboard/Modules/Intro">
-            <Button auto flat size={"xl"}>
-              {" "}
-              Back
-            </Button>
-          </Link>
-          <Spacer x={35} />
-          <Link to="/Dashboard/Modules/Savings">
-            <Button
-              auto
-              flat
-              size={"xl"}
-              color={"secondary"}
-              className="next-btn"
-            >
-              {" "}
-              Next
-            </Button>
-          </Link>
-        </Row>
+        <Container>
+          <Row>
+            <Col>
+              <Link to="/Dashboard/Modules/Intro">
+                <Button auto flat size={"xl"}>
+                  {" "}
+                  Back
+                </Button>
+              </Link>
+            </Col>
+            <Col>
+              <Link to="/Dashboard/Modules/Savings">
+                <Button
+                  auto
+                  flat
+                  size={"xl"}
+                  color={"secondary"}
+                  className="next-btn"
+                >
+                  {" "}
+                  Next
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
       </Box>
     </>
   );

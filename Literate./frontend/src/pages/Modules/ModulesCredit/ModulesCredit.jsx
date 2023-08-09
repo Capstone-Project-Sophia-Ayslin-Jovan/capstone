@@ -21,6 +21,7 @@ import {
   Card,
   Row,
   Image,
+  Col,
   Checkbox,
   Container,
   Progress as NextUIProgress,
@@ -226,27 +227,30 @@ const ModulesCredit = () => {
           </Container>
         </Container>
         <Spacer y={2} />
-        <Row>
-          <Link to="/Dashboard/Modules/Savings">
-            <Button auto flat size={"xl"}>
-              {" "}
-              Back
-            </Button>
-          </Link>
-          <Spacer x={35} />
-          <Link to="/Dashboard/Modules/Investing">
-            <Button
-              auto
-              flat
-              size={"xl"}
-              color={"secondary"}
-              className="next-btn"
-            >
-              {" "}
-              Next
-            </Button>
-          </Link>
-        </Row>
+        <Container>
+          <Row>
+            <Col>
+              <Link to="/Dashboard/Modules/Savings">
+                <Button auto flat size={"xl"}>
+                  Back
+                </Button>
+              </Link>
+            </Col>
+            <Col>
+              <Link to="/Dashboard/Modules/Investing">
+                <Button
+                  auto
+                  flat
+                  size={"xl"}
+                  color={"secondary"}
+                  className="next-btn"
+                >
+                  Next
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
       </Box>
     </>
   );

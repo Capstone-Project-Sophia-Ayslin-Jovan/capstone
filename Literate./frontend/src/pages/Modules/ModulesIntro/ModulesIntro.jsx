@@ -37,6 +37,7 @@ import {
   Checkbox,
   Container,
   Progress as NextUIProgress,
+  Col,
 } from "@nextui-org/react";
 import "./ModulesIntro.css";
 import { Link } from "react-router-dom";
@@ -56,7 +57,6 @@ const ModulesIntro = () => {
         className="text"
       >
         <Container gap={2} responsive justify="space-around">
-          {" "}
           <Text size={36} fontWeight={"normal"} h2>
             Lesson 1: Money Matters
           </Text>
