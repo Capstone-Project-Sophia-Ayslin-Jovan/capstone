@@ -225,27 +225,25 @@ const ModulesIntro = () => {
           <Spacer y={2} />
         </Container>
         <Container css={{ justifyContent: "space-between" }}>
-          <Row>
-            <Link to="/Dashboard/Modules">
-              <Button auto flat size={"xl"} css={{ justifySelf: "flex-start" }}>
-                {" "}
-                Back
-              </Button>
-            </Link>
-            <Link to="/Dashboard/Modules/Budgeting">
-              <Button
-                auto
-                flat
-                size={"xl"}
-                color={"secondary"}
-                css={{ justifySelf: "flex-end" }}
-                className="next-btn"
-              >
-                {" "}
-                Next
-              </Button>
-            </Link>
-          </Row>
+          <Link to="/Dashboard/Modules">
+            <Button auto flat size={"xl"} css={{ justifySelf: "flex-start" }}>
+              {" "}
+              Back
+            </Button>
+          </Link>
+          <Link to="/Dashboard/Modules/Budgeting">
+            <Button
+              auto
+              flat
+              size={"xl"}
+              color={"secondary"}
+              css={{ justifySelf: "flex-end" }}
+              className="next-btn"
+            >
+              {" "}
+              Next
+            </Button>
+          </Link>
         </Container>
       </Box>
     </>
