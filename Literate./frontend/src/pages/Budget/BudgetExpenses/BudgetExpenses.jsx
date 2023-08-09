@@ -44,10 +44,10 @@ const BudgetExpenses = ({ budgetLeft, setBudgetLeft, setIsDisabled }) => {
     for (let category in newBudget.budgetData) {
       for (let subCategory of newBudget.budgetData[category]) {
         if (subCategory.allocation !== null && subCategory.allocation !== "")
-          totalExpenses += parseInt(subCategory.allocation);
+          totalExpenses += parseFloat(subCategory.allocation);
       }
     }
-    setBudgetLeft(parseInt(newBudget.goal) - totalExpenses);
+    setBudgetLeft(parseFloat(newBudget.goal) - totalExpenses);
   }, [newBudget]);
 
   return (
