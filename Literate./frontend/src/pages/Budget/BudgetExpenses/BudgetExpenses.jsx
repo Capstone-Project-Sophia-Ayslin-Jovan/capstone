@@ -50,6 +50,11 @@ const BudgetExpenses = ({ budgetLeft, setBudgetLeft, setIsDisabled }) => {
     setBudgetLeft(parseFloat(newBudget.goal) - totalExpenses);
   }, [newBudget]);
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <Container>
       <Grid.Container justify="center" gap={2}>
@@ -63,7 +68,7 @@ const BudgetExpenses = ({ budgetLeft, setBudgetLeft, setIsDisabled }) => {
             color={budgetLeft < 0 ? "red" : "black"}
             css={{ textAlign: "center" }}
           >
-            Budget Amount Left: ${budgetLeft}
+            Budget Amount Left: {formatter.format(budgetLeft)}
           </Text>
         </Grid>
 
