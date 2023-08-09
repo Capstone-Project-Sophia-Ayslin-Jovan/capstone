@@ -224,24 +224,29 @@ const ModulesIntro = () => {
           </Container>
           <Spacer y={2} />
         </Container>
-        <Container css={{ justifyContent: "space-between" }}>
-          <Link to="/Dashboard/Modules">
-            <Button auto flat size={"xl"}>
-              Back
-            </Button>
-          </Link>
-          <Link to="/Dashboard/Modules/Budgeting">
-            <Button
-              auto
-              flat
-              size={"xl"}
-              color={"secondary"}
-              className="next-btn"
-            >
-              {" "}
-              Next
-            </Button>
-          </Link>
+        <Container>
+          <Row>
+            <Col>
+              <Link to="/Dashboard/Modules">
+                <Button auto flat size={"xl"}>
+                  Back
+                </Button>
+              </Link>
+            </Col>
+            <Col>
+              <Link to="/Dashboard/Modules/Budgeting">
+                <Button
+                  auto
+                  flat
+                  size={"xl"}
+                  color={"secondary"}
+                  className="next-btn"
+                >
+                  Next
+                </Button>
+              </Link>
+            </Col>
+          </Row>
         </Container>
       </Box>
     </>
