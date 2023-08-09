@@ -23,10 +23,10 @@ const Contact = ({ appState, setAppState }) => {
           Our Team
         </Text>
         {/* Create a grid layout for team members */}
-        <Grid.Container justify="center">
+        <Grid.Container justify="center" gap={2}>
           {/* Team member card 1 */}
           <Grid xs={3}>
-            <Card css={{ width: 300 }}>
+            <Card>
               <Card.Body>
                 <Avatar
                   size={"$30"}
@@ -43,24 +43,24 @@ const Contact = ({ appState, setAppState }) => {
                   <Text size={20} h2>
                     Student at Stevens Institute of Technology
                   </Text>
-                  <Link
-                    to={
-                      "https://www.linkedin.com/in/sophia-rodriguez-1505a6260/"
-                    }
-                  >
-                    <Image
-                      width={60}
-                      src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
-                    />
-                  </Link>
                 </Container>
               </Card.Body>
+              <Card.Footer css={{ justifyContent: "center" }}>
+                <Link
+                  to={"https://www.linkedin.com/in/sophia-rodriguez-1505a6260/"}
+                >
+                  <Image
+                    width={60}
+                    src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
+                  />
+                </Link>
+              </Card.Footer>
             </Card>
           </Grid>
 
           {/* Team member card 2 */}
           <Grid xs={3}>
-            <Card css={{ width: 300 }}>
+            <Card>
               <Card.Body>
                 <Avatar
                   size={"$30"}
@@ -77,20 +77,22 @@ const Contact = ({ appState, setAppState }) => {
                   <Text size={20} h2>
                     Student at Cornell University
                   </Text>
-                  <Link to="https://www.linkedin.com/in/ayslin-walker/">
-                    <Image
-                      width={60}
-                      src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
-                    />
-                  </Link>
                 </Container>
               </Card.Body>
+              <Card.Footer css={{ justifyContent: "center" }}>
+                <Link to="https://www.linkedin.com/in/ayslin-walker/">
+                  <Image
+                    width={60}
+                    src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
+                  />
+                </Link>
+              </Card.Footer>
             </Card>
           </Grid>
 
           {/* Team member card 3 */}
           <Grid xs={3}>
-            <Card css={{ width: 300 }}>
+            <Card>
               <Card.Body>
                 <Avatar
                   size={"$30"}
@@ -99,7 +101,7 @@ const Contact = ({ appState, setAppState }) => {
                 <Spacer y={2} />
                 <Container css={{ textAlign: "center" }}>
                   <Text size={18} color="gray" h2>
-                    Co-ßFounder
+                    Co-Founder
                   </Text>
                   <Text size={26} h2>
                     Jovan Ford
@@ -107,14 +109,16 @@ const Contact = ({ appState, setAppState }) => {
                   <Text size={20} h2>
                     Student at Morehouse College
                   </Text>
-                  <Link to="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAADbVEpEBqZb6_adXRK8Z6xWRWZEbrHrOXlI&keywords=jovan%20ford&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=bb99db47-b294-4249-a234-5c7747c1a6d9&sid=dUI">
-                    <Image
-                      width={60}
-                      src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
-                    />
-                  </Link>
                 </Container>
               </Card.Body>
+              <Card.Footer css={{ justifyContent: "center" }}>
+                <Link to="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAADbVEpEBqZb6_adXRK8Z6xWRWZEbrHrOXlI&keywords=jovan%20ford&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=bb99db47-b294-4249-a234-5c7747c1a6d9&sid=dUI">
+                  <Image
+                    width={60}
+                    src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-1024.png"
+                  />
+                </Link>
+              </Card.Footer>
             </Card>
           </Grid>
         </Grid.Container>

@@ -98,8 +98,9 @@ export default function SmallCentered() {
           align={{ base: "center", md: "center" }}
         >
           {/* Copyright text */}
+          <Text>We are not financial experts.</Text>
           <Text>© 2023 Literate. All rights reserved</Text>
-          
+
           {/* Social media buttons */}
           <Stack direction={"row"} spacing={6}>
             <SocialButton label={"Twitter"} href={"#"}>
